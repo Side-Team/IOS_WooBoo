@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8c-XC-PRh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IPg-vB-W4x">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController storyboardIdentifier="JoinViewController" id="n6Q-JQ-Cxq" customClass="JoinViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O7s-bZ-xiO">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfs-Gf-1Mt">
@@ -86,12 +86,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZB-OC-pDT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3637" y="651"/>
+            <point key="canvasLocation" x="-2963" y="493"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FfG-bT-X4f">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IPg-vB-W4x" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="IPg-vB-W4x" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="QhP-Tp-i5t"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fAs-uu-4bX">
@@ -112,7 +112,7 @@
         <!--우부판-->
         <scene sceneID="QbT-KM-ck6">
             <objects>
-                <viewController id="55k-Dz-AN0" sceneMemberID="viewController">
+                <viewController id="55k-Dz-AN0" customClass="ViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6h-3E-1WQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +204,7 @@
         <!--로그인-->
         <scene sceneID="8HS-ap-5ij">
             <objects>
-                <viewController id="bD9-87-RSu" customClass="LoginViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="bD9-87-RSu" customClass="LoginViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c44-lu-6Q3">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,7 +255,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="회원가입"/>
                                 <connections>
-                                    <segue destination="n6Q-JQ-Cxq" kind="show" id="iHp-0R-1aY"/>
+                                    <action selector="btnJoin:" destination="bD9-87-RSu" eventType="touchUpInside" id="rnm-Sg-TFn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxd-Dg-eTb">
@@ -268,7 +268,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="로그인"/>
                                 <connections>
-                                    <action selector="btnJoin:" destination="bD9-87-RSu" eventType="touchUpInside" id="xgG-WF-Z9W"/>
+                                    <action selector="btnLogin:" destination="bD9-87-RSu" eventType="touchUpInside" id="rar-xW-C7h"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -277,12 +277,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="로그인" id="JKV-US-6PV"/>
                     <connections>
-                        <segue destination="IPg-vB-W4x" kind="show" id="vLE-GT-NSc"/>
+                        <segue destination="n6Q-JQ-Cxq" kind="show" identifier="MoveJoinUs" id="Bxt-4b-2Pe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqc-e2-31L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2709.2307692307691" y="-111.61137440758293"/>
+            <point key="canvasLocation" x="-2962" y="-361"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oSI-Ch-dTn">
@@ -334,6 +334,11 @@
                                 <connections>
                                     <segue destination="6UK-4w-f2u" kind="show" id="hQA-sk-3Xa"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Du-CM-WiV">
+                                <rect key="frame" x="146" y="592" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="로그아웃"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rrD-wm-xxo"/>
@@ -742,7 +747,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="re1-TP-7p2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3.0769230769230766" y="548.8151658767772"/>
+            <point key="canvasLocation" x="563" y="549"/>
         </scene>
         <!--찜한글-->
         <scene sceneID="iLh-14-YCS">
@@ -771,7 +776,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFI-Dg-Wz4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-789" y="1310"/>
+            <point key="canvasLocation" x="-789" y="1350"/>
         </scene>
         <!--내가 쓴 글-->
         <scene sceneID="Qwy-yD-mh9">
@@ -800,25 +805,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Il-Rn-K0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3" y="1310"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="7w9-pP-RkQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T8c-XC-PRh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gue-qy-CHc">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bD9-87-RSu" kind="relationship" relationship="rootViewController" id="wTh-HF-09U"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MC3-pa-U8w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3638.4615384615381" y="-111.61137440758293"/>
+            <point key="canvasLocation" x="-1566" y="1350"/>
         </scene>
     </scenes>
     <resources>

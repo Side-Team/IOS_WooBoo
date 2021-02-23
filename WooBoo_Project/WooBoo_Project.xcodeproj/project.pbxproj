@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86756F3525E5416500705176 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3425E5416500705176 /* UserModel.swift */; };
+		86756F3825E54B9400705176 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3725E54B9400705176 /* LoginModel.swift */; };
 		869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9925E3A29700554CEC /* AppDelegate.swift */; };
 		869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9B25E3A29700554CEC /* SceneDelegate.swift */; };
 		869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9D25E3A29700554CEC /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86756F3425E5416500705176 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		86756F3725E54B9400705176 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		869C1C9625E3A29700554CEC /* WooBoo_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WooBoo_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C1C9925E3A29700554CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869C1C9B25E3A29700554CEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,12 +67,14 @@
 				869C1C9925E3A29700554CEC /* AppDelegate.swift */,
 				869C1C9B25E3A29700554CEC /* SceneDelegate.swift */,
 				869C1C9D25E3A29700554CEC /* ViewController.swift */,
+				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
+				86AC528C25E40546008343D8 /* JoinViewController.swift */,
+				86756F3425E5416500705176 /* UserModel.swift */,
 				869C1C9F25E3A29700554CEC /* Main.storyboard */,
 				869C1CA225E3A29900554CEC /* Assets.xcassets */,
 				869C1CA425E3A29900554CEC /* LaunchScreen.storyboard */,
 				869C1CA725E3A29900554CEC /* Info.plist */,
-				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
-				86AC528C25E40546008343D8 /* JoinViewController.swift */,
+				86756F3725E54B9400705176 /* LoginModel.swift */,
 			);
 			path = WooBoo_Project;
 			sourceTree = "<group>";
@@ -144,9 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */,
+				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
+				86756F3525E5416500705176 /* UserModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

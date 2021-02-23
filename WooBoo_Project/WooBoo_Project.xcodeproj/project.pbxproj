@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
+		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
+		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
 		869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9925E3A29700554CEC /* AppDelegate.swift */; };
 		869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9B25E3A29700554CEC /* SceneDelegate.swift */; };
 		869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9D25E3A29700554CEC /* ViewController.swift */; };
@@ -15,9 +18,14 @@
 		869C1CA625E3A29900554CEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869C1CA425E3A29900554CEC /* LaunchScreen.storyboard */; };
 		869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1CAF25E3B19E00554CEC /* LoginViewController.swift */; };
 		86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC528C25E40546008343D8 /* JoinViewController.swift */; };
+		DB02F92E6AEF2EAE1CC3B2B5 /* Pods_WooBoo_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
+		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
+		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
+		696DBC98034BCAD94569F106 /* Pods-WooBoo_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.debug.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		869C1C9625E3A29700554CEC /* WooBoo_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WooBoo_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C1C9925E3A29700554CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869C1C9B25E3A29700554CEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +36,8 @@
 		869C1CA725E3A29900554CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		869C1CAF25E3B19E00554CEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86AC528C25E40546008343D8 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WooBoo_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9D0003D47483131B848699D /* Pods-WooBoo_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.release.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB02F92E6AEF2EAE1CC3B2B5 /* Pods_WooBoo_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +57,8 @@
 			children = (
 				869C1C9825E3A29700554CEC /* WooBoo_Project */,
 				869C1C9725E3A29700554CEC /* Products */,
+				91E549303A49770CD3097045 /* Pods */,
+				B43CC91D307B5DC5FF2C70C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,8 +82,28 @@
 				869C1CA725E3A29900554CEC /* Info.plist */,
 				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
 				86AC528C25E40546008343D8 /* JoinViewController.swift */,
+				2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */,
+				2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */,
+				284B82BB25E5612200203A8B /* AddImageViewController.swift */,
 			);
 			path = WooBoo_Project;
+			sourceTree = "<group>";
+		};
+		91E549303A49770CD3097045 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				696DBC98034BCAD94569F106 /* Pods-WooBoo_Project.debug.xcconfig */,
+				F9D0003D47483131B848699D /* Pods-WooBoo_Project.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B43CC91D307B5DC5FF2C70C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 869C1CAA25E3A29900554CEC /* Build configuration list for PBXNativeTarget "WooBoo_Project" */;
 			buildPhases = (
+				C291AAA75A2642171935BF43 /* [CP] Check Pods Manifest.lock */,
 				869C1C9225E3A29700554CEC /* Sources */,
 				869C1C9325E3A29700554CEC /* Frameworks */,
 				869C1C9425E3A29700554CEC /* Resources */,
+				961B254464E76BF451A56F46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,11 +173,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		961B254464E76BF451A56F46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C291AAA75A2642171935BF43 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WooBoo_Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		869C1C9225E3A29700554CEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
+				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
+				284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */,
 				869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
@@ -291,6 +371,7 @@
 		};
 		869C1CAB25E3A29900554CEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 696DBC98034BCAD94569F106 /* Pods-WooBoo_Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +391,7 @@
 		};
 		869C1CAC25E3A29900554CEC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9D0003D47483131B848699D /* Pods-WooBoo_Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

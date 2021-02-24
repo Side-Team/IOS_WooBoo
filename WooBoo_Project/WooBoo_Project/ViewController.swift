@@ -59,8 +59,8 @@ class ViewController: UIViewController, QuestionProtocol {
     }
     
     // 선택한 값 받아와서 넣어주기
-    func receiveItems(tit stitle: String){
-        self.receiveTitle = stitle
+    func receiveItems(_ stitle: String){
+        receiveTitle = stitle
        print("\(stitle)")
     }
         

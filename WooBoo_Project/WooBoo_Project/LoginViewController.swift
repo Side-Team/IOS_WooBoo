@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, LoginModelProtocol {
         let num2Check: Int = checkNil(str: txtPW.text!)
         
         if num1Check + num2Check != 2{
-            let nilAlert = UIAlertController(title: "경고!", message: "빈칸을 입력하세요.", preferredStyle: UIAlertController.Style.alert)
+            let nilAlert = UIAlertController(title: "경고!", message: "정확히 입력하세요.", preferredStyle: UIAlertController.Style.alert)
             let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
                 self.navigationController?.popViewController(animated: true)    // 현재화면 지워줌
             })
@@ -58,7 +58,6 @@ class LoginViewController: UIViewController, LoginModelProtocol {
             
             // checkResultValue로 이동하여 로그인 판단.
         }
-        
     }
     
     @IBAction func btnJoin(_ sender: UIButton) {

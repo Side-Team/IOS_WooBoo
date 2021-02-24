@@ -20,6 +20,8 @@ class UserUpdateController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        lblEmail.text = Share.userID
+        lblEmail.isEnabled = false
     }
     
     

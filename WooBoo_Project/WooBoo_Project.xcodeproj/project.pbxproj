@@ -20,6 +20,7 @@
 		869C1CA625E3A29900554CEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869C1CA425E3A29900554CEC /* LaunchScreen.storyboard */; };
 		869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1CAF25E3B19E00554CEC /* LoginViewController.swift */; };
 		86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC528C25E40546008343D8 /* JoinViewController.swift */; };
+		86AFA21A25E621490070D1D5 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AFA21925E621490070D1D5 /* Share.swift */; };
 		DB02F92E6AEF2EAE1CC3B2B5 /* Pods_WooBoo_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		869C1CA725E3A29900554CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		869C1CAF25E3B19E00554CEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86AC528C25E40546008343D8 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		86AFA21925E621490070D1D5 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WooBoo_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D0003D47483131B848699D /* Pods-WooBoo_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.release.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,8 +82,6 @@
 				869C1C9925E3A29700554CEC /* AppDelegate.swift */,
 				869C1C9B25E3A29700554CEC /* SceneDelegate.swift */,
 				869C1C9D25E3A29700554CEC /* ViewController.swift */,
-				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
-				86AC528C25E40546008343D8 /* JoinViewController.swift */,
 				86756F3425E5416500705176 /* UserModel.swift */,
 				869C1C9F25E3A29700554CEC /* Main.storyboard */,
 				869C1CA225E3A29900554CEC /* Assets.xcassets */,
@@ -93,6 +93,7 @@
 				2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */,
 				284B82BB25E5612200203A8B /* AddImageViewController.swift */,
 				86756F3725E54B9400705176 /* LoginModel.swift */,
+				86AFA21925E621490070D1D5 /* Share.swift */,
 			);
 			path = WooBoo_Project;
 			sourceTree = "<group>";
@@ -235,6 +236,7 @@
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
+				86AFA21A25E621490070D1D5 /* Share.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
 				86756F3525E5416500705176 /* UserModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,

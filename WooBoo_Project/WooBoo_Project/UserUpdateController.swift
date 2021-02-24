@@ -7,21 +7,32 @@
 
 import UIKit
 
-class UserUpdateController: UIViewController {
+class UserUpdateController: UIViewController,JspUserSelectProtocol {
 
- 
+    
     @IBOutlet weak var lblEmail: UITextField!
     @IBOutlet weak var lblWooboo: UILabel!
     @IBOutlet weak var lblPassword: UITextField!
     @IBOutlet weak var lblPasswordCheck: UITextField!
     
-    
+    var feedItem: NSArray = NSArray()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         lblEmail.text = Share.userID
         lblEmail.isEnabled = false
+        
+        let userSelect = JspUserSelect()
+        userSelect.delegate = self
+        userSelect.downloadItems()
+        
+        
+    }
+    
+    func itemDownloaded(items: NSArray) {
+        feedItem = items
+    
     }
     
     
@@ -34,6 +45,7 @@ class UserUpdateController: UIViewController {
     @IBAction func UserOK(_ sender: UIButton) {
     }
     
+
     
 /*    // MARK: - Navigation
 

@@ -198,6 +198,8 @@
                     <connections>
                         <outlet property="hotPageControl" destination="aaH-Ti-sRh" id="OuM-uf-I4X"/>
                         <outlet property="lblHot" destination="bCc-72-ktg" id="qqX-R5-s2g"/>
+                        <outlet property="lblNew" destination="bOM-BI-K9R" id="qqC-7h-IU8"/>
+                        <outlet property="newPageControl" destination="nfg-oK-3FW" id="GV5-Ao-J82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDR-Ut-5fK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -17,7 +17,7 @@ class LoginModel: NSObject{
     
     
     func LoginItems(email: String, pw: String){
-        var urlPath = "http://127.0.0.1:8080/iosjsp/loginCheck.jsp"
+        var urlPath = "http://127.0.0.1:8080/iosjsp/wooboo_loginCheck.jsp"
         let urlAdd = "?uEmail=\(email)&uPw=\(pw)"
         urlPath = urlPath + urlAdd
         print("urlPath:\(urlPath)")

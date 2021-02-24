@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506A25E6486200E58698 /* BalanceGameMainController.swift */; };
+		21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */; };
+		21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506C25E6486200E58698 /* UserUpdateController.swift */; };
+		21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5507225E65E9400E58698 /* balancegameModel.swift */; };
+		21A5507625E6605000E58698 /* selectBalancegameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5507525E6605000E58698 /* selectBalancegameModel.swift */; };
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
@@ -24,6 +29,7 @@
 		86756F3525E5416500705176 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3425E5416500705176 /* UserModel.swift */; };
 		86756F3825E54B9400705176 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3725E54B9400705176 /* LoginModel.swift */; };
 		868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E3DB525E62FEF003EE1E6 /* Share.swift */; };
+		868E3DB925E63D44003EE1E6 /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E3DB825E63D44003EE1E6 /* JoinModel.swift */; };
 		869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9925E3A29700554CEC /* AppDelegate.swift */; };
 		869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9B25E3A29700554CEC /* SceneDelegate.swift */; };
 		869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9D25E3A29700554CEC /* ViewController.swift */; };
@@ -36,6 +42,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21A5506A25E6486200E58698 /* BalanceGameMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameMainController.swift; sourceTree = "<group>"; };
+		21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameSelectController.swift; sourceTree = "<group>"; };
+		21A5506C25E6486200E58698 /* UserUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateController.swift; sourceTree = "<group>"; };
+		21A5507225E65E9400E58698 /* balancegameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameModel.swift; sourceTree = "<group>"; };
+		21A5507525E6605000E58698 /* selectBalancegameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectBalancegameModel.swift; sourceTree = "<group>"; };
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +65,7 @@
 		86756F3425E5416500705176 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		86756F3725E54B9400705176 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		868E3DB525E62FEF003EE1E6 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		868E3DB825E63D44003EE1E6 /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
 		869C1C9625E3A29700554CEC /* WooBoo_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WooBoo_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C1C9925E3A29700554CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869C1C9B25E3A29700554CEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +95,9 @@
 		3C1FEADC25E60BD8008C646E /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				21A5506A25E6486200E58698 /* BalanceGameMainController.swift */,
+				21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */,
+				21A5506C25E6486200E58698 /* UserUpdateController.swift */,
 				869C1C9D25E3A29700554CEC /* ViewController.swift */,
 				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
 				86AC528C25E40546008343D8 /* JoinViewController.swift */,
@@ -139,6 +154,9 @@
 				86756F3725E54B9400705176 /* LoginModel.swift */,
 				3C1FEAE825E651ED008C646E /* QuestionModel.swift */,
 				3C1FEAEF25E653B7008C646E /* DBModel.swift */,
+				868E3DB825E63D44003EE1E6 /* JoinModel.swift */,
+				21A5507225E65E9400E58698 /* balancegameModel.swift */,
+				21A5507525E6605000E58698 /* selectBalancegameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -330,16 +348,22 @@
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,
+				21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */,
 				284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */,
 				3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */,
 				869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */,
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
+				21A5507625E6605000E58698 /* selectBalancegameModel.swift in Sources */,
 				868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
 				86756F3525E5416500705176 /* UserModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,
+				868E3DB925E63D44003EE1E6 /* JoinModel.swift in Sources */,
+				21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */,
+				21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */,
+				21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

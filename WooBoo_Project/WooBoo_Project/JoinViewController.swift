@@ -31,17 +31,36 @@ class JoinViewController: UIViewController {
         let num4Check: Int = checkNil(str: txtPWCheck.text!)
         
         if num1Check + num2Check + num3Check + num4Check != 4 {
-            let nilAlert = UIAlertController(title: "경고!", message: "빈칸을 입력하세요.", preferredStyle: UIAlertController.Style.alert)
+            let nilAlert = UIAlertController(title: "경고!", message: "정확히 입력하세요.", preferredStyle: UIAlertController.Style.alert)
             let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
                 self.navigationController?.popViewController(animated: true)    // 현재화면 지워줌
             })
             nilAlert.addAction(nilAction)
             present(nilAlert, animated: true, completion: nil)
         }else{
-            let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
-            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nilAlert.addAction(nilAction)
-            present(nilAlert, animated: true, completion: nil)
+            // nil이 아닐 경우
+            
+            let email = txtEmail.text!
+            let pw = txtPW.text!
+            
+            let joinModel = JoinModel()
+            let result = joinModel.joinItems(email: email, pw: pw)
+            
+            if result == true{
+                let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                    self.navigationController?.popViewController(animated: true)    // 현재화면 지워줌
+                })
+                nilAlert.addAction(nilAction)
+                present(nilAlert, animated: true, completion: nil)
+            }else{
+                let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                resultAlert.addAction(onAction)
+                present(resultAlert, animated: true, completion: nil)
+            }
+            
+            
         }
     }
     
@@ -62,48 +81,48 @@ class JoinViewController: UIViewController {
     }
     
     // textfield underline
-    override func viewDidLayoutSubviews() {
-        txtEmail.borderStyle = .none
-        txtCode.borderStyle = .none
-        txtPW.borderStyle = .none
-        txtPWCheck.borderStyle = .none
-        let border = CALayer()
-        border.frame = CGRect(x: 0,
-        y: txtEmail.frame.size.height-1,
-        width: txtEmail.frame.width,
-            height: 1)
-        border.backgroundColor = UIColor.lightGray.cgColor
-        let border1 = CALayer()
-        border1.frame = CGRect(x: 0,
-        y: txtCode.frame.size.height-1,
-        width: txtCode.frame.width,
-            height: 1)
-        border1.backgroundColor = UIColor.lightGray.cgColor
-        let border2 = CALayer()
-        border2.frame = CGRect(x: 0,
-        y: txtPW.frame.size.height-1,
-        width: txtPW.frame.width,
-            height: 1)
-        border2.backgroundColor = UIColor.lightGray.cgColor
-        let border3 = CALayer()
-        border3.frame = CGRect(x: 0,
-        y: txtPWCheck.frame.size.height-1,
-        width: txtPWCheck.frame.width,
-            height: 1)
-        border3.backgroundColor = UIColor.lightGray.cgColor
-        txtEmail.layer.addSublayer((border))
-        txtCode.layer.addSublayer((border1))
-        txtPW.layer.addSublayer((border2))
-        txtPWCheck.layer.addSublayer((border3))
-        txtEmail.textAlignment = .center
-        txtCode.textAlignment = .center
-        txtPW.textAlignment = .center
-        txtPWCheck.textAlignment = .center
-        txtEmail.textColor = UIColor.black
-        txtCode.textColor = UIColor.black
-        txtPW.textColor = UIColor.black
-        txtPWCheck.textColor = UIColor.black
-    }
+//    override func viewDidLayoutSubviews() {
+//        txtEmail.borderStyle = .none
+//        txtCode.borderStyle = .none
+//        txtPW.borderStyle = .none
+//        txtPWCheck.borderStyle = .none
+//        let border = CALayer()
+//        border.frame = CGRect(x: 0,
+//        y: txtEmail.frame.size.height-1,
+//        width: txtEmail.frame.width,
+//            height: 1)
+//        border.backgroundColor = UIColor.lightGray.cgColor
+//        let border1 = CALayer()
+//        border1.frame = CGRect(x: 0,
+//        y: txtCode.frame.size.height-1,
+//        width: txtCode.frame.width,
+//            height: 1)
+//        border1.backgroundColor = UIColor.lightGray.cgColor
+//        let border2 = CALayer()
+//        border2.frame = CGRect(x: 0,
+//        y: txtPW.frame.size.height-1,
+//        width: txtPW.frame.width,
+//            height: 1)
+//        border2.backgroundColor = UIColor.lightGray.cgColor
+//        let border3 = CALayer()
+//        border3.frame = CGRect(x: 0,
+//        y: txtPWCheck.frame.size.height-1,
+//        width: txtPWCheck.frame.width,
+//            height: 1)
+//        border3.backgroundColor = UIColor.lightGray.cgColor
+//        txtEmail.layer.addSublayer((border))
+//        txtCode.layer.addSublayer((border1))
+//        txtPW.layer.addSublayer((border2))
+//        txtPWCheck.layer.addSublayer((border3))
+//        txtEmail.textAlignment = .center
+//        txtCode.textAlignment = .center
+//        txtPW.textAlignment = .center
+//        txtPWCheck.textAlignment = .center
+//        txtEmail.textColor = UIColor.black
+//        txtCode.textColor = UIColor.black
+//        txtPW.textColor = UIColor.black
+//        txtPWCheck.textColor = UIColor.black
+//    }
 
     /*
     // MARK: - Navigation

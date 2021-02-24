@@ -15,6 +15,8 @@
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
+		28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */; };
+		28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */; };
 		3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEAE825E651ED008C646E /* QuestionModel.swift */; };
 		3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEAEF25E653B7008C646E /* DBModel.swift */; };
 		3C1FEAFC25E68197008C646E /* icon_food.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF325E68195008C646E /* icon_food.png */; };
@@ -50,6 +52,8 @@
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
+		28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadModel.swift; sourceTree = "<group>"; };
+		28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		3C1FEAE825E651ED008C646E /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		3C1FEAEF25E653B7008C646E /* DBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
 		3C1FEAF325E68195008C646E /* icon_food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_food.png; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		3C1FEAE125E60CA5008C646E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */,
+				28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */,
 				86756F3425E5416500705176 /* UserModel.swift */,
 				86756F3725E54B9400705176 /* LoginModel.swift */,
 				3C1FEAE825E651ED008C646E /* QuestionModel.swift */,
@@ -346,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
+				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,
 				21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */,
@@ -355,6 +362,7 @@
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
+				28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */,
 				21A5507625E6605000E58698 /* selectBalancegameModel.swift in Sources */,
 				868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,

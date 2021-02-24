@@ -80,49 +80,49 @@ class JoinViewController: UIViewController {
         }
     }
     
-    // textfield underline
-//    override func viewDidLayoutSubviews() {
-//        txtEmail.borderStyle = .none
-//        txtCode.borderStyle = .none
-//        txtPW.borderStyle = .none
-//        txtPWCheck.borderStyle = .none
-//        let border = CALayer()
-//        border.frame = CGRect(x: 0,
-//        y: txtEmail.frame.size.height-1,
-//        width: txtEmail.frame.width,
-//            height: 1)
-//        border.backgroundColor = UIColor.lightGray.cgColor
-//        let border1 = CALayer()
-//        border1.frame = CGRect(x: 0,
-//        y: txtCode.frame.size.height-1,
-//        width: txtCode.frame.width,
-//            height: 1)
-//        border1.backgroundColor = UIColor.lightGray.cgColor
-//        let border2 = CALayer()
-//        border2.frame = CGRect(x: 0,
-//        y: txtPW.frame.size.height-1,
-//        width: txtPW.frame.width,
-//            height: 1)
-//        border2.backgroundColor = UIColor.lightGray.cgColor
-//        let border3 = CALayer()
-//        border3.frame = CGRect(x: 0,
-//        y: txtPWCheck.frame.size.height-1,
-//        width: txtPWCheck.frame.width,
-//            height: 1)
-//        border3.backgroundColor = UIColor.lightGray.cgColor
-//        txtEmail.layer.addSublayer((border))
-//        txtCode.layer.addSublayer((border1))
-//        txtPW.layer.addSublayer((border2))
-//        txtPWCheck.layer.addSublayer((border3))
-//        txtEmail.textAlignment = .center
-//        txtCode.textAlignment = .center
-//        txtPW.textAlignment = .center
-//        txtPWCheck.textAlignment = .center
-//        txtEmail.textColor = UIColor.black
-//        txtCode.textColor = UIColor.black
-//        txtPW.textColor = UIColor.black
-//        txtPWCheck.textColor = UIColor.black
-//    }
+     textfield underline
+    override func viewDidLayoutSubviews() {
+        txtEmail.borderStyle = .none
+        txtCode.borderStyle = .none
+        txtPW.borderStyle = .none
+        txtPWCheck.borderStyle = .none
+        let border = CALayer()
+        border.frame = CGRect(x: 0,
+        y: txtEmail.frame.size.height-1,
+        width: txtEmail.frame.width,
+            height: 1)
+        border.backgroundColor = UIColor.lightGray.cgColor
+        let border1 = CALayer()
+        border1.frame = CGRect(x: 0,
+        y: txtCode.frame.size.height-1,
+        width: txtCode.frame.width,
+            height: 1)
+        border1.backgroundColor = UIColor.lightGray.cgColor
+        let border2 = CALayer()
+        border2.frame = CGRect(x: 0,
+        y: txtPW.frame.size.height-1,
+        width: txtPW.frame.width,
+            height: 1)
+        border2.backgroundColor = UIColor.lightGray.cgColor
+        let border3 = CALayer()
+        border3.frame = CGRect(x: 0,
+        y: txtPWCheck.frame.size.height-1,
+        width: txtPWCheck.frame.width,
+            height: 1)
+        border3.backgroundColor = UIColor.lightGray.cgColor
+        txtEmail.layer.addSublayer((border))
+        txtCode.layer.addSublayer((border1))
+        txtPW.layer.addSublayer((border2))
+        txtPWCheck.layer.addSublayer((border3))
+        txtEmail.textAlignment = .center
+        txtCode.textAlignment = .center
+        txtPW.textAlignment = .center
+        txtPWCheck.textAlignment = .center
+        txtEmail.textColor = UIColor.black
+        txtCode.textColor = UIColor.black
+        txtPW.textColor = UIColor.black
+        txtPWCheck.textColor = UIColor.black
+    }
 
     /*
     // MARK: - Navigation

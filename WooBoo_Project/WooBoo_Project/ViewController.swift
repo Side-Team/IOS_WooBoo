@@ -32,12 +32,14 @@ class ViewController: UIViewController {
         lblNew.text = String(newPageControl.currentPage + 1)
        
     }
-
-   
     @IBAction func changeHotPage(_ sender: UIPageControl) {
         lblHot.text = String(hotPageControl.currentPage + 1)
+    }
+    
+    @IBAction func changeNewPage(_ sender: UIPageControl) {
         lblNew.text = String(newPageControl.currentPage + 1)
     }
+    
     
 }
 

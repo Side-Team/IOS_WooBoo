@@ -140,7 +140,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCc-72-ktg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCc-72-ktg">
                                         <rect key="frame" x="60" y="45.333333333333314" width="68" height="45.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -148,6 +148,9 @@
                                     </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aaH-Ti-sRh">
                                         <rect key="frame" x="33.333333333333336" y="90.666666666666686" width="121.33333333333331" height="45.333333333333343"/>
+                                        <connections>
+                                            <action selector="changeHotPage:" destination="55k-Dz-AN0" eventType="valueChanged" id="2ga-fG-OFS"/>
+                                        </connections>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.5036425591" green="0.76161068679999999" blue="0.70195716620000004" alpha="0.59383127640704725" colorSpace="custom" customColorSpace="displayP3"/>
@@ -161,14 +164,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOM-BI-K9R">
-                                        <rect key="frame" x="81.666666666666657" y="44.666666666666629" width="25" height="44.666666666666657"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOM-BI-K9R">
+                                        <rect key="frame" x="69" y="44.666666666666629" width="50" height="44.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="nfg-oK-3FW">
                                         <rect key="frame" x="33.333333333333336" y="89.333333333333371" width="121.33333333333331" height="44.666666666666657"/>
+                                        <connections>
+                                            <action selector="changeNewPage:" destination="55k-Dz-AN0" eventType="valueChanged" id="GwY-ZW-OJM"/>
+                                        </connections>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.5036425591" green="0.76161068679999999" blue="0.70195716620000004" alpha="0.5938312764" colorSpace="custom" customColorSpace="displayP3"/>

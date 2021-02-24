@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506A25E6486200E58698 /* BalanceGameMainController.swift */; };
+		21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */; };
+		21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506C25E6486200E58698 /* UserUpdateController.swift */; };
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21A5506A25E6486200E58698 /* BalanceGameMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameMainController.swift; sourceTree = "<group>"; };
+		21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameSelectController.swift; sourceTree = "<group>"; };
+		21A5506C25E6486200E58698 /* UserUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateController.swift; sourceTree = "<group>"; };
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 		3C1FEADC25E60BD8008C646E /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				21A5506A25E6486200E58698 /* BalanceGameMainController.swift */,
+				21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */,
+				21A5506C25E6486200E58698 /* UserUpdateController.swift */,
 				869C1C9D25E3A29700554CEC /* ViewController.swift */,
 				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
 				86AC528C25E40546008343D8 /* JoinViewController.swift */,
@@ -288,6 +297,9 @@
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
 				86756F3525E5416500705176 /* UserModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,
+				21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */,
+				21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */,
+				21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

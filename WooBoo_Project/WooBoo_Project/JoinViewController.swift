@@ -80,7 +80,7 @@ class JoinViewController: UIViewController {
         }
     }
     
-     textfield underline
+    // textfield underline
     override func viewDidLayoutSubviews() {
         txtEmail.borderStyle = .none
         txtCode.borderStyle = .none

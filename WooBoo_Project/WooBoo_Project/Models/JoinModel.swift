@@ -8,7 +8,7 @@
 import Foundation
 
 class JoinModel: NSObject {
-    var urlPath = "http://127.0.0.1:8080/iosjsp/wooboo_join.jsp"
+    var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_join.jsp"
     
     
     func joinItems(email: String, pw: String) -> Bool{   // Bool은 됐는지 안됐는지 결과를 받기위함

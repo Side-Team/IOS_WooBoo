@@ -13,7 +13,7 @@ protocol QuestionProtocol: class {
 
 class QuestionModel: NSObject{
     var delegate: QuestionProtocol!
-    let urlPath = "http://127.0.0.1:8080/ios/wooboo_query_ios.jsp"
+    let urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_query_ios.jsp"
     
     func downloadItems(){
         let url = URL(string: urlPath)!

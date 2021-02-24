@@ -34,6 +34,8 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     
     var imageFileNames = [String]()
     
+    var tempFileNames = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -257,14 +259,21 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         let AddImageViewController = segue.destination as! AddImageViewController
         
         AddImageViewController.count = txtContentCount
+        if imageFileNames.count > 0{
+            AddImageViewController.imageFileNames = self.imageFileNames
+            AddImageViewController.tempFileNames = self.tempFileNames
+        }
         AddImageViewController.delegate = self // Main에서 Sub로 날라갈 때 권한을 준 것
     }
     
     // imagefilenames 받기
-    func didSelectedImage(_ controller: AddImageViewController, imageFileNames: [String]) {
+    func didSelectedImage(_ controller: AddImageViewController, imageFileNames: [String], tempFileNames : [String]) {
         self.imageFileNames = imageFileNames
+        self.tempFileNames = tempFileNames
         
-        print(self.imageFileNames)
+        print("AddContentViewController 이미지 배열값 : ", self.imageFileNames)
+        print("AddContentViewController temp 배열값 : ", self.tempFileNames)
+
     }
     
     

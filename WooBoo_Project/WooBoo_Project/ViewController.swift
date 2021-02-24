@@ -38,14 +38,14 @@ class ViewController: UIViewController, QuestionProtocol {
         override func viewDidLoad() {
             super.viewDidLoad()
             // Do any additional setup after loading the view.
-            // 이미지 이름 저장
-            displayTitle(number: numImage)
-                    Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
-            
-            let questionModel = QuestionModel()
-            questionModel.delegate = self
-            questionModel.downloadItems()
-            
+//            // 이미지 이름 저장
+//            displayTitle(number: numImage)
+//                    Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+//            
+//            let questionModel = QuestionModel()
+//            questionModel.delegate = self
+//            questionModel.downloadItems()
+//            
         }
     
    

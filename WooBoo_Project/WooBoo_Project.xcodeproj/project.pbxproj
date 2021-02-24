@@ -76,7 +76,6 @@
 				869C1C9925E3A29700554CEC /* AppDelegate.swift */,
 				869C1C9B25E3A29700554CEC /* SceneDelegate.swift */,
 				3C1FEADF25E60C7C008C646E /* Assets */,
-				869C1CA725E3A29900554CEC /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -137,6 +136,7 @@
 		869C1C9825E3A29700554CEC /* WooBoo_Project */ = {
 			isa = PBXGroup;
 			children = (
+				869C1CA725E3A29900554CEC /* Info.plist */,
 				3C1FEADE25E60C6A008C646E /* Source */,
 				3C1FEADD25E60BFC008C646E /* Supporting Files */,
 			);
@@ -432,7 +432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NF6SU57H5L;
+				DEVELOPMENT_TEAM = 89HYQ777M3;
 				INFOPLIST_FILE = WooBoo_Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NF6SU57H5L;
+				DEVELOPMENT_TEAM = 89HYQ777M3;
 				INFOPLIST_FILE = WooBoo_Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

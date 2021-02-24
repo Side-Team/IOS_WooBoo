@@ -533,7 +533,7 @@
                                 <rect key="frame" x="150" y="542" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-uI-zJg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_19.png" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-uI-zJg">
                                 <rect key="frame" x="264" y="542" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1163,9 +1163,9 @@
     <resources>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="icon_19.png" width="384" height="384"/>
         <image name="icon_etc.png" width="418.90908813476562" height="418.90908813476562"/>
         <image name="icon_food.png" width="384" height="384"/>
-        <image name="icon_home.png" width="307.20001220703125" height="307.20001220703125"/>
         <image name="icon_love.png" width="384" height="384"/>
         <image name="icon_marry.png" width="384" height="384"/>
         <image name="icon_travel.png" width="307.20001220703125" height="307.20001220703125"/>

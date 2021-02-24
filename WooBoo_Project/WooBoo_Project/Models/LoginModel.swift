@@ -8,42 +8,37 @@
 import Foundation
 
 protocol LoginModelProtocol: class{
-    func itemDownloaded(items: NSArray)
+    func checkResultValue(result:Int)
 }
 
 class LoginModel: NSObject{
     var delegate: LoginModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/iosjsp/loginCheck.jsp"
+    //var urlPath = "http://127.0.0.1:8080/iosjsp/loginCheck.jsp"
     
-    func insertItems(email: String, pw: String) -> Bool{   // Bool은 됐는지 안됐는지 결과를 받기위함
-        var result: Bool = true
-        let urlAdd = "?uemail=\(email)&upw:\(pw)"    //jsp 뒤에 ? 내용은 이것을 통해서 데이터가 들어감
+    
+    func LoginItems(email: String, pw: String){
+        var urlPath = "http://127.0.0.1:8080/iosjsp/loginCheck.jsp"
+        let urlAdd = "?uEmail=\(email)&uPw=\(pw)"
         urlPath = urlPath + urlAdd
+        print("urlPath:\(urlPath)")
+        let url = URL(string: urlPath)!
         
-        // 한글 url encoding
-        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        
-        let url: URL = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         
-        let task = defaultSession.dataTask(with: url){(data, response, error) in
+        let task = defaultSession.dataTask(with: url){(data, responds, error) in
             if error != nil{
-                print("Failed to insert data")
-                result = false
+                print("Failed to download data")
             }else{
-                print("Data is inserted!")
-                result = true
+                print("Data is downloading")
+                self.loginCheckParseJSON(data!)
             }
         }
-        task.resume()   // 실행
-        return result
-        
+        task.resume()
     }
-  
     
-    func parseJSON(_ data: Data){
+    func loginCheckParseJSON(_ data: Data){
         
-        var resultValue:Int = 0
+        var resultValue1:Int = 0
         var jsonResult = NSArray()
         
         do{
@@ -52,17 +47,24 @@ class LoginModel: NSObject{
             print(error)
         }
         
-        var jsonElement = NSDictionary()     // Dictionary로 데이터를 가져옴
-        let locations = NSMutableArray()
+        var jsonElement = NSDictionary()
+        let resultValue = NSMutableArray()
         
         for i in 0..<jsonResult.count{
             
             jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
             
+            if let result = jsonElement["result"] as? String{
+                resultValue1 = Int(result)!
+                print("result : \(result)")
+            }
+            resultValue.add(resultValue1)
         }
         DispatchQueue.main.async(execute: {() -> Void in
-            self.delegate.itemDownloaded(items: locations)
+            print("resultvalue 0값 : \(resultValue[0])")
+            self.delegate.checkResultValue(result: resultValue[0] as! Int)
         })
+        print("resultValue값 : \(resultValue)")
         
     }
 }//----

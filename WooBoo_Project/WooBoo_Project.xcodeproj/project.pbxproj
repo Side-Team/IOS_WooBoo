@@ -12,6 +12,7 @@
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
 		86756F3525E5416500705176 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3425E5416500705176 /* UserModel.swift */; };
 		86756F3825E54B9400705176 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3725E54B9400705176 /* LoginModel.swift */; };
+		868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E3DB525E62FEF003EE1E6 /* Share.swift */; };
 		869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9925E3A29700554CEC /* AppDelegate.swift */; };
 		869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9B25E3A29700554CEC /* SceneDelegate.swift */; };
 		869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9D25E3A29700554CEC /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		696DBC98034BCAD94569F106 /* Pods-WooBoo_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.debug.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		86756F3425E5416500705176 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		86756F3725E54B9400705176 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		868E3DB525E62FEF003EE1E6 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		869C1C9625E3A29700554CEC /* WooBoo_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WooBoo_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C1C9925E3A29700554CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869C1C9B25E3A29700554CEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				869C1C9925E3A29700554CEC /* AppDelegate.swift */,
 				869C1C9B25E3A29700554CEC /* SceneDelegate.swift */,
 				3C1FEADF25E60C7C008C646E /* Assets */,
+				868E3DB525E62FEF003EE1E6 /* Share.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
+				868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
 				86756F3525E5416500705176 /* UserModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,

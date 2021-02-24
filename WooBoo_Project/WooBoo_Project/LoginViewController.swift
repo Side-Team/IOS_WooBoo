@@ -13,14 +13,29 @@ class LoginViewController: UIViewController, LoginModelProtocol {
     @IBOutlet weak var txtID: UITextField!
     @IBOutlet weak var txtPW: UITextField!
     
+    var loginCheck: Int = 0
+    let loginModel = LoginModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loginModel.delegate = self
     }
     
-    func itemDownloaded(items: NSArray) {
-        
+    // protocol
+    func checkResultValue(result: Int) {
+        self.loginCheck = result
+        print("checkresultvalue: \(result)")
+        if loginCheck == 0 {
+            print("로그인실패:\(self.loginCheck)")
+            shakeTextField(textField: txtID)
+            shakeTextField(textField: txtPW)
+        }else{
+            let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
+            vcName?.modalPresentationStyle = .fullScreen
+            self.present(vcName!, animated: true, completion: nil)
+            
+            Share.userID = txtID.text!
+        }
     }
 
     @IBAction func btnLogin(_ sender: UIButton) {
@@ -36,10 +51,12 @@ class LoginViewController: UIViewController, LoginModelProtocol {
             nilAlert.addAction(nilAction)
             present(nilAlert, animated: true, completion: nil)
         }else{
-            // nil값이 아니면 메인으로 화면 이동
-            let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
-            vcName?.modalPresentationStyle = .fullScreen
-            self.present(vcName!, animated: true, completion: nil)
+            // nil값이 아니고 가입된 회원이 맞으면 이동
+            let id = txtID.text
+            let pw = txtPW.text
+            loginModel.LoginItems(email: id!, pw: pw!)
+            
+            // checkResultValue로 이동하여 로그인 판단.
         }
         
     }

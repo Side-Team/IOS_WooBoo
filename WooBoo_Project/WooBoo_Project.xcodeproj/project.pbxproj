@@ -58,6 +58,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C1FEADC25E60BD8008C646E /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				869C1C9D25E3A29700554CEC /* ViewController.swift */,
+				869C1CAF25E3B19E00554CEC /* LoginViewController.swift */,
+				86AC528C25E40546008343D8 /* JoinViewController.swift */,
+				2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */,
+				2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */,
+				284B82BB25E5612200203A8B /* AddImageViewController.swift */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
+		3C1FEADD25E60BFC008C646E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C1FEAE025E60C8B008C646E /* StoryBoard */,
+				869C1C9925E3A29700554CEC /* AppDelegate.swift */,
+				869C1C9B25E3A29700554CEC /* SceneDelegate.swift */,
+				3C1FEADF25E60C7C008C646E /* Assets */,
+				869C1CA725E3A29900554CEC /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C1FEADE25E60C6A008C646E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3C1FEAE125E60CA5008C646E /* Models */,
+				3C1FEADC25E60BD8008C646E /* VCs */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		3C1FEADF25E60C7C008C646E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				869C1CA225E3A29900554CEC /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		3C1FEAE025E60C8B008C646E /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				869C1CA425E3A29900554CEC /* LaunchScreen.storyboard */,
+				869C1C9F25E3A29700554CEC /* Main.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		3C1FEAE125E60CA5008C646E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				86756F3425E5416500705176 /* UserModel.swift */,
+				86756F3725E54B9400705176 /* LoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		869C1C8D25E3A29700554CEC = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +154,8 @@
 				284B82BB25E5612200203A8B /* AddImageViewController.swift */,
 				86756F3725E54B9400705176 /* LoginModel.swift */,
 				86AFA21925E621490070D1D5 /* Share.swift */,
+				3C1FEADE25E60C6A008C646E /* Source */,
+				3C1FEADD25E60BFC008C646E /* Supporting Files */,
 			);
 			path = WooBoo_Project;
 			sourceTree = "<group>";

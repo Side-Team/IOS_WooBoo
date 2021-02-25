@@ -51,7 +51,7 @@ class JspUserSelect{
             jsonElement =  jsonResult[i] as! NSDictionary
             let query = UserModel()
             print("2")
-            if let uSeqno = jsonElement["seqno"] as? Int,
+            if let uSeqno = jsonElement["seqno"] as? String,
                let uEmail = jsonElement["email"] as? String,
                let uPw = jsonElement["pw"] as? String,
                let uImageFileName = jsonElement["Image"] as? String{
@@ -61,6 +61,10 @@ class JspUserSelect{
                 query.uPw = uPw
                 query.uImageFileName = uImageFileName
                 print("4")
+                print("스퀀스 \(uSeqno)")
+                print("이멩ㄹ\(uEmail)")
+                print("비번 \(uPw)")
+                print("이미지 \(uImageFileName)")
             }
             locations.add(query)
             print("5")

@@ -33,14 +33,13 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     
     func itemDownloaded(items: NSArray) {
         feedItem = items
-    
+        print(feedItem)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let queryModel = JspUserSelect()
         queryModel.delegate = self
         queryModel.downloadItems()
-        print("feeditem \(feedItem)")
     }
     
     @IBAction func UserDelete(_ sender: UIButton) {
@@ -53,8 +52,9 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     }
     
     func nawara(){
-//        let item: UserModel = feedItem[0] as! UserModel
-//        print("뭐야 \(item.uSeqno)")
+        let item: UserModel = feedItem[0] as! UserModel
+        print("우부\(item.uSeqno!)")
+
     }
 
     

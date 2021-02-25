@@ -13,7 +13,7 @@ protocol LoginModelProtocol: class{
 
 class LoginModel: NSObject{
     var delegate: LoginModelProtocol!
-    //var urlPath = "http://127.0.0.1:8080/iosjsp/loginCheck.jsp"
+//    var urlPath = "http://127.0.0.1:8080/iosjsp/loginCheck.jsp"
     
     
     func LoginItems(email: String, pw: String){
@@ -64,7 +64,7 @@ class LoginModel: NSObject{
             print("resultvalue 0값 : \(resultValue[0])")
             self.delegate.checkResultValue(result: resultValue[0] as! Int)
         })
-        print("resultValue값 : \(resultValue)")
+       // print("resultValue값 : \(resultValue)")
         
     }
 }//----

@@ -28,10 +28,12 @@ class LoginViewController: UIViewController, LoginModelProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginModel.delegate = self
-        
-        // 값이 저장되어있다면 자동 로그인
-        
        
+        checkSwitchValue()
+        checkAutoLogin()
+        
+//        print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
+//        print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
     }
     
     // protocol
@@ -39,6 +41,12 @@ class LoginViewController: UIViewController, LoginModelProtocol {
         self.loginCheck = result
         print("checkresultvalue: \(result)")
         if loginCheck == 0 {
+            let failAlert = UIAlertController(title: "경고!", message: "정보가 일치하지 않습니다..", preferredStyle: UIAlertController.Style.alert)
+            let failAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                self.navigationController?.popViewController(animated: true)    // 현재화면 지워줌
+            })
+            failAlert.addAction(failAction)
+            present(failAlert, animated: true, completion: nil)
             print("로그인실패:\(self.loginCheck)")
             shakeTextField(textField: txtID)
             shakeTextField(textField: txtPW)
@@ -46,7 +54,8 @@ class LoginViewController: UIViewController, LoginModelProtocol {
             let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)
-            
+
+            print("로그인할때스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
             Share.userID = txtID.text!
         }
     }
@@ -68,20 +77,20 @@ class LoginViewController: UIViewController, LoginModelProtocol {
             let id = txtID.text
             let pw = txtPW.text
             
-            if swOnOff.isOn{    // 자동로그인 스위치가 켜져있으면
+            if swOnOff.isOn == true{    // 자동로그인 스위치가 켜져있으면
                 let autoLogin = UserDefaults.standard       // UserDefaults.standard 정의
                 autoLogin.setValue(id, forKey: "autoId")    // autoId 키값에 id 저장
                 autoLogin.setValue(pw, forKey: "autoPw")
+               // autoLogin.setValue("true", forKey: "autoLoginValue")
                 
                 print("유저 정보 저장")
             }else{  // 자동로그인 스위치가 꺼져있으면
                 let autoLogin = UserDefaults.standard
                 autoLogin.setValue("nil", forKey: "autoId")
                 autoLogin.setValue("nil", forKey: "autoPw")
+              // autoLogin.setValue("false", forKey: "autoLoginValue")
             }
             
-            print("\(UserDefaults.standard.value(forKey: "autoId")!)")
-            print("\(UserDefaults.standard.value(forKey: "autoPw")!)")
             loginModel.LoginItems(email: id!, pw: pw!)
             
             // checkResultValue로 이동하여 로그인 판단.
@@ -90,13 +99,17 @@ class LoginViewController: UIViewController, LoginModelProtocol {
     
     // 자동로그인 스위치
     @IBAction func swAutoLogin(_ sender: UISwitch) {
-
-        switch sender.isOn{
-        case true:
-            print("자동로그인 on")
-        case false:
-            print("자동로그인 off")
-        }
+        
+        checkAutoLogin()
+//
+//        switch sender.isOn{
+//        case true:
+//            UserDefaults.standard.set("true", forKey: "autoLoginValue")
+//            print("true저장")
+//        case false:
+//            UserDefaults.standard.set("false", forKey: "autoLoginValue")
+//            print("false저장")
+//        }
     }
     
     // 회원가입 버튼
@@ -125,8 +138,6 @@ class LoginViewController: UIViewController, LoginModelProtocol {
                            //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
                         self.setUserInfo()
                         
-                        
-                    
                         //aController에 이동할 storyBoard의 ID를 지정합니다. (다음화면의 ID)
                         let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
                         vcName?.modalPresentationStyle = .fullScreen
@@ -163,7 +174,7 @@ class LoginViewController: UIViewController, LoginModelProtocol {
     }
     
     
-    
+    // 카카오에서 받아온 정보
     func setUserInfo() {
         UserApi.shared.me() {(user, error) in
             if let error = error {
@@ -191,6 +202,34 @@ class LoginViewController: UIViewController, LoginModelProtocol {
                     self.ivImage.clipsToBounds = true
                     self.ivImage.layer.masksToBounds = true
                 }
+            }
+        }
+    }
+    
+    // 자동로그인
+    func checkAutoLogin(){
+        
+        if swOnOff.isOn == true{
+            print("스위치on")
+            UserDefaults.standard.setValue("true", forKey: "autoLoginValue")
+        }else{
+            UserDefaults.standard.setValue("false", forKey: "autoLoginValue")
+            print("스위치off")
+        }
+    }
+    
+    func checkSwitchValue(){
+        print("\(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
+        
+        // true이면 switch를 on으로 해야함
+        if let switchValue =  UserDefaults.standard.string(forKey: "autoLoginValue"){
+            print("check스위치값 : \(switchValue)")
+            if switchValue == "true"{
+                print("켜짐")
+                swOnOff.isOn = true
+            }else{
+                print("꺼짐")
+                swOnOff.isOn = false
             }
         }
     }

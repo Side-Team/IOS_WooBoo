@@ -134,7 +134,7 @@
         <!--우부판-->
         <scene sceneID="QbT-KM-ck6">
             <objects>
-                <viewController id="55k-Dz-AN0" customClass="ViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Wooboo" id="55k-Dz-AN0" customClass="ViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6h-3E-1WQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

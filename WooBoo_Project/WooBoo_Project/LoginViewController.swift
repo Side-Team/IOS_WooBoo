@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth     // 카카오 로그인
+import KakaoSDKUser     // 카카오 유저정보
 
 class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectProtocol {
     func itemDownloaded(items: NSArray) {
@@ -17,6 +19,11 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     @IBOutlet weak var txtID: UITextField!
     @IBOutlet weak var txtPW: UITextField!
     @IBOutlet weak var swOnOff: UISwitch!
+    @IBOutlet weak var ivImage: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    
+    //생성된 Main.storyboard와 연동작업 (변수에 담는 작업)
+    let myStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     var loginCheck: Int = 0
     let loginModel = LoginModel()
@@ -24,9 +31,12 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     override func viewDidLoad() {
         super.viewDidLoad()
         loginModel.delegate = self
-        
-        // 값이 저장되어있다면 자동 로그인
        
+        checkSwitchValue()
+        checkAutoLogin()
+        
+//        print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
+//        print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
     }
     
     // protocol
@@ -34,20 +44,28 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         self.loginCheck = result
         print("checkresultvalue: \(result)")
         if loginCheck == 0 {
+            let failAlert = UIAlertController(title: "경고!", message: "정보가 일치하지 않습니다..", preferredStyle: UIAlertController.Style.alert)
+            let failAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                self.navigationController?.popViewController(animated: true)    // 현재화면 지워줌
+            })
+            failAlert.addAction(failAction)
+            present(failAlert, animated: true, completion: nil)
             print("로그인실패:\(self.loginCheck)")
             shakeTextField(textField: txtID)
             shakeTextField(textField: txtPW)
         }else{
-            
+ 
             let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)
-            
+
+            print("로그인할때스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
             Share.userID = txtID.text!
             
             let jspUserSelect = JspUserSelect()
             jspUserSelect.delegate = self
             jspUserSelect.downloadItems()
+    
         }
     }
     
@@ -68,41 +86,163 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             let id = txtID.text
             let pw = txtPW.text
             
-            if swOnOff.isOn{    // 자동로그인 스위치가 켜져있으면
+            if swOnOff.isOn == true{    // 자동로그인 스위치가 켜져있으면
                 let autoLogin = UserDefaults.standard       // UserDefaults.standard 정의
                 autoLogin.setValue(id, forKey: "autoId")    // autoId 키값에 id 저장
                 autoLogin.setValue(pw, forKey: "autoPw")
+               // autoLogin.setValue("true", forKey: "autoLoginValue")
                 
                 print("유저 정보 저장")
             }else{  // 자동로그인 스위치가 꺼져있으면
                 let autoLogin = UserDefaults.standard
                 autoLogin.setValue("nil", forKey: "autoId")
                 autoLogin.setValue("nil", forKey: "autoPw")
+              // autoLogin.setValue("false", forKey: "autoLoginValue")
             }
             
-            print("\(UserDefaults.standard.value(forKey: "autoId")!)")
-            print("\(UserDefaults.standard.value(forKey: "autoPw")!)")
             loginModel.LoginItems(email: id!, pw: pw!)
             
             // checkResultValue로 이동하여 로그인 판단.
         }
     }
     
-    // 자동로그인
+    // 자동로그인 스위치
     @IBAction func swAutoLogin(_ sender: UISwitch) {
-
-        switch sender.isOn{
-        case true:
-            print("자동로그인 on")
-        case false:
-            print("자동로그인 off")
-        }
+        
+        checkAutoLogin()
+//
+//        switch sender.isOn{
+//        case true:
+//            UserDefaults.standard.set("true", forKey: "autoLoginValue")
+//            print("true저장")
+//        case false:
+//            UserDefaults.standard.set("false", forKey: "autoLoginValue")
+//            print("false저장")
+//        }
     }
     
-    
+    // 회원가입 버튼
     @IBAction func btnJoin(_ sender: UIButton) {
         self.performSegue(withIdentifier: "MoveJoinUs", sender: self)
     }
+    
+    // 카카오 로그인 버튼
+    @IBAction func btnKakao(_ sender: UIButton) {
+        
+        // 카카오톡 설치 여부 확인
+        if (AuthApi.isKakaoTalkLoginAvailable()) {
+                   AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                       if let error = error {
+                        
+                           // 예외 처리 (로그인 취소 등)
+                           print(error)
+                       }
+                       else {
+                           print("loginWithKakaoTalk() success.")
+                           // do something
+                           _ = oauthToken
+                           // 어세스토큰
+                        let accessToken = oauthToken?.accessToken
+                           
+                           //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
+                        self.setUserInfo()
+                        
+                        //aController에 이동할 storyBoard의 ID를 지정합니다. (다음화면의 ID)
+                        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
+                        vcName?.modalPresentationStyle = .fullScreen
+                        self.present(vcName!, animated: true, completion: nil)
+                        //show함수에 생성한 aController 변수를 매개변수로 넘겨줌으로써 클릭이벤트가 발생하면 이동할 storyBaord ID와 매칭되어 화면이 전환됩니다.
+//                        self.show(aController, sender: self)
+                        
+                       }
+                   }
+               }
+    }
+    
+    
+    // 카카오 웹
+    @IBAction func btnKakaoweb(_ sender: UIButton) {
+        
+        // AuthApi.shared.loginWithKakaoAccount(prompts:[.Login])으로 지정하면 로그인 상태여도 로그인을 물어봄
+        AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                   if let error = error {
+                       print("error",error)
+                   }
+                   else {
+                       print("loginWithKakaoAccount() success.")
+                       
+                       //do something
+                       _ = oauthToken
+                       // 어세스토큰
+                       let accessToken = oauthToken?.accessToken
+                    
+                       //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
+                       self.setUserInfo()
+                   }
+               }
+    }
+    
+    
+    // 카카오에서 받아온 정보
+    func setUserInfo() {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("me() success.")
+                //do something
+                _ = user
+                print("유저정보", (user?.kakaoAccount?.profile?.nickname)!)
+                print("이메일", (user?.kakaoAccount?.email)!)
+               // print("성별", (user?.kakaoAccount?.gender)!)
+
+                Share.userID = (user?.kakaoAccount?.email)!
+                print("Share",Share.userID)
+                self.lblName.text = user?.kakaoAccount?.profile?.nickname
+
+
+                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
+                    let data = try? Data(contentsOf: url) {
+                    self.ivImage.image = UIImage(data: data)
+                    self.ivImage.layer.cornerRadius = 50
+                    self.ivImage.layer.borderWidth = 1
+                    self.ivImage.layer.borderColor = UIColor.clear.cgColor
+                    self.ivImage.clipsToBounds = true
+                    self.ivImage.layer.masksToBounds = true
+                }
+            }
+        }
+    }
+    
+    // 자동로그인
+    func checkAutoLogin(){
+        
+        if swOnOff.isOn == true{
+            print("스위치on")
+            UserDefaults.standard.setValue("true", forKey: "autoLoginValue")
+        }else{
+            UserDefaults.standard.setValue("false", forKey: "autoLoginValue")
+            print("스위치off")
+        }
+    }
+    
+    func checkSwitchValue(){
+        print("\(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
+        
+        // true이면 switch를 on으로 해야함
+        if let switchValue =  UserDefaults.standard.string(forKey: "autoLoginValue"){
+            print("check스위치값 : \(switchValue)")
+            if switchValue == "true"{
+                print("켜짐")
+                swOnOff.isOn = true
+            }else{
+                print("꺼짐")
+                swOnOff.isOn = false
+            }
+        }
+    }
+    
     
     // ID, PW underline
     override func viewDidLayoutSubviews() {

@@ -31,12 +31,12 @@ class UserModel : NSObject{
         
     }
     
-    init(uSeqno: String,uEmail: String, uPw: String, uImageFileName: String){
+    init(uSeqno: String, uEmail: String, uPw: String, uImageFileName: String){
         
         self.uSeqno = uSeqno
         self.uEmail = uEmail
         self.uPw = uPw
-        self.uImageFileName = uInsertDate
+        self.uImageFileName = uImageFileName
         
     }
    

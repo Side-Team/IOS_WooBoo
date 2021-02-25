@@ -1,16 +1,35 @@
 PODS:
+  - Alamofire (5.4.1)
   - DropDown (2.3.13)
+  - KakaoSDKAuth (2.3.2):
+    - KakaoSDKCommon (= 2.3.2)
+  - KakaoSDKCommon (2.3.2):
+    - Alamofire (~> 5.1)
+  - KakaoSDKUser (2.3.2):
+    - KakaoSDKAuth (= 2.3.2)
+    - KakaoSDKCommon (= 2.3.2)
 
 DEPENDENCIES:
   - DropDown
+  - KakaoSDKAuth
+  - KakaoSDKCommon
+  - KakaoSDKUser
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - DropDown
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKUser
 
 SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  KakaoSDKAuth: 8db7c7a0561b137477bb984bbdab2eeda7745d23
+  KakaoSDKCommon: 4bb3981337921686948b7be094590f2edec5df87
+  KakaoSDKUser: e6c0017a41e87a94bdcd873d0178ad75be8126d4
 
-PODFILE CHECKSUM: 1a5cf87ba5fcfbf532775685931ba9aeb9401a7d
+PODFILE CHECKSUM: 0bad01911ffe955d4ac11072eb572fff1e2fa4f3
 
 COCOAPODS: 1.10.1

@@ -18,6 +18,7 @@
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
 		287840DD25E7537C0020F7AD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840DC25E7537C0020F7AD /* CategoryViewController.swift */; };
 		287840E425E7A7680020F7AD /* InsertQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840E325E7A7680020F7AD /* InsertQuestionModel.swift */; };
+		287840EE25E7FD970020F7AD /* kakao_login_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */; };
 		28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */; };
 		28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */; };
 		3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEAE825E651ED008C646E /* QuestionModel.swift */; };
@@ -59,6 +60,7 @@
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		287840DC25E7537C0020F7AD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		287840E325E7A7680020F7AD /* InsertQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertQuestionModel.swift; sourceTree = "<group>"; };
+		287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_login_medium_narrow.png; sourceTree = "<group>"; };
 		28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadModel.swift; sourceTree = "<group>"; };
 		28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		3C1FEAE825E651ED008C646E /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		3C1FEAF225E68183008C646E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */,
 				3C1FEB0725E6A6EC008C646E /* icon_19.png */,
 				3C1FEAF825E68196008C646E /* icon_etc.png */,
 				3C1FEAF325E68195008C646E /* icon_food.png */,
@@ -312,6 +315,7 @@
 				3C1FEB0025E68197008C646E /* icon_love.png in Resources */,
 				3C1FEB0225E68197008C646E /* icon_match.png in Resources */,
 				3C1FEAFE25E68197008C646E /* icon_mypage.png in Resources */,
+				287840EE25E7FD970020F7AD /* kakao_login_medium_narrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

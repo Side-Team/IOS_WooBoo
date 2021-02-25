@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import KakaoSDKAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+//    // ios 13 이상 추가 -----------------------
+//    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+//        if let url = URLContexts.first?.url {
+//            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+//                _ = AuthController.handleOpenUrl(url: url)
+//            }
+//        }
+//    //--------------------------------------
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -17,6 +27,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)  // Main.storyboard 가져오기
+        
+        if UserDefaults.standard.string(forKey: "autoId") != nil && UserDefaults.standard.string(forKey: "autoLoginValue") == "true"{
+            print("자동저장 이메일 & 스위치 ON", UserDefaults.standard.string(forKey: "autoLoginValue") as Any)
+           guard let vcName = storyboard.instantiateViewController(withIdentifier: "Wooboo") as? ViewController else {return}
+            window?.rootViewController = vcName
+        }else{
+            guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
+            window?.rootViewController = loginVC
+            
+        }
         
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Main.storyboard 가져오기
 //
@@ -55,4 +77,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
 

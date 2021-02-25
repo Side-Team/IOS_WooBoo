@@ -16,6 +16,7 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     @IBOutlet weak var lblPasswordCheck: UITextField!
     
     var feedItem: NSArray = NSArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,15 +27,20 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
         let userSelect = JspUserSelect()
         userSelect.delegate = self
         userSelect.downloadItems()
-        
-        
+    
+        nawara()
     }
     
     func itemDownloaded(items: NSArray) {
         feedItem = items
-    
+        print(feedItem)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let queryModel = JspUserSelect()
+        queryModel.delegate = self
+        queryModel.downloadItems()
+    }
     
     @IBAction func UserDelete(_ sender: UIButton) {
     }
@@ -45,6 +51,11 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     @IBAction func UserOK(_ sender: UIButton) {
     }
     
+    func nawara(){
+        let item: UserModel = feedItem[0] as! UserModel
+        print("우부\(item.uSeqno!)")
+
+    }
 
     
 /*    // MARK: - Navigation

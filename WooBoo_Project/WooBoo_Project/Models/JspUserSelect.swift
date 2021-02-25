@@ -27,6 +27,7 @@ class JspUserSelect{
             }else{
                 print("Data is downloading")
                 self.parseJONS(data!)
+
             }
         }
         task.resume()
@@ -46,22 +47,31 @@ class JspUserSelect{
         let locations = NSMutableArray()
         
         for i in 0..<jsonResult.count{
+            print("1")
             jsonElement =  jsonResult[i] as! NSDictionary
             let query = UserModel()
-            
-            if
-                let uSeqno = jsonElement["seqno"] as? Int,
+            print("2")
+            if let uSeqno = jsonElement["seqno"] as? String,
                let uEmail = jsonElement["email"] as? String,
                let uPw = jsonElement["pw"] as? String,
                let uImageFileName = jsonElement["Image"] as? String{
+                print("3")
                 query.uSeqno = uSeqno
                 query.uEmail = uEmail
                 query.uPw = uPw
                 query.uImageFileName = uImageFileName
+                print("4")
+                print("스퀀스 \(uSeqno)")
+                print("이멩ㄹ\(uEmail)")
+                print("비번 \(uPw)")
+                print("이미지 \(uImageFileName)")
             }
             locations.add(query)
+            print("5")
+         
         }
         DispatchQueue.main.async(execute: {() -> Void in
+
             self.delegate.itemDownloaded(items: locations)
         })
     }

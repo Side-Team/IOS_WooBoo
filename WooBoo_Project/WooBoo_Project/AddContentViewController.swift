@@ -8,7 +8,13 @@
 import UIKit
 import DropDown
 
-class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageDelegate{
+class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageDelegate, Get_questions_qSeqno{
+
+    func return_questions_qSeqno(item: Int) {
+        self.questions_qSeqno = item
+        print("return_questions_qSeqno : \(questions_qSeqno)")
+    }
+    
  
     @IBOutlet weak var txtCategory: UITextField!
     @IBOutlet weak var txtTitle: UITextField!
@@ -19,6 +25,10 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     @IBOutlet weak var txtContent5: UITextField!
     @IBOutlet weak var outlet_BtnAdd: UIButton!
     @IBOutlet weak var outlet_BtnAddImage: UIButton!
+    
+    let selectModel = LMW_SelectModel()
+    
+    var questions_qSeqno = 0
     
     var txtContentCount = 2
     
@@ -44,6 +54,9 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         print("uSeqno : \(Share.uSeqno)")
         
         print( "높이 : ", self.view.frame.height)
+        
+        selectModel.delegate2 = self
+        selectModel.downloadItems(funcName: "get_qSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_get_qSeqno.jsp?user_uSeqno=\(Share.uSeqno)")
         
         txtCategory.delegate = self
         txtTitle.delegate = self
@@ -294,9 +307,17 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     // DB Insert
     func InsertAction(){
         
-        let inserQuestiontModel = InsertQuestionModel()
-        let result = inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
-        if result == true{
+        let inserQuestiontModel = LMW_InsertModel()
+        let result1 = inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
+        
+        
+        
+        
+        print("get_qSeqno : \(questions_qSeqno)")
+        
+        let result2 = inserQuestiontModel.insert_registerT(questions_qSeqno: questions_qSeqno, user_uSeqno: Share.uSeqno)
+        
+        if result1 == true && result2 == true{
             for i in 0..<imageURL.count{
                 let imageUploadModel = ImageUploadModel()
                 imageUploadModel.uploadImageFile(at: imageURL[i], completionHandler: {_,_ in print("Upload Success")})

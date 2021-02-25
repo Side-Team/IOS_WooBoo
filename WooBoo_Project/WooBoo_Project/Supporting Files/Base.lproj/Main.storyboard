@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bD9-87-RSu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IPg-vB-W4x">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -486,7 +486,7 @@
         <!--카테고리-->
         <scene sceneID="xYM-Ib-JKI">
             <objects>
-                <viewController id="gEi-P5-hgq" sceneMemberID="viewController">
+                <viewController id="gEi-P5-hgq" customClass="CategoryViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0pd-Kh-Dbs">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -540,35 +540,62 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_travel.png" translatesAutoresizingMaskIntoConstraints="NO" id="evB-b2-pm2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceK-z5-8uI">
                                 <rect key="frame" x="150" y="309" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_etc.png" translatesAutoresizingMaskIntoConstraints="NO" id="lg0-lu-ujh">
-                                <rect key="frame" x="264" y="309" width="90" height="90"/>
+                                <state key="normal" image="icon_travel.png"/>
+                                <connections>
+                                    <action selector="btnTravel:" destination="gEi-P5-hgq" eventType="touchUpInside" id="zwi-ID-Nug"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qp-dK-4AR">
+                                <rect key="frame" x="264" y="308" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_love.png" translatesAutoresizingMaskIntoConstraints="NO" id="nt2-fG-yE7">
+                                <state key="normal" image="icon_etc.png"/>
+                                <connections>
+                                    <action selector="btnEtc:" destination="gEi-P5-hgq" eventType="touchUpInside" id="EVZ-dO-sh1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfi-bs-GjD">
                                 <rect key="frame" x="28" y="542" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_marry.png" translatesAutoresizingMaskIntoConstraints="NO" id="98G-6m-U8b">
-                                <rect key="frame" x="150" y="542" width="90" height="90"/>
+                                <state key="normal" image="icon_love.png"/>
+                                <connections>
+                                    <action selector="btnLove:" destination="gEi-P5-hgq" eventType="touchUpInside" id="GWs-ZV-zez"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gge-Vf-hAs">
+                                <rect key="frame" x="150" y="541" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_19.png" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-uI-zJg">
-                                <rect key="frame" x="264" y="542" width="90" height="90"/>
+                                <state key="normal" image="icon_marry.png"/>
+                                <connections>
+                                    <action selector="btnMarry:" destination="gEi-P5-hgq" eventType="touchUpInside" id="WrA-F5-57O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN7-6o-czm">
+                                <rect key="frame" x="264" y="541" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_food.png" translatesAutoresizingMaskIntoConstraints="NO" id="C4S-87-LO3">
-                                <rect key="frame" x="28" y="309" width="90" height="90"/>
+                                <state key="normal" image="icon_19.png"/>
+                                <connections>
+                                    <action selector="btn19:" destination="gEi-P5-hgq" eventType="touchUpInside" id="kTp-XE-7sa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngp-vY-dxl">
+                                <rect key="frame" x="28" y="308" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" image="icon_food.png"/>
+                                <connections>
+                                    <action selector="btnFood:" destination="gEi-P5-hgq" eventType="touchUpInside" id="kCS-8F-3i0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3k5-V5-fYx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="카테고리" id="LIl-vz-Tn7"/>
+                    <connections>
+                        <segue destination="nC0-bg-diZ" kind="show" identifier="MoveList" id="QXn-ey-r3Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbB-fs-nTg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -657,7 +684,7 @@
             <objects>
                 <viewController id="VHn-Ia-wFE" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GOd-Ng-xyi">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17l-hr-0a5">
@@ -686,7 +713,7 @@
             <objects>
                 <viewController id="lUU-zO-asB" customClass="ContentDetailViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cAj-5K-Vk5">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUr-na-zDp">
@@ -774,7 +801,7 @@
             <objects>
                 <viewController id="g6K-Z9-qtW" customClass="AddContentViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Etp-bq-Xbf">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egA-xQ-wYu">
@@ -893,7 +920,7 @@
             <objects>
                 <viewController id="N8F-a4-wrU" customClass="AddImageViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qYs-bV-T2R">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lw6-ea-fpB">

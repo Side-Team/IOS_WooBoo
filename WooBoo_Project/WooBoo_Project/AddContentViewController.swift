@@ -32,27 +32,37 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     var selectData = "" // 피커뷰 선택시 값을 갖고 있다가 확인버튼 클릭시 텍스트필드에 세팅한다
     let pickerData = ["음식", "여행", "연애", "결혼", "성", "기타"]  // 피커뷰에 보여줄 테스트 데이터
     
-    var imageFileNames = [String]()
+    var imageFileNames = ["", "", "", "", ""]
     
     var tempFileNames = [String]()
     
+    var imageURL = [URL]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("userId : \(Share.userID)")
+        print("uSeqno : \(Share.uSeqno)")
+        
+        print( "높이 : ", self.view.frame.height)
+        
+        txtCategory.delegate = self
         txtTitle.delegate = self
         txtContent1.delegate = self
         
         makePadding()
-//        addRightImage(image: UIImage(systemName: "xmark.circle.fill")!, textField: txtContent2)
         setDesign()
         makeDropDown()
-//        makePicker()
         setGestureRecognizer()
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("***************AddContentViewController 이미지 배열값 : ", self.imageFileNames)
+        print("***************AddContentViewController temp 배열값 : ", self.tempFileNames)
     }
     @IBAction func barBtnInsert(_ sender: UIBarButtonItem) {
         print("등록하기")
+        checkTxtNilValue()
     }
     
     @IBAction func btnAddImage(_ sender: UIButton) {
@@ -80,6 +90,11 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
             txtContent5.isHidden = false
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func makePadding(){
         let paddingView1 = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: txtContent1.frame.height))
         let paddingView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: txtContent2.frame.height))
@@ -196,14 +211,13 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         dropDown.show()
     }
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        txtCategory.isEnabled = false
-
-        return true
-    }
-    
     func setDesign(){
         txtCategory.delegate = self
+        txtContent2.delegate = self
+        txtContent3.delegate = self
+        txtContent4.delegate = self
+        txtContent5.delegate = self
+        
         txtCategory.layer.borderWidth = 2
         txtCategory.layer.borderColor = customColor.cgColor
         txtCategory.layer.cornerRadius = 15
@@ -267,14 +281,124 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     }
     
     // imagefilenames 받기
-    func didSelectedImage(_ controller: AddImageViewController, imageFileNames: [String], tempFileNames : [String]) {
+    func didSelectedImage(_ controller: AddImageViewController, imageFileNames: [String], tempFileNames : [String], imageURL: [URL]) {
         self.imageFileNames = imageFileNames
         self.tempFileNames = tempFileNames
+        self.imageURL = imageURL
         
-        print("AddContentViewController 이미지 배열값 : ", self.imageFileNames)
-        print("AddContentViewController temp 배열값 : ", self.tempFileNames)
+        print("***************AddContentViewController 이미지 배열값 : ", self.imageFileNames)
+        print("***************AddContentViewController temp 배열값 : ", self.tempFileNames)
 
     }
+    
+    // DB Insert
+    func InsertAction(){
+        
+        let inserQuestiontModel = InsertQuestionModel()
+        let result = inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
+        if result == true{
+            for i in 0..<imageURL.count{
+                let imageUploadModel = ImageUploadModel()
+                imageUploadModel.uploadImageFile(at: imageURL[i], completionHandler: {_,_ in print("Upload Success")})
+            }
+
+            let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                self.navigationController?.popViewController(animated: true)
+            })
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+
+        }else{ // 에러일 경우
+            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+
+        }
+    }
+    
+    func checkTxtValue(txt : String) -> String {
+        if txt.isEmpty{
+            return "X"
+        }else{
+            return txt
+        }
+    }
+    
+    func makeCategoryNumber() -> Int{
+        switch txtCategory.text!{
+        case "음식":
+            return 0
+        case "여행":
+            return 1
+        case "연애":
+            return 2
+        case "결혼":
+            return 3
+        case "성":
+            return 4
+        default:
+            return 5
+        }
+    }
+    
+    func checkTxtNilValue(){
+        let alert = UIAlertController(title: "알림", message: "빈칸없이 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okAction)
+        
+        if txtTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 || txtContent1.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 || txtContent2.text?.isEmpty == true{
+            present(alert, animated: true, completion: nil)
+        }else if txtContent3.isHidden == false{
+            print("txtContent3 체크중..")
+            if txtContent3.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
+                present(alert, animated: true, completion: nil)
+            }
+        }else if txtContent4.isHidden == false{
+            print("txtContent4 체크중..")
+            if txtContent4.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
+                present(alert, animated: true, completion: nil)
+            }
+        }else if txtContent5.isHidden == false{
+            print("txtContent5 체크중..")
+            if txtContent5.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
+                present(alert, animated: true, completion: nil)
+            }
+        }else{
+            print("체크 OK")
+            InsertAction()
+        }
+    }
+//    private func registerForKeyboardNotifications() {
+//        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    private func unregisterForKeyboardNotifications() {
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//
+//    @objc private func keyboardWillShow(_ notification: Notification) {
+//      if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//        let keybaordRectangle = keyboardFrame.cgRectValue
+//        let keyboardHeight = keybaordRectangle.height - 150
+//        self.view.frame.origin.y -= keyboardHeight
+//        print("키보드 높이 : \(keyboardHeight)")
+//      }
+//    }
+//
+//    @objc private func keyboardWillHide(_ notification: Notification) {
+//      if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//        let keybaordRectangle = keyboardFrame.cgRectValue
+//        let keyboardHeight = keybaordRectangle.height - 150
+//        self.view.frame.origin.y += keyboardHeight
+//      }
+//    }
+    
+    
     
     
     

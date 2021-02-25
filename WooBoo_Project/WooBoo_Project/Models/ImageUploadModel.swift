@@ -65,7 +65,7 @@ class ImageUploadModel:NSObject{
         // 경로를 준비하고
         //let url = URL(string: "\(filepath), ImageUpload.jsp")!
 
-        let url = URL(string: "http://localhost:8080/jsp/ImageUpload.jsp")!
+        let url = URL(string: "http://localhost:8080/ios_jsp/ImageUpload.jsp")!
         
         let parameters = [
             "name" : "testFileName"

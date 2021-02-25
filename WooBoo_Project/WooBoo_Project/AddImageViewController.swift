@@ -10,7 +10,7 @@ import Photos
 
 // EditViewController에서 ViewController의 함수를 실행해서 데이터 전달하는 것
 protocol AddImageDelegate { // Java의 Interface
-    func didSelectedImage(_ controller : AddImageViewController, imageFileNames : [String], tempFileNames : [String])
+    func didSelectedImage(_ controller : AddImageViewController, imageFileNames : [String], tempFileNames : [String], imageURL : [URL])
 }
 
 class AddImageViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -21,7 +21,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     var tempFileNames = [String]()
     
     let imagePickerController = UIImagePickerController()
-    var imageURL: URL?
+    var imageURL = [URL]()
     
     var clickImageNum = 0
     
@@ -54,12 +54,17 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         print("받은 값 : ", count)
+        image1.image = UIImage(systemName: "photo")
+        image2.image = UIImage(systemName: "photo")
+        image3.image = UIImage(systemName: "photo")
+        image4.image = UIImage(systemName: "photo")
+        image5.image = UIImage(systemName: "photo")
         checkNullImage()
     }
 
     @IBAction func btnSave(_ sender: UIBarButtonItem) {
         if delegate != nil{
-            delegate?.didSelectedImage(self, imageFileNames: imageFileNames, tempFileNames: tempFileNames)
+            delegate?.didSelectedImage(self, imageFileNames: imageFileNames, tempFileNames: tempFileNames, imageURL: imageURL)
         }
         navigationController?.popViewController(animated: true) // 가장 마지막에 뜬 화면을 사라지게 하기
     }
@@ -69,31 +74,52 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     
     // 뒤로가기
     @objc func back(_ sender : Any) {
+        
+        let alert = UIAlertController(title: "알림", message: "뒤로 이동 시 등록된 사진은 초기화됩니다.\n사진을 저장하실 거라면 저장 버튼을 눌러주세요.", preferredStyle: UIAlertController.Style.alert)
+        let backAction = UIAlertAction(title: "뒤로 이동", style: UIAlertAction.Style.default, handler: { [self]ACTION in
+            
+            // Delete Image
+            if tempFileNames.count != 0{
+                if tempFileNames.count == 1{
+                    print("지울값 1개")
+                    ImageFileManager.shared.deleteImage(named: tempFileNames[0]) { [weak self] onSuccess in
+                        print("delete = \(onSuccess)")
+                    }
+                }else{
+                    for i in 0..<tempFileNames.count{
+                        print("지울값 어러개")
+                        ImageFileManager.shared.deleteImage(named: tempFileNames[i]) { [weak self] onSuccess in
+                            print("delete = \(onSuccess)")
+                        }
+                    }
+                }
+                tempFileNames.removeAll()
+                imageURL.removeAll()
+                
+                if delegate != nil{
+                    print("값 전달하기!!!")
+                    delegate?.didSelectedImage(self, imageFileNames: imageFileNames, tempFileNames: tempFileNames, imageURL: imageURL)
+                }
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        })
+        let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default, handler: nil)
+        
+        alert.addAction(backAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
         print("뒤로가기")
         
         print("tempFileNames : \(tempFileNames)")
         
-        // Delete Image
-        if tempFileNames.count != 0{
-            if tempFileNames.count == 1{
-                print("지울값 1개")
-                ImageFileManager.shared.deleteImage(named: tempFileNames[0]) { [weak self] onSuccess in
-                    print("delete = \(onSuccess)")
-                }
-            }else{
-                for i in 0..<tempFileNames.count{
-                    print("지울값 어러개")
-                    ImageFileManager.shared.deleteImage(named: tempFileNames[i]) { [weak self] onSuccess in
-                        print("delete = \(onSuccess)")
-                    }
-                }
-            }
-        }
-        self.navigationController?.popViewController(animated: true)
+        
     }
     
     // 초기화함수
     func initImages(){
+        imageURL.removeAll()
         imageFileNames = ["", "", "", "", ""]
         
         print("초기화 확인 : \(imageFileNames)")
@@ -121,6 +147,11 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
                     }
                 }
             }
+            tempFileNames.removeAll()
+            imageFileNames.removeAll()
+            
+            print("배열 초기화 확인 1 : \(tempFileNames)")
+            print("배열 초기화 확인 2 : \(imageFileNames)")
         }
     }
     
@@ -129,33 +160,30 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
         
         print("돌아온 배열값 : \(imageFileNames)")
   
-        if imageFileNames[0] != ""{
-            if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[0]) {
-                image1.image = image
-            }
-//            image1.image = UIImage(named: imageFileNames[0])
-            image2.image = UIImage(named: imageFileNames[1])
-            image3.image = UIImage(named: imageFileNames[2])
-            image4.image = UIImage(named: imageFileNames[3])
-            image5.image = UIImage(named: imageFileNames[4])
-
-            for i in 0..<imageFileNames.count{
-                if imageFileNames[i] == ""{
-                    switch i{
-                    case 1:
-                        print("test")
-                        if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[0]) {
-                            image1.image = image
-                        }
-//                        image1.image = UIImage(systemName: "photo")
-                    case 2:
-                        image2.image = UIImage(systemName: "photo")
-                    case 3:
-                        image3.image = UIImage(systemName: "photo")
-                    case 4:
-                        image4.image = UIImage(systemName: "photo")
-                    default:
-                        image5.image = UIImage(systemName: "photo")
+        for i in 0..<imageFileNames.count{
+            if imageFileNames[i] != ""{
+                print(" i값 : \(i)")
+                switch i{
+                case 0:
+                    print("test")
+                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[i]) {
+                        image1.image = image
+                    }
+                case 1:
+                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[i]) {
+                        image2.image = image
+                    }
+                case 2:
+                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[i]) {
+                        image3.image = image
+                    }
+                case 3:
+                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[i]) {
+                        image4.image = image
+                    }
+                default:
+                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: imageFileNames[i]) {
+                        image5.image = image
                     }
                 }
             }
@@ -275,27 +303,13 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
             print("//////////////")
             print("이미지 배열값 : \(imageFileNames)")
 
-            imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
+            imageURL.append((info[UIImagePickerController.InfoKey.imageURL] as? URL)!)
+            
+            print("imageURL : \(String(describing: imageURL))")
         }
         // 켜놓은 앨범 화면 없애기
         dismiss(animated: true, completion: nil)
     }
-    
-//    func btnCaptureImageFromCamera(_ sender: Any) {
-//            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
-//                flagImageSave = true
-//
-//                imagePicker.delegate = self
-//                imagePicker.sourceType = .camera
-//                imagePicker.mediaTypes = [kUTTypeImage as String]
-//                imagePicker.allowsEditing = false
-//
-//                present(imagePicker, animated: true, completion: nil)
-//            }
-//            else {
-//                myAlert("Camera inaccessable", message: "Application cannot access the camera.")
-//            }
-//        }
     
     func openLibrary(){
         imagePickerController.allowsEditing = true
@@ -339,6 +353,10 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL.rawValue] as? URL else { return }
         print(fileUrl.lastPathComponent)
+    }
+    
+    func deleteDirectoryDatas(){
+        
     }
 
     

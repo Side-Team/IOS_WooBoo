@@ -7,7 +7,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, LoginModelProtocol {
+class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectProtocol {
+    func itemDownloaded(items: NSArray) {
+        
+    }
+    
     
     // textfield 연결
     @IBOutlet weak var txtID: UITextField!
@@ -40,6 +44,10 @@ class LoginViewController: UIViewController, LoginModelProtocol {
             self.present(vcName!, animated: true, completion: nil)
             
             Share.userID = txtID.text!
+            
+            let jspUserSelect = JspUserSelect()
+            jspUserSelect.delegate = self
+            jspUserSelect.downloadItems()
         }
     }
     

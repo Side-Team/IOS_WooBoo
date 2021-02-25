@@ -50,7 +50,7 @@ class JspUserSelect{
             let query = UserModel()
             
             if
-                let uSeqno = jsonElement["seqno"] as? Int,
+                let uSeqno = jsonElement["seqno"] as? String,
                let uEmail = jsonElement["email"] as? String,
                let uPw = jsonElement["pw"] as? String,
                let uImageFileName = jsonElement["Image"] as? String{
@@ -58,6 +58,17 @@ class JspUserSelect{
                 query.uEmail = uEmail
                 query.uPw = uPw
                 query.uImageFileName = uImageFileName
+                
+                Share.uSeqno = Int(uSeqno)!
+                Share.userID = uEmail
+                Share.userPW = uPw
+                Share.uImageFileName = uImageFileName
+     
+                print("uSeqno : \(uSeqno)")
+                print("uEmail : \(uEmail)")
+                print("uPw : \(uPw)")
+                print("uImageFileName : \(uImageFileName)")
+
             }
             locations.add(query)
         }

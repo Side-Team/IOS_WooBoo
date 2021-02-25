@@ -27,9 +27,8 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
         let userSelect = JspUserSelect()
         userSelect.delegate = self
         userSelect.downloadItems()
-        
-        let item: UserModel = feedItem as! UserModel
-        lblWooboo?.text = "우부\(item.uSeqno!)"
+    
+        nawara()
     }
     
     func itemDownloaded(items: NSArray) {
@@ -37,6 +36,12 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let queryModel = JspUserSelect()
+        queryModel.delegate = self
+        queryModel.downloadItems()
+        print("feeditem \(feedItem)")
+    }
     
     @IBAction func UserDelete(_ sender: UIButton) {
     }
@@ -47,6 +52,10 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     @IBAction func UserOK(_ sender: UIButton) {
     }
     
+    func nawara(){
+//        let item: UserModel = feedItem[0] as! UserModel
+//        print("뭐야 \(item.uSeqno)")
+    }
 
     
 /*    // MARK: - Navigation

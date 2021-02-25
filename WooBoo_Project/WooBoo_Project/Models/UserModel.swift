@@ -31,7 +31,7 @@ class UserModel : NSObject{
         
     }
     
-    init(uSeqno: Int,uEmail: String, uPw: String, uImageFileName: String){
+    init(uSeqno: Int, uEmail: String, uPw: String, uImageFileName: String){
         
         self.uSeqno = uSeqno
         self.uEmail = uEmail

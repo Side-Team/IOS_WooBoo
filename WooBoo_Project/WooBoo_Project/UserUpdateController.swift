@@ -16,6 +16,7 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
     @IBOutlet weak var lblPasswordCheck: UITextField!
     
     var feedItem: NSArray = NSArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +28,8 @@ class UserUpdateController: UIViewController,JspUserSelectProtocol {
         userSelect.delegate = self
         userSelect.downloadItems()
         
-        
+        let item: UserModel = feedItem as! UserModel
+        lblWooboo?.text = "우부\(item.uSeqno!)"
     }
     
     func itemDownloaded(items: NSArray) {

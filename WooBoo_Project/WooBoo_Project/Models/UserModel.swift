@@ -36,7 +36,7 @@ class UserModel : NSObject{
         self.uSeqno = uSeqno
         self.uEmail = uEmail
         self.uPw = uPw
-        self.uImageFileName = uInsertDate
+        self.uImageFileName = uImageFileName
         
     }
    

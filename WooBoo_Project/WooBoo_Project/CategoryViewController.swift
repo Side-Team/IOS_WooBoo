@@ -7,31 +7,21 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController, CategoryModelProtocol {
-    
-    
+class CategoryViewController: UIViewController {
     
     var feedItem: NSArray = NSArray()
-    
-    let categoryModel = CategoryModel()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        categoryModel.delegate = self
         
     }
-    
-    func itemDownloaded(items: NSArray) {
-        self.feedItem = items
-        print("Items.FeedItem = \(items)")
-    }
-    
+  
     @IBAction func btnFood(_ sender: UIButton) {
         performSegue(withIdentifier: "MoveList", sender: self)
         
-        categoryModel.categoryItems(category: "1") // CategoryModel로 보내주는 곳
+        categoryvalue = "1"
+        //categoryModel.categoryItems(category: "1") // CategoryModel로 보내주는 곳
     }
     
     @IBAction func btnTravel(_ sender: UIButton) {

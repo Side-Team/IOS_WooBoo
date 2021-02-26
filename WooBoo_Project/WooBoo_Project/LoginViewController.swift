@@ -8,12 +8,12 @@
 import UIKit
 import KakaoSDKAuth     // 카카오 로그인
 import KakaoSDKUser     // 카카오 유저정보
+import GoogleSignIn     // 구글 로그인
 
 class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectProtocol {
     func itemDownloaded(items: NSArray) {
         
     }
-    
     
     // textfield 연결
     @IBOutlet weak var txtID: UITextField!
@@ -21,6 +21,9 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     @IBOutlet weak var swOnOff: UISwitch!
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var lblEmail: UILabel!
+    
     
     //생성된 Main.storyboard와 연동작업 (변수에 담는 작업)
     let myStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -34,6 +37,19 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
        
         checkSwitchValue()
         checkAutoLogin()
+        
+        
+//        GIDSignIn.sharedInstance()?.presentingViewController = self// 로그인화면 불러오기
+//        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
+//        
+//        let user = AppDelegate.user
+//        
+//        print("user: ", user?.profile.name!)
+//        
+//        self.lblName.text = user?.profile.name
+//       
+//        self.lblEmail.text = user?.profile.email
+        
         
 //        print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
 //        print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
@@ -67,6 +83,10 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             jspUserSelect.downloadItems()
     
         }
+    }
+    @IBAction func btnLogout(_ sender: UIButton) {
+        GIDSignIn.sharedInstance()?.signOut()
+        print("logout")
     }
     
     @IBAction func btnLogin(_ sender: UIButton) {

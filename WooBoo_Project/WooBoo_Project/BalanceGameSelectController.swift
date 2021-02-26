@@ -28,15 +28,8 @@ class BalanceGameSelectController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        design()
 
-        //btnSelect1.setTitle(select1, for: UIControl.State.normal)
-        btnSelect1.layer.cornerRadius = 10
-        btnSelect1.layer.borderWidth = 2
-        btnSelect1.layer.borderColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1).cgColor
-        
-        btnSelect2.layer.cornerRadius = 10
-        btnSelect2.layer.borderWidth = 2
-        btnSelect2.layer.borderColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1).cgColor
     }
     
     @IBAction func btnSelect1(_ sender: UIButton) {
@@ -69,6 +62,20 @@ class BalanceGameSelectController: UIViewController {
                 // 여기에 버튼 클릭됐을때 밑에 퍼센트값이랑 카운트 보이고 안보이고넣기
             }
         } // checkButtonStatus 끝
+    
+    
+    func design(){
+        
+        //btnSelect1.setTitle(select1, for: UIControl.State.normal)
+        btnSelect1.layer.cornerRadius = 10
+        btnSelect1.layer.borderWidth = 2
+        btnSelect1.layer.borderColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1).cgColor
+        
+        btnSelect2.layer.cornerRadius = 10
+        btnSelect2.layer.borderWidth = 2
+        btnSelect2.layer.borderColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1).cgColor
+    }
+    
     
     /*
     // MARK: - Navigation

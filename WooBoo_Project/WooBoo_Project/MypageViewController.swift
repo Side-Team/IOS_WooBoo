@@ -9,10 +9,18 @@ import UIKit
 
 class MypageViewController: UIViewController {
 
+    
+    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var lblwooboo: UILabel!
+    @IBOutlet weak var backView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        backView.layer.cornerRadius = 25
+        imgUser.layer.cornerRadius = 45
+        lblwooboo.text = "우부 \(Share.uSeqno)"
+        imgUser.image = UIImage(named: Share.uImageFileName)
     }
     
     // 로그아웃 버튼 클릭
@@ -22,6 +30,7 @@ class MypageViewController: UIViewController {
         let checkAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
             UserDefaults.standard.removeObject(forKey: "autoId")
             UserDefaults.standard.removeObject(forKey: "autoPw")
+            UserDefaults.standard.removeObject(forKey: "autoLoginValue")
             let vcName = self.storyboard?.instantiateViewController(withIdentifier: "LoginView")
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)
@@ -31,6 +40,7 @@ class MypageViewController: UIViewController {
         checkAlert.addAction(checkAction)
         present(checkAlert, animated: true, completion: nil)
     }
+   
     
 
     /*

@@ -59,6 +59,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
             // nil이 아닐 경우
             let email = txtEmail.text!
             let pw = txtPW.text!
+            let pwCheck = txtPWCheck.text!
             
             // 중복확인 및 인증을 거쳐야함
             // 중복체크
@@ -71,7 +72,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
                 present(nilAlert, animated: true, completion: nil)
                 print("중복체크로 인해 가입 불가넝")
             }else{
-                print("가입가넝")
+                print("중복체크는 가입가넝")
                 
                 // 정규식 검사
                 if !isValidPassword(pwd: pw) && !isValidEmail(testStr: email){
@@ -82,21 +83,33 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
                     print("비밀번호 또는 이메일 실패")
                 }else{
                     
-                    let result = joinModel.joinItems(email: email, pw: pw)
-                    
-                    if result == true{
-                        let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
-                        let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                            self.dismiss(animated: true, completion: nil)
-                        })
+                    // 비밀번호 확인
+                    if pw != pwCheck{
+                        print("비밀번호와 비밀번호체크 값이 다름")
+                        let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다!", preferredStyle: UIAlertController.Style.alert)
+                        let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                         nilAlert.addAction(nilAction)
                         present(nilAlert, animated: true, completion: nil)
                     }else{
-                        let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-                        let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                        resultAlert.addAction(onAction)
-                        present(resultAlert, animated: true, completion: nil)
+                        print("비밀번호필드 일치")
+                        let result = joinModel.joinItems(email: email, pw: pw)
+                        
+                        if result == true{
+                            let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                                self.dismiss(animated: true, completion: nil)
+                            })
+                            nilAlert.addAction(nilAction)
+                            present(nilAlert, animated: true, completion: nil)
+                        }else{
+                            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                            resultAlert.addAction(onAction)
+                            present(resultAlert, animated: true, completion: nil)
+                        }
+                        
                     }
+                    
                 }
             }
             

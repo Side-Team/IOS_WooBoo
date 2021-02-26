@@ -6,40 +6,59 @@
 //
 
 import UIKit
+var categoryvalue = ""
+class CategoryTableViewController: UITableViewController, CategoryModelProtocol {
 
-class CategoryTableViewController: UITableViewController {
+    
+    @IBOutlet var listViewTable: UITableView!
+    
+    var feedItem: NSArray = NSArray()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        let categoryModel = CategoryModel()
+        categoryModel.delegate = self
+        categoryModel.categoryItems(category: categoryvalue)
+        print("테이블에서 카테고리 값 : \(categoryvalue)")
+       
+    }
+    
+    func itemDownloaded(items: NSArray) {
+        self.feedItem = items
+        self.listViewTable.reloadData()
+//        let item:categoryDBModel = feedItem[0] as! categoryDBModel
+//
+//        print("Items.FeedItem = \(String(describing: item.qTitle))")
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return feedItem.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        
+        let item: categoryDBModel = feedItem[indexPath.row] as! categoryDBModel
+        cell.textLabel?.text = "\(item.qTitle!)"
+        cell.detailTextLabel?.text = "\(item.qInsertDate!)"
+        print("나와아라랑")
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

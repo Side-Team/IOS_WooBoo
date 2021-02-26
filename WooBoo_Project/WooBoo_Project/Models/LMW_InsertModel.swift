@@ -38,10 +38,10 @@ class LMW_InsertModel: NSObject{
         return result
     }
     
-    func insert_registerT(questions_qSeqno : Int, user_uSeqno : Int) -> Bool{
+    func insert_registerT(questions_qSeqno : Int) -> Bool{
         var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Insert_register.jsp"
-        var result: Bool = true
-        let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(user_uSeqno)"
+        var result: Bool = false
+        let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(Share.uSeqno)"
         
         urlPath = urlPath + urlAdd
         
@@ -64,5 +64,83 @@ class LMW_InsertModel: NSObject{
         }
         task.resume()
         return result
+    }
+    
+    func insert_like(questions_qSeqno : Int) -> Bool{
+        var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Insert_like.jsp"
+        var result: Bool = false
+        let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(Share.uSeqno)"
+        
+        urlPath = urlPath + urlAdd
+        
+        print("insert_like urlPath : ", urlPath)
+        
+        //한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to insert data")
+                result = false
+            }else{
+                print("Data is inserted!")
+                result = true
+            }
+        }
+        task.resume()
+        return result
+    }
+    
+    func insert_sqSelection(questions_qSeqno : Int, sqSelection : Int){
+        var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Insert_select_question.jsp"
+        let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(Share.uSeqno)&sqSelection=\(sqSelection)"
+        
+        urlPath = urlPath + urlAdd
+        
+        print("insert_like urlPath : ", urlPath)
+        
+        //한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to insert data")
+            }else{
+                print("Data is inserted!")
+            }
+        }
+        task.resume()
+
+    }
+    
+    func insert_views(questions_qSeqno : Int){
+        var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Insert_views.jsp"
+        let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(Share.uSeqno)"
+        
+        urlPath = urlPath + urlAdd
+        
+        print("insert_views urlPath : ", urlPath)
+        
+        //한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to insert data")
+            }else{
+                print("Data is inserted!")
+            }
+        }
+        task.resume()
+
     }
 }//=======

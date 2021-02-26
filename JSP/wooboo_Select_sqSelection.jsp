@@ -32,7 +32,7 @@
             count++;                 
 %>
 			{
-			"sqSelection" : "<%=rs.getString(1) %>"
+			"sqSelection" : "<%=rs.getInt(1) %>"
 
 			}
 <%		

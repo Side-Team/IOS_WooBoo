@@ -21,6 +21,9 @@
 		287840F125E802DA0020F7AD /* LMW_InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840F025E802DA0020F7AD /* LMW_InsertModel.swift */; };
 		287840F525E8045A0020F7AD /* LMW_SelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840F425E8045A0020F7AD /* LMW_SelectModel.swift */; };
 		287840F825E816240020F7AD /* LMW_questionsT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840F725E816240020F7AD /* LMW_questionsT.swift */; };
+		28830C8425E9151C00A42447 /* LMW_DeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28830C8325E9151B00A42447 /* LMW_DeleteModel.swift */; };
+		28830C8725E91F7100A42447 /* LMW_Select_sqSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28830C8625E91F7100A42447 /* LMW_Select_sqSelection.swift */; };
+		28830C8A25E9423600A42447 /* LMW_UpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28830C8925E9423600A42447 /* LMW_UpdateModel.swift */; };
 		28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */; };
 		28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */; };
 		3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEAE825E651ED008C646E /* QuestionModel.swift */; };
@@ -66,6 +69,9 @@
 		287840F025E802DA0020F7AD /* LMW_InsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_InsertModel.swift; sourceTree = "<group>"; };
 		287840F425E8045A0020F7AD /* LMW_SelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_SelectModel.swift; sourceTree = "<group>"; };
 		287840F725E816240020F7AD /* LMW_questionsT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_questionsT.swift; sourceTree = "<group>"; };
+		28830C8325E9151B00A42447 /* LMW_DeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_DeleteModel.swift; sourceTree = "<group>"; };
+		28830C8625E91F7100A42447 /* LMW_Select_sqSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_Select_sqSelection.swift; sourceTree = "<group>"; };
+		28830C8925E9423600A42447 /* LMW_UpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_UpdateModel.swift; sourceTree = "<group>"; };
 		28A88CB625E6A5DE0012DD1F /* ImageUploadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadModel.swift; sourceTree = "<group>"; };
 		28A88CB725E6A5DE0012DD1F /* ImageFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		3C1FEAE825E651ED008C646E /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
@@ -185,6 +191,9 @@
 				287840F025E802DA0020F7AD /* LMW_InsertModel.swift */,
 				287840F425E8045A0020F7AD /* LMW_SelectModel.swift */,
 				287840F725E816240020F7AD /* LMW_questionsT.swift */,
+				28830C8325E9151B00A42447 /* LMW_DeleteModel.swift */,
+				28830C8625E91F7100A42447 /* LMW_Select_sqSelection.swift */,
+				28830C8925E9423600A42447 /* LMW_UpdateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,6 +397,7 @@
 				287840DD25E7537C0020F7AD /* CategoryViewController.swift in Sources */,
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
+				28830C8725E91F7100A42447 /* LMW_Select_sqSelection.swift in Sources */,
 				287840F825E816240020F7AD /* LMW_questionsT.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
 				28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */,
@@ -397,9 +407,11 @@
 				86756F3525E5416500705176 /* UserModel.swift in Sources */,
 				862F5F9525E8E8780046B5ED /* MypageViewController.swift in Sources */,
 				211438E425E6B3EC000AD9FB /* JspUserSelect.swift in Sources */,
+				28830C8A25E9423600A42447 /* LMW_UpdateModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,
 				868E3DB925E63D44003EE1E6 /* JoinModel.swift in Sources */,
 				287840F525E8045A0020F7AD /* LMW_SelectModel.swift in Sources */,
+				28830C8425E9151C00A42447 /* LMW_DeleteModel.swift in Sources */,
 				21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */,
 				21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */,
 				21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */,

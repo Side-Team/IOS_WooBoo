@@ -315,7 +315,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         
         print("get_qSeqno : \(questions_qSeqno)")
         
-        let result2 = inserQuestiontModel.insert_registerT(questions_qSeqno: questions_qSeqno, user_uSeqno: Share.uSeqno)
+        let result2 = inserQuestiontModel.insert_registerT(questions_qSeqno: questions_qSeqno)
         
         if result1 == true && result2 == true{
             for i in 0..<imageURL.count{

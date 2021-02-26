@@ -9,7 +9,7 @@
 	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "root";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select sqSelection from wooboo.select_question where user_uSeqno = " + user_uSeqno + " and questions_qSeqno = " + questions_qSeqno;
+    String WhereDefault = "select count(*), (select rViews from wooboo.register where questions_qSeqno = " + questions_qSeqno + ")as views from wooboo.register where user_uSeqno = " + user_uSeqno + " and questions_qSeqno = " + questions_qSeqno;
     int count = 0;
     
     try {
@@ -32,7 +32,8 @@
             count++;                 
 %>
 			{
-			"sqSelection" : "<%=rs.getString(1) %>"
+			"count" : "<%=rs.getInt(1) %>",
+            "views" : "<%=rs.getInt(2) %>"
 
 			}
 <%		

@@ -26,6 +26,7 @@ class UserUpdateController: UIViewController{
         lblEmail.isEnabled = false
         lblWooboo.text = "우부 \(Share.uSeqno)"
         design()
+        //userImg.image = UIImage(named: 이름 불러와서 넣을꺼임)
 
     }
     

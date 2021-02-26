@@ -32,8 +32,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if UserDefaults.standard.string(forKey: "autoId") != nil && UserDefaults.standard.string(forKey: "autoLoginValue") == "true"{
             print("자동저장 이메일 & 스위치 ON", UserDefaults.standard.string(forKey: "autoLoginValue") as Any)
-           guard let vcName = storyboard.instantiateViewController(withIdentifier: "Wooboo") as? ViewController else {return}
-            window?.rootViewController = vcName
+//           guard let vcName = storyboard.instantiateViewController(withIdentifier: "Wooboo") as? ViewController else {return}
+//            window?.rootViewController = vcName
+            let vcName = storyboard.instantiateViewController(withIdentifier: "MainView")
+                        vcName.modalPresentationStyle = .fullScreen
+                        window?.rootViewController = vcName
         }else{
             guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
             window?.rootViewController = loginVC

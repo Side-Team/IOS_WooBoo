@@ -86,6 +86,8 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             let id = txtID.text
             let pw = txtPW.text
             
+            
+            // 자동로그인 하기 위해 저장
             if swOnOff.isOn == true{    // 자동로그인 스위치가 켜져있으면
                 let autoLogin = UserDefaults.standard       // UserDefaults.standard 정의
                 autoLogin.setValue(id, forKey: "autoId")    // autoId 키값에 id 저장
@@ -110,15 +112,28 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     @IBAction func swAutoLogin(_ sender: UISwitch) {
         
         checkAutoLogin()
-//
-//        switch sender.isOn{
-//        case true:
-//            UserDefaults.standard.set("true", forKey: "autoLoginValue")
-//            print("true저장")
-//        case false:
-//            UserDefaults.standard.set("false", forKey: "autoLoginValue")
-//            print("false저장")
-//        }
+
+    }
+    
+    // 비밀번호 찾기 버튼
+    @IBAction func btnFindpw(_ sender: UIButton) {
+        // 클릭하면 alert띄워서 이메일 받기
+        let findAlert = UIAlertController(title: "비밀번호 찾기", message: "이메일을 입력해주세요!", preferredStyle: UIAlertController.Style.alert)
+        findAlert.addTextField()
+        let findAction = UIAlertAction(title: "인증번호 발송", style: UIAlertAction.Style.default, handler: {ACTION in
+            self.navigationController?.popViewController(animated: true)
+            // 인증번호 발송 액션
+        })
+        let findCancel = UIAlertAction(title: "닫기", style: UIAlertAction.Style.default, handler: {ACTION in
+            self.navigationController?.popViewController(animated: true)
+        })
+        findAlert.addAction(findAction)
+        findAlert.addAction(findCancel)
+        present(findAlert, animated: true, completion: nil)
+        // 이메일인증 인증번호 전송
+        // 인증번호 확인
+        
+        
     }
     
     // 회원가입 버튼
@@ -158,7 +173,6 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                    }
                }
     }
-    
     
     // 카카오 웹
     @IBAction func btnKakaoweb(_ sender: UIButton) {

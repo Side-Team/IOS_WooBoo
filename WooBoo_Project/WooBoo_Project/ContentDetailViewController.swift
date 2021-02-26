@@ -7,7 +7,21 @@
 
 import UIKit
 
-class ContentDetailViewController: UIViewController, return_sqSelection,  Get_resgister_count, Get_select_question_countSelector {
+class ContentDetailViewController: UIViewController, return_sqSelection,  Get_resgister_count, Get_select_question_countSelector, Get_like_count {
+    func return_like_count(count: Int) {
+        like_SwitchNum = count
+        
+        if like_SwitchNum == 1{
+            outlet_BtnLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+        }else{
+            outlet_BtnLike.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
+        print("return_like_count 값 : ", like_SwitchNum)
+
+    }
+    
     func return_select_question_countSelector(countSelector: Int) {
         print("countSelector : \(countSelector)")
         lblTotalSelector.text = "\(countSelector)명의 선택!"
@@ -39,8 +53,9 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     }
     
     var sqSelection = 0
-    var like_SwitchNum = 0
+    var like_SwitchNum = -1
     let customColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
+    
         
     @IBOutlet weak var lblTotalSelector: UILabel!
     @IBOutlet weak var lblViews: UILabel!
@@ -73,15 +88,20 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         let selectModel2 = LMW_SelectModel()
         selectModel2.delegate3 = self
         selectModel2.delegate4 = self
+        selectModel2.delegate5 = self
 
         selectModel2.downloadItems(funcName: "check_register", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_register.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
         selectModel2.downloadItems(funcName: "get_countSelector", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_countSelector.jsp?questions_qSeqno=20")
+        selectModel2.downloadItems(funcName: "check_like", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_like.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
+        
 
 
 
     }
 
     @IBAction func btnLike(_ sender: UIButton) {
+
+        print("btnLike 값 : ", like_SwitchNum)
         if like_SwitchNum == 0{
             let insertModel = LMW_InsertModel()
             let result = insertModel.insert_like(questions_qSeqno: 20) // questions_qSeqno 넣어주기

@@ -24,11 +24,16 @@ protocol Get_questions_qSeqno: class {
     func return_questions_qSeqno(item : Int)
 }
 
+protocol Get_like_count: class {
+    func return_like_count(count : Int)
+}
+
 class LMW_SelectModel{
     var delegate1: Get_questions_views!
     var delegate2: Get_questions_qSeqno!
     var delegate3: Get_resgister_count!
     var delegate4: Get_select_question_countSelector!
+    var delegate5: Get_like_count!
     
     var urlPath = ""
     
@@ -56,6 +61,8 @@ class LMW_SelectModel{
                     self.check_resgister(data!)
                 case "get_countSelector":
                     self.get_countSelector(data!)
+                case "check_like":
+                    self.check_like(data!)
                 default: break
                     
                 }
@@ -187,6 +194,38 @@ class LMW_SelectModel{
         }
         DispatchQueue.main.async(execute: {() -> Void in
             self.delegate4.return_select_question_countSelector(countSelector: count)
+            print("DispatchQueue")
+        })
+    }
+    
+    func check_like(_ data: Data){
+  
+        print("check_like : ", urlPath)
+        
+        var jsonResult = NSArray()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+            
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        var jsonElement = NSDictionary()
+        var count = 0
+        
+        for i in 0..<jsonResult.count{
+            jsonElement =  jsonResult[i] as! NSDictionary
+            
+            if let jsp_count = jsonElement["count"] as? String{
+                count = Int(jsp_count)!
+                print("count : \(count)")
+
+
+            }
+        }
+        DispatchQueue.main.async(execute: {() -> Void in
+            self.delegate5.return_like_count(count: count)
             print("DispatchQueue")
         })
     }

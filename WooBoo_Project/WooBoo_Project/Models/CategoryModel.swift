@@ -21,7 +21,7 @@ class CategoryModel: NSObject{
         var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_categorySelect.jsp"
         let urlAdd = "?category=\(category)"
         urlPath = urlPath + urlAdd
-        
+        print("urlPath:\(urlPath)")
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         

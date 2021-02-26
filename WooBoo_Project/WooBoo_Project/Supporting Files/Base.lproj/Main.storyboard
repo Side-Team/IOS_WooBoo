@@ -350,18 +350,8 @@
                                     <action selector="btnFindpw:" destination="bD9-87-RSu" eventType="touchUpInside" id="GKw-ta-rzS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2z-03-z3p">
-                                <rect key="frame" x="104" y="580" width="183" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="kakao_login_medium_narrow.png">
-                                    <color key="titleColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnKakao:" destination="bD9-87-RSu" eventType="touchUpInside" id="1gy-mE-UN9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTp-e6-OKi">
-                                <rect key="frame" x="174" y="715" width="30" height="30"/>
+                                <rect key="frame" x="175" y="767" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="애플">
                                     <color key="titleColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -395,28 +385,41 @@
                                 <rect key="frame" x="75" y="75" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlr-Sx-jal">
-                                <rect key="frame" x="54" y="527" width="271" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlr-Sx-jal">
+                                <rect key="frame" x="55" y="494" width="271" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdx-7a-LrN">
-                                <rect key="frame" x="241" y="715" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2z-03-z3p">
+                                <rect key="frame" x="97" y="523" width="183" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="구글">
+                                <state key="normal" image="kakao_login_medium_narrow.png">
                                     <color key="titleColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnKakao:" destination="bD9-87-RSu" eventType="touchUpInside" id="1gy-mE-UN9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xla-la-MKG">
-                                <rect key="frame" x="104" y="641" width="183" height="45"/>
+                                <rect key="frame" x="97" y="584" width="183" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="kakao_login_medium_narrow.png"/>
                                 <connections>
                                     <action selector="btnKakaoweb:" destination="bD9-87-RSu" eventType="touchUpInside" id="DFN-bg-9wk"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-og-pRx" customClass="GIDSignInButton">
+                                <rect key="frame" x="97" y="637" width="175" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <action selector="signInButton" destination="bD9-87-RSu" eventType="valueChanged" id="Oc2-p8-IUy"/>
+                                    <action selector="signInButton:" destination="bD9-87-RSu" eventType="valueChanged" id="CzB-Zi-W0F"/>
+                                    <action selector="signInButton:forEvent:" destination="bD9-87-RSu" eventType="valueChanged" id="M8c-EZ-5lD"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="E9n-eg-y8p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

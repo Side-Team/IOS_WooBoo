@@ -22,6 +22,7 @@ class MypageViewController: UIViewController {
         let checkAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
             UserDefaults.standard.removeObject(forKey: "autoId")
             UserDefaults.standard.removeObject(forKey: "autoPw")
+            UserDefaults.standard.removeObject(forKey: "autoLoginValue")
             let vcName = self.storyboard?.instantiateViewController(withIdentifier: "LoginView")
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)

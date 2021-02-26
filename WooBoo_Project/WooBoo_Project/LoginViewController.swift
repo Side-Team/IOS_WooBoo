@@ -8,12 +8,12 @@
 import UIKit
 import KakaoSDKAuth     // 카카오 로그인
 import KakaoSDKUser     // 카카오 유저정보
+import GoogleSignIn     // 구글 로그인
 
 class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectProtocol {
     func itemDownloaded(items: NSArray) {
         
     }
-    
     
     // textfield 연결
     @IBOutlet weak var txtID: UITextField!
@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     @IBOutlet weak var swOnOff: UISwitch!
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+  
+    
     
     //생성된 Main.storyboard와 연동작업 (변수에 담는 작업)
     let myStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

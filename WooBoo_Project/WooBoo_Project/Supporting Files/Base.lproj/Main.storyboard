@@ -230,11 +230,11 @@
             </objects>
             <point key="canvasLocation" x="-789.23076923076917" y="-1012.3222748815166"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--우부판-->
         <scene sceneID="Orp-Yr-zGB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j6Y-tk-1Hi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="q0k-RZ-KkR"/>
+                    <tabBarItem key="tabBarItem" title="우부판" image="icon_chat.png" id="q0k-RZ-KkR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nt5-zZ-DiK">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -435,11 +435,11 @@
             </objects>
             <point key="canvasLocation" x="-3769.2307692307691" y="-676.06635071090045"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--밸런스게임-->
         <scene sceneID="oSI-Ch-dTn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OUd-DT-x5c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="9h0-Yr-VmU"/>
+                    <tabBarItem key="tabBarItem" title="밸런스게임" image="icon_match.png" id="9h0-Yr-VmU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="adu-DE-ZSt">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -540,7 +540,7 @@
         <scene sceneID="AIn-Uy-HjM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nf0-vf-13N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="마이페이지" id="mxK-7B-ePV"/>
+                    <tabBarItem key="tabBarItem" title="마이페이지" image="icon_user.png" id="mxK-7B-ePV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ewX-Ei-fGf">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -671,7 +671,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbB-fs-nTg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="93.84615384615384" y="-1012.3222748815166"/>
+            <point key="canvasLocation" x="94" y="-1012"/>
         </scene>
         <!--Category Table View Controller-->
         <scene sceneID="KmB-gO-ELy">
@@ -1300,11 +1300,28 @@
                         <outlet property="lblPasswordCheck" destination="8px-rr-IIo" id="bta-Bt-KX4"/>
                         <outlet property="lblWooboo" destination="TZS-3D-GVV" id="OzP-nc-pb9"/>
                         <outlet property="userImg" destination="8Ti-fE-2dO" id="KZf-0q-DnN"/>
+                        <segue destination="cTb-af-e1F" kind="show" identifier="moveChangeImage" id="Y3b-jO-AXG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="re1-TP-7p2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-758.46153846153845" y="427.96208530805683"/>
+        </scene>
+        <!--Change Image Controller-->
+        <scene sceneID="KKl-p3-In2">
+            <objects>
+                <viewController id="cTb-af-e1F" customClass="ChangeImageController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QWk-qZ-gmJ">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tdt-cA-oII"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Gm-Bw-z94"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2qg-GQ-dFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="417"/>
         </scene>
         <!--찜한글-->
         <scene sceneID="iLh-14-YCS">
@@ -1369,11 +1386,14 @@
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="icon_19.png" width="384" height="384"/>
+        <image name="icon_chat.png" width="24" height="24"/>
         <image name="icon_etc.png" width="418.90908813476562" height="418.90908813476562"/>
         <image name="icon_food.png" width="384" height="384"/>
         <image name="icon_love.png" width="384" height="384"/>
         <image name="icon_marry.png" width="384" height="384"/>
+        <image name="icon_match.png" width="24" height="24"/>
         <image name="icon_travel.png" width="307.20001220703125" height="307.20001220703125"/>
+        <image name="icon_user.png" width="24" height="24"/>
         <image name="img_calmness.png" width="187" height="155"/>
         <image name="kakao_login_medium_narrow.png" width="183" height="45"/>
         <image name="photo" catalog="system" width="128" height="93"/>

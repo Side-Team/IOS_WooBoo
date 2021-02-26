@@ -35,6 +35,9 @@
 		3C1FEB0325E68197008C646E /* img_logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAFA25E68197008C646E /* img_logo.jpeg */; };
 		3C1FEB0425E68197008C646E /* icon_marry.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAFB25E68197008C646E /* icon_marry.png */; };
 		3C1FEB0825E6A6ED008C646E /* icon_19.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEB0725E6A6EC008C646E /* icon_19.png */; };
+		3C1FEB1A25E8DE2F008C646E /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */; };
+		3C1FEB1D25E8DFDC008C646E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEB1C25E8DFDC008C646E /* CategoryModel.swift */; };
+		3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */; };
 		86756F3525E5416500705176 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3425E5416500705176 /* UserModel.swift */; };
 		86756F3825E54B9400705176 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3725E54B9400705176 /* LoginModel.swift */; };
 		868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E3DB525E62FEF003EE1E6 /* Share.swift */; };
@@ -79,6 +82,9 @@
 		3C1FEAFA25E68197008C646E /* img_logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_logo.jpeg; sourceTree = "<group>"; };
 		3C1FEAFB25E68197008C646E /* icon_marry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_marry.png; sourceTree = "<group>"; };
 		3C1FEB0725E6A6EC008C646E /* icon_19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_19.png; sourceTree = "<group>"; };
+		3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		3C1FEB1C25E8DFDC008C646E /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDBModel.swift; sourceTree = "<group>"; };
 		696DBC98034BCAD94569F106 /* Pods-WooBoo_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.debug.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		86756F3425E5416500705176 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		86756F3725E54B9400705176 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 				2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */,
 				284B82BB25E5612200203A8B /* AddImageViewController.swift */,
 				287840DC25E7537C0020F7AD /* CategoryViewController.swift */,
+				3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -182,6 +189,8 @@
 				287840F025E802DA0020F7AD /* LMW_InsertModel.swift */,
 				287840F425E8045A0020F7AD /* LMW_SelectModel.swift */,
 				287840F725E816240020F7AD /* LMW_questionsT.swift */,
+				3C1FEB1C25E8DFDC008C646E /* CategoryModel.swift */,
+				3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
+				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
 				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,
@@ -388,6 +398,7 @@
 				287840F825E816240020F7AD /* LMW_questionsT.swift in Sources */,
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
 				28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */,
+				3C1FEB1A25E8DE2F008C646E /* CategoryTableViewController.swift in Sources */,
 				21A5507625E6605000E58698 /* selectBalancegameModel.swift in Sources */,
 				868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
@@ -398,6 +409,7 @@
 				287840F525E8045A0020F7AD /* LMW_SelectModel.swift in Sources */,
 				21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */,
 				21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */,
+				3C1FEB1D25E8DFDC008C646E /* CategoryModel.swift in Sources */,
 				21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */,
 				287840F125E802DA0020F7AD /* LMW_InsertModel.swift in Sources */,
 			);

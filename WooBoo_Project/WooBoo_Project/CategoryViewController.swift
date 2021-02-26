@@ -7,16 +7,31 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
-
+class CategoryViewController: UIViewController, CategoryModelProtocol {
+    
+    
+    
+    var feedItem: NSArray = NSArray()
+    
+    let categoryModel = CategoryModel()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        categoryModel.delegate = self
+        
+    }
+    
+    func itemDownloaded(items: NSArray) {
+        self.feedItem = items
+        print("Items.FeedItem = \(items)")
     }
     
     @IBAction func btnFood(_ sender: UIButton) {
         performSegue(withIdentifier: "MoveList", sender: self)
+        
+        categoryModel.categoryItems(category: "1") // CategoryModel로 보내주는 곳
     }
     
     @IBAction func btnTravel(_ sender: UIButton) {
@@ -38,14 +53,11 @@ class CategoryViewController: UIViewController {
     @IBAction func btn19(_ sender: UIButton) {
         performSegue(withIdentifier: "MoveList", sender: self)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    // 다음 페이지로 값 보내주는 작업
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//    }
+    
 
 }

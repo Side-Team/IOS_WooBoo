@@ -625,10 +625,10 @@
             </objects>
             <point key="canvasLocation" x="93.84615384615384" y="-1012.3222748815166"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Category Table View Controller-->
         <scene sceneID="KmB-gO-ELy">
             <objects>
-                <tableViewController id="nC0-bg-diZ" sceneMemberID="viewController">
+                <tableViewController id="nC0-bg-diZ" customClass="CategoryTableViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2dr-Al-cNy">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

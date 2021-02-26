@@ -7,7 +7,7 @@
 
 import UIKit
 
-class JoinViewController: UIViewController {
+class JoinViewController: UIViewController, EmailCheckProtocol {
     
     // textfield 연결
     @IBOutlet weak var txtEmail: UITextField!
@@ -16,9 +16,12 @@ class JoinViewController: UIViewController {
     @IBOutlet weak var txtPWCheck: UITextField!
     @IBOutlet weak var lblpwCheck: UILabel!
     
+    let joinModel = JoinModel()
+    var emailCheck:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        joinModel.delegate = self
 //        let pwCheck = txtPWCheck.text!
 //        let txtpw = txtPW.text!
 //        
@@ -29,6 +32,15 @@ class JoinViewController: UIViewController {
 //        }
         
     }//------------viewDidLoad
+    
+    // protocol
+    func checkEmailValue(result: Int) {
+        self.emailCheck = result
+        print("emailCheck값: \(result)")
+        
+        Checkemail()
+        
+    }
     
     // 가입하기 버튼 클릭
     @IBAction func btnJoinOk(_ sender: UIButton) {
@@ -48,34 +60,90 @@ class JoinViewController: UIViewController {
             let email = txtEmail.text!
             let pw = txtPW.text!
             
-            // 정규식 검사
-            if !isValidPassword(pwd: pw) && !isValidEmail(testStr: email){
-                let nilAlert = UIAlertController(title: "경고!", message: "이메일과 비밀번호를 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
+            // 중복확인 및 인증을 거쳐야함
+            // 중복체크
+            
+            if emailCheck == 1{
+                print("가입 불가능")
+                let nilAlert = UIAlertController(title: "경고!", message: "중복체크를 진행해주세요!", preferredStyle: UIAlertController.Style.alert)
                 let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                 nilAlert.addAction(nilAction)
                 present(nilAlert, animated: true, completion: nil)
-                print("비밀번호 또는 이메일 실패")
+                print("중복체크로 인해 가입 불가넝")
             }else{
-            
-                let joinModel = JoinModel()
-                let result = joinModel.joinItems(email: email, pw: pw)
+                print("가입가넝")
                 
-                if result == true{
-                    let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
-                    let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                // 정규식 검사
+                if !isValidPassword(pwd: pw) && !isValidEmail(testStr: email){
+                    let nilAlert = UIAlertController(title: "경고!", message: "이메일과 비밀번호를 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
+                    let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                     nilAlert.addAction(nilAction)
                     present(nilAlert, animated: true, completion: nil)
+                    print("비밀번호 또는 이메일 실패")
                 }else{
-                    let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-                    let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                    resultAlert.addAction(onAction)
-                    present(resultAlert, animated: true, completion: nil)
+                    
+                    let result = joinModel.joinItems(email: email, pw: pw)
+                    
+                    if result == true{
+                        let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                        let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                            self.dismiss(animated: true, completion: nil)
+                        })
+                        nilAlert.addAction(nilAction)
+                        present(nilAlert, animated: true, completion: nil)
+                    }else{
+                        let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                        let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                        resultAlert.addAction(onAction)
+                        present(resultAlert, animated: true, completion: nil)
+                    }
                 }
             }
+            
+            
+            
         }
     }
+    
+    // 중복체크 버튼
+    @IBAction func Emailcheck(_ sender: UIButton) {
+        
+        let num1Check: Int = checkNil(str: txtEmail.text!)
+        
+        if num1Check != 1{
+            print("Email을 입력하세요.")
+            let nilAlert = UIAlertController(title: "Email을 입력하세요.", message: "", preferredStyle: UIAlertController.Style.alert)
+            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nilAlert.addAction(nilAction)
+            present(nilAlert, animated: true, completion: nil)
+        }else{
+            // 중복체크 진행
+            let email = txtEmail.text!
+            joinModel.emailCheckItems(email: email)
+            
+        }
+    }
+    
+    
+    // email check
+    func Checkemail(){
+        
+        if emailCheck == 0{
+            print("switch0: \(emailCheck)")
+            let emailAlert = UIAlertController(title: "사용 가능!", message: "사용 가능한 Email입니다!", preferredStyle: UIAlertController.Style.alert)
+            let emailAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            emailAlert.addAction(emailAction)
+            present(emailAlert, animated: true, completion: nil)
+        }else{
+            let emailAlert = UIAlertController(title: "사용 불가능!", message: "사용중인 Email입니다!", preferredStyle: UIAlertController.Style.alert)
+            let emailAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            emailAlert.addAction(emailAction)
+            present(emailAlert, animated: true, completion: nil)
+            txtEmail.text = ""
+        }
+        
+    }
+    
     
     // 이메일 형식 검사(@ 앞에 알파벳, 숫자, 특수문자가 포함될 수 있고 @ 뒤에는 알파벳, 숫자, .뒤에는 알파벳 2자리 이상)
     func isValidEmail(testStr:String) -> Bool {

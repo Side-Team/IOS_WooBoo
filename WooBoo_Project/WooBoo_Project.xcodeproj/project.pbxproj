@@ -23,6 +23,10 @@
 		21D3C25A25E91A5A005262D9 /* img_calmness.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C25125E91A59005262D9 /* img_calmness.png */; };
 		21D3C25B25E91A5A005262D9 /* img_Tired.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C25225E91A5A005262D9 /* img_Tired.png */; };
 		21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3C26125E91EEE005262D9 /* userDeleteModel.swift */; };
+		21D3C26725E938F8005262D9 /* icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26625E938F8005262D9 /* icon_user.png */; };
+		21D3C26A25E93923005262D9 /* icon_match.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26925E93922005262D9 /* icon_match.png */; };
+		21D3C26D25E93963005262D9 /* icon_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26C25E93963005262D9 /* icon_chat.png */; };
+		21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3C27025E93D5D005262D9 /* ChangeImageController.swift */; };
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
@@ -36,12 +40,9 @@
 		3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEAE825E651ED008C646E /* QuestionModel.swift */; };
 		3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEAEF25E653B7008C646E /* DBModel.swift */; };
 		3C1FEAFC25E68197008C646E /* icon_food.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF325E68195008C646E /* icon_food.png */; };
-		3C1FEAFD25E68197008C646E /* icon_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF425E68195008C646E /* icon_home.png */; };
-		3C1FEAFE25E68197008C646E /* icon_mypage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF525E68196008C646E /* icon_mypage.png */; };
 		3C1FEAFF25E68197008C646E /* icon_travel.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF625E68196008C646E /* icon_travel.png */; };
 		3C1FEB0025E68197008C646E /* icon_love.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF725E68196008C646E /* icon_love.png */; };
 		3C1FEB0125E68197008C646E /* icon_etc.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF825E68196008C646E /* icon_etc.png */; };
-		3C1FEB0225E68197008C646E /* icon_match.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAF925E68196008C646E /* icon_match.png */; };
 		3C1FEB0325E68197008C646E /* img_logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAFA25E68197008C646E /* img_logo.jpeg */; };
 		3C1FEB0425E68197008C646E /* icon_marry.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEAFB25E68197008C646E /* icon_marry.png */; };
 		3C1FEB0825E6A6ED008C646E /* icon_19.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FEB0725E6A6EC008C646E /* icon_19.png */; };
@@ -81,6 +82,10 @@
 		21D3C25125E91A59005262D9 /* img_calmness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_calmness.png; sourceTree = "<group>"; };
 		21D3C25225E91A5A005262D9 /* img_Tired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_Tired.png; sourceTree = "<group>"; };
 		21D3C26125E91EEE005262D9 /* userDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDeleteModel.swift; sourceTree = "<group>"; };
+		21D3C26625E938F8005262D9 /* icon_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_user.png; sourceTree = "<group>"; };
+		21D3C26925E93922005262D9 /* icon_match.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_match.png; sourceTree = "<group>"; };
+		21D3C26C25E93963005262D9 /* icon_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_chat.png; sourceTree = "<group>"; };
+		21D3C27025E93D5D005262D9 /* ChangeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageController.swift; sourceTree = "<group>"; };
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
@@ -94,12 +99,9 @@
 		3C1FEAE825E651ED008C646E /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		3C1FEAEF25E653B7008C646E /* DBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
 		3C1FEAF325E68195008C646E /* icon_food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_food.png; sourceTree = "<group>"; };
-		3C1FEAF425E68195008C646E /* icon_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_home.png; sourceTree = "<group>"; };
-		3C1FEAF525E68196008C646E /* icon_mypage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_mypage.png; sourceTree = "<group>"; };
 		3C1FEAF625E68196008C646E /* icon_travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_travel.png; sourceTree = "<group>"; };
 		3C1FEAF725E68196008C646E /* icon_love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_love.png; sourceTree = "<group>"; };
 		3C1FEAF825E68196008C646E /* icon_etc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_etc.png; sourceTree = "<group>"; };
-		3C1FEAF925E68196008C646E /* icon_match.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_match.png; sourceTree = "<group>"; };
 		3C1FEAFA25E68197008C646E /* img_logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_logo.jpeg; sourceTree = "<group>"; };
 		3C1FEAFB25E68197008C646E /* icon_marry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_marry.png; sourceTree = "<group>"; };
 		3C1FEB0725E6A6EC008C646E /* icon_19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_19.png; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				287840DC25E7537C0020F7AD /* CategoryViewController.swift */,
 				3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */,
 				862F5F9425E8E8780046B5ED /* MypageViewController.swift */,
+				21D3C27025E93D5D005262D9 /* ChangeImageController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -222,6 +225,9 @@
 		3C1FEAF225E68183008C646E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				21D3C26C25E93963005262D9 /* icon_chat.png */,
+				21D3C26925E93922005262D9 /* icon_match.png */,
+				21D3C26625E938F8005262D9 /* icon_user.png */,
 				21D3C24F25E91A59005262D9 /* img_Anger.png */,
 				21D3C25125E91A59005262D9 /* img_calmness.png */,
 				21D3C24A25E91A58005262D9 /* img_Depressed.png */,
@@ -235,11 +241,8 @@
 				3C1FEB0725E6A6EC008C646E /* icon_19.png */,
 				3C1FEAF825E68196008C646E /* icon_etc.png */,
 				3C1FEAF325E68195008C646E /* icon_food.png */,
-				3C1FEAF425E68195008C646E /* icon_home.png */,
 				3C1FEAF725E68196008C646E /* icon_love.png */,
 				3C1FEAFB25E68197008C646E /* icon_marry.png */,
-				3C1FEAF925E68196008C646E /* icon_match.png */,
-				3C1FEAF525E68196008C646E /* icon_mypage.png */,
 				3C1FEAF625E68196008C646E /* icon_travel.png */,
 				3C1FEAFA25E68197008C646E /* img_logo.jpeg */,
 			);
@@ -352,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D3C25625E91A5A005262D9 /* img_Proud.png in Resources */,
+				21D3C26A25E93923005262D9 /* icon_match.png in Resources */,
 				21D3C25525E91A5A005262D9 /* img_Sad.png in Resources */,
 				3C1FEAFC25E68197008C646E /* icon_food.png in Resources */,
 				3C1FEB0125E68197008C646E /* icon_etc.png in Resources */,
@@ -360,19 +364,18 @@
 				3C1FEB0825E6A6ED008C646E /* icon_19.png in Resources */,
 				869C1CA625E3A29900554CEC /* LaunchScreen.storyboard in Resources */,
 				3C1FEB0425E68197008C646E /* icon_marry.png in Resources */,
-				3C1FEAFD25E68197008C646E /* icon_home.png in Resources */,
 				21D3C25925E91A5A005262D9 /* img_Pleasure.png in Resources */,
 				21D3C25725E91A5A005262D9 /* img_Happy.png in Resources */,
+				21D3C26725E938F8005262D9 /* icon_user.png in Resources */,
 				21D3C25425E91A5A005262D9 /* img_Embarrassment.png in Resources */,
 				869C1CA325E3A29900554CEC /* Assets.xcassets in Resources */,
+				21D3C26D25E93963005262D9 /* icon_chat.png in Resources */,
 				21D3C25825E91A5A005262D9 /* img_Anger.png in Resources */,
 				3C1FEB0325E68197008C646E /* img_logo.jpeg in Resources */,
 				869C1CA125E3A29700554CEC /* Main.storyboard in Resources */,
 				3C1FEB0025E68197008C646E /* icon_love.png in Resources */,
-				3C1FEB0225E68197008C646E /* icon_match.png in Resources */,
 				21D3C25A25E91A5A005262D9 /* img_calmness.png in Resources */,
 				21D3C25B25E91A5A005262D9 /* img_Tired.png in Resources */,
-				3C1FEAFE25E68197008C646E /* icon_mypage.png in Resources */,
 				287840EE25E7FD970020F7AD /* kakao_login_medium_narrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +449,7 @@
 				21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */,
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
+				21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */,
 				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,

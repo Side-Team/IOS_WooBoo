@@ -75,6 +75,8 @@ class BalanceGameSelectController: UIViewController {
         btnSelect2.layer.borderWidth = 2
         btnSelect2.layer.borderColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1).cgColor
     }
+    
+    
     /*
     // MARK: - Navigation
 

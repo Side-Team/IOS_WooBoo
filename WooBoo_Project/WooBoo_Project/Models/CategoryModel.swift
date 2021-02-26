@@ -53,28 +53,34 @@ class CategoryModel: NSObject{
             jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
             let query = categoryDBModel()
             
-            if let qSeqno = jsonElement["qSeqno"] as? String,
-               let qTitle = jsonElement["qTitle"] as? String,
+            if let qTitle = jsonElement["qTitle"] as? String,
                let qSelection1 = jsonElement["qSelection1"] as? String,
                let qSelection2 = jsonElement["qSelection2"] as? String,
                let qSelection3 = jsonElement["qSelection3"] as? String,
                let qSelection4 = jsonElement["qSelection4"] as? String,
                let qSelection5 = jsonElement["qSelection5"] as? String,
-               let qImageFileName = jsonElement["qImageFileName"] as? String,
                let qCategory = jsonElement["qCategory"] as? String,
                let qInsertDate = jsonElement["qInsertDate"] as? String,
-               let qDeleteDate = jsonElement["qDeleteDate"] as? String{
-               query.qSeqno = qSeqno
-               query.qTitle = qTitle
-               query.qSelection1 = qSelection1
-               query.qSelection2 = qSelection2
-               query.qSelection3 = qSelection3
-               query.qSelection4 = qSelection4
-               query.qSelection5 = qSelection5
-               query.qImageFileName = qImageFileName
-               query.qCategory = qCategory
-               query.qInsertDate = qInsertDate
-               query.qDeleteDate = qDeleteDate
+               let qDeleteDate = jsonElement["qDeleteDate"] as? String,
+               let qImageFileName1 = jsonElement["qImageFileName1"] as? String,
+               let qImageFileName2 = jsonElement["qImageFileName2"] as? String,
+               let qImageFileName3 = jsonElement["qImageFileName3"] as? String,
+               let qImageFileName4 = jsonElement["qImageFileName4"] as? String,
+               let qImageFileName5 = jsonElement["qImageFileName5"] as? String{
+                query.qTitle = qTitle
+                query.qSelection1 = qSelection1
+                query.qSelection2 = qSelection2
+                query.qSelection3 = qSelection3
+                query.qSelection4 = qSelection4
+                query.qSelection5 = qSelection5
+                query.qCategory = qCategory
+                query.qInsertDate = qInsertDate
+                query.qDeleteDate = qDeleteDate
+                query.qImageFileName1 = qImageFileName1
+                query.qImageFileName2 = qImageFileName2
+                query.qImageFileName3 = qImageFileName3
+                query.qImageFileName4 = qImageFileName4
+                query.qImageFileName5 = qImageFileName5
                
             
             }

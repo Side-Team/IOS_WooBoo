@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
             KakaoSDKCommon.initSDK(appKey: "bce667d5ee89a4181a45019426ad7a2d") // 카카오 네이티브 앱키 추가
+        
         return true
     }
 

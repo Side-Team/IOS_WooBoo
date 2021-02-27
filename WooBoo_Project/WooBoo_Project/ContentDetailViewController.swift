@@ -6,8 +6,22 @@
 //
 
 import UIKit
+import KakaoSDKTalk
+import KakaoSDKAuth
+import KakaoSDKLink
+import KakaoSDKTemplate
+import KakaoSDKCommon
 
-class ContentDetailViewController: UIViewController, return_sqSelection,  Get_resgister_count, Get_select_question_countSelector, Get_like_count {
+class ContentDetailViewController: UIViewController, return_sqSelection,  Get_resgister_count, Get_select_question_countSelector, Get_like_count, Get_report_count {
+    
+    func return_report_count(count: Int) {
+        report_SwitchNum = count
+        if count == 1{
+            outlet_BtnReport.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
+        }
+
+    }
+    
     func return_like_count(count: Int) {
         like_SwitchNum = count
         
@@ -54,6 +68,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     
     var sqSelection = 0
     var like_SwitchNum = -1
+    var report_SwitchNum = -1
     let customColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
     
         
@@ -74,6 +89,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
        
 
 
@@ -89,10 +105,12 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         selectModel2.delegate3 = self
         selectModel2.delegate4 = self
         selectModel2.delegate5 = self
+        selectModel2.delegate6 = self
 
         selectModel2.downloadItems(funcName: "check_register", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_register.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
         selectModel2.downloadItems(funcName: "get_countSelector", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_countSelector.jsp?questions_qSeqno=20")
         selectModel2.downloadItems(funcName: "check_like", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_like.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
+        selectModel2.downloadItems(funcName: "check_report", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_report.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
         
 
 
@@ -137,9 +155,52 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     }
     
     @IBAction func btnShare(_ sender: UIButton) {
+//        kakaoTalkMessage()
+        share()
     }
     
     @IBAction func btnReport(_ sender: UIButton) {
+        
+        if report_SwitchNum == 0{
+            
+            let alert = UIAlertController(title: "신고", message: "허위 신고 시 제재를 받을 수 있습니다", preferredStyle: UIAlertController.Style.alert)
+            alert.addTextField { [self] (myTextField) in
+            myTextField.textColor = customColor
+            myTextField.placeholder = "신고사유를 적어주세요."
+            }
+            
+            let sendAction = UIAlertAction(title: "전송", style: UIAlertAction.Style.destructive, handler: { [self]ACTION in
+                let insertModel = LMW_InsertModel()
+                insertModel.insert_report(questions_qSeqno: 20, content: alert.textFields![0].text!)
+                print("신고사유 : \(alert.textFields![0].text!)")
+                
+                let addAlert = UIAlertController(title: "신고 완료", message: "정상적으로 신고되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: {ACTION in
+                    outlet_BtnReport.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
+                })
+                
+                addAlert.addAction(okAction)
+                
+
+                present(addAlert, animated: true, completion: nil)
+            })
+            
+            let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default, handler: nil)
+            
+            alert.addAction(sendAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "신고 완료", message: "이미 신고한 글입니다.", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+            
+            alert.addAction(okAction)
+            
+
+            present(alert, animated: true, completion: nil)
+        }
+        
+
     }
     
     @IBAction func btn1(_ sender: UIButton) {
@@ -295,5 +356,96 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
             return "기타"
         }
     }
+    
+    func kakaoTalkMessage(){
+//        let title = "피드 메시지"
+//        let description = "피드 메시지 예제"
 
+        let feedTemplateJsonStringData =
+            """
+            {
+                "object_type": "feed",
+                "content": {
+                    "title": "딸기 치즈 케익",
+                    "description": "#케익 #딸기 #삼평동 #카페 #분위기 #소개팅",
+                    "image_url": "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
+                    "link": {
+                        "mobile_web_url": "https://developers.kakao.com",
+                        "web_url": "https://developers.kakao.com"
+                    }
+                },
+                "social": {
+                    "comment_count": 45,
+                    "like_count": 286,
+                    "shared_count": 845
+                },
+                "buttons": [
+                    {
+                        "title": "웹으로 보기",
+                        "link": {
+                            "mobile_web_url": "https://developers.kakao.com",
+                            "web_url": "https://developers.kakao.com"
+                        }
+                    },
+                    {
+                        "title": "앱으로 보기",
+                        "link": {
+                            "android_execution_params": "key1=value1&key2=value2",
+                            "ios_execution_params": "key1=value1&key2=value2"
+                        }
+                    }
+                ]
+            }
+            """.data(using: .utf8)!
+
+        
+        
+        // templatable은 메시지 만들기 항목 참고
+        if let templatable = try? SdkJSONDecoder.custom.decode(FeedTemplate.self, from: feedTemplateJsonStringData) {
+            LinkApi.shared.defaultLink(templatable: templatable) {(linkResult, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("defaultLink() success.")
+
+                    if let linkResult = linkResult {
+                        UIApplication.shared.open(linkResult.url, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func share() {
+        
+        var objectsToShare = [outlet_btn1.titleLabel?.text!, outlet_btn2.titleLabel?.text!, outlet_btn3.titleLabel?.text!, outlet_btn4.titleLabel?.text!, outlet_btn5.titleLabel?.text!]
+        var text = objectsToShare[0]! + " VS " + objectsToShare[1]!
+      
+        if objectsToShare[2] != ""{
+            text = text + " VS " + objectsToShare[2]!
+        }
+        
+        if objectsToShare[3] != ""{
+            text = text + " VS " + objectsToShare[3]!
+        }
+        
+        if objectsToShare[4] != ""{
+            text = text + " VS " + objectsToShare[4]!
+        }
+        
+        objectsToShare.removeAll()
+        objectsToShare.append(text)
+        print("text : \(text)")
+  
+        let activityVC = UIActivityViewController(activityItems: objectsToShare as [Any], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.isModalInPresentation = true
+        
+        // 공유하기 기능 중 제외할 기능이 있을 때 사용
+        //        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)
+    }
+
+    
 }

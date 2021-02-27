@@ -28,12 +28,18 @@ protocol Get_like_count: class {
     func return_like_count(count : Int)
 }
 
+protocol Get_report_count: class {
+    func return_report_count(count : Int)
+}
+
+
 class LMW_SelectModel{
     var delegate1: Get_questions_views!
     var delegate2: Get_questions_qSeqno!
     var delegate3: Get_resgister_count!
     var delegate4: Get_select_question_countSelector!
     var delegate5: Get_like_count!
+    var delegate6: Get_report_count!
     
     var urlPath = ""
     
@@ -42,6 +48,8 @@ class LMW_SelectModel{
         print("downloadItems")
 
         self.urlPath = urlPath
+        
+        print("LMW_SelectModel urlPath : \(urlPath)")
         
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
@@ -54,15 +62,23 @@ class LMW_SelectModel{
                 
                 switch funcName{
                 case "get_qSeqno":
+                    print("LMW_SelectModel : get_qSeqno")
                     self.get_qSeqno(data!)
                 case "get_register_view":
+                    print("LMW_SelectModel : get_register_view")
                     self.get_register_views(data!)
                 case "check_register":
+                    print("LMW_SelectModel : check_register")
                     self.check_resgister(data!)
                 case "get_countSelector":
+                    print("LMW_SelectModel : get_countSelector")
                     self.get_countSelector(data!)
                 case "check_like":
+                    print("LMW_SelectModel : check_like")
                     self.check_like(data!)
+                case "check_report":
+                    print("LMW_SelectModel : check_report")
+                    self.check_report(data!)
                 default: break
                     
                 }
@@ -226,6 +242,38 @@ class LMW_SelectModel{
         }
         DispatchQueue.main.async(execute: {() -> Void in
             self.delegate5.return_like_count(count: count)
+            print("DispatchQueue")
+        })
+    }
+    
+    func check_report(_ data: Data){
+  
+        print("check_report : ", urlPath)
+        
+        var jsonResult = NSArray()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+            
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        var jsonElement = NSDictionary()
+        var count = 0
+        
+        for i in 0..<jsonResult.count{
+            jsonElement =  jsonResult[i] as! NSDictionary
+            
+            if let jsp_count = jsonElement["count"] as? String{
+                count = Int(jsp_count)!
+                print("count : \(count)")
+
+
+            }
+        }
+        DispatchQueue.main.async(execute: {() -> Void in
+            self.delegate6.return_report_count(count: count)
             print("DispatchQueue")
         })
     }

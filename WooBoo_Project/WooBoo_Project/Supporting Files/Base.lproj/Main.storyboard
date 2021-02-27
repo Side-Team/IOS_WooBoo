@@ -834,7 +834,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9n-K0-fwO">
-                                <rect key="frame" x="307" y="98" width="34" height="34"/>
+                                <rect key="frame" x="307" y="99" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -856,18 +856,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnLike:" destination="lUU-zO-asB" eventType="touchUpInside" id="rO2-j1-YGU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkq-Ef-f0Z">
-                                <rect key="frame" x="349" y="100" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="tintColor" red="1" green="0.21749272880000001" blue="0.30003963589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="exclamationmark.triangle" catalog="system" symbolScale="large"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnReport:" destination="lUU-zO-asB" eventType="touchUpInside" id="pRR-v2-4Rm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOm-Xp-XaC">
@@ -929,6 +917,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkq-Ef-f0Z">
+                                <rect key="frame" x="349" y="99" width="33" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" red="1" green="0.21749272880000001" blue="0.30003963589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="exclamationmark.triangle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnReport:" destination="lUU-zO-asB" eventType="touchUpInside" id="pRR-v2-4Rm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1oo-Gi-Qag"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -143,4 +143,29 @@ class LMW_InsertModel: NSObject{
         task.resume()
 
     }
+    
+    func insert_report(questions_qSeqno : Int, content : String){
+        var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Insert_report.jsp"
+        let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(Share.uSeqno)&rContent=\(content)"
+        
+        urlPath = urlPath + urlAdd
+        
+        print("insert_report urlPath : ", urlPath)
+        
+        //한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to insert data")
+            }else{
+                print("Data is inserted!")
+            }
+        }
+        task.resume()
+
+    }
 }//=======

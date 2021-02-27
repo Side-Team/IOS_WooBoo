@@ -9,6 +9,7 @@ import UIKit
 import KakaoSDKAuth     // 카카오 로그인
 import KakaoSDKUser     // 카카오 유저정보
 import GoogleSignIn     // 구글 로그인
+import Firebase
 
 class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectProtocol {
     func itemDownloaded(items: NSArray) {
@@ -39,20 +40,20 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         checkAutoLogin()
         
         
-//        GIDSignIn.sharedInstance()?.presentingViewController = self// 로그인화면 불러오기
-//        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
-//        
-//        let user = AppDelegate.user
-//        
-//        print("user: ", user?.profile.name!)
-//        
-//        self.lblName.text = user?.profile.name
-//       
-//        self.lblEmail.text = user?.profile.email
+        GIDSignIn.sharedInstance()?.presentingViewController = self// 로그인화면 불러오기
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
+        
+        let user = AppDelegate.user
+        
+        print("user: ", user?.profile.name!)
+        
+        self.lblName.text = user?.profile.name
+       
+        self.lblEmail.text = user?.profile.email
         
         
-//        print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
-//        print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
+        print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
+        print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
     }
     
     // protocol

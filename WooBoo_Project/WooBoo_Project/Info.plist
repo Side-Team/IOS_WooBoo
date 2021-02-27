@@ -33,6 +33,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.794312377705-1gikisaoaufgaelm1nh8s0nb5q9malr7</string>
+				<string>kakaobce667d5ee89a4181a45019426ad7a2d://kakaolink</string>
 			</array>
 		</dict>
 	</array>
@@ -86,6 +87,13 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+		<string>kakao{bce667d5ee89a4181a45019426ad7a2d}://kakaolink${androidExecutionParams}</string>
+		<string>kakao{bce667d5ee89a4181a45019426ad7a2d}://kakaolink${iosExecutionParams}</string>
 	</array>
 </dict>
 </plist>

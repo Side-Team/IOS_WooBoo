@@ -85,6 +85,15 @@ PODS:
     - KakaoSDKCommon (= 2.3.2)
   - KakaoSDKCommon (2.3.2):
     - Alamofire (~> 5.1)
+  - KakaoSDKLink (2.3.2):
+    - KakaoSDKCommon (= 2.3.2)
+    - KakaoSDKTemplate (= 2.3.2)
+  - KakaoSDKTalk (2.3.2):
+    - KakaoSDKAuth (= 2.3.2)
+    - KakaoSDKCommon (= 2.3.2)
+    - KakaoSDKTemplate (= 2.3.2)
+  - KakaoSDKTemplate (2.3.2):
+    - KakaoSDKCommon (= 2.3.2)
   - KakaoSDKUser (2.3.2):
     - KakaoSDKAuth (= 2.3.2)
     - KakaoSDKCommon (= 2.3.2)
@@ -102,6 +111,8 @@ DEPENDENCIES:
   - GoogleSignIn
   - KakaoSDKAuth
   - KakaoSDKCommon
+  - KakaoSDKLink
+  - KakaoSDKTalk
   - KakaoSDKUser
 
 SPEC REPOS:
@@ -123,6 +134,9 @@ SPEC REPOS:
     - GTMSessionFetcher
     - KakaoSDKAuth
     - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
     - KakaoSDKUser
     - nanopb
     - PromisesObjC
@@ -145,10 +159,13 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   KakaoSDKAuth: 8db7c7a0561b137477bb984bbdab2eeda7745d23
   KakaoSDKCommon: 4bb3981337921686948b7be094590f2edec5df87
+  KakaoSDKLink: 084c39c8ec24ad902ae12c7f58ab5abee1a73e89
+  KakaoSDKTalk: 29c318667d51bbc2b6271779167e4fddd8ecb598
+  KakaoSDKTemplate: 51a1d3f294f460be43b472a674eaf4f2ec2ac36a
   KakaoSDKUser: e6c0017a41e87a94bdcd873d0178ad75be8126d4
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 4916d9ea6aa22a1be66cd8bd29236c10fb610897
+PODFILE CHECKSUM: e06d49d258e7128d567d62501d75fdc6eb8b5bd5
 
 COCOAPODS: 1.10.1

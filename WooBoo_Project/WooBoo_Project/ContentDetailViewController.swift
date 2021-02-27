@@ -40,17 +40,28 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     
     func return_select_question_countSelector(countSelector: Int, cnts: [Int]) {
         print("countSelector : \(countSelector)")
+        
+        self.countSelector = countSelector + 1
+        self.cnts = cnts
+        
+        selectedButton()
+        
         lblTotalSelector.text = "총 \(countSelector)명이 참여했습니다"
         
         print("cnts : \(cnts)")
         
         // 민규한테 받은 값 선택에 넣어서 완성하기
         
-        outlet_btn1.setTitle("1번 선택 (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
+        outlet_btn1.setTitle("10글자면어느정도? (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
         outlet_btn2.setTitle("2번 선택 (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
         outlet_btn3.setTitle("3번 선택 (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
         outlet_btn4.setTitle("4번 선택 (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
         outlet_btn5.setTitle("5번 선택 (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
+        
+        print("?????????")
+        
+        findMaxIndex()
+        setFocus()
 
     }
     
@@ -87,6 +98,10 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     var sqSelection = 0
     var like_SwitchNum = -1
     var report_SwitchNum = -1
+    var countSelector = 0
+    var cnts = [Int]()
+    
+    
     let customColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
     
         
@@ -130,9 +145,6 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         selectModel2.downloadItems(funcName: "check_like", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_like.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
         selectModel2.downloadItems(funcName: "check_report", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_report.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
         
-
-
-
     }
     
     
@@ -176,24 +188,24 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     
     @IBAction func btnShare(_ sender: UIButton) {
 //        kakaoTalkMessage()
-        guard MFMessageComposeViewController.canSendText() else{
-            print("SMS services are not avaliable")
-            return
-
-        }
-        let composeViewController = MFMessageComposeViewController()
-        composeViewController.messageComposeDelegate = self
-        composeViewController.recipients = ["123456789"]
-        composeViewController.body = """
-test
-test
-test
-test
-test
-"""
-        present(composeViewController, animated: true, completion: nil)
+//        guard MFMessageComposeViewController.canSendText() else{
+//            print("SMS services are not avaliable")
+//            return
+//
+//        }
+//        let composeViewController = MFMessageComposeViewController()
+//        composeViewController.messageComposeDelegate = self
+//        composeViewController.recipients = ["123456789"]
+//        composeViewController.body = """
+//test
+//test
+//test
+//test
+//test
+//"""
+//        present(composeViewController, animated: true, completion: nil)
         
-//        share()
+        share()
         
         
     }
@@ -282,30 +294,35 @@ test
         txtTitle.layer.cornerRadius = 15
         
         // Title에 민규가 준 값 넣기
-        outlet_btn1.setTitle("1번 선택", for: .normal)
+        outlet_btn1.setTitle("10글자면어느정도지", for: .normal)
         outlet_btn1.layer.borderWidth = 2
         outlet_btn1.layer.cornerRadius = 15
         outlet_btn1.layer.borderColor = customColor.cgColor
+        outlet_btn1.setTitleColor(customColor, for: .normal)
 
         outlet_btn2.setTitle("2번 선택", for: .normal)
         outlet_btn2.layer.borderWidth = 2
         outlet_btn2.layer.cornerRadius = 15
         outlet_btn2.layer.borderColor = customColor.cgColor
-        
+        outlet_btn2.setTitleColor(customColor, for: .normal)
+
         outlet_btn3.setTitle("3번 선택", for: .normal)
         outlet_btn3.layer.borderWidth = 2
         outlet_btn3.layer.cornerRadius = 15
         outlet_btn3.layer.borderColor = customColor.cgColor
-        
+        outlet_btn3.setTitleColor(customColor, for: .normal)
+
         outlet_btn4.setTitle("4번 선택", for: .normal)
         outlet_btn4.layer.borderWidth = 2
         outlet_btn4.layer.cornerRadius = 15
         outlet_btn4.layer.borderColor = customColor.cgColor
-        
+        outlet_btn4.setTitleColor(customColor, for: .normal)
+
         outlet_btn5.setTitle("5번 선택", for: .normal)
         outlet_btn5.layer.borderWidth = 2
         outlet_btn5.layer.cornerRadius = 15
         outlet_btn5.layer.borderColor = customColor.cgColor
+        outlet_btn5.setTitleColor(customColor, for: .normal)
 
     }
     
@@ -327,24 +344,29 @@ test
             
         case 1:
             outlet_btn1.backgroundColor = customColor
-            outlet_btn1.setTitleColor(.white, for: .normal)
             outlet_btn1.titleLabel?.font = UIFont(name: outlet_btn1.titleLabel!.font.fontName, size: 20)
+            outlet_btn1.setTitleColor(.white, for: .normal)
+
         case 2:
             outlet_btn2.backgroundColor = customColor
-            outlet_btn2.setTitleColor(.white, for: .normal)
             outlet_btn2.titleLabel?.font = UIFont(name: outlet_btn2.titleLabel!.font.fontName, size: 20)
+            outlet_btn2.setTitleColor(.white, for: .normal)
+
         case 3:
             outlet_btn3.backgroundColor = customColor
-            outlet_btn3.setTitleColor(.white, for: .normal)
             outlet_btn3.titleLabel?.font = UIFont(name: outlet_btn3.titleLabel!.font.fontName, size: 20)
+            outlet_btn3.setTitleColor(.white, for: .normal)
+
         case 4:
             outlet_btn4.backgroundColor = customColor
-            outlet_btn4.setTitleColor(.white, for: .normal)
             outlet_btn4.titleLabel?.font = UIFont(name: outlet_btn4.titleLabel!.font.fontName, size: 20)
+            outlet_btn4.setTitleColor(.white, for: .normal)
+
         default:
             outlet_btn5.backgroundColor = customColor
-            outlet_btn5.setTitleColor(.white, for: .normal)
             outlet_btn5.titleLabel?.font = UIFont(name: outlet_btn5.titleLabel!.font.fontName, size: 20)
+            outlet_btn5.setTitleColor(.white, for: .normal)
+
 
         }
     }
@@ -375,11 +397,49 @@ test
     }
     
     func clickButtonAction(clickNum : Int){
-        let insertModel = LMW_InsertModel()
-        insertModel.insert_sqSelection(questions_qSeqno: 20, sqSelection: clickNum)
         
-        sqSelection = clickNum
-        selectedButton()
+        let alert = UIAlertController(title: "1번", message: "한번 선택하면 수정할 수 없습니다.\n선택하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+//        alert.view.frame.size.width = view.frame.width - 100
+//        alert.view.frame.size.height = view.frame.height - 100
+// 
+        let okAction = UIAlertAction(title: "선택", style: UIAlertAction.Style.destructive, handler: { [self]ACTION in
+            let insertModel = LMW_InsertModel()
+            insertModel.insert_sqSelection(questions_qSeqno: 20, sqSelection: clickNum)
+
+            sqSelection = clickNum
+            selectedButton()
+            
+            lblTotalSelector.text = "총 \(countSelector + 1)명이 참여했습니다"
+            
+            cnts[clickNum - 1] += 1
+            
+            outlet_btn1.setTitle("1번 선택 (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn2.setTitle("2번 선택 (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn3.setTitle("3번 선택 (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn4.setTitle("4번 선택 (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn5.setTitle("5번 선택 (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
+
+            findMaxIndex()
+            setFocus()
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default, handler: nil)
+        
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        //컨텐트 뷰 영역에 들어갈 컨트롤러를 생성하고, 알림창에 등록한다.
+        
+        let contentVC = ImageViewController()
+
+        // 뷰 컨트롤러 알림창의 콘텐츠 뷰 컨트롤러 속성에 등록한다.
+        
+        alert.setValue(contentVC, forKeyPath: "contentViewController")
+ 
+        present(alert, animated: true, completion: nil)
+        
         
     }
     
@@ -520,8 +580,63 @@ test
 //        print("Tap")
 //    }
 
-    func getPercetage(){
+    func findMaxIndex(){
         
+        var maxIndex = 0
+        
+        for i in 0..<cnts.count{
+            if i == 0{
+                maxIndex = 0
+            }else if cnts[i] > cnts[i - 1]{
+                if cnts[i] > cnts[0]{
+                    maxIndex = i
+                }
+                if cnts[i] == cnts[0]{
+                    maxIndex = -1
+                }
+            }
+        }
+        
+        print("maxIndex : \(maxIndex)")
+        
+        switch maxIndex{
+        case 0:
+            outlet_btn1.setTitleColor(.black, for: .normal)
+            outlet_btn1.titleLabel?.font = UIFont(name: outlet_btn1.titleLabel!.font.fontName, size: 20)
+        case 1:
+            outlet_btn2.setTitleColor(.black, for: .normal)
+            outlet_btn2.titleLabel?.font = UIFont(name: outlet_btn2.titleLabel!.font.fontName, size: 20)
+        case 2:
+            outlet_btn3.setTitleColor(.black, for: .normal)
+            outlet_btn3.titleLabel?.font = UIFont(name: outlet_btn3.titleLabel!.font.fontName, size: 20)
+        case 3:
+            outlet_btn4.setTitleColor(.black, for: .normal)
+            outlet_btn4.titleLabel?.font = UIFont(name: outlet_btn4.titleLabel!.font.fontName, size: 20)
+        case 4:
+            outlet_btn5.setTitleColor(.black, for: .normal)
+            outlet_btn5.titleLabel?.font = UIFont(name: outlet_btn5.titleLabel!.font.fontName, size: 20)
+
+
+
+        default: break
+  
+        }
+    }
+    
+    func setFocus(){
+        
+        print("setFocus")
+        // Store text change NSMutableAttributedString Type
+        var attributedStr = NSMutableAttributedString(string: outlet_btn1.titleLabel!.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (outlet_btn1.titleLabel!.text! as NSString).range(of: "(\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)"))
+        attributedStr = NSMutableAttributedString(string: outlet_btn2.titleLabel!.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (outlet_btn2.titleLabel!.text! as NSString).range(of: "(\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)"))
+        attributedStr = NSMutableAttributedString(string: outlet_btn3.titleLabel!.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (outlet_btn3.titleLabel!.text! as NSString).range(of: "(\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)"))
+        attributedStr = NSMutableAttributedString(string: outlet_btn4.titleLabel!.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (outlet_btn4.titleLabel!.text! as NSString).range(of: "(\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)"))
+        attributedStr = NSMutableAttributedString(string: outlet_btn5.titleLabel!.text!)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (outlet_btn5.titleLabel!.text! as NSString).range(of: "(\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)"))
     }
 
 

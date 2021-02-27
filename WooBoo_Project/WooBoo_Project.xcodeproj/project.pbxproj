@@ -30,6 +30,11 @@
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
+		286A64FD25EA7C9F008F1F9D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A64FC25EA7C9F008F1F9D /* ImageViewController.swift */; };
+		286A650125EA7EA1008F1F9D /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 286A64FF25EA7EA1008F1F9D /* image1.jpeg */; };
+		286A650225EA7EA1008F1F9D /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 286A650025EA7EA1008F1F9D /* image2.jpeg */; };
+		286A652825EAA91D008F1F9D /* MyPageQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */; };
+		286A653025EAAF67008F1F9D /* MyQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */; };
 		287840DD25E7537C0020F7AD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840DC25E7537C0020F7AD /* CategoryViewController.swift */; };
 		287840EE25E7FD970020F7AD /* kakao_login_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */; };
 		287840F125E802DA0020F7AD /* LMW_InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840F025E802DA0020F7AD /* LMW_InsertModel.swift */; };
@@ -93,6 +98,11 @@
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
+		286A64FC25EA7C9F008F1F9D /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		286A64FF25EA7EA1008F1F9D /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
+		286A650025EA7EA1008F1F9D /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
+		286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageQTableViewController.swift; sourceTree = "<group>"; };
+		286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQTableViewCell.swift; sourceTree = "<group>"; };
 		287840DC25E7537C0020F7AD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_login_medium_narrow.png; sourceTree = "<group>"; };
 		287840F025E802DA0020F7AD /* LMW_InsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_InsertModel.swift; sourceTree = "<group>"; };
@@ -164,6 +174,9 @@
 				3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */,
 				862F5F9425E8E8780046B5ED /* MypageViewController.swift */,
 				21D3C27025E93D5D005262D9 /* ChangeImageController.swift */,
+				286A64FC25EA7C9F008F1F9D /* ImageViewController.swift */,
+				286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */,
+				286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -237,6 +250,8 @@
 		3C1FEAF225E68183008C646E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				286A64FF25EA7EA1008F1F9D /* image1.jpeg */,
+				286A650025EA7EA1008F1F9D /* image2.jpeg */,
 				21D3C26C25E93963005262D9 /* icon_chat.png */,
 				21D3C26925E93922005262D9 /* icon_match.png */,
 				21D3C26625E938F8005262D9 /* icon_user.png */,
@@ -374,11 +389,13 @@
 				3C1FEAFF25E68197008C646E /* icon_travel.png in Resources */,
 				21D3C25325E91A5A005262D9 /* img_Depressed.png in Resources */,
 				3C1FEB0825E6A6ED008C646E /* icon_19.png in Resources */,
+				286A650225EA7EA1008F1F9D /* image2.jpeg in Resources */,
 				869C1CA625E3A29900554CEC /* LaunchScreen.storyboard in Resources */,
 				3C1FEB0425E68197008C646E /* icon_marry.png in Resources */,
 				21D3C25925E91A5A005262D9 /* img_Pleasure.png in Resources */,
 				21D3C25725E91A5A005262D9 /* img_Happy.png in Resources */,
 				21D3C26725E938F8005262D9 /* icon_user.png in Resources */,
+				286A650125EA7EA1008F1F9D /* image1.jpeg in Resources */,
 				21D3C25425E91A5A005262D9 /* img_Embarrassment.png in Resources */,
 				869C1CA325E3A29900554CEC /* Assets.xcassets in Resources */,
 				21D3C26D25E93963005262D9 /* icon_chat.png in Resources */,
@@ -467,8 +484,11 @@
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,
 				21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */,
+				286A652825EAA91D008F1F9D /* MyPageQTableViewController.swift in Sources */,
+				286A653025EAAF67008F1F9D /* MyQTableViewCell.swift in Sources */,
 				284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */,
 				3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */,
+				286A64FD25EA7C9F008F1F9D /* ImageViewController.swift in Sources */,
 				869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */,
 				287840DD25E7537C0020F7AD /* CategoryViewController.swift in Sources */,
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,

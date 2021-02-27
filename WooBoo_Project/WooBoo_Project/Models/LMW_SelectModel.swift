@@ -17,7 +17,7 @@ protocol Get_questions_views: class {
 }
 
 protocol Get_select_question_countSelector: class {
-    func return_select_question_countSelector(countSelector: Int)
+    func return_select_question_countSelector(countSelector: Int, cnts : [Int])
 }
 
 protocol Get_questions_qSeqno: class {
@@ -183,10 +183,12 @@ class LMW_SelectModel{
     }
 
     func get_countSelector(_ data: Data){
+        print("get_countSelector!!!!!!!!!!!!!")
   
         print("get_countSelector : ", urlPath)
         
         var jsonResult = NSArray()
+        var datas = [Int]()
         
         do{
             jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
@@ -201,16 +203,29 @@ class LMW_SelectModel{
         for i in 0..<jsonResult.count{
             jsonElement =  jsonResult[i] as! NSDictionary
             
-            if let jsp_count = jsonElement["count"] as? String{
+            if let jsp_count = jsonElement["count"] as? String,
+               let jsp_cnt1 = jsonElement["cnt1"] as? String,
+               let jsp_cnt2 = jsonElement["cnt2"] as? String,
+               let jsp_cnt3 = jsonElement["cnt3"] as? String,
+               let jsp_cnt4 = jsonElement["cnt4"] as? String,
+               let jsp_cnt5 = jsonElement["cnt5"] as? String{
                 count = Int(jsp_count)!
-                print("count : \(count)")
+                datas.append(Int(jsp_cnt1)!)
+                datas.append(Int(jsp_cnt2)!)
+                datas.append(Int(jsp_cnt3)!)
+                datas.append(Int(jsp_cnt4)!)
+                datas.append(Int(jsp_cnt5)!)
+
+                print("get_countSelector count : \(count)")
+                print("datas : \(datas)")
+
 
 
             }
         }
         DispatchQueue.main.async(execute: {() -> Void in
-            self.delegate4.return_select_question_countSelector(countSelector: count)
-            print("DispatchQueue")
+            self.delegate4.return_select_question_countSelector(countSelector: count, cnts: datas)
+            print("DispatchQueue datas : \(datas)")
         })
     }
     

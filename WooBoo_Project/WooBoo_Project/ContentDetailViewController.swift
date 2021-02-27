@@ -11,9 +11,11 @@ import KakaoSDKAuth
 import KakaoSDKLink
 import KakaoSDKTemplate
 import KakaoSDKCommon
+import MessageUI
 
 class ContentDetailViewController: UIViewController, return_sqSelection,  Get_resgister_count, Get_select_question_countSelector, Get_like_count, Get_report_count {
     
+    // ------------------프로토콜-------------------
     func return_report_count(count: Int) {
         report_SwitchNum = count
         if count == 1{
@@ -36,9 +38,20 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
 
     }
     
-    func return_select_question_countSelector(countSelector: Int) {
+    func return_select_question_countSelector(countSelector: Int, cnts: [Int]) {
         print("countSelector : \(countSelector)")
-        lblTotalSelector.text = "\(countSelector)명의 선택!"
+        lblTotalSelector.text = "총 \(countSelector)명이 참여했습니다"
+        
+        print("cnts : \(cnts)")
+        
+        // 민규한테 받은 값 선택에 넣어서 완성하기
+        
+        outlet_btn1.setTitle("1번 선택 (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
+        outlet_btn2.setTitle("2번 선택 (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
+        outlet_btn3.setTitle("3번 선택 (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
+        outlet_btn4.setTitle("4번 선택 (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
+        outlet_btn5.setTitle("5번 선택 (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
+
     }
     
     func return_register_count(count: Int, views: Int) {
@@ -66,6 +79,11 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         print("sqSelection : \(sqSelection)")
     }
     
+    // ------------------------------------------
+
+    
+    
+    // ------------------변수 및 outlet-------------------
     var sqSelection = 0
     var like_SwitchNum = -1
     var report_SwitchNum = -1
@@ -86,13 +104,13 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     @IBOutlet weak var outlet_btn4: UIButton!
     @IBOutlet weak var outlet_btn5: UIButton!
     
+    // ------------------------------------------
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-       
-
-
+//        view.addSubview(outlet_BtnShare)
+//        outlet_BtnShare.addTarget(self, action: #selector(didTapSendButton(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,7 +134,9 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
 
 
     }
-
+    
+    
+    // ------------------Actions-------------------
     @IBAction func btnLike(_ sender: UIButton) {
 
         print("btnLike 값 : ", like_SwitchNum)
@@ -156,7 +176,26 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     
     @IBAction func btnShare(_ sender: UIButton) {
 //        kakaoTalkMessage()
-        share()
+        guard MFMessageComposeViewController.canSendText() else{
+            print("SMS services are not avaliable")
+            return
+
+        }
+        let composeViewController = MFMessageComposeViewController()
+        composeViewController.messageComposeDelegate = self
+        composeViewController.recipients = ["123456789"]
+        composeViewController.body = """
+test
+test
+test
+test
+test
+"""
+        present(composeViewController, animated: true, completion: nil)
+        
+//        share()
+        
+        
     }
     
     @IBAction func btnReport(_ sender: UIButton) {
@@ -223,6 +262,10 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         clickButtonAction(clickNum: 5)
     }
     
+    // ------------------------------------------
+
+    
+    // func -------------------------------------
     func setDesign(){
         selectedButton()
         
@@ -445,7 +488,64 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         // 공유하기 기능 중 제외할 기능이 있을 때 사용
         //        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
         self.present(activityVC, animated: true, completion: nil)
+        
+        activityVC.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
+            if completed { self.showToast(message: "share success")
+                
+            }else { self.showToast(message: "share cancel") }
+            if let shareError = error {
+                self.showToast(message: "\(shareError.localizedDescription)")
+                
+            }
+            
+        }
+
+    }
+    
+    func showToast(message : String) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height/2, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: { toastLabel.alpha = 0.0 }, completion: {(isCompleted) in toastLabel.removeFromSuperview() })
+        
+    }
+    
+//    @objc func didTapShareButton(_ sender: UIButton){
+//        print("Tap")
+//    }
+
+    func getPercetage(){
+        
     }
 
-    
+
+}
+
+extension ContentDetailViewController: MFMessageComposeViewControllerDelegate{
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch result{
+        case .cancelled:
+            print("cancelled")
+            dismiss(animated: true, completion: nil)
+
+        case .sent:
+            print("sent")
+            dismiss(animated: true, completion: nil)
+
+        case .failed:
+            print("failed")
+            dismiss(animated: true, completion: nil)
+            
+        @unknown default:
+            print("default")
+            dismiss(animated: true, completion: nil)
+
+        }
+    }
 }

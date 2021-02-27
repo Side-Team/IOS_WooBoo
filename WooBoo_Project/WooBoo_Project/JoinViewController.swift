@@ -17,7 +17,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
     @IBOutlet weak var lblpwCheck: UILabel!
     
     let joinModel = JoinModel()
-    var emailCheck:Int = 2
+    var emailCheck:Int = 0
     var emailCount = 0
     
     
@@ -139,7 +139,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
             present(resultAlert, animated: true, completion: nil)
             
         }else{  // 중복확인을 클릭함
-            
+            print("중복확인을 클릭함 이메일카운트 : \(emailCount)")
             // 중복확인을 진행
             if emailCheck == 1 { // 같은 이메일이 있음
                 let resultAlert = UIAlertController(title: "실패", message: "중복된 이메일이 있습니다.", preferredStyle: UIAlertController.Style.alert)
@@ -156,7 +156,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
                     let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                     nilAlert.addAction(nilAction)
                     present(nilAlert, animated: true, completion: nil)
-                    print("비밀번호 또는 이메일 실패")
+                    print("비밀번호 실패")
                 }else{  // 정규식까지 완료
                     print("정규식까지 완료")
                     // 비밀번호와 비밀번호확인 필드 값 확인

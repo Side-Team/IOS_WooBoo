@@ -95,14 +95,41 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol 
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "sgDetail"{
+            let cell = sender as! UITableViewCell
+            let indexPath = self.listViewTable.indexPath(for: cell)
+            let detailView = segue.destination as! ContentDetailViewController
+            
+            //let item: Students = studentsList[(indexPath! as NSIndexPath).row]
+            let item: categoryDBModel = feedItem[indexPath!.row] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
+            
+            let qSeqno = item.qSeqno!
+            let user_uSeqno = item.user_uSeqno!
+            let qTitle = item.qTitle!
+            let qSelection1 = item.qSelection1!
+            let qSelection2 = item.qSelection2!
+            let qSelection3 = item.qSelection3!
+            let qSelection4 = item.qSelection4!
+            let qSelection5 = item.qSelection5!
+            let qCategory = item.qCategory!
+            let qInsertDate = item.qInsertDate!
+            let qDeleteDate = item.qDeleteDate!
+            let qImageFileName1 = item.qImageFileName1!
+            let qImageFileName2 = item.qImageFileName2!
+            let qImageFileName3 = item.qImageFileName3!
+            let qImageFileName4 = item.qImageFileName4!
+            let qImageFileName5 = item.qImageFileName5!
+            print(qSeqno)
+            
+            // detailView에서 받는걸 해줘야 사용 가능
+            detailView.receiveItems(qSeqno, user_uSeqno, qTitle, qSelection1, qSelection2, qSelection3, qSelection4, qSelection5, qCategory, qInsertDate, qDeleteDate, qImageFileName1, qImageFileName2, qImageFileName3, qImageFileName4, qImageFileName5)
     }
-    */
+    
 
+}
 }

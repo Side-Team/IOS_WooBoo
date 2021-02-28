@@ -723,9 +723,6 @@
                                     <rect key="frame" x="35" y="107" width="52" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="테스트중"/>
-                                    <connections>
-                                        <segue destination="lUU-zO-asB" kind="show" id="xTc-me-XsA"/>
-                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -754,6 +751,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="lUU-zO-asB" kind="show" identifier="sgDetail" id="MT2-Jh-dGg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1511,7 +1511,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F7S-Ed-KmD"/>
+        <segue reference="MT2-Jh-dGg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>

@@ -1,23 +1,28 @@
 //
-//  userDeleteModel.swift
+//  userUpdateModel.swift
 //  WooBoo_Project
 //
-//  Created by 김보람 on 2021/02/26.
+//  Created by 김보람 on 2021/02/28.
 //
 
 import Foundation
 
-class userDeleteModel: NSObject{
+class userUpdateModel: NSObject{
     
-    var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_userDelete.jsp?uEmail=\(Share.userID)"
+    var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_userUpdate.jsp?uEmail=\(Share.userID)"
     
-    func insertItems() -> Bool{
+    func insertItems(pw: String, imgName: String) -> Bool{
         var result: Bool = true
+        let urlAdd = "&pw=\(pw)&imgName=\(imgName)"
+        urlPath = urlPath + urlAdd
         
+        print("urlPath \(urlPath)")
+        //한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         let url: URL = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        print(urlPath)
+        
         let task = defaultSession.dataTask(with: url){(data, response, error) in
             if error != nil{
                 print("Failed to update data")
@@ -30,4 +35,5 @@ class userDeleteModel: NSObject{
         task.resume()
         return result
     }
-}
+    
+}//======

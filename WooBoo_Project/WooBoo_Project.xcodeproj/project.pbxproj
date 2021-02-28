@@ -27,6 +27,7 @@
 		21D3C26A25E93923005262D9 /* icon_match.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26925E93922005262D9 /* icon_match.png */; };
 		21D3C26D25E93963005262D9 /* icon_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26C25E93963005262D9 /* icon_chat.png */; };
 		21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3C27025E93D5D005262D9 /* ChangeImageController.swift */; };
+		21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */; };
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
@@ -95,6 +96,7 @@
 		21D3C26925E93922005262D9 /* icon_match.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_match.png; sourceTree = "<group>"; };
 		21D3C26C25E93963005262D9 /* icon_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_chat.png; sourceTree = "<group>"; };
 		21D3C27025E93D5D005262D9 /* ChangeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageController.swift; sourceTree = "<group>"; };
+		21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userUpdateModel.swift; sourceTree = "<group>"; };
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				3C1FEB1C25E8DFDC008C646E /* CategoryModel.swift */,
 				3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */,
 				21D3C26125E91EEE005262D9 /* userDeleteModel.swift */,
+				21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
 				21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */,
+				21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */,
 				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,

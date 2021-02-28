@@ -29,6 +29,7 @@ class BalanceGameSelectController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         design()
+        
 
     }
     

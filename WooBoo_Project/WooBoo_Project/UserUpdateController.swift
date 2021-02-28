@@ -27,12 +27,15 @@ class UserUpdateController: UIViewController{
         lblEmail.isEnabled = false
         lblWooboo.text = "우부 \(Share.uSeqno)"
         design()
-        userImg.image = UIImage(named: Share.uImageFileName)
+        
         setGestureRecognizer()
         print("정보수정\(Share.uImageFileName)")
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        userImg.image = UIImage(named: Share.uImageFileName)
+    }
   
     
     // 회원탈퇴 버튼
@@ -63,12 +66,12 @@ class UserUpdateController: UIViewController{
     // 저장 눌렀을때
     @IBAction func UserUpdate(_ sender: UIButton) {
         let pw = lblPasswordCheck.text
-        let imgName = Share.uImageFileName
+        let uImageFileName = Share.uImageFileName
         
         CheckPw()
         
         let userUpdate = userUpdateModel()
-        let result = userUpdate.insertItems(pw: pw!, imgName: imgName)
+        let result = userUpdate.insertItems(pw: pw!, uImageFileName: uImageFileName)
         if result == true{
             let resultAlert = UIAlertController(title: "완료", message: "수정이 완료 되었습니다", preferredStyle: UIAlertController.Style.alert)
             let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in

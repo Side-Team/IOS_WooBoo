@@ -11,9 +11,9 @@ class userUpdateModel: NSObject{
     
     var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_userUpdate.jsp?uEmail=\(Share.userID)"
     
-    func insertItems(pw: String, imgName: String) -> Bool{
+    func insertItems(pw: String, uImageFileName: String) -> Bool{
         var result: Bool = true
-        let urlAdd = "&pw=\(pw)&imgName=\(imgName)"
+        let urlAdd = "&pw=\(pw)&uImageFileName=\(uImageFileName)"
         urlPath = urlPath + urlAdd
         
         print("urlPath \(urlPath)")

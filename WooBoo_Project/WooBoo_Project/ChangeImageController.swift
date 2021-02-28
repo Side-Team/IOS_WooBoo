@@ -35,10 +35,8 @@ class ChangeImageController: UIViewController {
     
     
     @IBAction func btnSelect(_ sender: UIButton) {
-        Share.uImageFileName = clickImageName
-        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "userUpdate")
-                    vcName?.modalPresentationStyle = .fullScreen
-                    self.present(vcName!, animated: true, completion: nil)
+        Share.uImageFileName = clickImageName 
+        self.navigationController?.popViewController(animated: true)
     }
     
     

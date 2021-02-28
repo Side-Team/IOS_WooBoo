@@ -92,7 +92,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     
     // ------------------------------------------
     
-    // --------------- 테이블에서 받아온 값 -----------------
+    // --------------- 02.28 민규 / 테이블에서 받아온 값 -----------------
     // 받아올 값을 담아둘 변수 설정
     var receiveqSeqno = ""
     var receiveuser_qSeqno = ""
@@ -167,7 +167,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
     }
     
-    // 선택한 값 받아와서 넣어주기
+    // --------------- 02.28 민규 / 선택한 값 받아주기 -----------------
     func receiveItems(_ qSeqno: String, _ user_qSeqno: String, _ qTitle: String, _ qSelection1: String,  _ qSelection2: String,  _ qSelection3: String,  _ qSelection4: String,  _ qSelection5: String, _ qCategory: String, _ qInsertDate: String, _ qDeleteDate: String, _ qImageFileName1: String,  _ qImageFileName2: String,  _ qImageFileName3: String,  _ qImageFileName4: String,  _ qImageFileName5: String){
         receiveqSeqno = qSeqno
         receiveuser_qSeqno = user_qSeqno

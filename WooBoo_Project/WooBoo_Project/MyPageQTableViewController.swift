@@ -10,6 +10,8 @@ import UIKit
 class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     func return_MyQuestions(myQuestions: NSArray) {
         self.myQuestions = myQuestions
+        let item: categoryDBModel = myQuestions[0] as! categoryDBModel
+        print("MyPageQTableViewController : \(String(describing: item.qSeqno))")
         self.tvMyQuestions.reloadData()
     }
     
@@ -18,6 +20,7 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     
     let cellName = "MyQTCell" 
     var myQuestions: NSArray = NSArray()
+    var qSeqno = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +57,31 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! MyQTableViewCell
 
+        
+        print("indexPath.row : \(indexPath.row)")
         // Configure the cell...
         let item: categoryDBModel = myQuestions[indexPath.row] as! categoryDBModel
+        qSeqno = Int(item.qSeqno!)!
+        
         cell.lblTitle.text = "\(item.qTitle!)"
         cell.lblInsertDate.text = "\(item.qInsertDate!)"
+        cell.outlet_BtnDelete.addTarget(self, action: #selector(clickDeleteBtn(_:)), for: .touchUpInside)
         print("feedItem")
         
+        print("item.qSeqno : \(String(describing: item.qSeqno))")
+        
         return cell
+    }
+    
+    @objc func clickDeleteBtn(_ sender: UIButton){
+        print("clickDeleteBtn.qSeqno : \(qSeqno)")
+
+        let updateModel = LMW_UpdateModel()
+        updateModel.update_MyQuestions(qSeqno: qSeqno)
+        
+//        self.tvMyQuestions.reloadData()
+        
+        print("clickDeleteBtn")
     }
     
 

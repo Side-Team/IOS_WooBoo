@@ -34,5 +34,5 @@ class LMW_DeleteModel:NSObject{
         task.resume()
         return result
     }
-    
+
 }//=====

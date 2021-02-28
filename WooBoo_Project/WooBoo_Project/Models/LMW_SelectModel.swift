@@ -350,9 +350,18 @@ class LMW_SelectModel{
                 query.qImageFileName4 = qImageFileName4
                 query.qImageFileName5 = qImageFileName5
                
-            
+                
+                print("---------------------------------------")
+                print("-------선택한 셀 : \(qSeqno)-------------")
+                print("---------------------------------------")
+
             }
             myQuestions.add(query)
+            
+            let item: categoryDBModel = myQuestions[0] as! categoryDBModel
+            print("---------------------------------------")
+            print("-------myQuestions : \(String(describing: item.qSeqno))-------------")
+            print("---------------------------------------")
         }
         DispatchQueue.main.async(execute: {() -> Void in
             

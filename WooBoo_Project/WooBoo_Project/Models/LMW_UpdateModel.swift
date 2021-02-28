@@ -32,4 +32,25 @@ class LMW_UpdateModel: NSObject{
         task.resume()
     }
     
+    func update_MyQuestions(qSeqno : Int){
+        var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Update_qDeleteDate.jsp"
+        let urlAdd = "?qSeqno=\(qSeqno)&user_uSeqno=\(Share.uSeqno)"
+        urlPath = urlPath + urlAdd
+        
+        //한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to delete data")
+            }else{
+                print("Data is delete!")
+            }
+        }
+        task.resume()
+    }
+    
 }//======

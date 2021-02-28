@@ -33,9 +33,11 @@ class categoryDBModel: NSObject{
         
     }
     
-    init(qTitle : String, qSelection1 : String, qSelection2 : String, qSelection3 : String, qSelection4 : String, qSelection5 : String,
+    init(qSeqno : String, user_uSeqno : String, qTitle : String, qSelection1 : String, qSelection2 : String, qSelection3 : String, qSelection4 : String, qSelection5 : String,
          qCategory : String, qInsertDate : String, qDeleteDate : String, qImageFileName1 : String, qImageFileName2 : String, qImageFileName3 : String, qImageFileName4 : String, qImageFileName5 : String) {
         
+        self.qSeqno = qSeqno
+        self.user_uSeqno = user_uSeqno
         self.qTitle = qTitle
         self.qSelection1 = qSelection1
         self.qSelection2 = qSelection2

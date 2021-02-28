@@ -53,7 +53,9 @@ class CategoryModel: NSObject{
             jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
             let query = categoryDBModel()
             
-            if let qTitle = jsonElement["qTitle"] as? String,
+            if let qSeqno = jsonElement["qSeqno"] as? String,
+                let user_uSeqno = jsonElement["user_uSeqno"] as? String,
+                let qTitle = jsonElement["qTitle"] as? String,
                let qSelection1 = jsonElement["qSelection1"] as? String,
                let qSelection2 = jsonElement["qSelection2"] as? String,
                let qSelection3 = jsonElement["qSelection3"] as? String,
@@ -67,6 +69,8 @@ class CategoryModel: NSObject{
                let qImageFileName3 = jsonElement["qImageFileName3"] as? String,
                let qImageFileName4 = jsonElement["qImageFileName4"] as? String,
                let qImageFileName5 = jsonElement["qImageFileName5"] as? String{
+                query.qSeqno = qSeqno
+                query.user_uSeqno = user_uSeqno
                 query.qTitle = qTitle
                 query.qSelection1 = qSelection1
                 query.qSelection2 = qSelection2

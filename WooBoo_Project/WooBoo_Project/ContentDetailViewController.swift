@@ -91,9 +91,29 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     }
     
     // ------------------------------------------
+    
+    // --------------- 02.28 민규 / 테이블에서 받아온 값 -----------------
+    // 받아올 값을 담아둘 변수 설정
+    var receiveqSeqno = ""
+    var receiveuser_qSeqno = ""
+    var receiveqTitle = ""
+    var receiveqSelection1 = ""
+    var receiveqSelection2 = ""
+    var receiveqSelection3 = ""
+    var receiveqSelection4 = ""
+    var receiveqSelection5 = ""
+    var receiveqCategory = ""
+    var receiveqInsertDate = ""
+    var receiveqDeleteDate = ""
+    var receiveqImageFileName1 = ""
+    var receiveqImageFileName2 = ""
+    var receiveqImageFileName3 = ""
+    var receiveqImageFileName4 = ""
+    var receiveqImageFileName5 = ""
+    
+    
+    // -------------------------------------------------
 
-    
-    
     // ------------------변수 및 outlet-------------------
     var sqSelection = 0
     var like_SwitchNum = -1
@@ -144,6 +164,27 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         selectModel2.downloadItems(funcName: "get_countSelector", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_countSelector.jsp?questions_qSeqno=20")
         selectModel2.downloadItems(funcName: "check_like", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_like.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
         selectModel2.downloadItems(funcName: "check_report", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_report.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
+        
+    }
+    
+    // --------------- 02.28 민규 / 선택한 값 받아주기 -----------------
+    func receiveItems(_ qSeqno: String, _ user_qSeqno: String, _ qTitle: String, _ qSelection1: String,  _ qSelection2: String,  _ qSelection3: String,  _ qSelection4: String,  _ qSelection5: String, _ qCategory: String, _ qInsertDate: String, _ qDeleteDate: String, _ qImageFileName1: String,  _ qImageFileName2: String,  _ qImageFileName3: String,  _ qImageFileName4: String,  _ qImageFileName5: String){
+        receiveqSeqno = qSeqno
+        receiveuser_qSeqno = user_qSeqno
+        receiveqTitle = qTitle
+        receiveqSelection1 = qSelection1
+        receiveqSelection2 = qSelection2
+        receiveqSelection3 = qSelection3
+        receiveqSelection4 = qSelection4
+        receiveqSelection5 = qSelection5
+        receiveqTitle = qTitle
+        receiveqInsertDate = qInsertDate
+        receiveqDeleteDate = qDeleteDate
+        receiveqImageFileName1 = qImageFileName1
+        receiveqImageFileName2 = qImageFileName2
+        receiveqImageFileName3 = qImageFileName3
+        receiveqImageFileName4 = qImageFileName4
+        receiveqImageFileName5 = qImageFileName5
         
     }
     

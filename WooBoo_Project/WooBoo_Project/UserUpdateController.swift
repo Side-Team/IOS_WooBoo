@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class UserUpdateController: UIViewController{
     
     @IBOutlet weak var lblEmail: UITextField!
@@ -15,21 +16,26 @@ class UserUpdateController: UIViewController{
     @IBOutlet weak var lblPasswordCheck: UITextField!
     @IBOutlet weak var userImg: UIImageView!
 
-    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
         lblEmail.text = Share.userID
         lblEmail.isEnabled = false
         lblWooboo.text = "우부 \(Share.uSeqno)"
         design()
-        userImg.image = UIImage(named: Share.uImageFileName)
-
+        
+        setGestureRecognizer()
+        print("정보수정\(Share.uImageFileName)")
+    
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        userImg.image = UIImage(named: Share.uImageFileName)
+    }
   
     
     // 회원탈퇴 버튼
@@ -59,6 +65,29 @@ class UserUpdateController: UIViewController{
     
     // 저장 눌렀을때
     @IBAction func UserUpdate(_ sender: UIButton) {
+        let pw = lblPasswordCheck.text
+        let uImageFileName = Share.uImageFileName
+        
+        CheckPw()
+        
+        let userUpdate = userUpdateModel()
+        let result = userUpdate.insertItems(pw: pw!, uImageFileName: uImageFileName)
+        if result == true{
+            let resultAlert = UIAlertController(title: "완료", message: "수정이 완료 되었습니다", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                self.navigationController?.popViewController(animated: true)
+            })
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+
+        }else{ // 에러일 경우
+            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+        }
+        
+        
     }//====
     
     
@@ -69,6 +98,66 @@ class UserUpdateController: UIViewController{
     }//===
     
     
+    // 이미지 변경
+    func setGestureRecognizer(){
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        userImg.isUserInteractionEnabled = true
+        userImg.addGestureRecognizer(tapGR)
+    }
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "moveChangeImage", sender: self)
+    }
+ 
+    
+    // 비밀번호 변경
+    
+    // 비밀번호 형식 검사(소문자, 대문자, 숫자 8자리 이상)
+    func isValidPassword(pwd: String) -> Bool {
+        let passwordRegEx = "^[a-zA-Z0-9]{8,}$"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+        return passwordTest.evaluate(with: pwd)
+    }
+  
+    func CheckPw(){
+        let pw = lblPassword.text
+        let pwCheck = lblPasswordCheck.text
+        
+        if !isValidPassword(pwd: pw!){
+            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호 형식을 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
+            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nilAlert.addAction(nilAction)
+            present(nilAlert, animated: true, completion: nil)
+            print("비밀번호 실패")
+        }else{  // 정규식까지 완료
+            print("정규식까지 완료")
+        // 비밀번호와 비밀번호확인 필드 값 확인
+        if pw != pwCheck{   // 서로 다르며
+            print("비밀번호와 비밀번호체크 값이 다름")
+            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
+            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nilAlert.addAction(nilAction)
+            present(nilAlert, animated: true, completion: nil)
+        }else if pw == "" && pwCheck == ""{
+            let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            nilAlert.addAction(nilAction)
+            present(nilAlert, animated: true, completion: nil)
+            
+        }else{
+            print("비밀번호필드 일치")
+            
+                let nilAlert = UIAlertController(title: "완료", message: "변경이 완료되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                nilAlert.addAction(nilAction)
+                present(nilAlert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+
     
     // 디자인
     func design(){
@@ -115,6 +204,10 @@ class UserUpdateController: UIViewController{
         
     }//===
     
+    // 아무곳이나 눌러 softkeyboard 지우기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 
     

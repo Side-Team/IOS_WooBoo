@@ -34,6 +34,8 @@
             count++;                 
 %>
 			{
+                "qSeqno" : "<%=rs.getInt(1) %>",
+                "user_uSeqno" : "<%=rs.getInt(2) %>",
                 "qTitle" : "<%=rs.getString(3) %>",
                 "qSelection1" : "<%=rs.getString(4) %>",
                 "qSelection2" : "<%=rs.getString(5) %>",

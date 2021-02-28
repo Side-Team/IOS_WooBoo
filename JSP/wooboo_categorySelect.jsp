@@ -11,7 +11,7 @@
 	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "root";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select * from questions where qCategory ='" + category + "'";
+    String WhereDefault = "select * from questions where qDeleteDate is null and qCategory ='" + category + "'" ;
     int count = 0;
     
     try {

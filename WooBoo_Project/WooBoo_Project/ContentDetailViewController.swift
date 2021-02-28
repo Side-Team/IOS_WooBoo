@@ -41,25 +41,43 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     func return_select_question_countSelector(countSelector: Int, cnts: [Int]) {
         print("countSelector : \(countSelector)")
         
-        self.countSelector = countSelector + 1
+        self.countSelector = countSelector
         self.cnts = cnts
         
         selectedButton()
         
-        lblTotalSelector.text = "총 \(countSelector)명이 참여했습니다"
         
         print("cnts : \(cnts)")
         
-        // 민규한테 받은 값 선택에 넣어서 완성하기
-        
-        outlet_btn1.setTitle("10글자면어느정도? (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
-        outlet_btn2.setTitle("2번 선택 (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
-        outlet_btn3.setTitle("3번 선택 (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
-        outlet_btn4.setTitle("4번 선택 (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
-        outlet_btn5.setTitle("5번 선택 (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
-        
-        print("?????????")
-        
+        if countSelector == 0{
+            lblTotalSelector.text = "아직 참여한 우부가 없습니다.."
+
+            outlet_btn1.setTitle("\(receiveqSelection1) (0명/0%)", for: .normal)
+            outlet_btn2.setTitle("\(receiveqSelection2) (0명/0%)", for: .normal)
+            outlet_btn3.setTitle("\(receiveqSelection3) (0명/0%)", for: .normal)
+            outlet_btn4.setTitle("\(receiveqSelection4) (0명/0%)", for: .normal)
+            outlet_btn5.setTitle("\(receiveqSelection5) (0명/0%)", for: .normal)
+        }else{
+            lblTotalSelector.text = "총 \(countSelector)명이 참여했습니다"
+
+            outlet_btn1.setTitle("\(receiveqSelection1) (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn2.setTitle("\(receiveqSelection2) (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
+            if receiveqSelection3 != "X"{
+                outlet_btn3.isHidden = false
+                outlet_btn3.setTitle("\(receiveqSelection3) (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
+            }
+            
+            if receiveqSelection4 != "X"{
+                outlet_btn4.isHidden = false
+                outlet_btn4.setTitle("\(receiveqSelection4) (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
+            }
+            
+            if receiveqSelection5 != "X"{
+                outlet_btn5.isHidden = false
+                outlet_btn5.setTitle("\(receiveqSelection5) (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
+            }
+        }
+   
         findMaxIndex()
         setFocus()
 
@@ -70,7 +88,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         if count == 0{
             let updateModel = LMW_UpdateModel()
             // questions_qSeqno에 받은 값 넣어주기
-            updateModel.update_rViews(questions_qSeqno: 20, views: views + 1)
+            updateModel.update_rViews(questions_qSeqno: Int(receiveqSeqno)!, views: views + 1)
             
             lblViews.text = "조회수 \(String(views + 1))"
             
@@ -152,7 +170,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
         let selectModel = LMW_Select_sqSelection()
         selectModel.delegate = self
-        selectModel.downloadItems(questions_qSeqno: 20)
+        selectModel.downloadItems(questions_qSeqno: Int(receiveqSeqno)!)
         
         let selectModel2 = LMW_SelectModel()
         selectModel2.delegate3 = self
@@ -160,10 +178,10 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         selectModel2.delegate5 = self
         selectModel2.delegate6 = self
 
-        selectModel2.downloadItems(funcName: "check_register", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_register.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
-        selectModel2.downloadItems(funcName: "get_countSelector", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_countSelector.jsp?questions_qSeqno=20")
-        selectModel2.downloadItems(funcName: "check_like", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_like.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
-        selectModel2.downloadItems(funcName: "check_report", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_report.jsp?questions_qSeqno=20&user_uSeqno=\(Share.uSeqno)")
+        selectModel2.downloadItems(funcName: "check_register", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_register.jsp?questions_qSeqno=\(receiveqSeqno)&user_uSeqno=\(Share.uSeqno)")
+        selectModel2.downloadItems(funcName: "get_countSelector", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_countSelector.jsp?questions_qSeqno=\(receiveqSeqno)")
+        selectModel2.downloadItems(funcName: "check_like", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_like.jsp?questions_qSeqno=\(receiveqSeqno)&user_uSeqno=\(Share.uSeqno)")
+        selectModel2.downloadItems(funcName: "check_report", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_report.jsp?questions_qSeqno=\(receiveqSeqno)&user_uSeqno=\(Share.uSeqno)")
         
     }
     
@@ -177,7 +195,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         receiveqSelection3 = qSelection3
         receiveqSelection4 = qSelection4
         receiveqSelection5 = qSelection5
-        receiveqTitle = qTitle
+        receiveqCategory = qCategory
         receiveqInsertDate = qInsertDate
         receiveqDeleteDate = qDeleteDate
         receiveqImageFileName1 = qImageFileName1
@@ -185,7 +203,24 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         receiveqImageFileName3 = qImageFileName3
         receiveqImageFileName4 = qImageFileName4
         receiveqImageFileName5 = qImageFileName5
-        
+   
+        print("넘어온 값 확인하기 : \(receiveqSeqno)")
+        print("넘어온 값 확인하기 : \(receiveuser_qSeqno)")
+        print("넘어온 값 확인하기 : \(receiveqTitle)")
+        print("넘어온 값 확인하기 : \(receiveqSelection1)")
+        print("넘어온 값 확인하기 : \(receiveqSelection2)")
+        print("넘어온 값 확인하기 : \(receiveqSelection3)")
+        print("넘어온 값 확인하기 : \(receiveqSelection4)")
+        print("넘어온 값 확인하기 : \(receiveqSelection5)")
+        print("넘어온 값 확인하기 : \(receiveqCategory)")
+        print("넘어온 값 확인하기 : \(qInsertDate)")
+        print("넘어온 값 확인하기 : \(qDeleteDate)")
+        print("넘어온 값 확인하기 : \(qImageFileName1)")
+        print("넘어온 값 확인하기 : \(qImageFileName2)")
+        print("넘어온 값 확인하기 : \(qImageFileName3)")
+        print("넘어온 값 확인하기 : \(qImageFileName4)")
+        print("넘어온 값 확인하기 : \(qImageFileName5)")
+
     }
     
     
@@ -195,7 +230,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         print("btnLike 값 : ", like_SwitchNum)
         if like_SwitchNum == 0{
             let insertModel = LMW_InsertModel()
-            let result = insertModel.insert_like(questions_qSeqno: 20) // questions_qSeqno 넣어주기
+            let result = insertModel.insert_like(questions_qSeqno: Int(receiveqSeqno)!) // questions_qSeqno 넣어주기
             
             if result == true{
                 print("like \(result)")
@@ -212,7 +247,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
  
         }else{
             let deleteModel = LMW_DeleteModel()
-            let result = deleteModel.delete_like(questions_qSeqno: 20) // questions_qSeqno 넣어주기
+            let result = deleteModel.delete_like(questions_qSeqno: Int(receiveqSeqno)!) // questions_qSeqno 넣어주기
             
             if result == true{
                 print("like 삭제 \(result)")
@@ -263,7 +298,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
             
             let sendAction = UIAlertAction(title: "전송", style: UIAlertAction.Style.destructive, handler: { [self]ACTION in
                 let insertModel = LMW_InsertModel()
-                insertModel.insert_report(questions_qSeqno: 20, content: alert.textFields![0].text!)
+                insertModel.insert_report(questions_qSeqno: Int(receiveqSeqno)!, content: alert.textFields![0].text!)
                 print("신고사유 : \(alert.textFields![0].text!)")
                 
                 let addAlert = UIAlertController(title: "신고 완료", message: "정상적으로 신고되었습니다.", preferredStyle: UIAlertController.Style.alert)
@@ -326,40 +361,40 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
         outlet_BtnLike.tintColor = customColor
         
+        txtCategory.text = getCategory()
         txtCategory.layer.borderWidth = 2
         txtCategory.layer.borderColor = customColor.cgColor
         txtCategory.layer.cornerRadius = 15
         
+        txtTitle.text = receiveqTitle
         txtTitle.layer.borderWidth = 2
         txtTitle.layer.borderColor = customColor.cgColor
         txtTitle.layer.cornerRadius = 15
         
         // Title에 민규가 준 값 넣기
-        outlet_btn1.setTitle("10글자면어느정도지", for: .normal)
         outlet_btn1.layer.borderWidth = 2
         outlet_btn1.layer.cornerRadius = 15
         outlet_btn1.layer.borderColor = customColor.cgColor
         outlet_btn1.setTitleColor(customColor, for: .normal)
 
-        outlet_btn2.setTitle("2번 선택", for: .normal)
         outlet_btn2.layer.borderWidth = 2
         outlet_btn2.layer.cornerRadius = 15
         outlet_btn2.layer.borderColor = customColor.cgColor
         outlet_btn2.setTitleColor(customColor, for: .normal)
 
-        outlet_btn3.setTitle("3번 선택", for: .normal)
+        outlet_btn3.isHidden = true
         outlet_btn3.layer.borderWidth = 2
         outlet_btn3.layer.cornerRadius = 15
         outlet_btn3.layer.borderColor = customColor.cgColor
         outlet_btn3.setTitleColor(customColor, for: .normal)
 
-        outlet_btn4.setTitle("4번 선택", for: .normal)
+        outlet_btn4.isHidden = true
         outlet_btn4.layer.borderWidth = 2
         outlet_btn4.layer.cornerRadius = 15
         outlet_btn4.layer.borderColor = customColor.cgColor
         outlet_btn4.setTitleColor(customColor, for: .normal)
 
-        outlet_btn5.setTitle("5번 선택", for: .normal)
+        outlet_btn5.isHidden = true
         outlet_btn5.layer.borderWidth = 2
         outlet_btn5.layer.cornerRadius = 15
         outlet_btn5.layer.borderColor = customColor.cgColor
@@ -411,54 +446,42 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
 
         }
     }
-   
-    func setValues(){
-        
-//        let item: LMW_questionsT = datas[0] as! LMW_questionsT
-//        
-//        txtCategory.text! = makeCategoryString(categoryNum: item.qCategory!)
-//        txtTitle.text! = item.qTitle!
-//        outlet_btn1.setTitle(item.qSelection1, for: .normal)
-//        outlet_btn2.setTitle(item.qSelection2, for: .normal)
-//        
-//        if item.qSelection3 != "X"{
-//            outlet_btn3.isHidden = false
-//            outlet_btn3.setTitle(item.qSelection3, for: .normal)
-//        }
-//        
-//        if item.qSelection4 != "X"{
-//            outlet_btn4.isHidden = false
-//            outlet_btn4.setTitle(item.qSelection4, for: .normal)
-//        }
-//        
-//        if item.qSelection5 != "X"{
-//            outlet_btn5.isHidden = false
-//            outlet_btn5.setTitle(item.qSelection5, for: .normal)
-//        }
-    }
     
     func clickButtonAction(clickNum : Int){
+        imageFileName_ImageView = returnImageFileName(clickNum: clickNum)
         
-        let alert = UIAlertController(title: "1번", message: "한번 선택하면 수정할 수 없습니다.\n선택하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
-//        alert.view.frame.size.width = view.frame.width - 100
-//        alert.view.frame.size.height = view.frame.height - 100
-// 
+        var alertTitle = ""
+        
+        switch clickNum{
+        case 1:
+            alertTitle = receiveqSelection1
+        case 2:
+            alertTitle = receiveqSelection2
+        case 3:
+            alertTitle = receiveqSelection3
+        case 4:
+            alertTitle = receiveqSelection4
+        default:
+            alertTitle = receiveqSelection5
+        }
+        
+        let alert = UIAlertController(title: alertTitle, message: "한번 선택하면 수정할 수 없습니다.\n선택하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "선택", style: UIAlertAction.Style.destructive, handler: { [self]ACTION in
             let insertModel = LMW_InsertModel()
-            insertModel.insert_sqSelection(questions_qSeqno: 20, sqSelection: clickNum)
+            insertModel.insert_sqSelection(questions_qSeqno: Int(receiveqSeqno)!, sqSelection: clickNum)
 
             sqSelection = clickNum
             selectedButton()
             
             lblTotalSelector.text = "총 \(countSelector + 1)명이 참여했습니다"
-            
+
             cnts[clickNum - 1] += 1
             
-            outlet_btn1.setTitle("1번 선택 (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
-            outlet_btn2.setTitle("2번 선택 (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
-            outlet_btn3.setTitle("3번 선택 (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
-            outlet_btn4.setTitle("4번 선택 (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
-            outlet_btn5.setTitle("5번 선택 (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn1.setTitle("\(receiveqSelection1) (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector + 1)) * 100))%)", for: .normal)
+            outlet_btn2.setTitle("\(receiveqSelection2) (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector + 1)) * 100))%)", for: .normal)
+            outlet_btn3.setTitle("\(receiveqSelection3) (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector + 1)) * 100))%)", for: .normal)
+            outlet_btn4.setTitle("\(receiveqSelection4) (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector + 1)) * 100))%)", for: .normal)
+            outlet_btn5.setTitle("\(receiveqSelection5) (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector + 1)) * 100))%)", for: .normal)
 
             findMaxIndex()
             setFocus()
@@ -470,15 +493,13 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        
-        //컨텐트 뷰 영역에 들어갈 컨트롤러를 생성하고, 알림창에 등록한다.
-        
-        let contentVC = ImageViewController()
 
-        // 뷰 컨트롤러 알림창의 콘텐츠 뷰 컨트롤러 속성에 등록한다.
+        //컨텐트 뷰 영역에 들어갈 컨트롤러를 생성하고, 알림창에 등록한다.
+        let contentVC = ImageViewController()
         
+        // 뷰 컨트롤러 알림창의 콘텐츠 뷰 컨트롤러 속성에 등록한다.
         alert.setValue(contentVC, forKeyPath: "contentViewController")
- 
+
         present(alert, animated: true, completion: nil)
         
         
@@ -566,15 +587,15 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         var objectsToShare = [outlet_btn1.titleLabel?.text!, outlet_btn2.titleLabel?.text!, outlet_btn3.titleLabel?.text!, outlet_btn4.titleLabel?.text!, outlet_btn5.titleLabel?.text!]
         var text = objectsToShare[0]! + " VS " + objectsToShare[1]!
       
-        if objectsToShare[2] != ""{
+        if objectsToShare[2] != "Button"{
             text = text + " VS " + objectsToShare[2]!
         }
         
-        if objectsToShare[3] != ""{
+        if objectsToShare[3] != "Button"{
             text = text + " VS " + objectsToShare[3]!
         }
         
-        if objectsToShare[4] != ""{
+        if objectsToShare[4] != "Button"{
             text = text + " VS " + objectsToShare[4]!
         }
         
@@ -642,19 +663,19 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
         switch maxIndex{
         case 0:
-            outlet_btn1.setTitleColor(.black, for: .normal)
+//            outlet_btn1.setTitleColor(.black, for: .normal)
             outlet_btn1.titleLabel?.font = UIFont(name: outlet_btn1.titleLabel!.font.fontName, size: 20)
         case 1:
-            outlet_btn2.setTitleColor(.black, for: .normal)
+//            outlet_btn2.setTitleColor(.black, for: .normal)
             outlet_btn2.titleLabel?.font = UIFont(name: outlet_btn2.titleLabel!.font.fontName, size: 20)
         case 2:
-            outlet_btn3.setTitleColor(.black, for: .normal)
+//            outlet_btn3.setTitleColor(.black, for: .normal)
             outlet_btn3.titleLabel?.font = UIFont(name: outlet_btn3.titleLabel!.font.fontName, size: 20)
         case 3:
-            outlet_btn4.setTitleColor(.black, for: .normal)
+//            outlet_btn4.setTitleColor(.black, for: .normal)
             outlet_btn4.titleLabel?.font = UIFont(name: outlet_btn4.titleLabel!.font.fontName, size: 20)
         case 4:
-            outlet_btn5.setTitleColor(.black, for: .normal)
+//            outlet_btn5.setTitleColor(.black, for: .normal)
             outlet_btn5.titleLabel?.font = UIFont(name: outlet_btn5.titleLabel!.font.fontName, size: 20)
 
 
@@ -679,7 +700,39 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         attributedStr = NSMutableAttributedString(string: outlet_btn5.titleLabel!.text!)
         attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (outlet_btn5.titleLabel!.text! as NSString).range(of: "(\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)"))
     }
-
+    
+    func getCategory() -> String{
+        switch Int(receiveqCategory){
+        case 1:
+        return "음식"
+        case 2:
+        return "여행"
+        case 3:
+        return "기타"
+        case 4:
+        return "연애"
+        case 5:
+        return "결혼"
+        default:
+            return "성"
+  
+        }
+    }
+    
+    func returnImageFileName(clickNum : Int) -> String{
+        switch clickNum{
+        case 1:
+            return receiveqImageFileName1
+        case 2:
+            return receiveqImageFileName2
+        case 3:
+            return receiveqImageFileName3
+        case 4:
+            return receiveqImageFileName4
+        default:
+            return receiveqImageFileName5
+        }
+    }
 
 }
 

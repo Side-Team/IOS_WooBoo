@@ -28,6 +28,7 @@
 		21D3C26D25E93963005262D9 /* icon_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26C25E93963005262D9 /* icon_chat.png */; };
 		21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3C27025E93D5D005262D9 /* ChangeImageController.swift */; };
 		21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */; };
+		282EC0E225EBFE27003EAADC /* MyPageLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */; };
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
 		2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */; };
@@ -97,6 +98,7 @@
 		21D3C26C25E93963005262D9 /* icon_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_chat.png; sourceTree = "<group>"; };
 		21D3C27025E93D5D005262D9 /* ChangeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageController.swift; sourceTree = "<group>"; };
 		21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userUpdateModel.swift; sourceTree = "<group>"; };
+		282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageLTableViewController.swift; sourceTree = "<group>"; };
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		2855F4CD25E512BB003F3847 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				286A64FC25EA7C9F008F1F9D /* ImageViewController.swift */,
 				286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */,
 				286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */,
+				282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				868E3DB925E63D44003EE1E6 /* JoinModel.swift in Sources */,
 				287840F525E8045A0020F7AD /* LMW_SelectModel.swift in Sources */,
 				28830C8425E9151C00A42447 /* LMW_DeleteModel.swift in Sources */,
+				282EC0E225EBFE27003EAADC /* MyPageLTableViewController.swift in Sources */,
 				21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */,
 				21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */,
 				3C1FEB1D25E8DFDC008C646E /* CategoryModel.swift in Sources */,

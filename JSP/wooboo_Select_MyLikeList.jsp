@@ -7,11 +7,10 @@
 
     int user_uSeqno = Integer.parseInt(request.getParameter("user_uSeqno"));
 
-
 	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "root";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select * from wooboo.questions where user_uSeqno = " + user_uSeqno + " and qDeleteDate is null order by qInsertDate desc";
+    String WhereDefault = "select * from wooboo.questions as q, wooboo.like as sq where q.qDeleteDate is null and q.qSeqno = sq.questions_qSeqno and sq.user_uSeqno = " + user_uSeqno + " order by q.qInsertDate desc";
     int count = 0;
     
     try {

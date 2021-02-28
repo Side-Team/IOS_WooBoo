@@ -53,5 +53,6 @@ class categoryDBModel: NSObject{
         self.qImageFileName4 = qImageFileName4
         self.qImageFileName5 = qImageFileName5
     }
+
     
 }

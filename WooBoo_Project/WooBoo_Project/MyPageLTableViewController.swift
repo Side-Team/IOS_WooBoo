@@ -1,41 +1,35 @@
 //
-//  MyPageQTableViewController.swift
+//  MyPageLTableViewController.swift
 //  WooBoo_Project
 //
-//  Created by 이민우 on 2021/02/28.
+//  Created by 이민우 on 2021/03/01.
 //
 
 import UIKit
 
-class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
+class MyPageLTableViewController: UITableViewController, Get_MyQuestions{
     func return_MyQuestions(myQuestions: NSArray) {
-        self.myQuestions = myQuestions
-        let item: categoryDBModel = myQuestions[0] as! categoryDBModel
-        print("MyPageQTableViewController : \(String(describing: item.qSeqno))")
-        self.tvMyQuestions.reloadData()
+        myLikeList = myQuestions
+        self.tvMyLikeList.reloadData()
+
     }
-    
 
-    @IBOutlet var tvMyQuestions: UITableView!
+    @IBOutlet var tvMyLikeList: UITableView!
     
-    let cellName = "MyQTCell" 
-    var myQuestions: NSArray = NSArray()
-    var qSeqno = 0
-
+    var myLikeList: NSArray = NSArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
 //        let selectModel = LMW_SelectModel()
 //        selectModel.delegate7 = self
-//        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_questionsList.jsp?user_uSeqno=\(Share.uSeqno)")
-        
+//        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_MyLikeList.jsp?user_uSeqno=\(Share.uSeqno)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Table 재구성
         let selectModel = LMW_SelectModel()
         selectModel.delegate7 = self
-        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_questionsList.jsp?user_uSeqno=\(Share.uSeqno)")
+        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_MyLikeList.jsp?user_uSeqno=\(Share.uSeqno)")
     }
 
     // MARK: - Table view data source
@@ -47,48 +41,28 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myQuestions.count
+        return myLikeList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! MyQTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyLikeCell", for: indexPath)
 
-        
-        print("indexPath.row : \(indexPath.row)")
         // Configure the cell...
-        let item: categoryDBModel = myQuestions[indexPath.row] as! categoryDBModel
-        qSeqno = Int(item.qSeqno!)!
-        
-        cell.lblTitle.text = "\(item.qTitle!)"
-        cell.lblInsertDate.text = "\(item.qInsertDate!)"
-        cell.outlet_BtnDelete.addTarget(self, action: #selector(clickDeleteBtn(_:)), for: .touchUpInside)
-        print("feedItem")
-        
-        print("item.qSeqno : \(String(describing: item.qSeqno))")
-        
+        let item: categoryDBModel = myLikeList[indexPath.row] as! categoryDBModel
+        cell.textLabel?.text = item.qTitle
+        cell.detailTextLabel?.text = item.qInsertDate
         return cell
     }
     
-    @objc func clickDeleteBtn(_ sender: UIButton){
-        print("clickDeleteBtn.qSeqno : \(qSeqno)")
-
-        let updateModel = LMW_UpdateModel()
-        updateModel.update_MyQuestions(qSeqno: qSeqno)
-        
-//        self.tvMyQuestions.reloadData()
-        
-        print("clickDeleteBtn")
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MyQuestions"{
+        if segue.identifier == "MyLikeList"{
             let cell = sender as! UITableViewCell
-            let indexPath = self.tvMyQuestions.indexPath(for: cell)
+            let indexPath = self.tvMyLikeList.indexPath(for: cell)
             let detailView = segue.destination as! ContentDetailViewController
             
             //let item: Students = studentsList[(indexPath! as NSIndexPath).row]
-            let item: categoryDBModel = myQuestions[indexPath!.row] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
+            let item: categoryDBModel = myLikeList[indexPath!.row] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
             
             let qSeqno = item.qSeqno!
             let user_uSeqno = item.user_uSeqno!
@@ -161,3 +135,4 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     */
 
 }
+

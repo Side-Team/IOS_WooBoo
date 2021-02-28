@@ -320,6 +320,7 @@ class LMW_SelectModel{
             let query = categoryDBModel()
             
             if let qSeqno = jsonElement["qSeqno"] as? String,
+               let user_uSeqno = jsonElement["user_uSeqno"] as? String,
                let qTitle = jsonElement["qTitle"] as? String,
                let qSelection1 = jsonElement["qSelection1"] as? String,
                let qSelection2 = jsonElement["qSelection2"] as? String,
@@ -335,6 +336,7 @@ class LMW_SelectModel{
                let qImageFileName4 = jsonElement["qImageFileName4"] as? String,
                let qImageFileName5 = jsonElement["qImageFileName5"] as? String{
                 query.qSeqno = qSeqno
+                query.user_uSeqno = user_uSeqno
                 query.qTitle = qTitle
                 query.qSelection1 = qSelection1
                 query.qSelection2 = qSelection2

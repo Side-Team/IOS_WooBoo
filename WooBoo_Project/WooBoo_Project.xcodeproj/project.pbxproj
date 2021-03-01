@@ -60,6 +60,7 @@
 		3C1FEB1A25E8DE2F008C646E /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */; };
 		3C1FEB1D25E8DFDC008C646E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEB1C25E8DFDC008C646E /* CategoryModel.swift */; };
 		3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */; };
+		3C3E81C125ECCA030022D9C1 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3E81C025ECCA030022D9C1 /* SearchTableViewController.swift */; };
 		862F5F9525E8E8780046B5ED /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862F5F9425E8E8780046B5ED /* MypageViewController.swift */; };
 		86756F3525E5416500705176 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3425E5416500705176 /* UserModel.swift */; };
 		86756F3825E54B9400705176 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3725E54B9400705176 /* LoginModel.swift */; };
@@ -131,6 +132,7 @@
 		3C1FEB1925E8DE2F008C646E /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		3C1FEB1C25E8DFDC008C646E /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDBModel.swift; sourceTree = "<group>"; };
+		3C3E81C025ECCA030022D9C1 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		696DBC98034BCAD94569F106 /* Pods-WooBoo_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.debug.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		862F5F9425E8E8780046B5ED /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		86756F3425E5416500705176 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */,
 				286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */,
 				282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */,
+				3C3E81C025ECCA030022D9C1 /* SearchTableViewController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */,
 				287840DD25E7537C0020F7AD /* CategoryViewController.swift in Sources */,
 				86756F3825E54B9400705176 /* LoginModel.swift in Sources */,
+				3C3E81C125ECCA030022D9C1 /* SearchTableViewController.swift in Sources */,
 				869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */,
 				28830C8725E91F7100A42447 /* LMW_Select_sqSelection.swift in Sources */,
 				287840F825E816240020F7AD /* LMW_questionsT.swift in Sources */,

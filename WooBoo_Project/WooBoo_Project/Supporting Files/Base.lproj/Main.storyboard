@@ -708,7 +708,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="검색"/>
                                     <connections>
-                                        <segue destination="VHn-Ia-wFE" kind="show" id="vzY-Bc-eZ1"/>
+                                        <segue destination="BhH-0R-mHQ" kind="show" id="Ad9-Pf-blg"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZv-ag-VMQ">
@@ -765,34 +765,39 @@
             </objects>
             <point key="canvasLocation" x="905" y="-1012"/>
         </scene>
-        <!--검색-->
-        <scene sceneID="jjm-8Z-RPg">
+        <!--Search Table View Controller-->
+        <scene sceneID="SUQ-3k-McJ">
             <objects>
-                <viewController id="VHn-Ia-wFE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GOd-Ng-xyi">
+                <tableViewController id="BhH-0R-mHQ" customClass="SearchTableViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PLz-xz-lQ7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17l-hr-0a5">
-                                <rect key="frame" x="61" y="210" width="183" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbC-Yk-8yF">
-                                <rect key="frame" x="276" y="210" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Sbg-kM-dN1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="검색" id="96p-pT-7mE"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RzR-bc-PUh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="JbJ-uN-4yS">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="f2y-gY-2Ja">
+                                <rect key="frame" x="0.0" y="72" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f2y-gY-2Ja" id="xde-uw-s71">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BhH-0R-mHQ" id="a9m-hr-IIp"/>
+                            <outlet property="delegate" destination="BhH-0R-mHQ" id="s2w-MQ-hVc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="NBo-4o-EvQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce3-xF-aao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931" y="-1349"/>
+            <point key="canvasLocation" x="1931" y="-1315"/>
         </scene>
         <!--글 보기-->
         <scene sceneID="P87-6z-OfF">
@@ -1474,7 +1479,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F7S-Ed-KmD"/>
+        <segue reference="MT2-Jh-dGg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>

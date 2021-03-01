@@ -7,9 +7,12 @@
 
 import UIKit
 var categoryvalue = ""
-class CategoryTableViewController: UITableViewController, CategoryModelProtocol {
+class CategoryTableViewController: UITableViewController, CategoryModelProtocol, UISearchBarDelegate {
 
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var filteredData: [String]!
+    var temp = [String]()
+
     @IBOutlet var listViewTable: UITableView!
     
     var feedItem: NSArray = NSArray()
@@ -23,11 +26,25 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol 
         categoryModel.delegate = self
         categoryModel.categoryItems(category: categoryvalue)
         print("테이블에서 카테고리 값 : \(categoryvalue)")
+        
+        searchBar.delegate = self
+        filteredData = temp
+        print(filteredData as Any)
+        
+        
        
     }
     
     func itemDownloaded(items: NSArray) {
         self.feedItem = items
+        
+        for i in 0..<feedItem.count{
+            let item: categoryDBModel = feedItem[i] as! categoryDBModel
+            temp.append(item.qTitle!)
+        }
+        filteredData = temp
+
+       print("temp 확인 : \(temp)")
         self.listViewTable.reloadData()
 //        let item:categoryDBModel = feedItem[0] as! categoryDBModel
 //
@@ -44,7 +61,7 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return feedItem.count
+        return filteredData.count
     }
 
     
@@ -52,12 +69,34 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol 
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         
         let item: categoryDBModel = feedItem[indexPath.row] as! categoryDBModel
-        cell.textLabel?.text = "\(item.qTitle!)"
+        
+        cell.textLabel?.text = filteredData[indexPath.row]
         cell.detailTextLabel?.text = "\(item.qInsertDate!)"
         print("나와아라랑")
         // Configure the cell...
 
         return cell
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        filteredData = []
+        print(temp)
+        // 빈칸일때
+        if searchText == ""{
+            filteredData = temp
+        }
+        
+        else{
+            for fruit in temp {
+                
+                if fruit.lowercased().contains(searchText.lowercased()){
+                    
+                    filteredData.append(fruit)
+                }
+            }
+            
+            self.tableView.reloadData()
+        }
     }
 
     /*

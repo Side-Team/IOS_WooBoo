@@ -35,12 +35,12 @@ class LMW_InsertModel: NSObject{
             }
         }
         task.resume()
+        print("insertItems bool : \(result)")
         return result
     }
     
-    func insert_registerT(questions_qSeqno : Int) -> Bool{
+    func insert_registerT(questions_qSeqno : Int){
         var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_Insert_register.jsp"
-        var result: Bool = false
         let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&user_uSeqno=\(Share.uSeqno)"
         
         urlPath = urlPath + urlAdd
@@ -56,14 +56,12 @@ class LMW_InsertModel: NSObject{
         let task = defaultSession.dataTask(with: url){(data, response, error) in
             if error != nil{
                 print("Failed to insert data")
-                result = false
             }else{
-                print("Data is inserted!")
-                result = true
+                print("insert_registerT Data is inserted!")
             }
         }
         task.resume()
-        return result
+
     }
     
     func insert_like(questions_qSeqno : Int) -> Bool{

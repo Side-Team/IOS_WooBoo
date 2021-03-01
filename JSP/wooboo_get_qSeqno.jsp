@@ -6,12 +6,10 @@
 
 
 <%
-    int user_uSeqno = Integer.parseInt(request.getParameter("user_uSeqno"));
-
 	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "root";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select qSeqno from wooboo.questions where user_uSeqno = " + user_uSeqno + " order by qSeqno desc limit 1";
+    String WhereDefault = "select qSeqno from wooboo.questions order by qSeqno desc limit 1";
     int count = 0;
     
     try {

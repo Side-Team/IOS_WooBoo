@@ -1,20 +1,21 @@
 //
-//  JspUserSelect.swift
+//  balancegameSelectModel.swift
 //  WooBoo_Project
 //
-//  Created by 김보람 on 2021/02/25.
+//  Created by 김보람 on 2021/03/01.
 //
 
 import Foundation
 
-protocol JspUserSelectProtocol: class {
+
+protocol balancegameSelectModelProtocol: class {
     func itemDownloaded(items: NSArray)
 }
 
-class JspUserSelect{
-    var delegate: JspUserSelectProtocol!
+class balancegameSelectModel{
+    var delegate: balancegameSelectModelProtocol!
     
-    let urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_userSelect.jsp?uEmail=\(Share.userID)"
+    let urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_BalancegameSelect.jsp"
    
     func downloadItems(){
         let url = URL(string: urlPath)!
@@ -49,35 +50,27 @@ class JspUserSelect{
         for i in 0..<jsonResult.count{
             print("1")
             jsonElement =  jsonResult[i] as! NSDictionary
-            let query = UserModel()
+            let query = balancegameModel()
             
-            if let uSeqno = jsonElement["seqno"] as? String,
-                let uEmail = jsonElement["email"] as? String,
-                let uPw = jsonElement["pw"] as? String,
-                let uImageFileName = jsonElement["Image"] as? String{
-                print("3")
-                query.uSeqno = uSeqno
-                query.uEmail = uEmail
-                query.uPw = uPw
-                query.uImageFileName = uImageFileName
+            if let bSeqno = jsonElement["seqno"] as? String,
+                let bTitle = jsonElement["title"] as? String,
+                let bSelection1 = jsonElement["selection1"] as? String,
+                let bSelection2 = jsonElement["selection2"] as? String{
+                print("2")
+                query.bSeqno = bSeqno
+                query.bTitle = bTitle
+                query.bSelection1 = bSelection1
+                query.bSelection2 = bSelection2
                 
-                Share.uSeqno = Int(uSeqno)!
-                Share.userID = uEmail
-                Share.userPW = uPw
-                Share.uImageFileName = uImageFileName
-                
-                UserDefaults.standard.setValue(uSeqno, forKey: "uSeqno")
-                UserDefaults.standard.setValue(uEmail, forKey: "uEmail")
-                UserDefaults.standard.setValue(uPw, forKey: "uPw")
-                UserDefaults.standard.setValue(uImageFileName, forKey: "uImageFileName")
      
-                print("uSeqno : \(uSeqno)")
-                print("uEmail : \(uEmail)")
-                print("uPw : \(uPw)")
+                print("bSeqno : \(bSeqno)")
+                print("bTitle : \(bTitle)")
+                print("bSelection1 : \(bSelection1)")
+                print("bSelection2 : \(bSelection2)")
                
             }
             locations.add(query)
-            print("5")
+            print("3")
          
         }
         DispatchQueue.main.async(execute: {() -> Void in

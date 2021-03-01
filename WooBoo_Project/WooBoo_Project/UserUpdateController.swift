@@ -23,7 +23,7 @@ class UserUpdateController: UIViewController{
         
         
         // Do any additional setup after loading the view.
-        lblEmail.text = Share.userID
+        lblEmail.text = UserDefaults.standard.string(forKey: "autoId")
         lblEmail.isEnabled = false
         lblWooboo.text = "우부 \(Share.uSeqno)"
         design()

@@ -11,8 +11,48 @@ import DropDown
 class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageDelegate, Get_questions_qSeqno{
 
     func return_questions_qSeqno(item: Int) {
-        self.questions_qSeqno = item
-        print("return_questions_qSeqno : \(questions_qSeqno)")
+        
+        let inserQuestiontModel = LMW_InsertModel()
+        let result1 = inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
+        
+        print("get_qSeqno : \(item + 1)")
+        
+        if result1 == true{
+            print("result1 : \(result1)")
+//            qSeqnoSwitch = 1
+//
+//            selectModel.downloadItems(funcName: "get_qSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_get_qSeqno.jsp")
+            // insertAction을 눌렀을 경우
+            print("qSeqno 뽑아오기 성공 : \(item + 1)")
+            // 뽑아온 qSeqno를 이용해 register테이블에 Insert하기
+            inserQuestiontModel.insert_registerT(questions_qSeqno: item + 1)
+            
+            if imageURL.count > 0{
+                for i in 0..<imageURL.count{
+                    let imageUploadModel = ImageUploadModel()
+                    imageUploadModel.uploadImageFile(at: imageURL[i], completionHandler: {_,_ in print("Upload Success")})
+
+                }
+            }
+            let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                self.navigationController?.popViewController(animated: true)
+            })
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+            
+                
+//          // 에러일 경우
+//                let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+//                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+//                resultAlert.addAction(onAction)
+//                present(resultAlert, animated: true, completion: nil)
+//
+//
+            
+        }
+        
+       
     }
     
  
@@ -47,6 +87,9 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     var tempFileNames = [String]()
     
     var imageURL = [URL]()
+    
+    var qSeqnoSwitch = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,8 +99,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         print( "높이 : ", self.view.frame.height)
         
         selectModel.delegate2 = self
-        selectModel.downloadItems(funcName: "get_qSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_get_qSeqno.jsp?user_uSeqno=\(Share.uSeqno)")
-        
+
         txtCategory.delegate = self
         txtTitle.delegate = self
         txtContent1.delegate = self
@@ -306,37 +348,11 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     
     // DB Insert
     func InsertAction(){
-        
-        let inserQuestiontModel = LMW_InsertModel()
-        let result1 = inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
+        selectModel.downloadItems(funcName: "get_qSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_get_qSeqno.jsp")
         
         
         
         
-        print("get_qSeqno : \(questions_qSeqno)")
-        
-        let result2 = inserQuestiontModel.insert_registerT(questions_qSeqno: questions_qSeqno)
-        
-        if result1 == true && result2 == true{
-            for i in 0..<imageURL.count{
-                let imageUploadModel = ImageUploadModel()
-                imageUploadModel.uploadImageFile(at: imageURL[i], completionHandler: {_,_ in print("Upload Success")})
-            }
-
-            let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다", preferredStyle: UIAlertController.Style.alert)
-            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                self.navigationController?.popViewController(animated: true)
-            })
-            resultAlert.addAction(onAction)
-            present(resultAlert, animated: true, completion: nil)
-
-        }else{ // 에러일 경우
-            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            resultAlert.addAction(onAction)
-            present(resultAlert, animated: true, completion: nil)
-
-        }
     }
     
     func checkTxtValue(txt : String) -> String {
@@ -350,17 +366,17 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     func makeCategoryNumber() -> Int{
         switch txtCategory.text!{
         case "음식":
-            return 0
-        case "여행":
             return 1
-        case "연애":
+        case "여행":
             return 2
-        case "결혼":
+        case "연애":
             return 3
-        case "성":
+        case "결혼":
             return 4
-        default:
+        case "성":
             return 5
+        default:
+            return 6
         }
     }
     

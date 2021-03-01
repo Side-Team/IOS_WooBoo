@@ -85,9 +85,14 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     
         }
     }
+    
     @IBAction func btnLogout(_ sender: UIButton) {
-        GIDSignIn.sharedInstance()?.signOut()
-        print("logout")
+        
+        
+        
+        // 구글 로그아웃
+//        GIDSignIn.sharedInstance()?.signOut()
+//        print("logout")
     }
     
     @IBAction func btnLogin(_ sender: UIButton) {
@@ -107,13 +112,13 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             let id = txtID.text
             let pw = txtPW.text
             
+            UserDefaults.standard.setValue(id, forKey: "autoId")
             
             // 자동로그인 하기 위해 저장
             if swOnOff.isOn == true{    // 자동로그인 스위치가 켜져있으면
                 let autoLogin = UserDefaults.standard       // UserDefaults.standard 정의
                 autoLogin.setValue(id, forKey: "autoId")    // autoId 키값에 id 저장
                 autoLogin.setValue(pw, forKey: "autoPw")
-               // autoLogin.setValue("true", forKey: "autoLoginValue")
                 
                 print("유저 정보 저장")
             }else{  // 자동로그인 스위치가 꺼져있으면

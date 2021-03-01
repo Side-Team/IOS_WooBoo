@@ -35,7 +35,7 @@ class ChangeImageController: UIViewController {
     
     
     @IBAction func btnSelect(_ sender: UIButton) {
-        Share.uImageFileName = clickImageName 
+         UserDefaults.standard.setValue(clickImageName, forKey: "uImageFileName")
         self.navigationController?.popViewController(animated: true)
     }
     

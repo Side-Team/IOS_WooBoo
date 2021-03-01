@@ -1160,12 +1160,23 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gl2-os-tly">
+                                <rect key="frame" x="160" y="589" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnNext:" destination="lod-8S-T4B" eventType="touchUpInside" id="Vr0-Ra-B19"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XSZ-Wa-Gfo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="게임" id="Gc4-sg-WDg"/>
                     <connections>
+                        <outlet property="btnNext" destination="gl2-os-tly" id="iiP-2B-gX1"/>
                         <outlet property="btnSelect1" destination="uVE-YT-JEo" id="Me3-lF-vzk"/>
                         <outlet property="btnSelect2" destination="1RG-Hm-chf" id="tKC-Tu-7C4"/>
                         <outlet property="lblSelect1Count" destination="X8Y-6O-dVG" id="npO-WO-1wK"/>

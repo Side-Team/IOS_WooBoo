@@ -19,8 +19,8 @@ class MypageViewController: UIViewController {
 
         backView.layer.cornerRadius = 25
         imgUser.layer.cornerRadius = 45
-        lblwooboo.text = "우부 \(Share.uSeqno)"
-        imgUser.image = UIImage(named: Share.uImageFileName)
+        lblwooboo.text = "우부" + UserDefaults.standard.string(forKey: "uSeqno")!
+        imgUser.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
     }
     
     // 로그아웃 버튼 클릭

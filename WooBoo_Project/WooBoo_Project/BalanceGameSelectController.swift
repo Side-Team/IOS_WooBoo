@@ -16,8 +16,10 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     @IBOutlet weak var lblSelect1percent: UILabel!
     @IBOutlet weak var lblSelect2percent: UILabel!
     @IBOutlet weak var lblSelect2Count: UILabel!
+    @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var lblSelect1Count: UILabel!
     
+    var bSeqno: Int = 0
     var btitle: String = ""
     var select1: String = "바뀌나"
     var select2: String = ""
@@ -27,11 +29,14 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     var select2Count: String = ""
     var checkValue = -1
     
+
+    //db
     var feedItem: NSArray = NSArray()
-    
+   
     
     func itemDownloaded(items: NSArray) {
         feedItem = items
+        loadData()
     }
 
     override func viewDidLoad() {
@@ -41,13 +46,15 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         let balanceSelectModel = balancegameSelectModel()
         balanceSelectModel.delegate = self
         balanceSelectModel.downloadItems()
-
+        
+        
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
 //        let gameSelectModel = balancegameSelectModel()
 //        gameSelectModel.delegate = self
 //        gameSelectModel.downloadItems()
+//        loadData()
 //    }
  
     
@@ -61,7 +68,11 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         checkButtonStatus()
     }
     
-
+    @IBAction func btnNext(_ sender: UIButton) {
+      loadData()
+        clickDesign()
+    }
+    
     
     func checkButtonStatus(){
 
@@ -70,7 +81,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect1.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 btnSelect2.backgroundColor = UIColor.white
                 btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
-                
+                btnNext.setTitle("다음", for: UIControl.State.normal)
                 // 여기에 버튼 클릭됐을때 밑에 퍼센트값이랑 카운트 보이고 안보이고넣기
 
             }else{
@@ -78,17 +89,33 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect1.setTitleColor(UIColor.black, for: UIControl.State.normal)
                 btnSelect2.backgroundColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
                 btnSelect2.setTitleColor(UIColor.white, for: UIControl.State.normal)
+                btnNext.setTitle("다음", for: UIControl.State.normal)
                 // 여기에 버튼 클릭됐을때 밑에 퍼센트값이랑 카운트 보이고 안보이고넣기
             }
         } // checkButtonStatus 끝
     
+    func clickDesign(){
+        btnSelect1.backgroundColor = UIColor.white
+        btnSelect1.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        btnSelect2.backgroundColor = UIColor.white
+        btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
+    }
     
     func loadData(){
-        
-       
-       
-    
+        let num = Int.random(in: 1...43)
+        let item: balancegameModel = feedItem[num] as! balancegameModel
+        bSeqno = Int(item.bSeqno!)!
+        lblTitle.text = "\(item.bTitle!)"
+        btnSelect1.setTitle("\(item.bSelection1!)", for: UIControl.State.normal)
+        btnSelect2.setTitle("\(item.bSelection2!)", for: UIControl.State.normal)
+        print(num)
+        print("1", item.bSeqno!)
+        print("2", item.bTitle!)
+        print("3", item.bSelection1!)
+        print("4", item.bSelection2!)
     }
+    
+
     
     func design(){
         

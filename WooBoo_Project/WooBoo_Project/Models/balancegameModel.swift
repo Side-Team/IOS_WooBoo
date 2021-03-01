@@ -9,7 +9,7 @@ import Foundation
 
 class balancegameModel: NSObject{
   
-    var bSeqno: Int?
+    var bSeqno: String?
     var bTitle: String?
     var bSelection1: String?
     var bSelection2: String?
@@ -18,8 +18,16 @@ class balancegameModel: NSObject{
         
     }
 
-    init(bTitle: String,bSelection1: String, bSelection2: String ){
+    init(bSeqno: String, bTitle: String,bSelection1: String, bSelection2: String ){
+        
+        self.bSeqno = bSeqno
         self.bTitle = bTitle
+        self.bSelection1 = bSelection1
+        self.bSelection2 = bSelection2
+    }
+    init(bSeqno: String, bSelection1: String, bSelection2: String) {
+        
+        self.bSeqno = bSeqno
         self.bSelection1 = bSelection1
         self.bSelection2 = bSelection2
     }

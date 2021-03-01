@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BalanceGameSelectController: UIViewController {
+class BalanceGameSelectController: UIViewController, balancegameSelectModelProtocol {
+
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnSelect1: UIButton!
@@ -26,12 +27,29 @@ class BalanceGameSelectController: UIViewController {
     var select2Count: String = ""
     var checkValue = -1
     
+    var feedItem: NSArray = NSArray()
+    
+    
+    func itemDownloaded(items: NSArray) {
+        feedItem = items
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         design()
         
+        let balanceSelectModel = balancegameSelectModel()
+        balanceSelectModel.delegate = self
+        balanceSelectModel.downloadItems()
 
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        let gameSelectModel = balancegameSelectModel()
+//        gameSelectModel.delegate = self
+//        gameSelectModel.downloadItems()
+//    }
+ 
     
     @IBAction func btnSelect1(_ sender: UIButton) {
         checkValue = 0
@@ -64,6 +82,13 @@ class BalanceGameSelectController: UIViewController {
             }
         } // checkButtonStatus 끝
     
+    
+    func loadData(){
+        
+       
+       
+    
+    }
     
     func design(){
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		211438E425E6B3EC000AD9FB /* JspUserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211438E325E6B3EC000AD9FB /* JspUserSelect.swift */; };
+		21811A7125ECC8C1009AE05A /* balancegameSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */; };
 		21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506A25E6486200E58698 /* BalanceGameMainController.swift */; };
 		21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */; };
 		21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506C25E6486200E58698 /* UserUpdateController.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		211438E325E6B3EC000AD9FB /* JspUserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JspUserSelect.swift; sourceTree = "<group>"; };
+		21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameSelectModel.swift; sourceTree = "<group>"; };
 		21A5506A25E6486200E58698 /* BalanceGameMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameMainController.swift; sourceTree = "<group>"; };
 		21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameSelectController.swift; sourceTree = "<group>"; };
 		21A5506C25E6486200E58698 /* UserUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				3C1FEB1F25E8E790008C646E /* CategoryDBModel.swift */,
 				21D3C26125E91EEE005262D9 /* userDeleteModel.swift */,
 				21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */,
+				21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				3C1FEB1D25E8DFDC008C646E /* CategoryModel.swift in Sources */,
 				21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */,
 				287840F125E802DA0020F7AD /* LMW_InsertModel.swift in Sources */,
+				21811A7125ECC8C1009AE05A /* balancegameSelectModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

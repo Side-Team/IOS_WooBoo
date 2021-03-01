@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BalanceGameSelectController: UIViewController, balancegameSelectModelProtocol {
+class BalanceGameSelectController: UIViewController, balancegameSelectModelProtocol, balancrgamePeopleProtocol {
+   
 
     
     @IBOutlet weak var lblTitle: UILabel!
@@ -20,24 +21,22 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     @IBOutlet weak var lblSelect1Count: UILabel!
     
     var bSeqno: Int = 0
-    var btitle: String = ""
-    var select1: String = "바뀌나"
-    var select2: String = ""
-    var select1Percent : String = ""
-    var select1Count: String = ""
-    var select2Percent: String = ""
-    var select2Count: String = ""
     var checkValue = -1
-    
+    var checkPeople = 0
 
     //db
     var feedItem: NSArray = NSArray()
-   
+    var countItem:NSArray = NSArray()
     
     func itemDownloaded(items: NSArray) {
         feedItem = items
         loadData()
     }
+    
+    func itemPeopleCount(items: NSArray) {
+        countItem = items
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +46,11 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         balanceSelectModel.delegate = self
         balanceSelectModel.downloadItems()
         
+        
+        let peopleCount = balancegamePeopleCountModel()
+        peopleCount.delegate = self
+        peopleCount.insertItems(balancegame_bSeqno: String(bSeqno), sbSelection: String(checkValue))
+       
         
     }
     
@@ -84,6 +88,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
                 clickDataUpdate()
+                loadClick()
 
             }else{
                 btnSelect1.backgroundColor = UIColor.white
@@ -92,6 +97,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
                 clickDataUpdate()
+                
             }
         } // checkButtonStatus 끝
     
@@ -112,7 +118,24 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     }
     
     func loadClick(){
-        // 몇명이 눌렀는지 select로 보여줘야함
+        let balancegame_bSeqno = String(bSeqno)
+        let sbSelection = String(checkValue)
+        
+        let peopleCount = balancegamePeopleCountModel()
+        let result = peopleCount.insertItems(balancegame_bSeqno: balancegame_bSeqno, sbSelection: sbSelection)
+        if result == true{
+            
+            }else{ // 에러일 경우
+            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+        }
+    }
+  
+    
+    func loadClickPeople(){
+       
     }
     
     func clickDataUpdate(){

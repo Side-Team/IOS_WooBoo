@@ -13,6 +13,7 @@ class SelectgameModel: NSObject{
     var user_uSeqno: String?
     var sbSelection: String?
     var sbViews: String?
+    var count: String?
 
     override init() {
         
@@ -24,5 +25,9 @@ class SelectgameModel: NSObject{
         self.user_uSeqno = user_uSeqno
         self.sbSelection = sbSelection
         self.sbViews = sbViews
+    }
+    
+    init(count: String) {
+        self.count = count
     }
 }

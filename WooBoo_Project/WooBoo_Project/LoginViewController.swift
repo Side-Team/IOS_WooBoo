@@ -40,20 +40,29 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         checkAutoLogin()
         
         
-        GIDSignIn.sharedInstance()?.presentingViewController = self// 로그인화면 불러오기
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
-        
-//        let user = AppDelegate.user
-//
-//        print("user: ", user?.profile.name!)
-//
-//        self.lblName.text = user?.profile.name
-//
-//        self.lblEmail.text = user?.profile.email
-        
+        googleInfo()
         
         print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
         print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        googleInfo()
+    }
+
+    func googleInfo(){
+        GIDSignIn.sharedInstance()?.presentingViewController = self// 로그인화면 불러오기
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
+
+        let user = AppDelegate.user
+
+        print("googleuser: ", user?.profile.email!)
+        
+        let vcName = self.storyboard!.instantiateViewController(withIdentifier: "MainView")
+                    vcName.modalPresentationStyle = .fullScreen
+                    
+        self.present(vcName, animated: true, completion: nil)
+
     }
     
     // protocol
@@ -82,15 +91,6 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             jspUserSelect.downloadItems()
     
         }
-    }
-    
-    @IBAction func btnLogout(_ sender: UIButton) {
-        
-        
-        
-        // 구글 로그아웃
-//        GIDSignIn.sharedInstance()?.signOut()
-//        print("logout")
     }
     
     
@@ -256,20 +256,10 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                     print("카카오 이메일 저장 실패")
                 }
                 
-
-//                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
-//                    let data = try? Data(contentsOf: url) {
-//                    self.ivImage.image = UIImage(data: data)
-//                    self.ivImage.layer.cornerRadius = 50
-//                    self.ivImage.layer.borderWidth = 1
-//                    self.ivImage.layer.borderColor = UIColor.clear.cgColor
-//                    self.ivImage.clipsToBounds = true
-//                    self.ivImage.layer.masksToBounds = true
-//                }
             }
         }
     }
-    
+
     // 자동로그인
     func checkAutoLogin(){
         

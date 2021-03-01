@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKUser
+import GoogleSignIn
 
 class MypageViewController: UIViewController {
 
@@ -57,9 +58,13 @@ class MypageViewController: UIViewController {
                 print(error)
             }
             else {
-                print("logout() success.")
+                print("Kakao logout() success.")
             }
         }
+        
+        // 구글 로그아웃
+        GIDSignIn.sharedInstance()?.signOut()
+        print("Google logout")
     }
    
     

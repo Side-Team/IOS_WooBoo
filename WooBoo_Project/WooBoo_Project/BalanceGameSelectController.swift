@@ -69,8 +69,9 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     }
     
     @IBAction func btnNext(_ sender: UIButton) {
-      loadData()
+        loadData()
         clickDesign()
+
     }
     
     
@@ -82,7 +83,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.backgroundColor = UIColor.white
                 btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
-                // 여기에 버튼 클릭됐을때 밑에 퍼센트값이랑 카운트 보이고 안보이고넣기
+                clickDataUpdate()
 
             }else{
                 btnSelect1.backgroundColor = UIColor.white
@@ -90,16 +91,11 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.backgroundColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
                 btnSelect2.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
-                // 여기에 버튼 클릭됐을때 밑에 퍼센트값이랑 카운트 보이고 안보이고넣기
+                clickDataUpdate()
             }
         } // checkButtonStatus 끝
     
-    func clickDesign(){
-        btnSelect1.backgroundColor = UIColor.white
-        btnSelect1.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        btnSelect2.backgroundColor = UIColor.white
-        btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
-    }
+    
     
     func loadData(){
         let num = Int.random(in: 1...43)
@@ -115,6 +111,28 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         print("4", item.bSelection2!)
     }
     
+    func loadClick(){
+        // 몇명이 눌렀는지 select로 보여줘야함
+    }
+    
+    func clickDataUpdate(){
+        let balancegame_bSeqno = String(bSeqno)
+        let user_uSeqno = UserDefaults.standard.string(forKey: "uSeqno")!
+        let sbSelection = String(checkValue)
+        
+        let balanceInsert = balanceInsertModle()
+        let result = balanceInsert.insertItems(balancegame_bSeqno: balancegame_bSeqno, user_uSeqno: user_uSeqno, sbSelection: sbSelection)
+        if result == true{
+            loadClick()
+            }else{ // 에러일 경우
+            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+        }
+       
+    }//
+    
 
     
     func design(){
@@ -127,6 +145,13 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         btnSelect2.layer.cornerRadius = 10
         btnSelect2.layer.borderWidth = 2
         btnSelect2.layer.borderColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1).cgColor
+    }
+    
+    func clickDesign(){
+        btnSelect1.backgroundColor = UIColor.white
+        btnSelect1.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        btnSelect2.backgroundColor = UIColor.white
+        btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
     }
     
     

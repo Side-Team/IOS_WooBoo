@@ -23,9 +23,9 @@ class UserUpdateController: UIViewController{
         
         
         // Do any additional setup after loading the view.
-        lblEmail.text = UserDefaults.standard.string(forKey: "autoId")
+        lblEmail.text = UserDefaults.standard.string(forKey: "uEmail")
         lblEmail.isEnabled = false
-        lblWooboo.text = "우부 \(Share.uSeqno)"
+        lblWooboo.text = "우부" + UserDefaults.standard.string(forKey: "uSeqno")!
         design()
         
         setGestureRecognizer()
@@ -34,7 +34,7 @@ class UserUpdateController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        userImg.image = UIImage(named: Share.uImageFileName)
+        userImg.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
     }
   
     

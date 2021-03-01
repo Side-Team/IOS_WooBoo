@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		211438E425E6B3EC000AD9FB /* JspUserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211438E325E6B3EC000AD9FB /* JspUserSelect.swift */; };
 		21811A7125ECC8C1009AE05A /* balancegameSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */; };
+		21811A7525ECE5CA009AE05A /* balanceInsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */; };
+		21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7725ECE693009AE05A /* SelectgameModel.swift */; };
 		21A5506D25E6486200E58698 /* BalanceGameMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506A25E6486200E58698 /* BalanceGameMainController.swift */; };
 		21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */; };
 		21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506C25E6486200E58698 /* UserUpdateController.swift */; };
@@ -81,6 +83,8 @@
 /* Begin PBXFileReference section */
 		211438E325E6B3EC000AD9FB /* JspUserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JspUserSelect.swift; sourceTree = "<group>"; };
 		21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameSelectModel.swift; sourceTree = "<group>"; };
+		21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balanceInsertModel.swift; sourceTree = "<group>"; };
+		21811A7725ECE693009AE05A /* SelectgameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectgameModel.swift; sourceTree = "<group>"; };
 		21A5506A25E6486200E58698 /* BalanceGameMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameMainController.swift; sourceTree = "<group>"; };
 		21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameSelectController.swift; sourceTree = "<group>"; };
 		21A5506C25E6486200E58698 /* UserUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateController.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 				21D3C26125E91EEE005262D9 /* userDeleteModel.swift */,
 				21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */,
 				21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */,
+				21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */,
+				21811A7725ECE693009AE05A /* SelectgameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */,
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
+				21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */,
 				21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */,
 				21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */,
 				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,
@@ -499,6 +506,7 @@
 				21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */,
 				286A652825EAA91D008F1F9D /* MyPageQTableViewController.swift in Sources */,
 				286A653025EAAF67008F1F9D /* MyQTableViewCell.swift in Sources */,
+				21811A7525ECE5CA009AE05A /* balanceInsertModel.swift in Sources */,
 				284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */,
 				3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */,
 				286A64FD25EA7C9F008F1F9D /* ImageViewController.swift in Sources */,

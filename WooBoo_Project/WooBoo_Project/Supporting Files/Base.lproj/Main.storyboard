@@ -693,7 +693,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="f2y-Ik-qqu">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="153"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="131"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktn-kK-vHp">
@@ -703,28 +703,17 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otz-pb-VcW">
-                                    <rect key="frame" x="277" y="8" width="30" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="검색"/>
-                                    <connections>
-                                        <segue destination="BhH-0R-mHQ" kind="show" id="Ad9-Pf-blg"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZv-ag-VMQ">
-                                    <rect key="frame" x="330" y="8" width="39" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="글쓰기"/>
-                                    <connections>
-                                        <segue destination="g6K-Z9-qtW" kind="show" id="XgS-nW-kVj"/>
-                                    </connections>
-                                </button>
+                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9A-Wn-KwO">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" textLabel="TuP-0q-mIh" detailTextLabel="EGT-YZ-NUp" style="IBUITableViewCellStyleSubtitle" id="DeV-RR-doM">
-                                <rect key="frame" x="0.0" y="181" width="390" height="55.666667938232422"/>
+                                <rect key="frame" x="0.0" y="159" width="390" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DeV-RR-doM" id="g4Y-K6-5IT">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="55.666667938232422"/>
@@ -756,48 +745,26 @@
                             <outlet property="delegate" destination="nC0-bg-diZ" id="7hb-l7-h1p"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="rYR-co-2N7"/>
+                    <navigationItem key="navigationItem" id="rYR-co-2N7">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="b2M-KM-mIe">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="IZv-ag-VMQ">
+                                <rect key="frame" x="335" y="7" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="글쓰기"/>
+                                <connections>
+                                    <segue destination="g6K-Z9-qtW" kind="show" id="XgS-nW-kVj"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listViewTable" destination="2dr-Al-cNy" id="mcF-tA-uEa"/>
+                        <outlet property="searchBar" destination="B9A-Wn-KwO" id="Dw3-42-tWA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnM-Zo-ykR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="-1012"/>
-        </scene>
-        <!--Search Table View Controller-->
-        <scene sceneID="SUQ-3k-McJ">
-            <objects>
-                <tableViewController id="BhH-0R-mHQ" customClass="SearchTableViewController" customModule="WooBoo_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PLz-xz-lQ7">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="JbJ-uN-4yS">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="f2y-gY-2Ja">
-                                <rect key="frame" x="0.0" y="72" width="390" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f2y-gY-2Ja" id="xde-uw-s71">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="BhH-0R-mHQ" id="a9m-hr-IIp"/>
-                            <outlet property="delegate" destination="BhH-0R-mHQ" id="s2w-MQ-hVc"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="NBo-4o-EvQ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ce3-xF-aao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1931" y="-1315"/>
+            <point key="canvasLocation" x="904.61538461538453" y="-1012.3222748815166"/>
         </scene>
         <!--글 보기-->
         <scene sceneID="P87-6z-OfF">
@@ -1035,7 +1002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAO-sK-t5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931" y="-647"/>
+            <point key="canvasLocation" x="1755" y="-1012"/>
         </scene>
         <!--이미지 추가-->
         <scene sceneID="iK9-YG-hfk">
@@ -1093,7 +1060,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZf-fj-qgS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2767.6923076923076" y="-648.34123222748815"/>
+            <point key="canvasLocation" x="2592" y="-1013"/>
         </scene>
         <!--게임-->
         <scene sceneID="yiB-0n-yw8">
@@ -1160,12 +1127,23 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gl2-os-tly">
+                                <rect key="frame" x="160" y="589" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnNext:" destination="lod-8S-T4B" eventType="touchUpInside" id="Vr0-Ra-B19"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XSZ-Wa-Gfo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="게임" id="Gc4-sg-WDg"/>
                     <connections>
+                        <outlet property="btnNext" destination="gl2-os-tly" id="iiP-2B-gX1"/>
                         <outlet property="btnSelect1" destination="uVE-YT-JEo" id="Me3-lF-vzk"/>
                         <outlet property="btnSelect2" destination="1RG-Hm-chf" id="tKC-Tu-7C4"/>
                         <outlet property="lblSelect1Count" destination="X8Y-6O-dVG" id="npO-WO-1wK"/>

@@ -9,10 +9,12 @@ import UIKit
 
 class ViewController: UIViewController, QuestionProtocol {
     
-    // 시간
-          let interval = 3.0 // 3초
-          let timeSelector: Selector = #selector(ViewController.updateTime)
-          
+    func itemDownloaded(items: NSArray) {
+       
+    }
+    
+    
+    
         @IBOutlet weak var lblHot: UILabel!
         @IBOutlet weak var hotPageControl: UIPageControl!
         
@@ -28,62 +30,18 @@ class ViewController: UIViewController, QuestionProtocol {
     
     // 이미지
     var  numImage:Int = 0
-    var titleNmae = [""]
-//          var titleNmae = ["오늘 아침밥", "오늘 점심밥", "오늘 저녁밥", "내일 아침밥", "내일 점심밥", "내일 저녁밥"]
-          var titleNmae2 = ["아침 간식", "오늘 점심 간식", "오늘 저녁 간식", "내일 아침 간식", "내일 점심 간식", "내일 저녁 간식"]
     
+    var titleName = ["오늘 아침밥", "오늘 점심밥", "오늘 저녁밥", "내일 아침밥", "내일 점심밥", "내일 저녁밥"]
 
-            
-        
         override func viewDidLoad() {
             super.viewDidLoad()
-            // Do any additional setup after loading the view.
-//            // 이미지 이름 저장
-//            displayTitle(number: numImage)
-//                    Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
-//            
-//            let questionModel = QuestionModel()
-//            questionModel.delegate = self
-//            questionModel.downloadItems()
-//            
+
+            
         }
     
    
-    
-    func itemDownloaded(items: NSArray) {
-        feedItem = items
-        // 불러온 값을 텍스트 필드에 세팅 해준다
-       // lblHot.text = String(receiveTitle)
-        print("feed = \(feedItem[1])")
-        
-    }
-    
-    // 선택한 값 받아와서 넣어주기
-    func receiveItems(_ stitle: String){
-        receiveTitle = stitle
-       print("\(stitle)")
-    }
-        
-        func displayTitle(number : Int)  {
-            //let feed = feedItem[IndexPath]
-            //lblHot.text = feed as? String
-                lblNew.text = titleNmae2[number]
-                
-           }
-           
-           // Async Task 3초마다 이미지 변경
-           @objc func updateTime(){
-             
-               if Int(interval) % 3 == 0 {
-                   numImage += 1
-                   if numImage >= titleNmae2.count{
-                   numImage = 0
-               }
 
-                displayTitle(number: numImage)
-
-               }
-           }
+        
     
 //    override func viewDidLoad() {
 //        super.viewDidLoad()

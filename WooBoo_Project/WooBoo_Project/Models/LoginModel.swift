@@ -65,6 +65,32 @@ class LoginModel: NSObject{
             self.delegate.checkResultValue(result: resultValue[0] as! Int)
         })
        // print("resultValue값 : \(resultValue)")
+    }
+    
+    // 카카오톡 로그인 정보 저장
+    var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_kakaoLogin.jsp"
+    
+    func kakaoItems(Email: String) -> Bool{   // Bool은 됐는지 안됐는지 결과를 받기위함
+        var result: Bool = true
+        let urlAdd = "?uEmail=\(Email)"        //jsp 뒤에 ? 내용은 이것을 통해서 데이터가 들어감
+        urlPath = urlPath + urlAdd
         
+        // 한글 url encoding
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to insert data")
+                result = false
+            }else{
+                print("Data is inserted!")
+                result = true
+            }
+        }
+        task.resume()   // 실행
+        return result
     }
 }//----

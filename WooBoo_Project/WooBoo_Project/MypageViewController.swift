@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KakaoSDKUser
 
 class MypageViewController: UIViewController {
 
@@ -39,6 +40,26 @@ class MypageViewController: UIViewController {
         checkAlert.addAction(cancelAction)
         checkAlert.addAction(checkAction)
         present(checkAlert, animated: true, completion: nil)
+        
+        // 카카오 로그아웃
+        
+        UserApi.shared.unlink {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("unlink() success.")
+            }
+        }
+        
+        UserApi.shared.logout {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("logout() success.")
+            }
+        }
     }
    
     

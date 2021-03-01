@@ -43,13 +43,13 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         GIDSignIn.sharedInstance()?.presentingViewController = self// 로그인화면 불러오기
         GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
         
-        let user = AppDelegate.user
-        
-        print("user: ", user?.profile.name!)
-        
-        self.lblName.text = user?.profile.name
-       
-        self.lblEmail.text = user?.profile.email
+//        let user = AppDelegate.user
+//
+//        print("user: ", user?.profile.name!)
+//
+//        self.lblName.text = user?.profile.name
+//
+//        self.lblEmail.text = user?.profile.email
         
         
         print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
@@ -62,9 +62,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         print("checkresultvalue: \(result)")
         if loginCheck == 0 {
             let failAlert = UIAlertController(title: "경고!", message: "정보가 일치하지 않습니다..", preferredStyle: UIAlertController.Style.alert)
-            let failAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                self.navigationController?.popViewController(animated: true)    // 현재화면 지워줌
-            })
+            let failAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             failAlert.addAction(failAction)
             present(failAlert, animated: true, completion: nil)
             print("로그인실패:\(self.loginCheck)")
@@ -76,7 +74,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)
 
-            print("로그인할때스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
+            //print("로그인할때스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
             Share.userID = txtID.text!
             
             let jspUserSelect = JspUserSelect()
@@ -95,6 +93,8 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
 //        print("logout")
     }
     
+    
+    // 로그인버튼
     @IBAction func btnLogin(_ sender: UIButton) {
         // nilcheck를 위함
         let num1Check: Int = checkNil(str: txtID.text!)
@@ -188,13 +188,10 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                            //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
                         self.setUserInfo()
                         
-                        //aController에 이동할 storyBoard의 ID를 지정합니다. (다음화면의 ID)
-                        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MainView")
-                        vcName?.modalPresentationStyle = .fullScreen
-                        self.present(vcName!, animated: true, completion: nil)
-                        //show함수에 생성한 aController 변수를 매개변수로 넘겨줌으로써 클릭이벤트가 발생하면 이동할 storyBaord ID와 매칭되어 화면이 전환됩니다.
-//                        self.show(aController, sender: self)
-                        
+                        let vcName = self.storyboard!.instantiateViewController(withIdentifier: "MainView")
+                                    vcName.modalPresentationStyle = .fullScreen
+                                    
+                        self.present(vcName, animated: true, completion: nil)
                        }
                    }
                }
@@ -218,6 +215,13 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                     
                        //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
                        self.setUserInfo()
+                    
+                    
+                    // 로그인 완료 후 화면 이동
+                    let vcName = self.storyboard!.instantiateViewController(withIdentifier: "MainView")
+                                vcName.modalPresentationStyle = .fullScreen
+                                
+                    self.present(vcName, animated: true, completion: nil)
                    }
                }
     }
@@ -233,24 +237,35 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                 print("me() success.")
                 //do something
                 _ = user
+                let kakaoEmail = (user?.kakaoAccount?.email)
                 print("유저정보", (user?.kakaoAccount?.profile?.nickname)!)
-                print("이메일", (user?.kakaoAccount?.email)!)
+                print("이메일", kakaoEmail!)
                // print("성별", (user?.kakaoAccount?.gender)!)
 
                 Share.userID = (user?.kakaoAccount?.email)!
                 print("Share",Share.userID)
-                self.lblName.text = user?.kakaoAccount?.profile?.nickname
-
-
-                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
-                    let data = try? Data(contentsOf: url) {
-                    self.ivImage.image = UIImage(data: data)
-                    self.ivImage.layer.cornerRadius = 50
-                    self.ivImage.layer.borderWidth = 1
-                    self.ivImage.layer.borderColor = UIColor.clear.cgColor
-                    self.ivImage.clipsToBounds = true
-                    self.ivImage.layer.masksToBounds = true
+                //self.lblName.text = user?.kakaoAccount?.profile?.nickname
+                
+                // Email을 받아서 db에 insert시켜준다.
+                
+                let kakaoInsert = LoginModel()
+                let result = kakaoInsert.kakaoItems(Email: kakaoEmail!)
+                if result == true{
+                    print("카카오 이메일 저장 완료")
+                }else{
+                    print("카카오 이메일 저장 실패")
                 }
+                
+
+//                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
+//                    let data = try? Data(contentsOf: url) {
+//                    self.ivImage.image = UIImage(data: data)
+//                    self.ivImage.layer.cornerRadius = 50
+//                    self.ivImage.layer.borderWidth = 1
+//                    self.ivImage.layer.borderColor = UIColor.clear.cgColor
+//                    self.ivImage.clipsToBounds = true
+//                    self.ivImage.layer.masksToBounds = true
+//                }
             }
         }
     }

@@ -65,6 +65,11 @@ class JspUserSelect{
                 Share.userID = uEmail
                 Share.userPW = uPw
                 Share.uImageFileName = uImageFileName
+                
+                UserDefaults.standard.setValue(uSeqno, forKey: "uSeqno")
+                UserDefaults.standard.setValue(uEmail, forKey: "uEmail")
+                UserDefaults.standard.setValue(uPw, forKey: "uPw")
+                UserDefaults.standard.setValue(uImageFileName, forKey: "uImageFileName")
      
                 print("uSeqno : \(uSeqno)")
                 print("uEmail : \(uEmail)")

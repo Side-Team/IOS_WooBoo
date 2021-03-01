@@ -16,6 +16,8 @@ class LMW_UpdateModel: NSObject{
         let urlAdd = "?questions_qSeqno=\(questions_qSeqno)&views=\(views)"
         urlPath = urlPath + urlAdd
         
+        print("update_rViews : \(urlPath)")
+        
         //한글 url encoding
         urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         

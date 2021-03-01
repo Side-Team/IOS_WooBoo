@@ -122,7 +122,7 @@ class LMW_SelectModel{
             }
         }
         DispatchQueue.main.async(execute: {() -> Void in
-            self.delegate2.return_questions_qSeqno(item: questions_qSeqno + 1)
+            self.delegate2.return_questions_qSeqno(item: questions_qSeqno)
         })
     }
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21064BE625ED4C71008A25C5 /* balancegamePeopleCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */; };
+		21064BE925ED4C90008A25C5 /* balancegameCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21064BE825ED4C90008A25C5 /* balancegameCountModel.swift */; };
 		211438E425E6B3EC000AD9FB /* JspUserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211438E325E6B3EC000AD9FB /* JspUserSelect.swift */; };
 		21811A7125ECC8C1009AE05A /* balancegameSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */; };
 		21811A7525ECE5CA009AE05A /* balanceInsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */; };
@@ -15,7 +17,6 @@
 		21A5506E25E6486200E58698 /* BalanceGameSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */; };
 		21A5506F25E6486200E58698 /* UserUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5506C25E6486200E58698 /* UserUpdateController.swift */; };
 		21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5507225E65E9400E58698 /* balancegameModel.swift */; };
-		21A5507625E6605000E58698 /* selectBalancegameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5507525E6605000E58698 /* selectBalancegameModel.swift */; };
 		21D3C25325E91A5A005262D9 /* img_Depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C24A25E91A58005262D9 /* img_Depressed.png */; };
 		21D3C25425E91A5A005262D9 /* img_Embarrassment.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C24B25E91A58005262D9 /* img_Embarrassment.png */; };
 		21D3C25525E91A5A005262D9 /* img_Sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C24C25E91A58005262D9 /* img_Sad.png */; };
@@ -81,6 +82,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegamePeopleCountModel.swift; sourceTree = "<group>"; };
+		21064BE825ED4C90008A25C5 /* balancegameCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameCountModel.swift; sourceTree = "<group>"; };
 		211438E325E6B3EC000AD9FB /* JspUserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JspUserSelect.swift; sourceTree = "<group>"; };
 		21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameSelectModel.swift; sourceTree = "<group>"; };
 		21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balanceInsertModel.swift; sourceTree = "<group>"; };
@@ -89,7 +92,6 @@
 		21A5506B25E6486200E58698 /* BalanceGameSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameSelectController.swift; sourceTree = "<group>"; };
 		21A5506C25E6486200E58698 /* UserUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateController.swift; sourceTree = "<group>"; };
 		21A5507225E65E9400E58698 /* balancegameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameModel.swift; sourceTree = "<group>"; };
-		21A5507525E6605000E58698 /* selectBalancegameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectBalancegameModel.swift; sourceTree = "<group>"; };
 		21D3C24A25E91A58005262D9 /* img_Depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_Depressed.png; sourceTree = "<group>"; };
 		21D3C24B25E91A58005262D9 /* img_Embarrassment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_Embarrassment.png; sourceTree = "<group>"; };
 		21D3C24C25E91A58005262D9 /* img_Sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_Sad.png; sourceTree = "<group>"; };
@@ -246,7 +248,6 @@
 				3C1FEAEF25E653B7008C646E /* DBModel.swift */,
 				868E3DB825E63D44003EE1E6 /* JoinModel.swift */,
 				21A5507225E65E9400E58698 /* balancegameModel.swift */,
-				21A5507525E6605000E58698 /* selectBalancegameModel.swift */,
 				211438E325E6B3EC000AD9FB /* JspUserSelect.swift */,
 				287840F025E802DA0020F7AD /* LMW_InsertModel.swift */,
 				287840F425E8045A0020F7AD /* LMW_SelectModel.swift */,
@@ -261,6 +262,8 @@
 				21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */,
 				21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */,
 				21811A7725ECE693009AE05A /* SelectgameModel.swift */,
+				21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */,
+				21064BE825ED4C90008A25C5 /* balancegameCountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 			files = (
 				21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */,
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
+				21064BE925ED4C90008A25C5 /* balancegameCountModel.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
 				21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */,
 				21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */,
@@ -520,7 +524,6 @@
 				869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */,
 				28A88CB825E6A5DE0012DD1F /* ImageUploadModel.swift in Sources */,
 				3C1FEB1A25E8DE2F008C646E /* CategoryTableViewController.swift in Sources */,
-				21A5507625E6605000E58698 /* selectBalancegameModel.swift in Sources */,
 				868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */,
 				86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */,
 				86756F3525E5416500705176 /* UserModel.swift in Sources */,
@@ -529,6 +532,7 @@
 				28830C8A25E9423600A42447 /* LMW_UpdateModel.swift in Sources */,
 				869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */,
 				868E3DB925E63D44003EE1E6 /* JoinModel.swift in Sources */,
+				21064BE625ED4C71008A25C5 /* balancegamePeopleCountModel.swift in Sources */,
 				287840F525E8045A0020F7AD /* LMW_SelectModel.swift in Sources */,
 				28830C8425E9151C00A42447 /* LMW_DeleteModel.swift in Sources */,
 				282EC0E225EBFE27003EAADC /* MyPageLTableViewController.swift in Sources */,

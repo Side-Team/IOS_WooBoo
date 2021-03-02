@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
 
         let user = AppDelegate.user
 
-        print("googleuser: ", user?.profile.email!)
+        print("googleuser: \(String(describing: user?.profile.email))")
         
         let vcName = self.storyboard!.instantiateViewController(withIdentifier: "MainView")
                     vcName.modalPresentationStyle = .fullScreen

@@ -9,7 +9,7 @@ import UIKit
 import KakaoSDKCommon
 import Firebase
 import GoogleSignIn
-
+import AuthenticationServices
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -34,9 +34,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         return
     }
+//
+//    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) { if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential { // Create an account in your system.
+//        let userIdentifier = appleIDCredential.user let userFirstName = appleIDCredential.fullName?.givenName let userLastName = appleIDCredential.fullName?.familyName let userEmail = appleIDCredential.email
+//
+//    }
+
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+//        appleIDProvider.getCredentialState(forUserID: /* 로그인에 사용한 User Identifier */) { (credentialState, error) in
+//            switch credentialState {
+//            case .authorized:
+//                // The Apple ID credential is valid.
+//                print("해당 ID는 연동되어있습니다.")
+//            case .revoked:
+//                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+//                print("해당 ID는 연동되어있지않습니다.")
+//            case .notFound:
+//                // The Apple ID credential is either was not found, so show the sign-in UI.
+//                print("해당 ID를 찾을 수 없습니다.")
+//            default:
+//                break
+//            }
+//        }
+//        return true
+        
+        
+        
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -49,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return (GIDSignIn.sharedInstance()?.handle(url))!
     }
-    
     
     
     //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

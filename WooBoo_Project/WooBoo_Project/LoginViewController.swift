@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         self.present(vcName!, animated: true, completion: nil)
     }
     
-    // 애플로그인
+    // 애플로그인 버튼을 눌렀을때 Apple 로그인을 모달 시트로 표시하는 함수
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
@@ -301,8 +301,6 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         
     }
     
-    // 애플 로그인 버튼
-    
     // Apple ID 로그인 버튼 생성
     func setAppleSignInButton() {
         let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
@@ -322,27 +320,27 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         authorizationController.performRequests()
     }
     
-    // Apple ID 연동 성공 시
+//     Apple ID 연동 성공 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         // Apple ID
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-            
+
             // 계정 정보 가져오기
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
-            
+
             print("User ID : \(userIdentifier)")
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-            
+
         default:
             break
         }
     }
     
-    // Apple ID 연동 실패 시
+//     Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // Handle error.
     }

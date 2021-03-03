@@ -2,14 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    	
-
-
 <%
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
- 	String id_mysql = "root";
+    int user_uSeqno = Integer.parseInt(request.getParameter("user_uSeqno"));
+    int questions_qSeqno = Integer.parseInt(request.getParameter("questions_qSeqno"));
+
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
+ 	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select qSeqno from wooboo.questions order by qSeqno desc limit 1";
+    String WhereDefault = "select sqSelection from wooboo.select_question where user_uSeqno = " + user_uSeqno + " and questions_qSeqno = " + questions_qSeqno;
     int count = 0;
     
     try {
@@ -32,7 +32,8 @@
             count++;                 
 %>
 			{
-			"qSeqno" : "<%=rs.getInt(1) %>"
+			"sqSelection" : "<%=rs.getInt(1) %>"
+
 			}
 <%		
         }

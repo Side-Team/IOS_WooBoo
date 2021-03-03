@@ -25,6 +25,11 @@ class MypageViewController: UIViewController {
         imgUser.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        imgUser.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
+        
+    }
+    
     // 로그아웃 버튼 클릭
     @IBAction func btnLogout(_ sender: UIButton) {
         let checkAlert = UIAlertController(title: "로그아웃!", message: "로그아웃 하시겠습니까?", preferredStyle: UIAlertController.Style.alert)

@@ -20,7 +20,7 @@ class balancegameBtn2count{
     func downloadItems(){
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        print("btn1 url",url)
+        print("btn2 url",url)
         let task = defaultSession.dataTask(with: url){(data, response, error)in
             if error != nil{
                 print("failed to download data")

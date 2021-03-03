@@ -19,6 +19,7 @@ class QuestionModel: NSObject{
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         
+        print("메인\(url)")
         let task = defaultSession.dataTask(with: url){(data, responds, error) in
             if error != nil{
                 print("Failed to download data")
@@ -47,9 +48,10 @@ class QuestionModel: NSObject{
             jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
             let query = DBModel()
             
-            if let stitle = jsonElement["qTitle"] as? String
+            if let stitle = jsonElement["title"] as? String
                {
                 query.stitle = stitle
+                print("stitle\(stitle)")
                 
             }
             locations.add(query)
@@ -57,7 +59,7 @@ class QuestionModel: NSObject{
         DispatchQueue.main.async(execute: {() -> Void in
             self.delegate.itemDownloaded(items: locations)
         })
-        print("locations : \(locations)")
+        
     }
     
 }

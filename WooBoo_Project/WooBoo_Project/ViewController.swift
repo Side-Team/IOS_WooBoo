@@ -11,7 +11,6 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
 
     
    
-
     @IBOutlet weak var lblHot: UILabel!
     @IBOutlet weak var hotPageControl: UIPageControl!
     @IBOutlet weak var lblNew: UILabel!
@@ -45,35 +44,35 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     override func viewDidLoad() {
             super.viewDidLoad()
 
-            
-            
-            // 보람 추가
-            
-            //핫
-            let hotModel = panHot()
-            hotModel.delegate = self
-            hotModel.downloadItems()
-            
-            titleHot(number: numHotTitle)
-            
-            Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
-            
-            hotPageControl.numberOfPages = 3
-            hotPageControl.currentPage = 0
-            
-            //실시간글
-            let questionModel = QuestionModel()
-            questionModel.delegate = self
-            questionModel.downloadItems()
-            
+        // 보람 추가
         
-            NewTitle(number: numNewTitle)
-            Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        //핫
+        let hotModel = panHot()
+        hotModel.delegate = self
+        hotModel.downloadItems()
+        
+        titleHot(number: numHotTitle)
+        
+        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        
+        hotPageControl.numberOfPages = 3
+        hotPageControl.currentPage = 0
+        
+        //실시간글
+        let questionModel = QuestionModel()
+        questionModel.delegate = self
+        questionModel.downloadItems()
+        
+    
+        NewTitle(number: numNewTitle)
+        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        
+        newPageControl.numberOfPages = 3
+        newPageControl.currentPage = 0
+        
+        
             
-            newPageControl.numberOfPages = 3
-            newPageControl.currentPage = 0
-            
-            
+          
         }
     
    
@@ -148,19 +147,20 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     @objc func updateTime(){
       
         if Int(interval) % 3 == 0 {
-            
+
             numNewTitle += 1
+            newPageControl.currentPage -= 1
+
             numHotTitle += 1
-            
-            newPageControl.currentPage += 1
-            hotPageControl.currentPage += 1
-            
-            if numNewTitle >= titleName.count && numHotTitle >= hotTitle.count{
+            hotPageControl.currentPage -= 1
+
+            if numNewTitle >= titleName.count{
                 numNewTitle = 0
-                newPageControl.currentPage = 0
-                
+                newPageControl.currentPage = 2
+
                 numHotTitle = 0
-                hotPageControl.currentPage = 0
+                hotPageControl.currentPage = 2
+
         }
 
             NewTitle(number: numNewTitle)
@@ -169,54 +169,54 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         }
     }
             
-    @IBAction func changeHot(_ sender: UIPageControl) {
+    @IBAction func hotChange(_ sender: Any) {
         lblHot.text = hotTitle[newPageControl.currentPage]
-        makeSingleTouch()
+        //makeSingleTouch()
     }
     
-    @IBAction func changeNew(_ sender: UIPageControl) {
+    @IBAction func newChange(_ sender: UIPageControl) {
         lblNew.text = titleName[newPageControl.currentPage]
-        makeSingleTouch()
+       // makeSingleTouch()
     }
-    
-    // 한 손가락 Gesture 구성
-    func makeSingleTouch(){
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(swipeLeft)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
-    }
-    
-    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
-        
-            lblNew.text = titleName[newPageControl.currentPage]
-            lblHot.text = hotTitle[newPageControl.currentPage]
-            
-            // 어떤 제스쳐가 들어왔는지 판단
-            switch swipeGesture.direction{
-            case UISwipeGestureRecognizer.Direction.left:
-                newPageControl.currentPage -= 1
-                lblNew.text = titleName[newPageControl.currentPage]
-                
-                hotPageControl.currentPage -= 1
-                lblHot.text = hotTitle[newPageControl.currentPage]
-                
-            case UISwipeGestureRecognizer.Direction.right:
-                newPageControl.currentPage += 1
-                lblNew.text = titleName[newPageControl.currentPage]
-                
-                hotPageControl.currentPage += 1
-                lblHot.text = hotTitle[newPageControl.currentPage]
-                
-            default:
-                break
-            }
-        }
-    }
+   
+//    // 한 손가락 Gesture 구성
+//    func makeSingleTouch(){
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
+//        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+//        self.view.addGestureRecognizer(swipeLeft)
+//
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
+//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+//        self.view.addGestureRecognizer(swipeRight)
+//    }
+//
+//    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+//
+//            lblNew.text = titleName[newPageControl.currentPage]
+//            lblHot.text = hotTitle[newPageControl.currentPage]
+//
+//            // 어떤 제스쳐가 들어왔는지 판단
+//            switch swipeGesture.direction{
+//            case UISwipeGestureRecognizer.Direction.left:
+//                newPageControl.currentPage -= 1
+//                lblNew.text = titleName[newPageControl.currentPage]
+//
+//                hotPageControl.currentPage -= 1
+//                lblHot.text = hotTitle[newPageControl.currentPage]
+//
+//            case UISwipeGestureRecognizer.Direction.right:
+//                newPageControl.currentPage += 1
+//                lblNew.text = titleName[newPageControl.currentPage]
+//
+//                hotPageControl.currentPage += 1
+//                lblHot.text = hotTitle[newPageControl.currentPage]
+//
+//            default:
+//                break
+//            }
+//        }
+//    }
     
 }//====
 

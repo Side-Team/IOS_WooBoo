@@ -19,7 +19,7 @@
 		Statement stmt_mysql = conn_mysql.createStatement();
 	
 	    String A = "insert into user (uEmail, uInsertDate, uLogin";
-	    String B = ") values (?,now(),'kakao')";
+	    String B = ") values (?,now(),'google')";
 	
 	    ps = conn_mysql.prepareStatement(A+B);
 	    ps.setString(1, userid);

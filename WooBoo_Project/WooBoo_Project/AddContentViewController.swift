@@ -107,7 +107,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         makePadding()
         setDesign()
         makeDropDown()
-        setGestureRecognizer()
+        setGestureRecognizer_Category()
         
     }
     
@@ -185,34 +185,50 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         let button = UIButton(type: .custom)
         
         checkClickNum(textField : textField)
+        print("addRightImage clickNum : \(selectNum)")
+        
+        
         
         button.setImage(image, for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.addTarget(self, action: #selector(self.deleteTxtContent), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(self.deleteTxtContent), for: .touchUpInside)
         textField.rightView = button
         textField.rightView?.tintColor = customColor
         textField.rightViewMode = .always
+        
+        setGestureRecognizer()
+    }
+    
+    func setGestureRecognizer(){
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.deleteTxtContent3))
+        let tapGR2 = UITapGestureRecognizer(target: self, action: #selector(self.deleteTxtContent4))
+        let tapGR3 = UITapGestureRecognizer(target: self, action: #selector(self.deleteTxtContent5))
+
+        
+        txtContent3.rightView?.addGestureRecognizer(tapGR)
+        txtContent4.rightView?.addGestureRecognizer(tapGR2)
+        txtContent5.rightView?.addGestureRecognizer(tapGR3)
+
     }
 
     
-    @objc func deleteTxtContent(textField : UITextField){
-        print("감소 : \(txtContentCount)")
+    @objc func deleteTxtContent3(){
+        print("3 txtContentCount = \(txtContentCount)")
 
-        
-        if txtContentCount < 3{
-            txtContentCount = 3
-        }
-        
         switch txtContentCount{
         
         case 3:
             txtContent3.isHidden = true
             txtContent3.text = ""
         case 4:
+            txtContent3.text = txtContent4.text
             txtContent4.isHidden = true
             txtContent4.text = ""
         default:
+            txtContent3.text = txtContent4.text
+            txtContent4.text = txtContent5.text
             txtContent5.isHidden = true
             txtContent5.text = ""
         }
@@ -223,7 +239,44 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
 
     }
     
+    @objc func deleteTxtContent4(){
+
+        print("4 txtContentCount = \(txtContentCount)")
+        switch txtContentCount{
+        
+
+        case 4:
+            txtContent3.text = txtContent4.text
+            txtContent4.isHidden = true
+            txtContent4.text = ""
+        default:
+            txtContent4.text = txtContent5.text
+            txtContent5.isHidden = true
+            txtContent5.text = ""
+        }
+        
+        txtContentCount -= 1
+
+        outlet_BtnAdd.isHidden = false
+
+    }
+    
+    @objc func deleteTxtContent5(){
+        print("5 txtContentCount = \(txtContentCount)")
+
+//        txtContent3.text = txtContent4.text
+//        txtContent4.text = txtContent5.text
+        txtContent5.isHidden = true
+        txtContent5.text = ""
+        
+        txtContentCount -= 1
+        
+        outlet_BtnAdd.isHidden = false
+
+    }
+    
     func checkClickNum(textField : UITextField){
+        
         switch textField{
         case txtContent3:
             selectNum = 3
@@ -257,7 +310,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         }
     }
     
-    func setGestureRecognizer(){
+    func setGestureRecognizer_Category(){
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.textCategoryGesture(sender:)))
         txtCategory.addGestureRecognizer(tapGR)
     }
@@ -387,23 +440,17 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         
         if txtTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 || txtContent1.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 || txtContent2.text?.isEmpty == true{
             present(alert, animated: true, completion: nil)
-        }else if txtContent3.isHidden == false{
+        }else if txtContent3.isHidden == false && txtContent3.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
             print("txtContent3 체크중..")
-            if txtContent3.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
-                present(alert, animated: true, completion: nil)
-            }
-        }else if txtContent4.isHidden == false{
+            present(alert, animated: true, completion: nil)
+        }else if txtContent4.isHidden == false && txtContent4.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
             print("txtContent4 체크중..")
-            if txtContent4.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
-                present(alert, animated: true, completion: nil)
-            }
-        }else if txtContent5.isHidden == false{
+            present(alert, animated: true, completion: nil)
+
+        }else if txtContent5.isHidden == false && txtContent5.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
             print("txtContent5 체크중..")
-            if txtContent5.text?.trimmingCharacters(in: .whitespacesAndNewlines).count == 0{
-                present(alert, animated: true, completion: nil)
-            }
+            present(alert, animated: true, completion: nil)
         }else{
-            print("체크 OK")
             InsertAction()
         }
     }

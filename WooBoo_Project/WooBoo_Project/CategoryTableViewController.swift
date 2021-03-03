@@ -20,8 +20,6 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         let categoryModel = CategoryModel()
         categoryModel.delegate = self
         categoryModel.categoryItems(category: categoryvalue)
@@ -30,9 +28,10 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
         searchBar.delegate = self
         filteredData = temp
         print(filteredData as Any)
-        
-        
-       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      
     }
     
     func itemDownloaded(items: NSArray) {

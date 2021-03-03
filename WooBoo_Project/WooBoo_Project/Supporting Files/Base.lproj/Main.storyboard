@@ -1404,7 +1404,7 @@
                                                 <imageReference key="image" image="xmark.circle.fill" catalog="system" symbolScale="large"/>
                                             </state>
                                             <connections>
-                                                <action selector="btnDelete:" destination="x0T-LO-hmX" eventType="touchUpInside" id="1Tm-19-zDn"/>
+                                                <action selector="btnDelete:" destination="uXM-CK-ZRy" eventType="touchUpInside" id="gWQ-1e-miP"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1412,7 +1412,6 @@
                                 <connections>
                                     <outlet property="lblInsertDate" destination="lIz-Dn-3dj" id="ACm-rn-XbX"/>
                                     <outlet property="lblTitle" destination="WKj-qr-OaH" id="v02-ZT-e4q"/>
-                                    <outlet property="outlet_BtnDelete" destination="nOC-ON-YyB" id="LLW-ad-3JM"/>
                                     <segue destination="lUU-zO-asB" kind="show" identifier="MyQuestions" id="F7S-Ed-KmD"/>
                                 </connections>
                             </tableViewCell>
@@ -1428,13 +1427,12 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Il-Rn-K0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="x0T-LO-hmX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2046.1538461538462" y="1335.0710900473932"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CFF-lg-4bH"/>
+        <segue reference="F7S-Ed-KmD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>

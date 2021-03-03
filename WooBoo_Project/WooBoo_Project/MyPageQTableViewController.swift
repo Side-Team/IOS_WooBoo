@@ -9,7 +9,7 @@ import UIKit
 
 class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     func return_MyQuestions(myQuestions: NSArray) {
-        self.myQuestions = myQuestions
+        self.myQuestions = myQuestions as! NSMutableArray
         let item: categoryDBModel = myQuestions[0] as! categoryDBModel
         print("MyPageQTableViewController : \(String(describing: item.qSeqno))")
         self.tvMyQuestions.reloadData()
@@ -19,8 +19,7 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     @IBOutlet var tvMyQuestions: UITableView!
     
     let cellName = "MyQTCell" 
-    var myQuestions: NSArray = NSArray()
-    var qSeqno = 0
+    var myQuestions: NSMutableArray = NSMutableArray()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,30 +54,31 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! MyQTableViewCell
 
         
-        print("indexPath.row : \(indexPath.row)")
         // Configure the cell...
         let item: categoryDBModel = myQuestions[indexPath.row] as! categoryDBModel
-        qSeqno = Int(item.qSeqno!)!
         
         cell.lblTitle.text = "\(item.qTitle!)"
         cell.lblInsertDate.text = "\(item.qInsertDate!)"
-        cell.outlet_BtnDelete.addTarget(self, action: #selector(clickDeleteBtn(_:)), for: .touchUpInside)
-        print("feedItem")
         
-        print("item.qSeqno : \(String(describing: item.qSeqno))")
         
         return cell
     }
     
-    @objc func clickDeleteBtn(_ sender: UIButton){
-        print("clickDeleteBtn.qSeqno : \(qSeqno)")
-
+    @IBAction func btnDelete(_ sender: UIButton) {
+        print("버튼 클릭")
+        let contentView = sender.superview
+        let cell = contentView?.superview as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        let row = indexPath![1]
+        let item: categoryDBModel = myQuestions[row] as! categoryDBModel
+        let qSeqno = Int(item.qSeqno!)!
+        
         let updateModel = LMW_UpdateModel()
         updateModel.update_MyQuestions(qSeqno: qSeqno)
         
-//        self.tvMyQuestions.reloadData()
-        
-        print("clickDeleteBtn")
+        myQuestions.removeObject(at: row)
+//
+        self.tvMyQuestions.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

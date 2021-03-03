@@ -5,8 +5,8 @@
 <%
     int questions_qSeqno = Integer.parseInt(request.getParameter("questions_qSeqno"));
 
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
- 	String id_mysql = "root";
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
+ 	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
     String WhereDefault = "select count(*), (select count(*) from wooboo.select_question where questions_qSeqno = " + questions_qSeqno + " and sqSelection = 1)as cnt1, (select count(*) from wooboo.select_question where questions_qSeqno = " + questions_qSeqno + " and sqSelection = 2)as cnt2, (select count(*) from wooboo.select_question where questions_qSeqno = " + questions_qSeqno + " and sqSelection = 3)as cnt3, (select count(*) from wooboo.select_question where questions_qSeqno = " + questions_qSeqno + " and sqSelection = 4)as cnt4, (select count(*) from wooboo.select_question where questions_qSeqno = " + questions_qSeqno + " and sqSelection = 5)as cnt5 from wooboo.select_question where questions_qSeqno = " + questions_qSeqno;
 

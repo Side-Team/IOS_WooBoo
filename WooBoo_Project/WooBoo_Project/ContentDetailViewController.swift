@@ -661,28 +661,28 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
         print("maxIndex : \(maxIndex)")
         
-        switch maxIndex{
-        case 0:
-//            outlet_btn1.setTitleColor(.black, for: .normal)
-            outlet_btn1.titleLabel?.font = UIFont(name: outlet_btn1.titleLabel!.font.fontName, size: 20)
-        case 1:
-//            outlet_btn2.setTitleColor(.black, for: .normal)
-            outlet_btn2.titleLabel?.font = UIFont(name: outlet_btn2.titleLabel!.font.fontName, size: 20)
-        case 2:
-//            outlet_btn3.setTitleColor(.black, for: .normal)
-            outlet_btn3.titleLabel?.font = UIFont(name: outlet_btn3.titleLabel!.font.fontName, size: 20)
-        case 3:
-//            outlet_btn4.setTitleColor(.black, for: .normal)
-            outlet_btn4.titleLabel?.font = UIFont(name: outlet_btn4.titleLabel!.font.fontName, size: 20)
-        case 4:
-//            outlet_btn5.setTitleColor(.black, for: .normal)
-            outlet_btn5.titleLabel?.font = UIFont(name: outlet_btn5.titleLabel!.font.fontName, size: 20)
-
-
-
-        default: break
+//        switch maxIndex{
+//        case 0:
+////            outlet_btn1.setTitleColor(.black, for: .normal)
+//            outlet_btn1.titleLabel?.font = UIFont(name: outlet_btn1.titleLabel!.font.fontName, size: 20)
+//        case 1:
+////            outlet_btn2.setTitleColor(.black, for: .normal)
+//            outlet_btn2.titleLabel?.font = UIFont(name: outlet_btn2.titleLabel!.font.fontName, size: 20)
+//        case 2:
+////            outlet_btn3.setTitleColor(.black, for: .normal)
+//            outlet_btn3.titleLabel?.font = UIFont(name: outlet_btn3.titleLabel!.font.fontName, size: 20)
+//        case 3:
+////            outlet_btn4.setTitleColor(.black, for: .normal)
+//            outlet_btn4.titleLabel?.font = UIFont(name: outlet_btn4.titleLabel!.font.fontName, size: 20)
+//        case 4:
+////            outlet_btn5.setTitleColor(.black, for: .normal)
+//            outlet_btn5.titleLabel?.font = UIFont(name: outlet_btn5.titleLabel!.font.fontName, size: 20)
+//
+//
+//
+//        default: break
   
-        }
+//        }
     }
     
     func setFocus(){

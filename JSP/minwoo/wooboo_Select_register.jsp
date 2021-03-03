@@ -6,10 +6,10 @@
     int user_uSeqno = Integer.parseInt(request.getParameter("user_uSeqno"));
     int questions_qSeqno = Integer.parseInt(request.getParameter("questions_qSeqno"));
 
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
- 	String id_mysql = "root";
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
+ 	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select sqSelection from wooboo.select_question where user_uSeqno = " + user_uSeqno + " and questions_qSeqno = " + questions_qSeqno;
+    String WhereDefault = "select count(*), (select rViews from wooboo.register where questions_qSeqno = " + questions_qSeqno + ")as views from wooboo.register where user_uSeqno = " + user_uSeqno + " and questions_qSeqno = " + questions_qSeqno;
     int count = 0;
     
     try {
@@ -32,7 +32,8 @@
             count++;                 
 %>
 			{
-			"sqSelection" : "<%=rs.getInt(1) %>"
+			"count" : "<%=rs.getInt(1) %>",
+            "views" : "<%=rs.getInt(2) %>"
 
 			}
 <%		

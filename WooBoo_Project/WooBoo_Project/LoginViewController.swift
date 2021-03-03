@@ -40,6 +40,10 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             UserDefaults.standard.setValue(googleEmail, forKey: "autoId")
             let googleInsert = LoginModel()
             let result = googleInsert.googleItems(Email: googleEmail)
+            
+            let jspUserSelect = JspUserSelect()
+            jspUserSelect.delegate = self
+            jspUserSelect.downloadItems()
             if result == true{
                 print("구글 저장 완료")
             }else{
@@ -55,7 +59,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         self.present(vcName!, animated: true, completion: nil)
     }
     
-    
+    // 애플로그인
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
@@ -68,13 +72,8 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     @IBOutlet weak var txtID: UITextField!
     @IBOutlet weak var txtPW: UITextField!
     @IBOutlet weak var swOnOff: UISwitch!
-    @IBOutlet weak var ivImage: UIImageView!
-    @IBOutlet weak var lblName: UILabel!
-    
-    @IBOutlet weak var lblEmail: UILabel!
-    
-    
     @IBOutlet weak var btnApple: UIStackView!
+    
     
     //생성된 Main.storyboard와 연동작업 (변수에 담는 작업)
     let myStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -85,10 +84,10 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         super.viewDidLoad()
         loginModel.delegate = self
         
-        checkSwitchValue()
-        checkAutoLogin()
+        checkSwitchValue()  // 자동로그인 스위치 값
+        checkAutoLogin()    // 자동로그인
         
-        setAppleSignInButton()
+        setAppleSignInButton()  // 애플 로그인
         
         print("autoID 값 : \(String(describing: UserDefaults.standard.string(forKey: "autoId")))")
         print("스위치값 : \(String(describing: UserDefaults.standard.string(forKey: "autoLoginValue")))")
@@ -196,34 +195,34 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     }
     
     // 카카오 로그인 버튼
-    @IBAction func btnKakao(_ sender: UIButton) {
-        
-        // 카카오톡 설치 여부 확인
-        if (AuthApi.isKakaoTalkLoginAvailable()) {
-            AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    
-                    // 예외 처리 (로그인 취소 등)
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-                    // do something
-                    _ = oauthToken
-                    // 어세스토큰
-                    let accessToken = oauthToken?.accessToken
-                    
-                    //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
-                    self.setUserInfo()
-                    
-                    let vcName = self.storyboard!.instantiateViewController(withIdentifier: "MainView")
-                    vcName.modalPresentationStyle = .fullScreen
-                    
-                    self.present(vcName, animated: true, completion: nil)
-                }
-            }
-        }
-    }
+//    @IBAction func btnKakao(_ sender: UIButton) {
+//
+//        // 카카오톡 설치 여부 확인
+//        if (AuthApi.isKakaoTalkLoginAvailable()) {
+//            AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+//                if let error = error {
+//
+//                    // 예외 처리 (로그인 취소 등)
+//                    print(error)
+//                }
+//                else {
+//                    print("loginWithKakaoTalk() success.")
+//                    // do something
+//                    _ = oauthToken
+//                    // 어세스토큰
+//                    let accessToken = oauthToken?.accessToken
+//
+//                    //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
+//                    self.setUserInfo()
+//
+//                    let vcName = self.storyboard!.instantiateViewController(withIdentifier: "MainView")
+//                    vcName.modalPresentationStyle = .fullScreen
+//
+//                    self.present(vcName, animated: true, completion: nil)
+//                }
+//            }
+//        }
+//    }
     
     // 카카오 웹
     @IBAction func btnKakaoweb(_ sender: UIButton) {
@@ -278,6 +277,11 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                 UserDefaults.standard.setValue(kakaoEmail, forKey: "autoId")
                 let kakaoInsert = LoginModel()
                 let result = kakaoInsert.kakaoItems(Email: kakaoEmail!)
+                
+                let jspUserSelect = JspUserSelect()
+                jspUserSelect.delegate = self
+                jspUserSelect.downloadItems()
+                
                 if result == true{
                     print("카카오 이메일 저장 완료")
                 }else{
@@ -296,6 +300,8 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
         GIDSignIn.sharedInstance().signIn()
         
     }
+    
+    // 애플 로그인 버튼
     
     // Apple ID 로그인 버튼 생성
     func setAppleSignInButton() {

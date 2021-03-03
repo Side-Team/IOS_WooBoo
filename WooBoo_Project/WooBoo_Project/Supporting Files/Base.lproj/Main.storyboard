@@ -375,62 +375,35 @@
                                     <action selector="btnLogin:" destination="bD9-87-RSu" eventType="touchUpInside" id="rar-xW-C7h"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKn-BN-QUN">
-                                <rect key="frame" x="75" y="75" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlr-Sx-jal">
-                                <rect key="frame" x="55" y="494" width="271" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2z-03-z3p">
-                                <rect key="frame" x="103" y="567" width="183" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="kakao_login_medium_narrow.png">
-                                    <color key="titleColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnKakao:" destination="bD9-87-RSu" eventType="touchUpInside" id="1gy-mE-UN9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xla-la-MKG">
-                                <rect key="frame" x="103" y="628" width="183" height="45"/>
+                                <rect key="frame" x="103" y="512" width="183" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="kakao_login_medium_narrow.png"/>
                                 <connections>
                                     <action selector="btnKakaoweb:" destination="bD9-87-RSu" eventType="touchUpInside" id="DFN-bg-9wk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXk-aZ-2xo">
-                                <rect key="frame" x="55" y="530" width="271" height="29"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="byg-eC-w9Y">
+                                <rect key="frame" x="103" y="646" width="183" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK5-NU-L5F">
+                                <rect key="frame" x="157" y="585" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="구글로그인"/>
+                                <connections>
+                                    <action selector="btnGoogle:" destination="bD9-87-RSu" eventType="touchUpInside" id="Dje-PW-GnR"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTp-e6-OKi">
-                                <rect key="frame" x="230" y="770" width="30" height="30"/>
+                                <rect key="frame" x="180" y="726" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="애플">
                                     <color key="titleColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="btnApple:" destination="bD9-87-RSu" eventType="touchUpInside" id="nff-wK-0Vo"/>
                                     <action selector="btnLogout:" destination="bD9-87-RSu" eventType="touchUpInside" id="TpD-Pc-nUM"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="byg-eC-w9Y">
-                                <rect key="frame" x="103" y="719" width="183" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK5-NU-L5F">
-                                <rect key="frame" x="162" y="681" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="구글로그인"/>
-                                <connections>
-                                    <action selector="btnGoogle:" destination="bD9-87-RSu" eventType="touchUpInside" id="Dje-PW-GnR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -439,10 +412,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="로그인" id="JKV-US-6PV"/>
                     <connections>
-                        <outlet property="btnApple" destination="byg-eC-w9Y" id="IqE-9Y-a9h"/>
-                        <outlet property="ivImage" destination="xKn-BN-QUN" id="4ii-Mx-tak"/>
-                        <outlet property="lblEmail" destination="pXk-aZ-2xo" id="OoC-Cw-1N2"/>
-                        <outlet property="lblName" destination="dlr-Sx-jal" id="qxP-LS-2VB"/>
+                        <outlet property="btnApple" destination="byg-eC-w9Y" id="dQo-Uw-POc"/>
                         <outlet property="swOnOff" destination="LwD-3n-A79" id="t76-wL-czl"/>
                         <outlet property="txtID" destination="RJd-Vg-PcL" id="Lbh-ZF-tts"/>
                         <outlet property="txtPW" destination="gp5-KC-U3t" id="fTI-Uo-Gvd"/>

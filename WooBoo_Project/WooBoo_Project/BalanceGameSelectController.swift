@@ -26,8 +26,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     //db
     var feedItem: NSArray = NSArray()
     var countItem:NSArray = NSArray()
-    var btn1Item:NSArray = NSArray()
-    var btn2Item:NSArray = NSArray()
+    var btn1Item: NSArray = NSArray()
+    var btn2Item: NSArray = NSArray()
     
     func itemDownloaded(items: NSArray) {
         feedItem = items
@@ -41,12 +41,12 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     
     func itemBtn1Count(items: NSArray) {
         btn1Item = items
-//        loadClick1()
+      loadClick1()
     }
     
     func itemBtn2Count(items: NSArray) {
         btn2Item = items
-//        loadClick2()
+        loadClick2()
     }
     
 
@@ -76,12 +76,22 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
-//        let gameSelectModel = balancegameSelectModel()
-//        gameSelectModel.delegate = self
-//        gameSelectModel.downloadItems()
-//        loadData()
+//        let peopleCount = balancegamePeopleCountModel()
+//        peopleCount.delegate = self
+//        peopleCount.downloadItems()
+//
+//        let btn1Count = balancegameBtn1count()
+//        btn1Count.delegate = self
+//        btn1Count.downloadItems()
+//
+//        let btn2Count = balancegameBtn2count()
+//        btn2Count.delegate = self
+//        btn2Count.downloadItems()
+//
+//
+//
 //    }
- 
+//
     
     @IBAction func btnSelect1(_ sender: UIButton) {
         checkValue = 0
@@ -108,9 +118,10 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.backgroundColor = UIColor.white
                 btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
-                clickDataUpdate()
                 loadClick1()
                 loadClick2()
+                clickDataUpdate()
+               
                 
 
             }else{
@@ -119,9 +130,10 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.backgroundColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
                 btnSelect2.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
-                clickDataUpdate()
                 loadClick1()
                 loadClick2()
+                clickDataUpdate()
+                
             }
         } // checkButtonStatus 끝
     

@@ -8,8 +8,8 @@
     String balancegame_bSeqno = request.getParameter("balancegame_bSeqno");
     String sbSelection = request.getParameter("sbSelection");
    
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
- 	String id_mysql = "root";
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
+ 	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
     String WhereDefault = "select count(user_uSeqno)as btn from select_balancegame where balancegame_bSeqno = '" + balancegame_bSeqno + "' and sbSelection = '1' " ;
     int count = 0;

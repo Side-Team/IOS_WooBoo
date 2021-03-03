@@ -5,8 +5,8 @@
 	request.setCharacterEncoding("utf-8");
 	String uEmail = request.getParameter("uEmail");
 //------
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=Asia/Seoul&characterEncoding=utf8&useSSL=false";
-	String id_mysql = "root";
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=Asia/Seoul&characterEncoding=utf8&useSSL=false";
+	String id_mysql = "wooboo";
 	String pw_mysql = "qwer1234";
 	String WhereDefault = "select count(uEmail) from user where uEmail = '" + uEmail + "'";
 

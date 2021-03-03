@@ -1,34 +1,33 @@
 //
-//  balancegameSelectModel.swift
+//  balancegameBtn2count.swift
 //  WooBoo_Project
 //
-//  Created by 김보람 on 2021/03/01.
+//  Created by 김보람 on 2021/03/03.
 //
 
 import Foundation
 
-
-protocol balancegameSelectModelProtocol: class {
-    func itemDownloaded(items: NSArray)
+protocol balancegameBtn2countProtocol: class{
+    func itemBtn2Count(items: NSArray)
 }
 
-class balancegameSelectModel{
-    var delegate: balancegameSelectModelProtocol!
-    
-    let urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_BalancegameSelect.jsp"
+class balancegameBtn2count{
+    var delegate: balancegameBtn2countProtocol!
+    var urlPath =
+        "http://127.0.0.1:8080/ios_jsp/wooboo_balancegameBtn2Count.jsp?balancegame_bSeqno=\(String(Share.gameNum))"
    
+    
     func downloadItems(){
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        print("url: \(urlPath)")
-        
+        print("btn1 url",url)
         let task = defaultSession.dataTask(with: url){(data, response, error)in
             if error != nil{
                 print("failed to download data")
             }else{
                 print("Data is downloading")
                 self.parseJONS(data!)
-
+            
             }
         }
         task.resume()
@@ -48,29 +47,19 @@ class balancegameSelectModel{
         let locations = NSMutableArray()
         
         for i in 0..<jsonResult.count{
-            
             jsonElement =  jsonResult[i] as! NSDictionary
-            let query = balancegameModel()
+            let query = SelectgameModel()
             
-            if let bSeqno = jsonElement["seqno"] as? String,
-                let bTitle = jsonElement["title"] as? String,
-                let bSelection1 = jsonElement["selection1"] as? String,
-                let bSelection2 = jsonElement["selection2"] as? String{
-                query.bSeqno = bSeqno
-                query.bTitle = bTitle
-                query.bSelection1 = bSelection1
-                query.bSelection2 = bSelection2
-                
-     
-               
+            if let btn2 = jsonElement["btn2"] as? String{
+                query.btn2 = btn2
+                print("btn2 ",btn2)
             }
             locations.add(query)
-          
-         
+            
+        
         }
         DispatchQueue.main.async(execute: {() -> Void in
-
-            self.delegate.itemDownloaded(items: locations)
+            self.delegate.itemBtn2Count(items: locations)
         })
     }
-}
+}//=======

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKUser
+import GoogleSignIn
 
 class MypageViewController: UIViewController {
 
@@ -19,8 +21,8 @@ class MypageViewController: UIViewController {
 
         backView.layer.cornerRadius = 25
         imgUser.layer.cornerRadius = 45
-        lblwooboo.text = "우부 \(Share.uSeqno)"
-        imgUser.image = UIImage(named: Share.uImageFileName)
+        lblwooboo.text = "우부" + UserDefaults.standard.string(forKey: "uSeqno")!
+        imgUser.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
     }
     
     // 로그아웃 버튼 클릭
@@ -31,6 +33,7 @@ class MypageViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "autoId")
             UserDefaults.standard.removeObject(forKey: "autoPw")
             UserDefaults.standard.removeObject(forKey: "autoLoginValue")
+            Share.userID = ""
             let vcName = self.storyboard?.instantiateViewController(withIdentifier: "LoginView")
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)
@@ -39,6 +42,30 @@ class MypageViewController: UIViewController {
         checkAlert.addAction(cancelAction)
         checkAlert.addAction(checkAction)
         present(checkAlert, animated: true, completion: nil)
+        
+        // 카카오 로그아웃
+        
+        UserApi.shared.unlink {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("unlink() success.")
+            }
+        }
+        
+        UserApi.shared.logout {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("Kakao logout() success.")
+            }
+        }
+        
+        // 구글 로그아웃
+        GIDSignIn.sharedInstance()?.signOut()
+        print("Google logout")
     }
    
     

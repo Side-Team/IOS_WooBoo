@@ -5,10 +5,14 @@
 
 <%
 
+    String balancegame_bSeqno = request.getParameter("balancegame_bSeqno");
+   
+
+
 	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select * from balancegame" ;
+    String WhereDefault = "select count(user_uSeqno)as btn from select_balancegame where balancegame_bSeqno = '" + balancegame_bSeqno + "'" ;
     int count = 0;
     
     try {
@@ -31,10 +35,8 @@
             count++;                 
 %>
 			{
-			"seqno" : "<%=rs.getInt(1) %>",
-			"title" : "<%=rs.getString(2) %>",
-			"selection1" : "<%=rs.getString(3) %>", 
-			"selection2" : "<%=rs.getString(4) %>"			
+			"count" : "<%=rs.getInt(1) %>"
+				
 			}
 <%		
         }

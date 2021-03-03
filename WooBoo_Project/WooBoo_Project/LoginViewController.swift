@@ -13,6 +13,27 @@ import Firebase
 import AuthenticationServices   // 애플 로그인
 
 class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectProtocol, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate, GIDSignInDelegate {
+ 
+    func findCheckValue(result: String) {
+        self.findCheck = result
+        print("LVfindCheckValue: \(result)")
+        
+        if findCheck.isEmpty {
+            let failAlert = UIAlertController(title: "경고!", message: "정보가 일치하지 않습니다..", preferredStyle: UIAlertController.Style.alert)
+            let failAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            failAlert.addAction(failAction)
+            present(failAlert, animated: true, completion: nil)
+            print("비밀번호찾기실패:\(self.findCheck)")
+        }else{
+            let okAlert = UIAlertController(title: "완료!", message: "비밀번호는 \(findCheck)입니다.", preferredStyle: UIAlertController.Style.alert)
+            let failAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            okAlert.addAction(failAction)
+            present(okAlert, animated: true, completion: nil)
+            print("비밀번호찾기성공:\(self.findCheck)")
+        }
+        
+    }
+    
     
     public static var user: GIDGoogleUser!
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -78,6 +99,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     //생성된 Main.storyboard와 연동작업 (변수에 담는 작업)
     let myStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     var loginCheck: Int = 0
+    var findCheck: String = ""
     let loginModel = LoginModel()
     
     override func viewDidLoad() {
@@ -172,21 +194,42 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
     @IBAction func btnFindpw(_ sender: UIButton) {
         // 클릭하면 alert띄워서 이메일 받기
         let findAlert = UIAlertController(title: "비밀번호 찾기", message: "이메일을 입력해주세요!", preferredStyle: UIAlertController.Style.alert)
-        findAlert.addTextField()
-        let findAction = UIAlertAction(title: "인증번호 발송", style: UIAlertAction.Style.default, handler: {ACTION in
-            self.navigationController?.popViewController(animated: true)
-            // 인증번호 발송 액션
+        findAlert.addTextField{[self] (findTextField)in
+            findTextField.placeholder = "가입시 등록한 이메일을 적어주세요."
+        }
+        
+        let findAction = UIAlertAction(title: "다음", style: UIAlertAction.Style.destructive, handler: {[self]ACTION in
+            // 전화번호 받아야함
+            
+            // 이메일이 nil일 경우
+            if findAlert.textFields![0].text! == ""{
+                let nilcheck = UIAlertController(title: "실패",message: "이메일을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+                let Cancel = UIAlertAction(title: "닫기", style: UIAlertAction.Style.default, handler: nil)
+                nilcheck.addAction(Cancel)
+                present(nilcheck, animated: true, completion: nil)
+            }else{
+                let phoneAlert = UIAlertController(title: "비밀번호 찾기", message: "전화번호를 입력해주세요!", preferredStyle: UIAlertController.Style.alert)
+                phoneAlert.addTextField{[self] (phoneTextField) in
+                    phoneTextField.placeholder = "가입시 등록한 전화번호를 입력해주세요."
+                }
+                print("email : \(findAlert.textFields![0].text!)")
+                print("phone : \(phoneAlert.textFields![0].text!)")
+                let phoneAction = UIAlertAction(title: "다음", style: UIAlertAction.Style.destructive, handler: {[self]ACTION in
+                    loginModel.findItems(email: findAlert.textFields![0].text!, phone: phoneAlert.textFields![0].text!)
+                })
+                
+                let findCancel = UIAlertAction(title: "닫기", style: UIAlertAction.Style.default, handler: nil)
+                
+                phoneAlert.addAction(phoneAction)
+                phoneAlert.addAction(findCancel)
+                present(phoneAlert, animated: true, completion: nil)
+            }
         })
-        let findCancel = UIAlertAction(title: "닫기", style: UIAlertAction.Style.default, handler: {ACTION in
-            self.navigationController?.popViewController(animated: true)
-        })
+        
+        let findCancel = UIAlertAction(title: "닫기", style: UIAlertAction.Style.default, handler: nil)
         findAlert.addAction(findAction)
         findAlert.addAction(findCancel)
         present(findAlert, animated: true, completion: nil)
-        // 이메일인증 인증번호 전송
-        // 인증번호 확인
-        
-        
     }
     
     // 회원가입 버튼

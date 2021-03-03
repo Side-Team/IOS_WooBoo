@@ -11,10 +11,10 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
     
     // textfield 연결
     @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var txtCode: UITextField!
+    @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtPW: UITextField!
     @IBOutlet weak var txtPWCheck: UITextField!
-    @IBOutlet weak var lblpwCheck: UILabel!
+
     
     let joinModel = JoinModel()
     var emailCheck:Int = 0
@@ -48,7 +48,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
     @IBAction func btnJoinOk(_ sender: UIButton) {
         // nilcheck를 위함
         let num1Check: Int = checkNil(str: txtEmail.text!)
-        let num2Check: Int = checkNil(str: txtCode.text!)
+        let num2Check: Int = checkNil(str: txtPhone.text!)
         let num3Check: Int = checkNil(str: txtPW.text!)
         let num4Check: Int = checkNil(str: txtPWCheck.text!)
         
@@ -128,6 +128,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
     // 가입 버튼 시 확인해야 할 메서드
     func JoinCheck(){
         let email = txtEmail.text!
+        let phone = txtPhone.text!
         let pw = txtPW.text!
         let pwCheck = txtPWCheck.text!
         // 중복확인이 되어야하고(중복확인 버튼을 클릭 해야하고, 중복인지 아닌지를 판단해야한다.)
@@ -158,7 +159,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
                     present(nilAlert, animated: true, completion: nil)
                     print("비밀번호 실패")
                 }else{  // 정규식까지 완료
-                    print("정규식까지 완료")
+                    print("비밀번호 정규식까지 완료")
                     // 비밀번호와 비밀번호확인 필드 값 확인
                     if pw != pwCheck{   // 서로 다르며
                         print("비밀번호와 비밀번호체크 값이 다름")
@@ -167,24 +168,34 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
                         nilAlert.addAction(nilAction)
                         present(nilAlert, animated: true, completion: nil)
                     }else{
-                        print("비밀번호필드 일치")
-                        let result = joinModel.joinItems(email: email, pw: pw)
+                        print("비밀번호필드 일치, 전화번호 정규식")
                         
-                        if result == true{
-                            let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
-                            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                                self.dismiss(animated: true, completion: nil)
-                            })
+                        if !isValidPhone(phone: phone){
+                            let nilAlert = UIAlertController(title: "경고!", message: "전화번호 형식을 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
+                            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                             nilAlert.addAction(nilAction)
                             present(nilAlert, animated: true, completion: nil)
+                            print("전화번호 실패")
                         }else{
-                            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-                            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                            resultAlert.addAction(onAction)
-                            present(resultAlert, animated: true, completion: nil)
+                            
+                            print("전화번호까지 완료")
+                            let result = joinModel.joinItems(email: email, pw: pw, phone: phone)
+                            
+                            if result == true{
+                                let nilAlert = UIAlertController(title: "완료", message: "가입 되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                                    self.dismiss(animated: true, completion: nil)
+                                })
+                                nilAlert.addAction(nilAction)
+                                present(nilAlert, animated: true, completion: nil)
+                            }else{
+                                let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                                resultAlert.addAction(onAction)
+                                present(resultAlert, animated: true, completion: nil)
+                            }
                         }
                     }
-                    
                 }
             }
         }
@@ -256,6 +267,13 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
         return passwordTest.evaluate(with: pwd)
     }
     
+    // 핸드폰 번호 체크(11자리)
+    func isValidPhone(phone: String) -> Bool{
+        let phoneRegEx = "^010-?([0-9]{4})-?([0-9]{4})"
+        let pred = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
+        return pred.evaluate(with: phone)
+    }
+    
     // 아무곳이나 눌러 softkeyboard 지우기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -274,7 +292,7 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
     // textfield underline
     override func viewDidLayoutSubviews() {
         txtEmail.borderStyle = .none
-        txtCode.borderStyle = .none
+        txtPhone.borderStyle = .none
         txtPW.borderStyle = .none
         txtPWCheck.borderStyle = .none
         let border = CALayer()
@@ -285,8 +303,8 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
         border.backgroundColor = UIColor.lightGray.cgColor
         let border1 = CALayer()
         border1.frame = CGRect(x: 0,
-                               y: txtCode.frame.size.height-1,
-                               width: txtCode.frame.width,
+                               y: txtPhone.frame.size.height-1,
+                               width: txtPhone.frame.width,
                                height: 1)
         border1.backgroundColor = UIColor.lightGray.cgColor
         let border2 = CALayer()
@@ -302,15 +320,15 @@ class JoinViewController: UIViewController, EmailCheckProtocol {
                                height: 1)
         border3.backgroundColor = UIColor.lightGray.cgColor
         txtEmail.layer.addSublayer((border))
-        txtCode.layer.addSublayer((border1))
+        txtPhone.layer.addSublayer((border1))
         txtPW.layer.addSublayer((border2))
         txtPWCheck.layer.addSublayer((border3))
         txtEmail.textAlignment = .center
-        txtCode.textAlignment = .center
+        txtPhone.textAlignment = .center
         txtPW.textAlignment = .center
         txtPWCheck.textAlignment = .center
         txtEmail.textColor = UIColor.black
-        txtCode.textColor = UIColor.black
+        txtPhone.textColor = UIColor.black
         txtPW.textColor = UIColor.black
         txtPWCheck.textColor = UIColor.black
     }

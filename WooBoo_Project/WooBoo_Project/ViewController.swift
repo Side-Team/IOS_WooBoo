@@ -36,10 +36,6 @@ class ViewController: UIViewController, QuestionProtocol {
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            // 세미 테스트중
-            print("ShareID : \(Share.userID)")
-            print("ShareuSeqno : \(Share.uSeqno)")
-            print("ShareusePW : \(Share.userPW)")
             
         }
     

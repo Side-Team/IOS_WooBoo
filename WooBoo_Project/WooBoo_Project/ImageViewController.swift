@@ -49,7 +49,7 @@ class ImageViewController: UIViewController {
                     
                     
                     //2. 이미지 뷰의 영역과 위치를 지정
-                    iconV.frame = CGRect(x:-10, y:0, width:(new_image.size.width - 60),height:(new_image.size.height))
+                    iconV.frame = CGRect(x:10, y:0, width:(new_image.size.width ),height:(new_image.size.height))
                     
                     
                     //3. 루트뷰에 이미지 뷰를 추가

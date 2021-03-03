@@ -6,10 +6,10 @@
     int user_uSeqno = Integer.parseInt(request.getParameter("user_uSeqno"));
     int questions_qSeqno = Integer.parseInt(request.getParameter("questions_qSeqno"));
 
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
- 	String id_mysql = "root";
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
+ 	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select count(*) from wooboo.like where questions_qSeqno = " + questions_qSeqno + " and user_uSeqno = " + user_uSeqno;
+    String WhereDefault = "select count(*) from wooboo.report where questions_qSeqno = " + questions_qSeqno + " and user_uSeqno = " + user_uSeqno;
     int count = 0;
     
     try {

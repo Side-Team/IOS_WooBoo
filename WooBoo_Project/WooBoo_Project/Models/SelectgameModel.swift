@@ -14,6 +14,8 @@ class SelectgameModel: NSObject{
     var sbSelection: String?
     var sbViews: String?
     var count: String?
+    var btn1:String?
+    var btn2:String?
 
     override init() {
         

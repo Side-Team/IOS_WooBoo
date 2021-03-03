@@ -50,30 +50,34 @@ class JspUserSelect{
             print("1")
             jsonElement =  jsonResult[i] as! NSDictionary
             let query = UserModel()
-            
+               
             if let uSeqno = jsonElement["seqno"] as? String,
                 let uEmail = jsonElement["email"] as? String,
                 let uPw = jsonElement["pw"] as? String,
-                let uImageFileName = jsonElement["Image"] as? String{
+                let uImageFileName = jsonElement["Image"] as? String,
+                let uLogin = jsonElement["login"] as? String{
                 print("3")
                 query.uSeqno = uSeqno
                 query.uEmail = uEmail
                 query.uPw = uPw
                 query.uImageFileName = uImageFileName
-                
+                    query.uLogin = uLogin
+
                 Share.uSeqno = Int(uSeqno)!
                 Share.userID = uEmail
                 Share.userPW = uPw
                 Share.uImageFileName = uImageFileName
-                
+                Share.uLogin = uLogin
+
                 UserDefaults.standard.setValue(uSeqno, forKey: "uSeqno")
                 UserDefaults.standard.setValue(uEmail, forKey: "uEmail")
                 UserDefaults.standard.setValue(uPw, forKey: "uPw")
                 UserDefaults.standard.setValue(uImageFileName, forKey: "uImageFileName")
-     
+
                 print("uSeqno : \(uSeqno)")
                 print("uEmail : \(uEmail)")
                 print("uPw : \(uPw)")
+                print("uLogin: \(Share.uLogin)")
                
             }
             locations.add(query)

@@ -15,6 +15,7 @@ class UserModel : NSObject{
     var uDeleteDate: String?
     var uImageFileName: String?
     var uSeqno: String?
+    var uLogin: String?
     
     //Empty constructor
     override init() {
@@ -37,6 +38,16 @@ class UserModel : NSObject{
         self.uEmail = uEmail
         self.uPw = uPw
         self.uImageFileName = uImageFileName
+        
+    }
+    
+    init(uSeqno: String, uEmail: String, uPw: String, uImageFileName: String, uLogin:String){
+        
+        self.uSeqno = uSeqno
+        self.uEmail = uEmail
+        self.uPw = uPw
+        self.uImageFileName = uInsertDate
+        self.uLogin = uLogin
         
     }
    

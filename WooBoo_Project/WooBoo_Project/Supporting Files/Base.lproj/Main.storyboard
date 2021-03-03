@@ -44,10 +44,10 @@
                                 <color key="textColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="영문, 숫자 포함 8자리 이상" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p5v-cr-fd5">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="소,대문자, 숫자 포함 8자리 이상" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p5v-cr-fd5">
                                 <rect key="frame" x="132" y="348" width="154" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1e-nE-5TV">
@@ -645,18 +645,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="390" height="131"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktn-kK-vHp">
-                                    <rect key="frame" x="149" y="66" width="93" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9A-Wn-KwO">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktn-kK-vHp">
+                                    <rect key="frame" x="166" y="75" width="70" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
@@ -707,6 +707,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblCategoryName" destination="Ktn-kK-vHp" id="EYg-Ye-YlQ"/>
                         <outlet property="listViewTable" destination="2dr-Al-cNy" id="mcF-tA-uEa"/>
                         <outlet property="searchBar" destination="B9A-Wn-KwO" id="Dw3-42-tWA"/>
                     </connections>
@@ -1376,7 +1377,7 @@
                                                 <imageReference key="image" image="xmark.circle.fill" catalog="system" symbolScale="large"/>
                                             </state>
                                             <connections>
-                                                <action selector="btnDelete:" destination="x0T-LO-hmX" eventType="touchUpInside" id="1Tm-19-zDn"/>
+                                                <action selector="btnDelete:" destination="uXM-CK-ZRy" eventType="touchUpInside" id="gWQ-1e-miP"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1384,7 +1385,6 @@
                                 <connections>
                                     <outlet property="lblInsertDate" destination="lIz-Dn-3dj" id="ACm-rn-XbX"/>
                                     <outlet property="lblTitle" destination="WKj-qr-OaH" id="v02-ZT-e4q"/>
-                                    <outlet property="outlet_BtnDelete" destination="nOC-ON-YyB" id="LLW-ad-3JM"/>
                                     <segue destination="lUU-zO-asB" kind="show" identifier="MyQuestions" id="F7S-Ed-KmD"/>
                                 </connections>
                             </tableViewCell>
@@ -1400,7 +1400,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Il-Rn-K0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="x0T-LO-hmX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2046.1538461538462" y="1335.0710900473932"/>
         </scene>

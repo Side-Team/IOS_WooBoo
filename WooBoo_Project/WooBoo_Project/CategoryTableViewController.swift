@@ -14,25 +14,46 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
     var temp = [String]()
 
     @IBOutlet var listViewTable: UITableView!
+    @IBOutlet weak var lblCategoryName: UILabel!
     
     var feedItem: NSArray = NSArray()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         let categoryModel = CategoryModel()
         categoryModel.delegate = self
         categoryModel.categoryItems(category: categoryvalue)
         print("테이블에서 카테고리 값 : \(categoryvalue)")
         
+        switch categoryvalue{
+        case "1":
+            lblCategoryName.text = "음식"
+        case "2":
+            lblCategoryName.text = "여행"
+        case "3":
+            lblCategoryName.text = "기타"
+        case "4":
+            lblCategoryName.text = "연애"
+        case "5":
+            lblCategoryName.text = "결혼"
+        case "6":
+            lblCategoryName.text = "성"
+        default:
+            print("default")
+        }
+        
+        
+        
+        
+        
         searchBar.delegate = self
         filteredData = temp
         print(filteredData as Any)
-        
-        
-       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      
     }
     
     func itemDownloaded(items: NSArray) {

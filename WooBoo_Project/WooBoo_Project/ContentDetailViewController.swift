@@ -47,6 +47,8 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         selectedButton()
         
         
+        
+        
         print("cnts : \(cnts)")
         
         if countSelector == 0{
@@ -57,25 +59,32 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
             outlet_btn3.setTitle("\(receiveqSelection3) (0명/0%)", for: .normal)
             outlet_btn4.setTitle("\(receiveqSelection4) (0명/0%)", for: .normal)
             outlet_btn5.setTitle("\(receiveqSelection5) (0명/0%)", for: .normal)
+            
+           
         }else{
             lblTotalSelector.text = "총 \(countSelector)명이 참여했습니다"
 
             outlet_btn1.setTitle("\(receiveqSelection1) (\(cnts[0])명/\(String(format: "%.f", ((Double(cnts[0]))/Double(countSelector)) * 100))%)", for: .normal)
             outlet_btn2.setTitle("\(receiveqSelection2) (\(cnts[1])명/\(String(format: "%.f", ((Double(cnts[1]))/Double(countSelector)) * 100))%)", for: .normal)
-            if receiveqSelection3 != "X"{
-                outlet_btn3.isHidden = false
-                outlet_btn3.setTitle("\(receiveqSelection3) (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
-            }
+            outlet_btn3.setTitle("\(receiveqSelection3) (\(cnts[2])명/\(String(format: "%.f", ((Double(cnts[2]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn4.setTitle("\(receiveqSelection4) (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
+            outlet_btn5.setTitle("\(receiveqSelection5) (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
             
-            if receiveqSelection4 != "X"{
-                outlet_btn4.isHidden = false
-                outlet_btn4.setTitle("\(receiveqSelection4) (\(cnts[3])명/\(String(format: "%.f", ((Double(cnts[3]))/Double(countSelector)) * 100))%)", for: .normal)
-            }
-            
-            if receiveqSelection5 != "X"{
-                outlet_btn5.isHidden = false
-                outlet_btn5.setTitle("\(receiveqSelection5) (\(cnts[4])명/\(String(format: "%.f", ((Double(cnts[4]))/Double(countSelector)) * 100))%)", for: .normal)
-            }
+        }
+        
+        if receiveqSelection3 != "X"{
+            outlet_btn3.isHidden = false
+
+        }
+        
+        if receiveqSelection4 != "X"{
+            outlet_btn4.isHidden = false
+  
+        }
+        
+        if receiveqSelection5 != "X"{
+            outlet_btn5.isHidden = false
+          
         }
    
         findMaxIndex()
@@ -220,7 +229,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         print("넘어온 값 확인하기 : \(qImageFileName3)")
         print("넘어온 값 확인하기 : \(qImageFileName4)")
         print("넘어온 값 확인하기 : \(qImageFileName5)")
-
+     
     }
     
     

@@ -31,4 +31,6 @@ class MyQTableViewCell: UITableViewCell {
     @IBAction func btnDelete(_ sender: UIButton) {
         print("test")
     }
+    
+    
 }

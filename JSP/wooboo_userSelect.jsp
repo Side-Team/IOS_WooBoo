@@ -11,7 +11,7 @@
 	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select uSeqno, uEmail, uPw, uImageFileName from user where uEmail ='" + uEmail + "'" ;
+    String WhereDefault = "select uSeqno, uEmail, uPw, uImageFileName, uLogin from user where uEmail ='" + uEmail + "'" ;
     int count = 0;
     
     try {
@@ -37,7 +37,8 @@
 			"seqno" : "<%=rs.getInt(1) %>",
 			"email" : "<%=rs.getString(2) %>",
 			"pw" : "<%=rs.getString(3) %>", 
-			"Image" : "<%=rs.getString(4) %>"			
+			"Image" : "<%=rs.getString(4) %>",
+            "login"	: "<%=rs.getString(5) %>"		
 			}
 <%		
         }

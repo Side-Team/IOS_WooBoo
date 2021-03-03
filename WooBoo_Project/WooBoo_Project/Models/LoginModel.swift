@@ -9,6 +9,7 @@ import Foundation
 
 protocol LoginModelProtocol: class{
     func checkResultValue(result:Int)
+    func findCheckValue(result:String)
 }
 
 class LoginModel: NSObject{
@@ -115,5 +116,59 @@ class LoginModel: NSObject{
         }
         task.resume()   // 실행
         return result
+    }
+    
+    
+    // 비밀번호 찾기
+    func findItems(email: String, phone: String){
+        var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_findCheck.jsp"
+        let urlAdd = "?uEmail=\(email)&uPhone=\(phone)"
+        urlPath = urlPath + urlAdd
+        print("urlPath:\(urlPath)")
+        let url = URL(string: urlPath)!
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, responds, error) in
+            if error != nil{
+                print("Failed to download data")
+            }else{
+                print("Data is downloading")
+                self.findCheckParseJSON(data!)
+            }
+        }
+        task.resume()
+    }
+    
+    func findCheckParseJSON(_ data: Data){
+        
+        var resultValue1:String = ""
+        var jsonResult = NSArray()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        var jsonElement = NSDictionary()
+        let resultValue = NSMutableArray()
+        
+        for i in 0..<jsonResult.count{
+            
+            jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
+            
+            if let result = jsonElement["result"] as? String{
+                resultValue1 = result
+                print("result : \(result)")
+            }
+            resultValue.add(resultValue1)
+        }
+        DispatchQueue.main.async(execute: {() -> Void in
+            print("resultvalue 0값 : \(resultValue[0])")
+            self.delegate.findCheckValue(result: resultValue[0] as! String)
+            //self.delegate.findCheckValue(result: resultValue[0] as! String)
+        })
+       // print("resultValue값 : \(resultValue)")
     }
 }//----

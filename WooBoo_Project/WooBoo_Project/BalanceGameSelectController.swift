@@ -41,18 +41,20 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     
     func itemBtn1Count(items: NSArray) {
         btn1Item = items
-      loadClick1()
+       // loadClick1()
     }
     
     func itemBtn2Count(items: NSArray) {
         btn2Item = items
-        loadClick2()
+        //loadClick2()
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         design()
+
+        
         
         let balanceSelectModel = balancegameSelectModel()
         balanceSelectModel.delegate = self
@@ -62,12 +64,12 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         let peopleCount = balancegamePeopleCountModel()
         peopleCount.delegate = self
         peopleCount.downloadItems()
-    
-        
+
+
         let btn1Count = balancegameBtn1count()
         btn1Count.delegate = self
         btn1Count.downloadItems()
-        
+
         let btn2Count = balancegameBtn2count()
         btn2Count.delegate = self
         btn2Count.downloadItems()
@@ -75,23 +77,6 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        let peopleCount = balancegamePeopleCountModel()
-//        peopleCount.delegate = self
-//        peopleCount.downloadItems()
-//
-//        let btn1Count = balancegameBtn1count()
-//        btn1Count.delegate = self
-//        btn1Count.downloadItems()
-//
-//        let btn2Count = balancegameBtn2count()
-//        btn2Count.delegate = self
-//        btn2Count.downloadItems()
-//
-//
-//
-//    }
-//
     
     @IBAction func btnSelect1(_ sender: UIButton) {
         checkValue = 0
@@ -106,6 +91,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     @IBAction func btnNext(_ sender: UIButton) {
         loadData()
         clickDesign()
+        loadbtn()
+        
 
     }
     
@@ -118,9 +105,9 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.backgroundColor = UIColor.white
                 btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
+                clickDataUpdate()
                 loadClick1()
                 loadClick2()
-                clickDataUpdate()
                
                 
 
@@ -130,10 +117,9 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.backgroundColor = UIColor(red: 128/255, green: 194/255, blue: 179/255, alpha: 1)
                 btnSelect2.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
+                clickDataUpdate()
                 loadClick1()
                 loadClick2()
-                clickDataUpdate()
-                
             }
         } // checkButtonStatus 끝
     
@@ -160,6 +146,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     }
     
     func loadClick1(){
+        
+        
         let item: SelectgameModel = btn1Item[0] as! SelectgameModel
         lblSelect1Count.text = "\(item.btn1!) 명"
         print("btn1 \(item.btn1!)")
@@ -169,15 +157,29 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     }
     
     func loadClick2(){
+        
         let item: SelectgameModel = btn2Item[0] as! SelectgameModel
-      
         lblSelect2Count.text = "\(item.btn2!) 명"
         print("btn2 \(item.btn2!)")
         lblSelect2percent.text = "\(String(format: "%.f", ((Double(item.btn2!)!)/Double(checkPeople)) * 100))%"
       
     }
   
-    
+    func loadbtn(){
+        let peopleCount = balancegamePeopleCountModel()
+        peopleCount.delegate = self
+        peopleCount.downloadItems()
+        
+        
+        let btn1Count = balancegameBtn1count()
+        btn1Count.delegate = self
+        btn1Count.downloadItems()
+        
+        let btn2Count = balancegameBtn2count()
+        btn2Count.delegate = self
+        btn2Count.downloadItems()
+        
+    }
     
     
     func clickDataUpdate(){
@@ -188,8 +190,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         let balanceInsert = balanceInsertModle()
         let result = balanceInsert.insertItems(balancegame_bSeqno: balancegame_bSeqno, user_uSeqno: user_uSeqno, sbSelection: sbSelection)
         if result == true{
-            loadClick1()
-            loadClick2()
+           print("안써도 되나?")
             }else{ // 에러일 경우
             let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
             let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)

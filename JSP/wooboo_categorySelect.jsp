@@ -8,8 +8,8 @@
     String category = request.getParameter("category");
 
 
-	String url_mysql = "jdbc:mysql://localhost/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
- 	String id_mysql = "root";
+	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
+ 	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
     String WhereDefault = "select * from questions where qDeleteDate is null and qCategory ='" + category + "'" ;
     int count = 0;

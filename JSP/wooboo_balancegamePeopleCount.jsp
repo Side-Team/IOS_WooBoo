@@ -12,7 +12,7 @@
 	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select count(user_uSeqno)as btn from select_balancegame where balancegame_bSeqno = '" + balancegame_bSeqno + "'" ;
+    String WhereDefault = "select count(user_uSeqno)as count from select_balancegame where balancegame_bSeqno = '" + balancegame_bSeqno + "'" ;
     int count = 0;
     
     try {

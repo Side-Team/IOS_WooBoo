@@ -41,7 +41,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     
     func itemBtn1Count(items: NSArray) {
         btn1Item = items
-     // loadClick1()
+       // loadClick1()
     }
     
     func itemBtn2Count(items: NSArray) {
@@ -53,6 +53,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     override func viewDidLoad() {
         super.viewDidLoad()
         design()
+
+        
         
         let balanceSelectModel = balancegameSelectModel()
         balanceSelectModel.delegate = self
@@ -88,8 +90,9 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     
     @IBAction func btnNext(_ sender: UIButton) {
         loadData()
-        loadbtn()
         clickDesign()
+        loadbtn()
+        
 
     }
     

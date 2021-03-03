@@ -48,7 +48,7 @@ class balancegameSelectModel{
         let locations = NSMutableArray()
         
         for i in 0..<jsonResult.count{
-            print("1")
+            
             jsonElement =  jsonResult[i] as! NSDictionary
             let query = balancegameModel()
             
@@ -56,21 +56,16 @@ class balancegameSelectModel{
                 let bTitle = jsonElement["title"] as? String,
                 let bSelection1 = jsonElement["selection1"] as? String,
                 let bSelection2 = jsonElement["selection2"] as? String{
-                print("2")
                 query.bSeqno = bSeqno
                 query.bTitle = bTitle
                 query.bSelection1 = bSelection1
                 query.bSelection2 = bSelection2
                 
      
-                print("bSeqno : \(bSeqno)")
-                print("bTitle : \(bTitle)")
-                print("bSelection1 : \(bSelection1)")
-                print("bSelection2 : \(bSelection2)")
                
             }
             locations.add(query)
-            print("3")
+          
          
         }
         DispatchQueue.main.async(execute: {() -> Void in

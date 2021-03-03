@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		21064BE625ED4C71008A25C5 /* balancegamePeopleCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */; };
-		21064BE925ED4C90008A25C5 /* balancegameCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21064BE825ED4C90008A25C5 /* balancegameCountModel.swift */; };
 		211438E425E6B3EC000AD9FB /* JspUserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211438E325E6B3EC000AD9FB /* JspUserSelect.swift */; };
+		2165532025EF40B000F837E1 /* balancegameBtn1count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165531F25EF40B000F837E1 /* balancegameBtn1count.swift */; };
+		2165532325EF40C200F837E1 /* balancegameBtn2count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165532225EF40C200F837E1 /* balancegameBtn2count.swift */; };
 		21811A7125ECC8C1009AE05A /* balancegameSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */; };
 		21811A7525ECE5CA009AE05A /* balanceInsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */; };
 		21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7725ECE693009AE05A /* SelectgameModel.swift */; };
@@ -83,8 +84,9 @@
 
 /* Begin PBXFileReference section */
 		21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegamePeopleCountModel.swift; sourceTree = "<group>"; };
-		21064BE825ED4C90008A25C5 /* balancegameCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameCountModel.swift; sourceTree = "<group>"; };
 		211438E325E6B3EC000AD9FB /* JspUserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JspUserSelect.swift; sourceTree = "<group>"; };
+		2165531F25EF40B000F837E1 /* balancegameBtn1count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameBtn1count.swift; sourceTree = "<group>"; };
+		2165532225EF40C200F837E1 /* balancegameBtn2count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameBtn2count.swift; sourceTree = "<group>"; };
 		21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameSelectModel.swift; sourceTree = "<group>"; };
 		21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balanceInsertModel.swift; sourceTree = "<group>"; };
 		21811A7725ECE693009AE05A /* SelectgameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectgameModel.swift; sourceTree = "<group>"; };
@@ -263,7 +265,8 @@
 				21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */,
 				21811A7725ECE693009AE05A /* SelectgameModel.swift */,
 				21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */,
-				21064BE825ED4C90008A25C5 /* balancegameCountModel.swift */,
+				2165531F25EF40B000F837E1 /* balancegameBtn1count.swift */,
+				2165532225EF40C200F837E1 /* balancegameBtn2count.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,9 +502,10 @@
 			files = (
 				21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */,
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
-				21064BE925ED4C90008A25C5 /* balancegameCountModel.swift in Sources */,
+				2165532325EF40C200F837E1 /* balancegameBtn2count.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
 				21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */,
+				2165532025EF40B000F837E1 /* balancegameBtn1count.swift in Sources */,
 				21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */,
 				21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */,
 				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,

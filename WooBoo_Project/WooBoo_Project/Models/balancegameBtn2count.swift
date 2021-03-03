@@ -1,27 +1,26 @@
 //
-//  balancegamePeopleCountModel.swift
+//  balancegameBtn2count.swift
 //  WooBoo_Project
 //
-//  Created by 김보람 on 2021/03/02.
+//  Created by 김보람 on 2021/03/03.
 //
 
 import Foundation
 
-
-protocol balancrgamePeopleProtocol: class{
-    func itemPeopleCount(items: NSArray)
+protocol balancegameBtn2countProtocol: class{
+    func itemBtn2Count(items: NSArray)
 }
 
-class balancegamePeopleCountModel{
-    var delegate: balancrgamePeopleProtocol!
+class balancegameBtn2count{
+    var delegate: balancegameBtn2countProtocol!
     var urlPath =
-        "http://127.0.0.1:8080/ios_jsp/wooboo_balancegamePeopleCount.jsp?balancegame_bSeqno=\(String(Share.gameNum))"
+        "http://127.0.0.1:8080/ios_jsp/wooboo_balancegameBtn2Count.jsp?balancegame_bSeqno=\(String(Share.gameNum))"
    
     
     func downloadItems(){
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        print("people url",url)
+        print("btn1 url",url)
         let task = defaultSession.dataTask(with: url){(data, response, error)in
             if error != nil{
                 print("failed to download data")
@@ -51,16 +50,16 @@ class balancegamePeopleCountModel{
             jsonElement =  jsonResult[i] as! NSDictionary
             let query = SelectgameModel()
             
-            if let count = jsonElement["count"] as? String{
-                query.count = count
-                print("count ",count)
+            if let btn2 = jsonElement["btn2"] as? String{
+                query.btn2 = btn2
+                print("btn2 ",btn2)
             }
             locations.add(query)
             
-            
+        
         }
         DispatchQueue.main.async(execute: {() -> Void in
-            self.delegate.itemPeopleCount(items: locations)
+            self.delegate.itemBtn2Count(items: locations)
         })
     }
 }//=======

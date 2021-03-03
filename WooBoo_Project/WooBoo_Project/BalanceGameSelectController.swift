@@ -7,10 +7,9 @@
 
 import UIKit
 
-class BalanceGameSelectController: UIViewController, balancegameSelectModelProtocol, balancrgamePeopleProtocol {
+class BalanceGameSelectController: UIViewController, balancegameSelectModelProtocol, balancrgamePeopleProtocol,balancegameBtn1countProtocol,balancegameBtn2countProtocol {
    
 
-    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnSelect1: UIButton!
     @IBOutlet weak var btnSelect2: UIButton!
@@ -22,11 +21,13 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     
     var bSeqno: Int = 0
     var checkValue = -1
-    var checkPeople = 0
+    var checkPeople:Int = 0
 
     //db
     var feedItem: NSArray = NSArray()
     var countItem:NSArray = NSArray()
+    var btn1Item:NSArray = NSArray()
+    var btn2Item:NSArray = NSArray()
     
     func itemDownloaded(items: NSArray) {
         feedItem = items
@@ -35,6 +36,17 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     
     func itemPeopleCount(items: NSArray) {
         countItem = items
+        loadClickPeople()
+    }
+    
+    func itemBtn1Count(items: NSArray) {
+        btn1Item = items
+//        loadClick1()
+    }
+    
+    func itemBtn2Count(items: NSArray) {
+        btn2Item = items
+//        loadClick2()
     }
     
 
@@ -49,7 +61,16 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         
         let peopleCount = balancegamePeopleCountModel()
         peopleCount.delegate = self
-        peopleCount.insertItems(balancegame_bSeqno: String(bSeqno), sbSelection: String(checkValue))
+        peopleCount.downloadItems()
+    
+        
+        let btn1Count = balancegameBtn1count()
+        btn1Count.delegate = self
+        btn1Count.downloadItems()
+        
+        let btn2Count = balancegameBtn2count()
+        btn2Count.delegate = self
+        btn2Count.downloadItems()
        
         
     }
@@ -88,7 +109,9 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
                 clickDataUpdate()
-                loadClick()
+                loadClick1()
+                loadClick2()
+                
 
             }else{
                 btnSelect1.backgroundColor = UIColor.white
@@ -97,7 +120,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
                 btnSelect2.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 btnNext.setTitle("다음", for: UIControl.State.normal)
                 clickDataUpdate()
-                
+                loadClick1()
+                loadClick2()
             }
         } // checkButtonStatus 끝
     
@@ -110,33 +134,39 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         lblTitle.text = "\(item.bTitle!)"
         btnSelect1.setTitle("\(item.bSelection1!)", for: UIControl.State.normal)
         btnSelect2.setTitle("\(item.bSelection2!)", for: UIControl.State.normal)
-        print(num)
-        print("1", item.bSeqno!)
-        print("2", item.bTitle!)
-        print("3", item.bSelection1!)
-        print("4", item.bSelection2!)
+        Share.gameNum = num
+        print("shareGameNum",Share.gameNum)
+
     }
     
-    func loadClick(){
-        let balancegame_bSeqno = String(bSeqno)
-        let sbSelection = String(checkValue)
+    
+    func loadClickPeople(){
+        let item: SelectgameModel = countItem[0] as! SelectgameModel
+        checkPeople = Int(item.count!)!
+        print("checkPeople\(checkPeople)")
+       
+    }
+    
+    func loadClick1(){
+        let item: SelectgameModel = btn1Item[0] as! SelectgameModel
+        lblSelect1Count.text = "\(item.btn1!) 명"
+        print("btn1 \(item.btn1!)")
+        lblSelect1percent.text = "\(String(format: "%.f", ((Double(item.btn1!)!)/Double(checkPeople)) * 100))%"
         
-        let peopleCount = balancegamePeopleCountModel()
-        let result = peopleCount.insertItems(balancegame_bSeqno: balancegame_bSeqno, sbSelection: sbSelection)
-        if result == true{
-            
-            }else{ // 에러일 경우
-            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            resultAlert.addAction(onAction)
-            present(resultAlert, animated: true, completion: nil)
-        }
+        
+    }
+    
+    func loadClick2(){
+        let item: SelectgameModel = btn2Item[0] as! SelectgameModel
+      
+        lblSelect2Count.text = "\(item.btn2!) 명"
+        print("btn2 \(item.btn2!)")
+        lblSelect2percent.text = "\(String(format: "%.f", ((Double(item.btn2!)!)/Double(checkPeople)) * 100))%"
+      
     }
   
     
-    func loadClickPeople(){
-       
-    }
+    
     
     func clickDataUpdate(){
         let balancegame_bSeqno = String(bSeqno)
@@ -146,7 +176,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         let balanceInsert = balanceInsertModle()
         let result = balanceInsert.insertItems(balancegame_bSeqno: balancegame_bSeqno, user_uSeqno: user_uSeqno, sbSelection: sbSelection)
         if result == true{
-            loadClick()
+            loadClick1()
+            loadClick2()
             }else{ // 에러일 경우
             let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
             let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
@@ -175,6 +206,10 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         btnSelect1.setTitleColor(UIColor.black, for: UIControl.State.normal)
         btnSelect2.backgroundColor = UIColor.white
         btnSelect2.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        lblSelect1percent.text = ""
+        lblSelect1Count.text = ""
+        lblSelect2percent.text = ""
+        lblSelect2Count.text = ""
     }
     
     

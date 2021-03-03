@@ -387,23 +387,12 @@
                                 <rect key="frame" x="103" y="646" width="183" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK5-NU-L5F">
-                                <rect key="frame" x="157" y="585" width="65" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK5-NU-L5F">
+                                <rect key="frame" x="103" y="580" width="183" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="구글로그인"/>
+                                <state key="normal" title="구글로그인" image="GoogleLogin.png"/>
                                 <connections>
                                     <action selector="btnGoogle:" destination="bD9-87-RSu" eventType="touchUpInside" id="Dje-PW-GnR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTp-e6-OKi">
-                                <rect key="frame" x="180" y="726" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="애플">
-                                    <color key="titleColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnApple:" destination="bD9-87-RSu" eventType="touchUpInside" id="nff-wK-0Vo"/>
-                                    <action selector="btnLogout:" destination="bD9-87-RSu" eventType="touchUpInside" id="TpD-Pc-nUM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1437,6 +1426,7 @@
         <segue reference="MT2-Jh-dGg"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="GoogleLogin.png" width="240" height="47"/>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="icon_19.png" width="384" height="384"/>

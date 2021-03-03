@@ -9,12 +9,8 @@ import UIKit
 
 class ViewController: UIViewController, QuestionProtocol {
     
-    func itemDownloaded(items: NSArray) {
-       
-    }
-    
-    
-    
+   
+
         @IBOutlet weak var lblHot: UILabel!
         @IBOutlet weak var hotPageControl: UIPageControl!
         
@@ -23,31 +19,85 @@ class ViewController: UIViewController, QuestionProtocol {
     
     
     var feedItem: NSArray = NSArray()
-    var numcount = 5
+//    var numcount = 5
+//
+//    // 받아올 값을 담아둘 변수 설정
+//    var receiveTitle = ""
+//
+//    // 이미지
+//    var  numImage:Int = 0
     
-    // 받아올 값을 담아둘 변수 설정
-    var receiveTitle = ""
+    // 시간
+    let interval = 3.0 // 3초
+    let timeSelector: Selector = #selector(ViewController.updateTime)
     
-    // 이미지
-    var  numImage:Int = 0
+    //new----
+    var titleName: [String] = [""]
+    var numNewTitle = 0
     
-    var titleName = ["오늘 아침밥", "오늘 점심밥", "오늘 저녁밥", "내일 아침밥", "내일 점심밥", "내일 저녁밥"]
 
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            // 세미 테스트중
-            print("ShareID : \(Share.userID)")
-            print("ShareuSeqno : \(Share.uSeqno)")
-            print("ShareusePW : \(Share.userPW)")
+            
+            
+            // 보람 추가
+            
+            let questionModel = QuestionModel()
+            questionModel.delegate = self
+            questionModel.downloadItems()
+            
+        
+            
+            NewTitle(number: numNewTitle)
+            Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
             
         }
     
    
+    func itemDownloaded(items: NSArray) {
+        feedItem = items
+        loadData()
+       
+    }
 
-        
+    // 보람 추가
+    func loadData(){
     
-//    override func viewDidLoad() {
+        let item: DBModel = feedItem[0] as! DBModel
+        titleName.append(item.stitle!)
+        
+        let item2: DBModel = feedItem[1] as! DBModel
+        titleName.append(item2.stitle!)
+        
+        let item3: DBModel = feedItem[2] as! DBModel
+        titleName.append(item3.stitle!)
+        print(titleName)
+
+    }
+    
+    func NewTitle(number : Int)  {
+        
+        lblNew.text = titleName[number]
+    }
+    
+    // Async Task 3초마다 이미지 변경
+    @objc func updateTime(){
+      
+        if Int(interval) % 3 == 0 {
+            numNewTitle += 1
+            if numNewTitle >= titleName.count{
+                numNewTitle = 0
+        }
+
+            NewTitle(number: numNewTitle)
+
+        }
+    }
+    
+  // override func viewDidLoad() {
+    
+    
 //        super.viewDidLoad()
 //        hotPageControl.numberOfPages = numcount // 총 페이지 갯수
 //        hotPageControl.currentPage = 0 // 현재 페이지가 몇번이냐

@@ -70,6 +70,7 @@
 		86756F3825E54B9400705176 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86756F3725E54B9400705176 /* LoginModel.swift */; };
 		868E3DB625E62FEF003EE1E6 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E3DB525E62FEF003EE1E6 /* Share.swift */; };
 		868E3DB925E63D44003EE1E6 /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E3DB825E63D44003EE1E6 /* JoinModel.swift */; };
+		8697CA5325EF5DAE003C0CF2 /* GoogleLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8697CA5225EF5DAE003C0CF2 /* GoogleLogin.png */; };
 		869C1C9A25E3A29700554CEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9925E3A29700554CEC /* AppDelegate.swift */; };
 		869C1C9C25E3A29700554CEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9B25E3A29700554CEC /* SceneDelegate.swift */; };
 		869C1C9E25E3A29700554CEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1C9D25E3A29700554CEC /* ViewController.swift */; };
@@ -148,6 +149,7 @@
 		86756F3725E54B9400705176 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		868E3DB525E62FEF003EE1E6 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		868E3DB825E63D44003EE1E6 /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
+		8697CA5225EF5DAE003C0CF2 /* GoogleLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoogleLogin.png; sourceTree = "<group>"; };
 		869C1C9625E3A29700554CEC /* WooBoo_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WooBoo_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C1C9925E3A29700554CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869C1C9B25E3A29700554CEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		3C1FEAF225E68183008C646E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8697CA5225EF5DAE003C0CF2 /* GoogleLogin.png */,
 				286A64FF25EA7EA1008F1F9D /* image1.jpeg */,
 				286A650025EA7EA1008F1F9D /* image2.jpeg */,
 				21D3C26C25E93963005262D9 /* icon_chat.png */,
@@ -421,6 +424,7 @@
 				21D3C25925E91A5A005262D9 /* img_Pleasure.png in Resources */,
 				21D3C25725E91A5A005262D9 /* img_Happy.png in Resources */,
 				21D3C26725E938F8005262D9 /* icon_user.png in Resources */,
+				8697CA5325EF5DAE003C0CF2 /* GoogleLogin.png in Resources */,
 				286A650125EA7EA1008F1F9D /* image1.jpeg in Resources */,
 				21D3C25425E91A5A005262D9 /* img_Embarrassment.png in Resources */,
 				869C1CA325E3A29900554CEC /* Assets.xcassets in Resources */,

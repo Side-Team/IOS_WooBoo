@@ -55,7 +55,7 @@ class balancegameBtn1count{
                 print("btn1 ",btn1)
             }
             locations.add(query)
-            
+            print(jsonElement)
         
         }
         DispatchQueue.main.async(execute: {() -> Void in

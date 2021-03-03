@@ -14,10 +14,10 @@ protocol EmailCheckProtocol: class {
 class JoinModel: NSObject {
     var delegate: EmailCheckProtocol!
 
-    func joinItems(email: String, pw: String) -> Bool{   // Bool은 됐는지 안됐는지 결과를 받기위함
+    func joinItems(email: String, pw: String, phone: String) -> Bool{   // Bool은 됐는지 안됐는지 결과를 받기위함
         var urlPath = "http://127.0.0.1:8080/ios_jsp/wooboo_join.jsp"
         var result: Bool = true
-        let urlAdd = "?uEmail=\(email)&uPw=\(pw)"
+        let urlAdd = "?uEmail=\(email)&uPw=\(pw)&uPhone=\(phone)"
 
         urlPath = urlPath + urlAdd
         

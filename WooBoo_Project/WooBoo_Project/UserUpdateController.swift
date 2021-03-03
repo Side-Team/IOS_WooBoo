@@ -29,12 +29,13 @@ class UserUpdateController: UIViewController{
         design()
         
         setGestureRecognizer()
-        print("정보수정\(Share.uImageFileName)")
+        
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         userImg.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
+        
     }
   
     
@@ -66,7 +67,7 @@ class UserUpdateController: UIViewController{
     // 저장 눌렀을때
     @IBAction func UserUpdate(_ sender: UIButton) {
         let pw = lblPasswordCheck.text
-        let uImageFileName = Share.uImageFileName
+        let uImageFileName = UserDefaults.standard.string(forKey: "uImageFileName")!
         
         CheckPw()
         

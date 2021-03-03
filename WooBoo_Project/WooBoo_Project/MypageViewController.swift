@@ -39,6 +39,7 @@ class MypageViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "autoPw")
             UserDefaults.standard.removeObject(forKey: "autoLoginValue")
             Share.userID = ""
+            Share.uLogin = ""
             let vcName = self.storyboard?.instantiateViewController(withIdentifier: "LoginView")
             vcName?.modalPresentationStyle = .fullScreen
             self.present(vcName!, animated: true, completion: nil)

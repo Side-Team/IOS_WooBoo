@@ -12,6 +12,7 @@ struct Share {
     static var userID: String = ""
     static var userPW: String = ""
     static var uImageFileName: String = ""
+    static var uLogin: String = ""
     static var gameNum: Int = 0
 
 }

@@ -318,6 +318,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                 
                 // Email을 받아서 db에 insert시켜준다.
                 UserDefaults.standard.setValue(kakaoEmail, forKey: "autoId")
+                
                 let kakaoInsert = LoginModel()
                 let result = kakaoInsert.kakaoItems(Email: kakaoEmail!)
                 

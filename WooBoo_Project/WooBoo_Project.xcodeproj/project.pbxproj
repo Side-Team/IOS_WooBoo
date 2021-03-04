@@ -11,6 +11,7 @@
 		211438E425E6B3EC000AD9FB /* JspUserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211438E325E6B3EC000AD9FB /* JspUserSelect.swift */; };
 		2165532025EF40B000F837E1 /* balancegameBtn1count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165531F25EF40B000F837E1 /* balancegameBtn1count.swift */; };
 		2165532325EF40C200F837E1 /* balancegameBtn2count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165532225EF40C200F837E1 /* balancegameBtn2count.swift */; };
+		2165533525EFCBCC00F837E1 /* PanHotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165533425EFCBCC00F837E1 /* PanHotModel.swift */; };
 		21811A7125ECC8C1009AE05A /* balancegameSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */; };
 		21811A7525ECE5CA009AE05A /* balanceInsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */; };
 		21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21811A7725ECE693009AE05A /* SelectgameModel.swift */; };
@@ -88,6 +89,7 @@
 		211438E325E6B3EC000AD9FB /* JspUserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JspUserSelect.swift; sourceTree = "<group>"; };
 		2165531F25EF40B000F837E1 /* balancegameBtn1count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameBtn1count.swift; sourceTree = "<group>"; };
 		2165532225EF40C200F837E1 /* balancegameBtn2count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameBtn2count.swift; sourceTree = "<group>"; };
+		2165533425EFCBCC00F837E1 /* PanHotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanHotModel.swift; sourceTree = "<group>"; };
 		21811A7025ECC8C1009AE05A /* balancegameSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balancegameSelectModel.swift; sourceTree = "<group>"; };
 		21811A7425ECE5CA009AE05A /* balanceInsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balanceInsertModel.swift; sourceTree = "<group>"; };
 		21811A7725ECE693009AE05A /* SelectgameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectgameModel.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				21064BE525ED4C71008A25C5 /* balancegamePeopleCountModel.swift */,
 				2165531F25EF40B000F837E1 /* balancegameBtn1count.swift */,
 				2165532225EF40C200F837E1 /* balancegameBtn2count.swift */,
+				2165533425EFCBCC00F837E1 /* PanHotModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */,
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
 				2165532325EF40C200F837E1 /* balancegameBtn2count.swift in Sources */,
+				2165533525EFCBCC00F837E1 /* PanHotModel.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,
 				21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */,
 				2165532025EF40B000F837E1 /* balancegameBtn1count.swift in Sources */,

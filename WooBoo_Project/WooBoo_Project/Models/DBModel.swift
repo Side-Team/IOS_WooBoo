@@ -11,6 +11,8 @@ class DBModel: NSObject{
     
     // Properties
     var stitle: String?
+    var hotTitle: String?
+    var qSeqno: String?
 
     
     // Empty constructor
@@ -22,4 +24,8 @@ class DBModel: NSObject{
         self.stitle = stitle
     }
     
+    init(hotTitle: String, qSeqno: String){
+        self.hotTitle = hotTitle
+        self.qSeqno = qSeqno
+    }
 }

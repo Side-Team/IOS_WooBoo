@@ -198,7 +198,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
             findTextField.placeholder = "가입시 등록한 이메일을 적어주세요."
         }
         
-        let findAction = UIAlertAction(title: "다음", style: UIAlertAction.Style.destructive, handler: {[self]ACTION in
+        let findAction = UIAlertAction(title: "다음", style: UIAlertAction.Style.default, handler: {[self]ACTION in
             // 전화번호 받아야함
             
             // 이메일이 nil일 경우
@@ -214,7 +214,7 @@ class LoginViewController: UIViewController, LoginModelProtocol, JspUserSelectPr
                 }
                 print("email : \(findAlert.textFields![0].text!)")
                 print("phone : \(phoneAlert.textFields![0].text!)")
-                let phoneAction = UIAlertAction(title: "다음", style: UIAlertAction.Style.destructive, handler: {[self]ACTION in
+                let phoneAction = UIAlertAction(title: "다음", style: UIAlertAction.Style.default, handler: {[self]ACTION in
                     loginModel.findItems(email: findAlert.textFields![0].text!, phone: phoneAlert.textFields![0].text!)
                 })
                 

@@ -31,22 +31,22 @@ class CategoryViewController: UIViewController {
     
     @IBAction func btnEtc(_ sender: UIButton) {
         performSegue(withIdentifier: "MoveList", sender: self)
-        categoryvalue = "3"
+        categoryvalue = "6"
     }
     
     @IBAction func btnLove(_ sender: UIButton) {
         performSegue(withIdentifier: "MoveList", sender: self)
-        categoryvalue = "4"
+        categoryvalue = "3"
     }
     
     @IBAction func btnMarry(_ sender: Any) {
         performSegue(withIdentifier: "MoveList", sender: self)
-        categoryvalue = "5"
+        categoryvalue = "4"
     }
     
     @IBAction func btn19(_ sender: UIButton) {
         performSegue(withIdentifier: "MoveList", sender: self)
-        categoryvalue = "6"
+        categoryvalue = "5"
     }
     
 //    // 다음 페이지로 값 보내주는 작업

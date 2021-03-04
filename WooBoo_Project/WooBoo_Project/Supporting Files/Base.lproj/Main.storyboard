@@ -1349,10 +1349,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyQTCell" id="xs7-tQ-0pG" customClass="MyQTableViewCell" customModule="WooBoo_Project" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyQTCell" id="xs7-tQ-0pG" customClass="MyPageQTCell" customModule="WooBoo_Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="390" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xs7-tQ-0pG" id="Vf6-rp-rR2" customClass="MyQTableViewCell" customModule="WooBoo_Project" customModuleProvider="target">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xs7-tQ-0pG" id="Vf6-rp-rR2">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -1383,8 +1383,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblInsertDate" destination="lIz-Dn-3dj" id="ACm-rn-XbX"/>
-                                    <outlet property="lblTitle" destination="WKj-qr-OaH" id="v02-ZT-e4q"/>
+                                    <outlet property="lblInsertDate" destination="lIz-Dn-3dj" id="ctd-GS-dcC"/>
+                                    <outlet property="lblTitle" destination="WKj-qr-OaH" id="yw6-iy-43d"/>
+                                    <outlet property="outlet_BtnDelete" destination="nOC-ON-YyB" id="IDm-Th-Kmc"/>
                                     <segue destination="lUU-zO-asB" kind="show" identifier="MyQuestions" id="F7S-Ed-KmD"/>
                                 </connections>
                             </tableViewCell>
@@ -1405,7 +1406,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MT2-Jh-dGg"/>
+        <segue reference="F7S-Ed-KmD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="GoogleLogin.png" width="240" height="47"/>

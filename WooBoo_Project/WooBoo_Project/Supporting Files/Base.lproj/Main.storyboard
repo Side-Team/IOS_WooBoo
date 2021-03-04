@@ -87,7 +87,7 @@
                                 <rect key="frame" x="132" y="282" width="154" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CXh-tZ-FaF"/>
@@ -1406,7 +1406,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F7S-Ed-KmD"/>
         <segue reference="MT2-Jh-dGg"/>
     </inferredMetricsTieBreakers>
     <resources>

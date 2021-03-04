@@ -29,7 +29,15 @@ class UserUpdateController: UIViewController{
         design()
         
         setGestureRecognizer()
-        
+    
+        // API로그인 시 비밀번호 수정 안됨
+        if Share.uLogin == "kakao" || Share.uLogin == "google"{
+            lblPassword.isEnabled = false
+            lblPasswordCheck.isEnabled = false
+        }else{
+            lblPassword.isEnabled = true
+            lblPasswordCheck.isEnabled = true
+        }
     
     }
     
@@ -115,7 +123,7 @@ class UserUpdateController: UIViewController{
     
     // 비밀번호 형식 검사(소문자, 대문자, 숫자 8자리 이상)
     func isValidPassword(pwd: String) -> Bool {
-        let passwordRegEx = "^[a-zA-Z0-9]{8,}$"
+        let passwordRegEx = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8}$"
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: pwd)
     }

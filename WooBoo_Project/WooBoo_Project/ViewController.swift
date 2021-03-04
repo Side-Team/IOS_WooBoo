@@ -7,18 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, QuestionProtocol {
+class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
+
     
    
-
-        @IBOutlet weak var lblHot: UILabel!
-        @IBOutlet weak var hotPageControl: UIPageControl!
-        
-        @IBOutlet weak var lblNew: UILabel!
-        @IBOutlet weak var newPageControl: UIPageControl!
+    @IBOutlet weak var lblHot: UILabel!
+    @IBOutlet weak var hotPageControl: UIPageControl!
+    @IBOutlet weak var lblNew: UILabel!
+    @IBOutlet weak var newPageControl: UIPageControl!
     
     
     var feedItem: NSArray = NSArray()
+    var hotItem: NSArray = NSArray()
+    
 //    var numcount = 5
 //
 //    // 받아올 값을 담아둘 변수 설정
@@ -31,95 +32,191 @@ class ViewController: UIViewController, QuestionProtocol {
     let interval = 3.0 // 3초
     let timeSelector: Selector = #selector(ViewController.updateTime)
     
-    //new----
+    //new
     var titleName: [String] = [""]
     var numNewTitle = 0
     
+    // hot
+    var hotTitle: [String] = [""]
+    var numHotTitle = 0
+    var hotSeqno: [String] = [""]
 
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
 
-            
-            
-            // 보람 추가
-            
-            let questionModel = QuestionModel()
-            questionModel.delegate = self
-            questionModel.downloadItems()
-            
+        // 보람 추가
+        
+        //핫
+        let hotModel = panHot()
+        hotModel.delegate = self
+        hotModel.downloadItems()
+        
+        titleHot(number: numHotTitle)
+        
+        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        
+        hotPageControl.numberOfPages = 3
+        hotPageControl.currentPage = 0
+        
+        //실시간글
+        let questionModel = QuestionModel()
+        questionModel.delegate = self
+        questionModel.downloadItems()
+        
+    
+        NewTitle(number: numNewTitle)
+        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        
+        newPageControl.numberOfPages = 3
+        newPageControl.currentPage = 0
+        
         
             
-            NewTitle(number: numNewTitle)
-            Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
-            
+          
         }
     
    
     func itemDownloaded(items: NSArray) {
         feedItem = items
-        loadData()
+        loadDataNew()
        
     }
+    
+    func hotitemDownloaded(items: NSArray) {
+        hotItem = items
+        loadDataHot()
+    }
+    
 
     // 보람 추가
-    func loadData(){
+    func loadDataNew(){
     
+        titleName.remove(at: 0)
+        
         let item: DBModel = feedItem[0] as! DBModel
-        titleName.append(item.stitle!)
+        titleName.insert(item.stitle!, at: 0)
+       
         
         let item2: DBModel = feedItem[1] as! DBModel
         titleName.append(item2.stitle!)
+       
         
         let item3: DBModel = feedItem[2] as! DBModel
         titleName.append(item3.stitle!)
+        
+        
         print(titleName)
+        
 
     }
+    
+    func loadDataHot(){
+    
+        hotTitle.remove(at: 0)
+        hotSeqno.remove(at: 0)
+        
+        let item: DBModel = hotItem[0] as! DBModel
+        hotTitle.insert(item.hotTitle!, at: 0)
+        hotSeqno.insert(item.qSeqno!, at: 0)
+        
+        let item2: DBModel = hotItem[1] as! DBModel
+        hotTitle.append(item2.hotTitle!)
+        hotSeqno.append(item2.qSeqno!)
+        
+        let item3: DBModel = hotItem[2] as! DBModel
+        hotTitle.append(item3.hotTitle!)
+        hotSeqno.append(item3.qSeqno!)
+        
+        print(hotTitle)
+        print(hotSeqno)
+
+    }
+    
     
     func NewTitle(number : Int)  {
         
         lblNew.text = titleName[number]
     }
     
-    // Async Task 3초마다 이미지 변경
+    func titleHot(number : Int)  {
+        
+        lblHot.text = hotTitle[number]
+    }
+    
+    // Async Task 3초마다 글씨 변경
     @objc func updateTime(){
       
         if Int(interval) % 3 == 0 {
+
             numNewTitle += 1
+            newPageControl.currentPage -= 1
+
+            numHotTitle += 1
+            hotPageControl.currentPage -= 1
+
             if numNewTitle >= titleName.count{
                 numNewTitle = 0
+                newPageControl.currentPage = 2
+
+                numHotTitle = 0
+                hotPageControl.currentPage = 2
+
         }
 
             NewTitle(number: numNewTitle)
+            titleHot(number: numHotTitle)
 
         }
     }
+            
+    @IBAction func hotChange(_ sender: Any) {
+        lblHot.text = hotTitle[newPageControl.currentPage]
+        //makeSingleTouch()
+    }
     
-  // override func viewDidLoad() {
-    
-    
-//        super.viewDidLoad()
-//        hotPageControl.numberOfPages = numcount // 총 페이지 갯수
-//        hotPageControl.currentPage = 0 // 현재 페이지가 몇번이냐
-//        hotPageControl.pageIndicatorTintColor = UIColor.green // 인디케이터 평소 색상 지정
-//        hotPageControl.currentPageIndicatorTintColor = UIColor.red // 인디케이터 선택시 색상
-//        lblHot.text = String(hotPageControl.currentPage + 1)
+    @IBAction func newChange(_ sender: UIPageControl) {
+        lblNew.text = titleName[newPageControl.currentPage]
+       // makeSingleTouch()
+    }
+   
+//    // 한 손가락 Gesture 구성
+//    func makeSingleTouch(){
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
+//        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+//        self.view.addGestureRecognizer(swipeLeft)
 //
-//        newPageControl.numberOfPages = numcount // 총 페이지 갯수
-//        newPageControl.currentPage = 0 // 현재 페이지가 몇번이냐
-//        newPageControl.pageIndicatorTintColor = UIColor.green // 인디케이터 평소 색상 지정
-//        newPageControl.currentPageIndicatorTintColor = UIColor.red // 인디케이터 선택시 색상
-//        lblNew.text = String(newPageControl.currentPage + 1)
-//
-//    }
-//    @IBAction func changeHotPage(_ sender: UIPageControl) {
-//        lblHot.text = String(hotPageControl.currentPage + 1)
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
+//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+//        self.view.addGestureRecognizer(swipeRight)
 //    }
 //
-//    @IBAction func changeNewPage(_ sender: UIPageControl) {
-//        lblNew.text = String(newPageControl.currentPage + 1)
+//    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+//
+//            lblNew.text = titleName[newPageControl.currentPage]
+//            lblHot.text = hotTitle[newPageControl.currentPage]
+//
+//            // 어떤 제스쳐가 들어왔는지 판단
+//            switch swipeGesture.direction{
+//            case UISwipeGestureRecognizer.Direction.left:
+//                newPageControl.currentPage -= 1
+//                lblNew.text = titleName[newPageControl.currentPage]
+//
+//                hotPageControl.currentPage -= 1
+//                lblHot.text = hotTitle[newPageControl.currentPage]
+//
+//            case UISwipeGestureRecognizer.Direction.right:
+//                newPageControl.currentPage += 1
+//                lblNew.text = titleName[newPageControl.currentPage]
+//
+//                hotPageControl.currentPage += 1
+//                lblHot.text = hotTitle[newPageControl.currentPage]
+//
+//            default:
+//                break
+//            }
+//        }
 //    }
     
-    
-}
+}//====
 

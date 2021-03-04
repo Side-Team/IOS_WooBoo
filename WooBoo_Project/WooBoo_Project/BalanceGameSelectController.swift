@@ -32,6 +32,8 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     func itemDownloaded(items: NSArray) {
         feedItem = items
         loadData()
+        loadbtn()
+    
     }
     
     func itemPeopleCount(items: NSArray) {
@@ -40,13 +42,17 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
     }
     
     func itemBtn1Count(items: NSArray) {
+        
         btn1Item = items
-       // loadClick1()
+//        loadClick1()
+        
     }
     
     func itemBtn2Count(items: NSArray) {
+        
         btn2Item = items
-        //loadClick2()
+//        loadClick2()
+        
     }
     
 
@@ -74,9 +80,11 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         btn2Count.delegate = self
         btn2Count.downloadItems()
        
-        
+       
+       
     }
     
+
     
     @IBAction func btnSelect1(_ sender: UIButton) {
         checkValue = 0

@@ -72,7 +72,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     
     var txtContentCount = 2
     
-    var selectNum = 3
+    var selectNum = 2
     
     let dropDown = DropDown()
     
@@ -126,6 +126,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     @IBAction func btnAddContent(_ sender: UIButton) {
         
         txtContentCount += 1
+        selectNum += 1
         
         print("증가 : \(txtContentCount)")
         if txtContentCount >= 5{
@@ -184,11 +185,6 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
 
         let button = UIButton(type: .custom)
         
-        checkClickNum(textField : textField)
-        print("addRightImage clickNum : \(selectNum)")
-        
-        
-        
         button.setImage(image, for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
@@ -222,15 +218,18 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         case 3:
             txtContent3.isHidden = true
             txtContent3.text = ""
+            selectNum = 2
         case 4:
             txtContent3.text = txtContent4.text
             txtContent4.isHidden = true
             txtContent4.text = ""
+            selectNum = 3
         default:
             txtContent3.text = txtContent4.text
             txtContent4.text = txtContent5.text
             txtContent5.isHidden = true
             txtContent5.text = ""
+            selectNum = 4
         }
         
         txtContentCount -= 1
@@ -249,10 +248,13 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
             txtContent3.text = txtContent4.text
             txtContent4.isHidden = true
             txtContent4.text = ""
+            selectNum = 3
+
         default:
             txtContent4.text = txtContent5.text
             txtContent5.isHidden = true
             txtContent5.text = ""
+            selectNum = 4
         }
         
         txtContentCount -= 1
@@ -262,6 +264,8 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     }
     
     @objc func deleteTxtContent5(){
+        selectNum = 4
+
         print("5 txtContentCount = \(txtContentCount)")
 
 //        txtContent3.text = txtContent4.text
@@ -274,19 +278,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         outlet_BtnAdd.isHidden = false
 
     }
-    
-    func checkClickNum(textField : UITextField){
-        
-        switch textField{
-        case txtContent3:
-            selectNum = 3
-        case txtContent4:
-            selectNum = 4
-        default:
-            selectNum = 5
-        }
-    }
-   
+
     func makeDropDown(){
         dropDown.dataSource = ["음식", "여행", "연애", "결혼", "성", "기타"]
         dropDown.anchorView = txtCategory
@@ -380,7 +372,8 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let AddImageViewController = segue.destination as! AddImageViewController
         
-        AddImageViewController.count = txtContentCount
+        AddImageViewController.selectNum = selectNum
+        print("selectNum : \(selectNum)")
         if imageFileNames.count > 0{
             AddImageViewController.imageFileNames = self.imageFileNames
             AddImageViewController.tempFileNames = self.tempFileNames
@@ -402,10 +395,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     // DB Insert
     func InsertAction(){
         selectModel.downloadItems(funcName: "get_qSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_get_qSeqno.jsp")
-        
-        
-        
-        
+
     }
     
     func checkTxtValue(txt : String) -> String {

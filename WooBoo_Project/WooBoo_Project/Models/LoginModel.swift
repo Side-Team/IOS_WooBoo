@@ -152,7 +152,6 @@ class LoginModel: NSObject{
         }
         
         var jsonElement = NSDictionary()
-        let resultValue = NSMutableArray()
         
         for i in 0..<jsonResult.count{
             
@@ -162,11 +161,10 @@ class LoginModel: NSObject{
                 resultValue1 = result
                 print("result : \(result)")
             }
-            resultValue.add(resultValue1)
         }
         DispatchQueue.main.async(execute: {() -> Void in
-            print("resultvalue 0값 : \(resultValue[0])")
-            self.delegate.findCheckValue(result: resultValue[0] as! String)
+            print("resultvalue 0값 : \(resultValue1)")
+            self.delegate.findCheckValue(result: resultValue1)
             //self.delegate.findCheckValue(result: resultValue[0] as! String)
         })
        // print("resultValue값 : \(resultValue)")

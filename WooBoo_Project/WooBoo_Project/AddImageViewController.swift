@@ -16,7 +16,7 @@ protocol AddImageDelegate { // Java의 Interface
 class AddImageViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     var delegate : AddImageDelegate? // 위에서 선언한 EditDelegate를 사용
-    var count = 0
+    var selectNum = 0
     var imageFileNames = ["", "", "", "", ""]
     var tempFileNames = [String]()
     
@@ -24,6 +24,8 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     var imageURL = [URL]()
     
     var clickImageNum = 0
+    
+    var imageViewStatus = [Int]()
     
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = { let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(back(_:)))
@@ -48,18 +50,21 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
         imagePickerController.delegate = self
 
         setGestureRecognizer()
-        setDesign()
+//        setDesign()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("받은 값 : ", count)
+        print("받은 값 : ", selectNum)
+        
+        imageViewStatus.append(selectNum)
         image1.image = UIImage(systemName: "photo")
         image2.image = UIImage(systemName: "photo")
         image3.image = UIImage(systemName: "photo")
         image4.image = UIImage(systemName: "photo")
         image5.image = UIImage(systemName: "photo")
         checkNullImage()
+        setDesign()
     }
 
     @IBAction func btnSave(_ sender: UIBarButtonItem) {
@@ -82,13 +87,13 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
             if tempFileNames.count != 0{
                 if tempFileNames.count == 1{
                     print("지울값 1개")
-                    ImageFileManager.shared.deleteImage(named: tempFileNames[0]) { [weak self] onSuccess in
+                    ImageFileManager.shared.deleteImage(named: tempFileNames[0]) { onSuccess in
                         print("delete = \(onSuccess)")
                     }
                 }else{
                     for i in 0..<tempFileNames.count{
                         print("지울값 어러개")
-                        ImageFileManager.shared.deleteImage(named: tempFileNames[i]) { [weak self] onSuccess in
+                        ImageFileManager.shared.deleteImage(named: tempFileNames[i]) { onSuccess in
                             print("delete = \(onSuccess)")
                         }
                     }
@@ -120,7 +125,6 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     // 초기화함수
     func initImages(){
         imageURL.removeAll()
-        imageFileNames = ["", "", "", "", ""]
         
         print("초기화 확인 : \(imageFileNames)")
         
@@ -136,19 +140,21 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
         if tempFileNames.count != 0{
             if tempFileNames.count == 1{
                 print("지울값 1개")
-                ImageFileManager.shared.deleteImage(named: tempFileNames[0]) { [weak self] onSuccess in
+                ImageFileManager.shared.deleteImage(named: tempFileNames[0]) { onSuccess in
                     print("delete = \(onSuccess)")
                 }
             }else{
                 for i in 0..<tempFileNames.count{
                     print("지울값 어러개")
-                    ImageFileManager.shared.deleteImage(named: tempFileNames[i]) { [weak self] onSuccess in
+                    ImageFileManager.shared.deleteImage(named: tempFileNames[i]) { onSuccess in
                         print("delete = \(onSuccess)")
                     }
                 }
             }
             tempFileNames.removeAll()
             imageFileNames.removeAll()
+            
+            imageFileNames = ["", "", "", "", ""]
             
             print("배열 초기화 확인 1 : \(tempFileNames)")
             print("배열 초기화 확인 2 : \(imageFileNames)")
@@ -234,20 +240,27 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     }
 
     func setDesign(){
+        if imageViewStatus.count > 1{
+            if imageViewStatus[imageViewStatus.endIndex] != imageViewStatus[imageViewStatus.endIndex - 1]{
+                print("imageViewStatus : \(imageViewStatus[imageViewStatus.endIndex]), \(imageViewStatus[imageViewStatus.endIndex - 1])")
+                
+            }
+        }
+        
         image3.isHidden = true
         image4.isHidden = true
         image5.isHidden = true
-      
-        if count == 3{
+    
+        if selectNum == 3{
             image3.isHidden = false
         }
         
-        if count == 4{
+        if selectNum == 4{
             image3.isHidden = false
             image4.isHidden = false
         }
         
-        if count == 5{
+        if selectNum == 5{
             image3.isHidden = false
             image4.isHidden = false
             image5.isHidden = false
@@ -353,10 +366,6 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL.rawValue] as? URL else { return }
         print(fileUrl.lastPathComponent)
-    }
-    
-    func deleteDirectoryDatas(){
-        
     }
 
     

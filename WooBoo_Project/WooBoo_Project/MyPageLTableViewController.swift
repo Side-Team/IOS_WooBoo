@@ -21,9 +21,6 @@ class MyPageLTableViewController: UITableViewController, Get_MyQuestions{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let selectModel = LMW_SelectModel()
-//        selectModel.delegate7 = self
-//        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_MyLikeList.jsp?user_uSeqno=\(Share.uSeqno)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

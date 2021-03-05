@@ -8,10 +8,11 @@
 import UIKit
 
 class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
+
     func return_MyQuestions(myQuestions: NSArray) {
+        print("return_MyQuestions 들어왔니?")
         self.myQuestions = myQuestions as! NSMutableArray
-        let item: categoryDBModel = myQuestions[0] as! categoryDBModel
-        print("MyPageQTableViewController : \(String(describing: item.qSeqno))")
+        print("return_MyQuestions myQuestions : \(myQuestions)")
         self.tvMyQuestions.reloadData()
     }
     
@@ -24,10 +25,6 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let selectModel = LMW_SelectModel()
-//        selectModel.delegate7 = self
-//        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_questionsList.jsp?user_uSeqno=\(Share.uSeqno)")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +48,7 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! MyQTableViewCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! MyPageQTCell
         
         // Configure the cell...
         let item: categoryDBModel = myQuestions[indexPath.row] as! categoryDBModel

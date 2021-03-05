@@ -21,6 +21,10 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let categoryModel = CategoryModel()
         categoryModel.delegate = self
         categoryModel.categoryItems(category: categoryvalue)
@@ -32,38 +36,43 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
         case "2":
             lblCategoryName.text = "여행"
         case "3":
-            lblCategoryName.text = "기타"
-        case "4":
             lblCategoryName.text = "연애"
-        case "5":
+        case "4":
             lblCategoryName.text = "결혼"
-        case "6":
+        case "5":
             lblCategoryName.text = "성"
+        case "6":
+            lblCategoryName.text = "기타"
         default:
             print("default")
         }
         
-        
-        
-        
-        
         searchBar.delegate = self
         filteredData = temp
         print(filteredData as Any)
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-      
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewDidDisappear")
+        
+        filteredData.removeAll()
+        temp.removeAll()
     }
-    
+
     func itemDownloaded(items: NSArray) {
         self.feedItem = items
+        
+        print("itemDownloaded feedItem 개수 : \(feedItem.count)")
+        
         
         for i in 0..<feedItem.count{
             let item: categoryDBModel = feedItem[i] as! categoryDBModel
             temp.append(item.qTitle!)
         }
         filteredData = temp
+        print("itemDownloaded filteredData 개수 : \(filteredData.count)")
+
 
        print("temp 확인 : \(temp)")
         self.listViewTable.reloadData()
@@ -91,6 +100,9 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
         
         let item: categoryDBModel = feedItem[indexPath.row] as! categoryDBModel
         
+        print("tableView filteredData 개수 : \(filteredData.count)")
+        print("tableView feedItem 개수 : \(feedItem.count)")
+
         cell.textLabel?.text = filteredData[indexPath.row]
         cell.detailTextLabel?.text = "\(item.qInsertDate!)"
         print("나와아라랑")
@@ -105,6 +117,8 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
         // 빈칸일때
         if searchText == ""{
             filteredData = temp
+            print("tableView filteredData 개수 : \(filteredData.count)")
+
         }
         
         else{
@@ -115,9 +129,9 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
                     filteredData.append(fruit)
                 }
             }
-            
-            self.tableView.reloadData()
         }
+        self.tableView.reloadData()
+
     }
 
     /*

@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
  	    String id_mysql = "wooboo"; 
         String pw_mysql = "qwer1234"; 
 
-        String WhereDefault ="select q.qTitle, qSeqno  from questions as q , register as r  order by r.rViews desc limit 3;"; 
+        String WhereDefault ="select q.qTitle, qSeqno  from questions as q , register as r  order by r.rViews asc limit 3;"; 
 
         int count = 0;
     try {

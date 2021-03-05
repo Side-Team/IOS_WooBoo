@@ -783,7 +783,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="글쓰기"/>
                                 <connections>
-                                    <segue destination="g6K-Z9-qtW" kind="show" id="XgS-nW-kVj"/>
+                                    <segue destination="g6K-Z9-qtW" kind="show" identifier="MoveAddContent" id="XgS-nW-kVj"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -1478,7 +1478,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OXt-vT-Bdw"/>
+        <segue reference="MT2-Jh-dGg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="GoogleLogin.png" width="240" height="47"/>

@@ -8,7 +8,20 @@
 import UIKit
 import DropDown
 
-class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageDelegate, Get_questions_qSeqno{
+class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageDelegate, Get_questions_qSeqno, Get_LatestSeqno{
+    func return_LatestSeqno(qSeqno: Int) {
+        let inserQuestiontModel = LMW_InsertModel()
+        inserQuestiontModel.insert_registerT(questions_qSeqno: qSeqno)
+        
+        if imageURL.count > 0{
+            for i in 0..<imageURL.count{
+                let imageUploadModel = ImageUploadModel()
+                imageUploadModel.uploadImageFile(at: imageURL[i], completionHandler: {_,_ in print("Upload Success")})
+
+            }
+        }
+    }
+    
 
     func return_questions_qSeqno(item: Int) {
         
@@ -17,25 +30,20 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         
         print("get_qSeqno : \(item + 1)")
         
-        if result1 == true{
-            print("result1 : \(result1)")
+//        if result1 == true{
+//            print("result1 : \(result1)")
 //            qSeqnoSwitch = 1
 //
 //            selectModel.downloadItems(funcName: "get_qSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_get_qSeqno.jsp")
             // insertAction을 눌렀을 경우
             print("qSeqno 뽑아오기 성공 : \(item + 1)")
             // 뽑아온 qSeqno를 이용해 register테이블에 Insert하기
-            inserQuestiontModel.insert_registerT(questions_qSeqno: item + 1)
             
-            if imageURL.count > 0{
-                for i in 0..<imageURL.count{
-                    let imageUploadModel = ImageUploadModel()
-                    imageUploadModel.uploadImageFile(at: imageURL[i], completionHandler: {_,_ in print("Upload Success")})
-
-                }
-            }
             let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다", preferredStyle: UIAlertController.Style.alert)
-            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { [self]ACTION in
+            
+                selectModel.downloadItems(funcName: "select_LatestSeqno", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Select_LatestSeqno.jsp?user_uSeqno=\(Share.uSeqno)")
+                
                 self.navigationController?.popViewController(animated: true)
             })
             resultAlert.addAction(onAction)
@@ -50,7 +58,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
 //
 //
             
-        }
+//        }
         
        
     }
@@ -90,6 +98,8 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     
     var qSeqnoSwitch = 0
     
+    var categoryValue = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +109,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         print( "높이 : ", self.view.frame.height)
         
         selectModel.delegate2 = self
+        selectModel.delegate9 = self
 
         txtCategory.delegate = self
         txtTitle.delegate = self
@@ -112,6 +123,23 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if categoryValue != 0{
+            switch categoryValue{
+            case 1:
+                txtCategory.text = "음식"
+            case 2:
+                txtCategory.text = "여행"
+            case 3:
+                txtCategory.text = "연애"
+            case 4:
+                txtCategory.text = "결혼"
+            case 5:
+                txtCategory.text = "성"
+            default:
+                txtCategory.text = "기타"
+            }
+        }
         print("***************AddContentViewController 이미지 배열값 : ", self.imageFileNames)
         print("***************AddContentViewController temp 배열값 : ", self.tempFileNames)
     }

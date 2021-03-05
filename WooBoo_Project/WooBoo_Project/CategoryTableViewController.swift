@@ -181,7 +181,6 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
             
             //let item: Students = studentsList[(indexPath! as NSIndexPath).row]
             let item: categoryDBModel = feedItem[indexPath!.row] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
-            
             let qSeqno = item.qSeqno!
             let user_uSeqno = item.user_uSeqno!
             let qTitle = item.qTitle!
@@ -203,6 +202,11 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
             // detailView에서 받는걸 해줘야 사용 가능
             detailView.receiveItems(qSeqno, user_uSeqno, qTitle, qSelection1, qSelection2, qSelection3, qSelection4, qSelection5, qCategory, qInsertDate, qDeleteDate, qImageFileName1, qImageFileName2, qImageFileName3, qImageFileName4, qImageFileName5)
     }
+        
+        if segue.identifier == "MoveAddContent"{
+            let addView = segue.destination as! AddContentViewController
+            addView.categoryValue = Int(categoryvalue)!
+        }
     
 
 }

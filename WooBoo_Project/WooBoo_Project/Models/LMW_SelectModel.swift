@@ -40,6 +40,10 @@ protocol Get_NewQuestions: class {
     func return_NewQuestions(NewQuestions : NSArray)
 }
 
+protocol Get_LatestSeqno: class {
+    func return_LatestSeqno(qSeqno : Int)
+}
+
 
 class LMW_SelectModel{
     var delegate1: Get_questions_views!
@@ -50,6 +54,7 @@ class LMW_SelectModel{
     var delegate6: Get_report_count!
     var delegate7: Get_MyQuestions!
     var delegate8: Get_NewQuestions!
+    var delegate9: Get_LatestSeqno!
     
     var urlPath = ""
     
@@ -95,6 +100,9 @@ class LMW_SelectModel{
                 case "select_NewQuestions":
                     print("LMW_SelectModel : select_NewQuestions")
                     self.get_NewQuestions(data!)
+                case "select_LatestSeqno":
+                    print("LMW_SelectModel : select_LatestSeqno")
+                    self.get_LatestSeqno(data!)
                 default: break
                     
                 }
@@ -447,5 +455,34 @@ class LMW_SelectModel{
             self.delegate8.return_NewQuestions(NewQuestions: NewQuestions)
         })
         print("jsonElement ==== \(jsonElement)")
+    }
+    
+    func get_LatestSeqno(_ data: Data){
+        var jsonResult = NSArray()
+        print("get_LatestSeqno urlPath : \(urlPath)")
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+            
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        var jsonElement = NSDictionary()
+        var seqno = 0
+        
+        for i in 0..<jsonResult.count{
+            print("들어왔나????????")
+            jsonElement =  jsonResult[i] as! NSDictionary
+            
+            if let qSeqno = jsonElement["qSeqno"] as? String{
+
+                seqno = Int(qSeqno)!
+                print("SelectModel get_LatestSeqno : \(seqno)")
+            }
+        }
+        DispatchQueue.main.async(execute: {() -> Void in
+            self.delegate9.return_LatestSeqno(qSeqno: seqno)
+        })
     }
 }

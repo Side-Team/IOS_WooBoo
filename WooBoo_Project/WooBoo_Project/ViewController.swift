@@ -11,9 +11,10 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
 
     
    
-    @IBOutlet weak var lblHot: UILabel!
+    
+    @IBOutlet weak var lblHot: UIButton!
     @IBOutlet weak var hotPageControl: UIPageControl!
-    @IBOutlet weak var lblNew: UILabel!
+    @IBOutlet weak var lblNew: UIButton!
     @IBOutlet weak var newPageControl: UIPageControl!
     
     
@@ -35,6 +36,7 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     //new
     var titleName = [""]
     var numNewTitle = 0
+    var newSeqno: [String] = [""]
     
     // hot
     var hotTitle = [""]
@@ -75,6 +77,11 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
           
         }
     
+    
+    
+    
+  
+    
    
     func itemDownloaded(items: NSArray) {
         feedItem = items
@@ -92,20 +99,25 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     func loadDataNew(){
     
         titleName.remove(at: 0)
+        newSeqno.remove(at: 0)
 
         let item: DBModel = feedItem[0] as! DBModel
         titleName.insert(item.stitle!, at: 0)
+        newSeqno.insert(item.nSeqno!, at: 0)
 
 
         let item2: DBModel = feedItem[1] as! DBModel
         titleName.append(item2.stitle!)
+        newSeqno.append(item2.nSeqno!)
 
 
         let item3: DBModel = feedItem[2] as! DBModel
         titleName.append(item3.stitle!)
+        newSeqno.append(item3.nSeqno!)
 
 
         print(titleName)
+        print(newSeqno)
 
 
     }
@@ -135,12 +147,12 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     
     func NewTitle(number : Int)  {
         
-        lblNew.text = titleName[number]
+        lblNew.setTitle(titleName[number], for: UIControl.State.normal)
     }
     
     func titleHot(number : Int)  {
         
-        lblHot.text = hotTitle[number]
+        lblHot.setTitle(hotTitle[number], for: UIControl.State.normal)
     }
     
     // Async Task 3초마다 글씨 변경
@@ -170,55 +182,68 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
 
         }
     }
+    
+    // hot글로 이동
+    @IBAction func moveHot(_ sender: UIButton) {
+        //ContentDetailViewController
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "ContentDetailViewController")
+                    vcName?.modalPresentationStyle = .fullScreen
+                    self.present(vcName!, animated: true, completion: nil)
+    }
+    
+    @IBAction func moveNew(_ sender: UIButton) {
+    }
+    
+    
+    
             
     @IBAction func hotChange(_ sender: Any) {
-        lblHot.text = hotTitle[hotPageControl.currentPage]
-        //makeSingleTouch()
+        lblHot.setTitle(hotTitle[hotPageControl.currentPage], for: UIControl.State.normal)
+        makeSingleTouch()
+        
     }
     
     @IBAction func newChange(_ sender: UIPageControl) {
-        lblNew.text = titleName[newPageControl.currentPage]
-       // makeSingleTouch()
+        lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+        makeSingleTouch()
     }
+    
    
-//    // 한 손가락 Gesture 구성
-//    func makeSingleTouch(){
-//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
-//        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-//        self.view.addGestureRecognizer(swipeLeft)
-//
-//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
-//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-//        self.view.addGestureRecognizer(swipeRight)
-//    }
-//
-//    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
-//
-//            lblNew.text = titleName[newPageControl.currentPage]
-//            lblHot.text = hotTitle[newPageControl.currentPage]
-//
-//            // 어떤 제스쳐가 들어왔는지 판단
-//            switch swipeGesture.direction{
-//            case UISwipeGestureRecognizer.Direction.left:
-//                newPageControl.currentPage -= 1
-//                lblNew.text = titleName[newPageControl.currentPage]
-//
-//                hotPageControl.currentPage -= 1
-//                lblHot.text = hotTitle[newPageControl.currentPage]
-//
-//            case UISwipeGestureRecognizer.Direction.right:
-//                newPageControl.currentPage += 1
-//                lblNew.text = titleName[newPageControl.currentPage]
-//
-//                hotPageControl.currentPage += 1
-//                lblHot.text = hotTitle[newPageControl.currentPage]
-//
-//            default:
-//                break
-//            }
-//        }
-//    }
+    // 한 손가락 Gesture 구성
+    func makeSingleTouch(){
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(swipeLeft)
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_ :)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+
+    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+
+            lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+            lblHot.setTitle(hotTitle[hotPageControl.currentPage], for: UIControl.State.normal)
+
+            // 어떤 제스쳐가 들어왔는지 판단
+            switch swipeGesture.direction{
+            case UISwipeGestureRecognizer.Direction.left:
+                newPageControl.currentPage -= 1
+                lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+                hotPageControl.currentPage -= 1
+                lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+
+            case UISwipeGestureRecognizer.Direction.right:
+                newPageControl.currentPage += 1
+                lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+                hotPageControl.currentPage += 1
+                lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+            default:
+                break
+            }
+        }
+    }
     
 }//====
 

@@ -48,10 +48,11 @@ class QuestionModel: NSObject{
             jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
             let query = DBModel()
             
-            if let stitle = jsonElement["title"] as? String
-               {
+            if let stitle = jsonElement["title"] as? String,
+               let nSeqno = jsonElement["seqno"] as? String{
                 query.stitle = stitle
-                print("stitle\(stitle)")
+                query.nSeqno = nSeqno
+    
                 
             }
             locations.add(query)

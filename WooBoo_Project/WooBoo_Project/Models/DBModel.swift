@@ -11,6 +11,7 @@ class DBModel: NSObject{
     
     // Properties
     var stitle: String?
+    var nSeqno: String?
     var hotTitle: String?
     var qSeqno: String?
 
@@ -20,8 +21,9 @@ class DBModel: NSObject{
         
     }
     
-    init(stitle: String){
+    init(stitle: String, nSeqno: String){
         self.stitle = stitle
+        self.nSeqno = nSeqno
     }
     
     init(hotTitle: String, qSeqno: String){

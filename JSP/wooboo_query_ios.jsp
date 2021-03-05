@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
  	    String id_mysql = "wooboo"; 
         String pw_mysql = "qwer1234"; 
 
-        String WhereDefault ="select qTitle from questions  order by qInsertDate desc limit 3"; 
+        String WhereDefault ="select qTitle, qSeqno from questions  order by qInsertDate desc limit 3"; 
 
         int count = 0;
     try {
@@ -31,7 +31,8 @@ pageEncoding="UTF-8"%>
 
 %> 
         { 
-            "title" : "<%=rs.getString(1) %>"
+            "title" : "<%=rs.getString(1) %>",
+            "seqno" : "<%=rs.getString(2) %>"
         }
 <% 
     }

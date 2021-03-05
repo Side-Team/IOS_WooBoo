@@ -177,13 +177,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-yr-oAT">
-                                        <rect key="frame" x="26" y="61" width="206" height="53"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-ny-kj1">
                                         <rect key="frame" x="62" y="138" width="135" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -191,6 +184,17 @@
                                             <action selector="hotChange:" destination="55k-Dz-AN0" eventType="valueChanged" id="Rk5-MQ-Dju"/>
                                         </connections>
                                     </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4A-tl-f31">
+                                        <rect key="frame" x="29" y="56" width="202" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="moveHot:" destination="55k-Dz-AN0" eventType="touchUpInside" id="yqu-Zz-KK8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -198,13 +202,6 @@
                                 <rect key="frame" x="65" y="450" width="260" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0y-59-NeZ">
-                                        <rect key="frame" x="26" y="61" width="206" height="53"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="cJP-IS-fEu">
                                         <rect key="frame" x="62" y="138" width="135" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -219,6 +216,18 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-76-rEf">
+                                        <rect key="frame" x="29" y="56" width="202" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="moveHot:" destination="55k-Dz-AN0" eventType="touchUpInside" id="Vt6-C8-2x1"/>
+                                            <action selector="moveNew:" destination="55k-Dz-AN0" eventType="touchUpInside" id="9tN-2D-cm8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -236,8 +245,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="hotPageControl" destination="dh5-ny-kj1" id="HuN-Cd-svp"/>
-                        <outlet property="lblHot" destination="Ilc-yr-oAT" id="cts-v6-z2D"/>
-                        <outlet property="lblNew" destination="K0y-59-NeZ" id="jii-nd-sGm"/>
+                        <outlet property="lblHot" destination="j4A-tl-f31" id="rXT-uh-gzu"/>
+                        <outlet property="lblNew" destination="Ucc-76-rEf" id="Qk6-cI-nSj"/>
                         <outlet property="newPageControl" destination="cJP-IS-fEu" id="cRj-UV-MUz"/>
                     </connections>
                 </viewController>
@@ -1496,6 +1505,9 @@
         <image name="photo.on.rectangle.fill" catalog="system" width="128" height="96"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

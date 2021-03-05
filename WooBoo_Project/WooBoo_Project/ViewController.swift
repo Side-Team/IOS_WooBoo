@@ -17,6 +17,8 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     @IBOutlet weak var lblNew: UIButton!
     @IBOutlet weak var newPageControl: UIPageControl!
     
+    @IBOutlet weak var hotBack: UIView!
+    @IBOutlet weak var newBack: UIView!
     
     var feedItem: NSMutableArray = NSMutableArray()
     var hotItem: NSMutableArray = NSMutableArray()
@@ -53,6 +55,9 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
 //        let hotModel = panHot()
 //        hotModel.delegate = self
 //        hotModel.downloadItems()
+        
+        hotBack.layer.cornerRadius = 25
+        newBack.layer.cornerRadius = 25
         
 
         }

@@ -246,9 +246,11 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="hotBack" destination="cfy-31-hm0" id="gg1-dh-rpI"/>
                         <outlet property="hotPageControl" destination="dh5-ny-kj1" id="HuN-Cd-svp"/>
                         <outlet property="lblHot" destination="j4A-tl-f31" id="rXT-uh-gzu"/>
                         <outlet property="lblNew" destination="Ucc-76-rEf" id="Qk6-cI-nSj"/>
+                        <outlet property="newBack" destination="yCW-4s-Zbc" id="V09-ck-agq"/>
                         <outlet property="newPageControl" destination="cJP-IS-fEu" id="cRj-UV-MUz"/>
                     </connections>
                 </viewController>
@@ -1478,7 +1480,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MT2-Jh-dGg"/>
+        <segue reference="akS-V2-r2j"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="GoogleLogin.png" width="240" height="47"/>

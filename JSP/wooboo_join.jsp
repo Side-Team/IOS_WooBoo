@@ -5,6 +5,7 @@
 	request.setCharacterEncoding("utf-8");
 	String userid = request.getParameter("uEmail");
 	String userpw = request.getParameter("uPw");
+	String userphone = request.getParameter("uPhone");
 		
 //------
 	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=Asia/Seoul&characterEncoding=utf8&useSSL=false";
@@ -19,12 +20,13 @@
 	    Connection conn_mysql = DriverManager.getConnection(url_mysql,id_mysql,pw_mysql);
 		Statement stmt_mysql = conn_mysql.createStatement();
 	
-	    String A = "insert into user (uEmail, uPw, uInsertDate";
-	    String B = ") values (?,?,now())";
+	    String A = "insert into user (uEmail, uPw, uPhone, uInsertDate";
+	    String B = ") values (?,?,?,now())";
 	
 	    ps = conn_mysql.prepareStatement(A+B);
 	    ps.setString(1, userid);
 	    ps.setString(2, userpw);
+		ps.setString(3, userphone);
 	    
 		result2 = ps.executeUpdate();
 %>

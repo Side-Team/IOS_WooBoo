@@ -43,7 +43,7 @@ class UserUpdateController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         userImg.image = UIImage(named: UserDefaults.standard.string(forKey: "uImageFileName")!)
-        
+       
     }
     
     

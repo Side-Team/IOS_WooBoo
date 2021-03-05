@@ -18,8 +18,8 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     @IBOutlet weak var newPageControl: UIPageControl!
     
     
-    var feedItem: NSArray = NSArray()
-    var hotItem: NSArray = NSArray()
+    var feedItem: NSMutableArray = NSMutableArray()
+    var hotItem: NSMutableArray = NSMutableArray()
     
 //    var numcount = 5
 //
@@ -32,16 +32,17 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     // 시간
     let interval = 3.0 // 3초
     let timeSelector: Selector = #selector(ViewController.updateTime)
+    var timer = Timer()
     
     //new
-    var titleName = [""]
+    var titleName = ["", "", ""]
     var numNewTitle = 0
-    var newSeqno: [String] = [""]
+    var newSeqno: [String] = ["", "", ""]
     
     // hot
-    var hotTitle = [""]
+    var hotTitle = ["", "", ""]
     var numHotTitle = 0
-    var hotSeqno: [String] = [""]
+    var hotSeqno: [String] = ["", "", ""]
 
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -66,7 +67,7 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
         
         titleHot(number: numHotTitle)
         
-        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
         
         hotPageControl.numberOfPages = 3
         hotPageControl.currentPage = 0
@@ -80,11 +81,15 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
         newPageControl.currentPage = 0
     }
     
-  
+    // 2021-03-05 민우
+    override func viewDidDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
+
     // 2021-03-05 민우
     func return_NewQuestions(NewQuestions: NSArray) {
         
-        feedItem = NewQuestions
+        feedItem = NewQuestions as! NSMutableArray
         print("feedItem.count : \(feedItem.count)")
         if feedItem.count > 2{
             loadDataNew()
@@ -92,22 +97,11 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
         
     }
     
-   
-//    func itemDownloaded(items: NSArray) {
-//
-//            feedItem = items
-//            loadDataNew()
-//    }
-    
-//    func hotitemDownloaded(items: NSArray) {
-//        hotItem = items
-//        loadDataHot()
-//    }
-    
+
     // 2021-03-05 민우
     func return_MyQuestions(myQuestions: NSArray) {
-        hotItem = myQuestions
-        
+        hotItem = myQuestions as! NSMutableArray
+    
         print("hotItem.count : \(hotItem.count)")
         if hotItem.count > 2{
             loadDataHot()
@@ -119,22 +113,28 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     // 보람 추가
     func loadDataNew(){
     
-        titleName.remove(at: 0)
-        newSeqno.remove(at: 0)
+//        titleName.remove(at: 0)
+//        newSeqno.remove(at: 0)
+        
+        for i in 0..<feedItem.count{
+            let item: categoryDBModel = feedItem[i] as! categoryDBModel
+            titleName[i] = item.qTitle!
+            newSeqno[i] = item.qSeqno!
+        }
 
-        let item: categoryDBModel = feedItem[0] as! categoryDBModel
-        titleName.insert(item.qTitle!, at: 0)
-        newSeqno.insert(item.qSeqno!, at: 0)
-
-
-        let item2: categoryDBModel = feedItem[1] as! categoryDBModel
-        titleName.append(item2.qTitle!)
-        newSeqno.append(item2.qSeqno!)
-
-
-        let item3: categoryDBModel = feedItem[2] as! categoryDBModel
-        titleName.append(item3.qTitle!)
-        newSeqno.append(item3.qSeqno!)
+//        let item: categoryDBModel = feedItem[0] as! categoryDBModel
+//        titleName[0] = item.qTitle!
+//        newSeqno[0] = item.qSeqno!
+//
+//
+//        let item2: categoryDBModel = feedItem[1] as! categoryDBModel
+//        titleName[1] = item2.qTitle!
+//        newSeqno[1] = item2.qSeqno!
+//
+//
+//        let item3: categoryDBModel = feedItem[2] as! categoryDBModel
+//        titleName[2] = item3.qTitle!
+//        newSeqno[2] = item3.qSeqno!
 
 
         print(titleName)
@@ -145,23 +145,29 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     
     func loadDataHot(){
     
-        hotTitle.remove(at: 0)
-        hotSeqno.remove(at: 0)
+//        hotTitle.remove(at: 0)
+//        hotSeqno.remove(at: 0)
         
-        let item: categoryDBModel = hotItem[0] as! categoryDBModel
-        hotTitle.append(item.qTitle!)
-        hotSeqno.append(item.qSeqno!)
+        for i in 0..<hotItem.count{
+            let item: categoryDBModel = hotItem[i] as! categoryDBModel
+            hotTitle[i] = item.qTitle!
+            hotSeqno[i] = item.qSeqno!
+        }
         
-        let item2: categoryDBModel = hotItem[1] as! categoryDBModel
-        hotTitle.append(item2.qTitle!)
-        hotSeqno.append(item2.qSeqno!)
+//        let item: categoryDBModel = hotItem[0] as! categoryDBModel
+//        hotTitle[0] = item.qTitle!
+//        hotSeqno[0] = item.qSeqno!
+//
+//        let item2: categoryDBModel = hotItem[1] as! categoryDBModel
+//        hotTitle[1] = item2.qTitle!
+//        hotSeqno[1] = item2.qSeqno!
+//
+//        let item3: categoryDBModel = hotItem[2] as! categoryDBModel
+//        hotTitle[2] = item3.qTitle!
+//        hotSeqno[2] = item3.qSeqno!
         
-        let item3: categoryDBModel = hotItem[2] as! categoryDBModel
-        hotTitle.append(item3.qTitle!)
-        hotSeqno.append(item3.qSeqno!)
-        
-        print(hotTitle)
-        print(hotSeqno)
+        print("loadDataHot : ", hotTitle)
+        print("loadDataHot : ", hotSeqno)
 
     }
     
@@ -299,6 +305,8 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
             // detailView에서 받는걸 해줘야 사용 가능
             detailView.receiveItems(qSeqno, user_uSeqno, qTitle, qSelection1, qSelection2, qSelection3, qSelection4, qSelection5, qCategory, qInsertDate, qDeleteDate, qImageFileName1, qImageFileName2, qImageFileName3, qImageFileName4, qImageFileName5)
         }
+        
+    
     
     }
     

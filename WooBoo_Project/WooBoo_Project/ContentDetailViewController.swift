@@ -722,13 +722,13 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         case 2:
         return "여행"
         case 3:
-        return "기타"
-        case 4:
         return "연애"
-        case 5:
+        case 4:
         return "결혼"
+        case 5:
+        return "성"
         default:
-            return "성"
+            return "기타"
   
         }
     }

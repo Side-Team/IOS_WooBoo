@@ -76,7 +76,7 @@ class UserUpdateController: UIViewController{
     @IBAction func UserUpdate(_ sender: UIButton) {
         let pw = lblPasswordCheck.text
         let uImageFileName = UserDefaults.standard.string(forKey: "uImageFileName")!
-        
+       
         CheckPw()
         
         let userUpdate = userUpdateModel()
@@ -101,10 +101,7 @@ class UserUpdateController: UIViewController{
     
     
     
-    // 확인 눌렀을떄
-    @IBAction func UserOK(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }//===
+
     
     
     // 이미지 변경
@@ -132,12 +129,14 @@ class UserUpdateController: UIViewController{
         let pw = lblPassword.text
         let pwCheck = lblPasswordCheck.text
         
+        
         if !isValidPassword(pwd: pw!){
             let nilAlert = UIAlertController(title: "경고!", message: "비밀번호 형식을 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
             let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             nilAlert.addAction(nilAction)
             present(nilAlert, animated: true, completion: nil)
             print("비밀번호 실패")
+           
         }else{  // 정규식까지 완료
             print("정규식까지 완료")
         // 비밀번호와 비밀번호확인 필드 값 확인
@@ -147,11 +146,13 @@ class UserUpdateController: UIViewController{
             let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             nilAlert.addAction(nilAction)
             present(nilAlert, animated: true, completion: nil)
+          
         }else if pw == "" && pwCheck == ""{
             let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
             let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             nilAlert.addAction(nilAction)
             present(nilAlert, animated: true, completion: nil)
+            
             
         }else{
             print("비밀번호필드 일치")
@@ -162,8 +163,10 @@ class UserUpdateController: UIViewController{
                 })
                 nilAlert.addAction(nilAction)
                 present(nilAlert, animated: true, completion: nil)
+           
             }
         }
+       
     }
     
 

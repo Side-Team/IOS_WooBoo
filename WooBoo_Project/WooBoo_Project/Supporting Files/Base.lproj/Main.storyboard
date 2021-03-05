@@ -1185,26 +1185,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljz-eG-ANJ">
-                                <rect key="frame" x="135" y="634" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="저장">
-                                    <color key="titleColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="UserUpdate:" destination="Ggl-MB-bVB" eventType="touchUpInside" id="RGb-5L-J0w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzS-HC-Cd0">
-                                <rect key="frame" x="226" y="634" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="확인">
-                                    <color key="titleColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="UserOK:" destination="Ggl-MB-bVB" eventType="touchUpInside" id="utC-I3-6AF"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZS-3D-GVV">
                                 <rect key="frame" x="205" y="203" width="105" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1225,6 +1205,16 @@
                                 </state>
                                 <connections>
                                     <action selector="UserDelete:" destination="Ggl-MB-bVB" eventType="touchUpInside" id="0nL-3G-MH4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljz-eG-ANJ">
+                                <rect key="frame" x="180" y="632" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="저장">
+                                    <color key="titleColor" red="0.503465414" green="0.76149445770000002" blue="0.70195662979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="UserUpdate:" destination="Ggl-MB-bVB" eventType="touchUpInside" id="RGb-5L-J0w"/>
                                 </connections>
                             </button>
                         </subviews>

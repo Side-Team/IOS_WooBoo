@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
  	    String id_mysql = "wooboo"; 
         String pw_mysql = "qwer1234"; 
 
-        String WhereDefault ="select qTitle, qSeqno from questions  order by qInsertDate desc limit 3"; 
+        String WhereDefault ="select * from questions where qDeleteDate is null order by qInsertDate desc limit 3"; 
 
         int count = 0;
     try {
@@ -31,8 +31,22 @@ pageEncoding="UTF-8"%>
 
 %> 
         { 
-            "title" : "<%=rs.getString(1) %>",
-            "seqno" : "<%=rs.getString(2) %>"
+                "qSeqno" : "<%=rs.getInt(1) %>",
+                "user_uSeqno" : "<%=rs.getInt(2) %>",
+                "qTitle" : "<%=rs.getString(3) %>",
+                "qSelection1" : "<%=rs.getString(4) %>",
+                "qSelection2" : "<%=rs.getString(5) %>",
+                "qSelection3" : "<%=rs.getString(6) %>",
+                "qSelection4" : "<%=rs.getString(7) %>",
+                "qSelection5" : "<%=rs.getString(8) %>",
+                "qCategory" : "<%=rs.getInt(9) %>",
+                "qInsertDate" : "<%=rs.getString(10) %>",
+                "qDeleteDate" : "<%=rs.getString(11) %>",
+                "qImageFileName1" : "<%=rs.getString(12) %>",
+                "qImageFileName2" : "<%=rs.getString(13) %>",
+                "qImageFileName3" : "<%=rs.getString(14) %>",
+                "qImageFileName4" : "<%=rs.getString(15) %>",
+                "qImageFileName5" : "<%=rs.getString(16) %>"
         }
 <% 
     }

@@ -36,6 +36,10 @@ protocol Get_MyQuestions: class {
     func return_MyQuestions(myQuestions : NSArray)
 }
 
+protocol Get_NewQuestions: class {
+    func return_NewQuestions(NewQuestions : NSArray)
+}
+
 
 class LMW_SelectModel{
     var delegate1: Get_questions_views!
@@ -45,6 +49,7 @@ class LMW_SelectModel{
     var delegate5: Get_like_count!
     var delegate6: Get_report_count!
     var delegate7: Get_MyQuestions!
+    var delegate8: Get_NewQuestions!
     
     var urlPath = ""
     
@@ -87,7 +92,9 @@ class LMW_SelectModel{
                 case "select_MyQuestions":
                     print("LMW_SelectModel : select_MyQuestions")
                     self.get_MyQuestions(data!)
-                    
+                case "select_NewQuestions":
+                    print("LMW_SelectModel : select_NewQuestions")
+                    self.get_NewQuestions(data!)
                 default: break
                     
                 }
@@ -368,6 +375,76 @@ class LMW_SelectModel{
         DispatchQueue.main.async(execute: {() -> Void in
             
             self.delegate7.return_MyQuestions(myQuestions: myQuestions)
+        })
+        print("jsonElement ==== \(jsonElement)")
+    }
+    
+    func get_NewQuestions(_ data: Data){
+        var jsonResult = NSArray()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        var jsonElement = NSDictionary()     // Dictionary로 데이터를 가져옴
+        let NewQuestions = NSMutableArray()
+        
+        for i in 0..<jsonResult.count{
+            
+            jsonElement = jsonResult[i] as! NSDictionary    // jsonResult[i]를 NSDictionary로 바꿔준다.
+            let query = categoryDBModel()
+            
+            if let qSeqno = jsonElement["qSeqno"] as? String,
+               let user_uSeqno = jsonElement["user_uSeqno"] as? String,
+               let qTitle = jsonElement["qTitle"] as? String,
+               let qSelection1 = jsonElement["qSelection1"] as? String,
+               let qSelection2 = jsonElement["qSelection2"] as? String,
+               let qSelection3 = jsonElement["qSelection3"] as? String,
+               let qSelection4 = jsonElement["qSelection4"] as? String,
+               let qSelection5 = jsonElement["qSelection5"] as? String,
+               let qCategory = jsonElement["qCategory"] as? String,
+               let qInsertDate = jsonElement["qInsertDate"] as? String,
+               let qDeleteDate = jsonElement["qDeleteDate"] as? String,
+               let qImageFileName1 = jsonElement["qImageFileName1"] as? String,
+               let qImageFileName2 = jsonElement["qImageFileName2"] as? String,
+               let qImageFileName3 = jsonElement["qImageFileName3"] as? String,
+               let qImageFileName4 = jsonElement["qImageFileName4"] as? String,
+               let qImageFileName5 = jsonElement["qImageFileName5"] as? String{
+                query.qSeqno = qSeqno
+                query.user_uSeqno = user_uSeqno
+                query.qTitle = qTitle
+                query.qSelection1 = qSelection1
+                query.qSelection2 = qSelection2
+                query.qSelection3 = qSelection3
+                query.qSelection4 = qSelection4
+                query.qSelection5 = qSelection5
+                query.qCategory = qCategory
+                query.qInsertDate = qInsertDate
+                query.qDeleteDate = qDeleteDate
+                query.qImageFileName1 = qImageFileName1
+                query.qImageFileName2 = qImageFileName2
+                query.qImageFileName3 = qImageFileName3
+                query.qImageFileName4 = qImageFileName4
+                query.qImageFileName5 = qImageFileName5
+               
+                
+                print("---------------------------------------")
+                print("-------선택한 셀 : \(qSeqno)-------------")
+                print("---------------------------------------")
+
+            }
+            NewQuestions.add(query)
+            
+            let item: categoryDBModel = NewQuestions[0] as! categoryDBModel
+            print("---------------------------------------")
+            print("-------NewQuestions : \(String(describing: item.qSeqno))-------------")
+            print("---------------------------------------")
+        }
+        DispatchQueue.main.async(execute: {() -> Void in
+            
+            self.delegate8.return_NewQuestions(NewQuestions: NewQuestions)
         })
         print("jsonElement ==== \(jsonElement)")
     }

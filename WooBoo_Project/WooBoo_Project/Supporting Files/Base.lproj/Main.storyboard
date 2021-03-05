@@ -193,6 +193,7 @@
                                         </state>
                                         <connections>
                                             <action selector="moveHot:" destination="55k-Dz-AN0" eventType="touchUpInside" id="yqu-Zz-KK8"/>
+                                            <segue destination="lUU-zO-asB" kind="show" identifier="MoveDetailFromHot" id="OXt-vT-Bdw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -226,6 +227,7 @@
                                         <connections>
                                             <action selector="moveHot:" destination="55k-Dz-AN0" eventType="touchUpInside" id="Vt6-C8-2x1"/>
                                             <action selector="moveNew:" destination="55k-Dz-AN0" eventType="touchUpInside" id="9tN-2D-cm8"/>
+                                            <segue destination="lUU-zO-asB" kind="show" identifier="MoveDetailFromNew" id="akS-V2-r2j"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1476,7 +1478,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F7S-Ed-KmD"/>
+        <segue reference="OXt-vT-Bdw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="GoogleLogin.png" width="240" height="47"/>

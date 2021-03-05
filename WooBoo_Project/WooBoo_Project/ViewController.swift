@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
+class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
+ 
+    
+  
 
-    
-   
-    
     @IBOutlet weak var lblHot: UIButton!
     @IBOutlet weak var hotPageControl: UIPageControl!
     @IBOutlet weak var lblNew: UIButton!
@@ -49,9 +49,20 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         // 보람 추가
         
         //핫
-        let hotModel = panHot()
-        hotModel.delegate = self
-        hotModel.downloadItems()
+//        let hotModel = panHot()
+//        hotModel.delegate = self
+//        hotModel.downloadItems()
+        
+
+        }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let selectModel = LMW_SelectModel()
+        selectModel.delegate7 = self
+        selectModel.delegate8 = self
+        selectModel.downloadItems(funcName: "select_MyQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_Hot.jsp")
+        selectModel.downloadItems(funcName: "select_NewQuestions", urlPath: "http://127.0.0.1:8080/ios_jsp/wooboo_query_ios.jsp")
         
         titleHot(number: numHotTitle)
         
@@ -60,38 +71,48 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         hotPageControl.numberOfPages = 3
         hotPageControl.currentPage = 0
         
-        //실시간글
-        let questionModel = QuestionModel()
-        questionModel.delegate = self
-        questionModel.downloadItems()
-        
+
     
         NewTitle(number: numNewTitle)
 
         
         newPageControl.numberOfPages = 3
         newPageControl.currentPage = 0
-        
-        
-            
-          
-        }
-    
-    
-    
-    
-  
-    
-   
-    func itemDownloaded(items: NSArray) {
-        feedItem = items
-        loadDataNew()
-       
     }
     
-    func hotitemDownloaded(items: NSArray) {
-        hotItem = items
-        loadDataHot()
+  
+    // 2021-03-05 민우
+    func return_NewQuestions(NewQuestions: NSArray) {
+        
+        feedItem = NewQuestions
+        print("feedItem.count : \(feedItem.count)")
+        if feedItem.count > 2{
+            loadDataNew()
+        }
+        
+    }
+    
+   
+//    func itemDownloaded(items: NSArray) {
+//
+//            feedItem = items
+//            loadDataNew()
+//    }
+    
+//    func hotitemDownloaded(items: NSArray) {
+//        hotItem = items
+//        loadDataHot()
+//    }
+    
+    // 2021-03-05 민우
+    func return_MyQuestions(myQuestions: NSArray) {
+        hotItem = myQuestions
+        
+        print("hotItem.count : \(hotItem.count)")
+        if hotItem.count > 2{
+            loadDataHot()
+
+        }
     }
     
 
@@ -101,19 +122,19 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         titleName.remove(at: 0)
         newSeqno.remove(at: 0)
 
-        let item: DBModel = feedItem[0] as! DBModel
-        titleName.insert(item.stitle!, at: 0)
-        newSeqno.insert(item.nSeqno!, at: 0)
+        let item: categoryDBModel = feedItem[0] as! categoryDBModel
+        titleName.insert(item.qTitle!, at: 0)
+        newSeqno.insert(item.qSeqno!, at: 0)
 
 
-        let item2: DBModel = feedItem[1] as! DBModel
-        titleName.append(item2.stitle!)
-        newSeqno.append(item2.nSeqno!)
+        let item2: categoryDBModel = feedItem[1] as! categoryDBModel
+        titleName.append(item2.qTitle!)
+        newSeqno.append(item2.qSeqno!)
 
 
-        let item3: DBModel = feedItem[2] as! DBModel
-        titleName.append(item3.stitle!)
-        newSeqno.append(item3.nSeqno!)
+        let item3: categoryDBModel = feedItem[2] as! categoryDBModel
+        titleName.append(item3.qTitle!)
+        newSeqno.append(item3.qSeqno!)
 
 
         print(titleName)
@@ -127,16 +148,16 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         hotTitle.remove(at: 0)
         hotSeqno.remove(at: 0)
         
-        let item: DBModel = hotItem[0] as! DBModel
-        hotTitle.append(item.hotTitle!)
+        let item: categoryDBModel = hotItem[0] as! categoryDBModel
+        hotTitle.append(item.qTitle!)
         hotSeqno.append(item.qSeqno!)
         
-        let item2: DBModel = hotItem[1] as! DBModel
-        hotTitle.append(item2.hotTitle!)
+        let item2: categoryDBModel = hotItem[1] as! categoryDBModel
+        hotTitle.append(item2.qTitle!)
         hotSeqno.append(item2.qSeqno!)
         
-        let item3: DBModel = hotItem[2] as! DBModel
-        hotTitle.append(item3.hotTitle!)
+        let item3: categoryDBModel = hotItem[2] as! categoryDBModel
+        hotTitle.append(item3.qTitle!)
         hotSeqno.append(item3.qSeqno!)
         
         print(hotTitle)
@@ -174,10 +195,13 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
                 hotPageControl.currentPage = 0
 
         }
-
-            NewTitle(number: numNewTitle)
-            titleHot(number: numHotTitle)
-            
+            if feedItem.count > 2{
+                NewTitle(number: numNewTitle)
+            }
+  
+            if hotItem.count > 2{
+                titleHot(number: numHotTitle)
+            }
         
 
         }
@@ -186,9 +210,7 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     // hot글로 이동
     @IBAction func moveHot(_ sender: UIButton) {
         //ContentDetailViewController
-        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "ContentDetailViewController")
-                    vcName?.modalPresentationStyle = .fullScreen
-                    self.present(vcName!, animated: true, completion: nil)
+   
     }
     
     @IBAction func moveNew(_ sender: UIButton) {
@@ -243,6 +265,41 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
                 break
             }
         }
+    }
+    
+    // 2021-03-05 민우
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare")
+        if segue.identifier == "MoveDetailFromHot" || segue.identifier == "MoveDetailFromNew"{
+            let detailView = segue.destination as! ContentDetailViewController
+            
+            //let item: Students = studentsList[(indexPath! as NSIndexPath).row]
+            let item: categoryDBModel = hotItem[hotPageControl.currentPage] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
+            
+            print("item : \(item)")
+
+            let qSeqno = item.qSeqno!
+            let user_uSeqno = item.user_uSeqno!
+            let qTitle = item.qTitle!
+            let qSelection1 = item.qSelection1!
+            let qSelection2 = item.qSelection2!
+            let qSelection3 = item.qSelection3!
+            let qSelection4 = item.qSelection4!
+            let qSelection5 = item.qSelection5!
+            let qCategory = item.qCategory!
+            let qInsertDate = item.qInsertDate!
+            let qDeleteDate = item.qDeleteDate!
+            let qImageFileName1 = item.qImageFileName1!
+            let qImageFileName2 = item.qImageFileName2!
+            let qImageFileName3 = item.qImageFileName3!
+            let qImageFileName4 = item.qImageFileName4!
+            let qImageFileName5 = item.qImageFileName5!
+            print("ViewController qSeqno : \(qSeqno)")
+            
+            // detailView에서 받는걸 해줘야 사용 가능
+            detailView.receiveItems(qSeqno, user_uSeqno, qTitle, qSelection1, qSelection2, qSelection3, qSelection4, qSelection5, qCategory, qInsertDate, qDeleteDate, qImageFileName1, qImageFileName2, qImageFileName3, qImageFileName4, qImageFileName5)
+        }
+    
     }
     
 }//====

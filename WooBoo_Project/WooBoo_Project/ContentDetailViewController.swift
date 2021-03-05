@@ -112,6 +112,8 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
     }
     
     func itemDownloaded(sqSelection: Int) {
+        print("itemDownloaded")
+
         self.sqSelection = sqSelection
         self.setDesign()
         print("sqSelection : \(sqSelection)")
@@ -170,17 +172,20 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("viewDidLoadsdasdasd")
+
 //        view.addSubview(outlet_BtnShare)
 //        outlet_BtnShare.addTarget(self, action: #selector(didTapSendButton(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        print("1")
         let selectModel = LMW_Select_sqSelection()
         selectModel.delegate = self
         selectModel.downloadItems(questions_qSeqno: Int(receiveqSeqno)!)
-        
+        print("2")
+
         let selectModel2 = LMW_SelectModel()
         selectModel2.delegate3 = self
         selectModel2.delegate4 = self

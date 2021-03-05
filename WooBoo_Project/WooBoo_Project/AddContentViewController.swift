@@ -373,6 +373,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         let AddImageViewController = segue.destination as! AddImageViewController
         
         AddImageViewController.selectNum = selectNum
+        imageViewStatus.append(selectNum)
         print("selectNum : \(selectNum)")
         if imageFileNames.count > 0{
             AddImageViewController.imageFileNames = self.imageFileNames

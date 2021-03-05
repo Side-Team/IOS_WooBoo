@@ -8,6 +8,8 @@
 import UIKit
 import Photos
 
+var imageViewStatus = [Int]()
+
 // EditViewController에서 ViewController의 함수를 실행해서 데이터 전달하는 것
 protocol AddImageDelegate { // Java의 Interface
     func didSelectedImage(_ controller : AddImageViewController, imageFileNames : [String], tempFileNames : [String], imageURL : [URL])
@@ -25,7 +27,6 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     
     var clickImageNum = 0
     
-    var imageViewStatus = [Int]()
     
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = { let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(back(_:)))
@@ -34,7 +35,6 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
         
     }()
 
-    
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
@@ -56,8 +56,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         print("받은 값 : ", selectNum)
-        
-        imageViewStatus.append(selectNum)
+        print("imageViewStatus : \(imageViewStatus)")
+        print("imageViewStatus endIndex: \(imageViewStatus.startIndex), \(imageViewStatus[imageViewStatus.startIndex])")
+//        print("imageViewStatus endIndex - 1 : \(imageViewStatus.endIndex - 1), \(imageViewStatus[imageViewStatus.endIndex - 1])")
         image1.image = UIImage(systemName: "photo")
         image2.image = UIImage(systemName: "photo")
         image3.image = UIImage(systemName: "photo")
@@ -65,6 +66,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
         image5.image = UIImage(systemName: "photo")
         checkNullImage()
         setDesign()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
     }
 
     @IBAction func btnSave(_ sender: UIBarButtonItem) {
@@ -241,9 +245,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
 
     func setDesign(){
         if imageViewStatus.count > 1{
-            if imageViewStatus[imageViewStatus.endIndex] != imageViewStatus[imageViewStatus.endIndex - 1]{
-                print("imageViewStatus : \(imageViewStatus[imageViewStatus.endIndex]), \(imageViewStatus[imageViewStatus.endIndex - 1])")
-                
+            if imageViewStatus[imageViewStatus.index(before: imageViewStatus.endIndex)] != imageViewStatus[imageViewStatus.index(before: imageViewStatus.endIndex) - 1]{
+                print("imageViewStatus : \(imageViewStatus[imageViewStatus.index(before: imageViewStatus.endIndex)]), \(imageViewStatus[imageViewStatus.index(before: imageViewStatus.endIndex) - 1])")
+                initImages()
             }
         }
         

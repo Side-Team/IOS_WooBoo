@@ -42,7 +42,7 @@
 		286A650125EA7EA1008F1F9D /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 286A64FF25EA7EA1008F1F9D /* image1.jpeg */; };
 		286A650225EA7EA1008F1F9D /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 286A650025EA7EA1008F1F9D /* image2.jpeg */; };
 		286A652825EAA91D008F1F9D /* MyPageQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */; };
-		286A653025EAAF67008F1F9D /* MyQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */; };
+		286E94B725F12CFF00873485 /* MyPageQTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E94B625F12CFF00873485 /* MyPageQTCell.swift */; };
 		287840DD25E7537C0020F7AD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840DC25E7537C0020F7AD /* CategoryViewController.swift */; };
 		287840EE25E7FD970020F7AD /* kakao_login_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */; };
 		287840F125E802DA0020F7AD /* LMW_InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287840F025E802DA0020F7AD /* LMW_InsertModel.swift */; };
@@ -120,7 +120,7 @@
 		286A64FF25EA7EA1008F1F9D /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		286A650025EA7EA1008F1F9D /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
 		286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageQTableViewController.swift; sourceTree = "<group>"; };
-		286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQTableViewCell.swift; sourceTree = "<group>"; };
+		286E94B625F12CFF00873485 /* MyPageQTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageQTCell.swift; sourceTree = "<group>"; };
 		287840DC25E7537C0020F7AD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		287840ED25E7FD970020F7AD /* kakao_login_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_login_medium_narrow.png; sourceTree = "<group>"; };
 		287840F025E802DA0020F7AD /* LMW_InsertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMW_InsertModel.swift; sourceTree = "<group>"; };
@@ -197,9 +197,9 @@
 				21D3C27025E93D5D005262D9 /* ChangeImageController.swift */,
 				286A64FC25EA7C9F008F1F9D /* ImageViewController.swift */,
 				286A652725EAA91D008F1F9D /* MyPageQTableViewController.swift */,
-				286A652F25EAAF66008F1F9D /* MyQTableViewCell.swift */,
 				282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */,
 				3C3E81C025ECCA030022D9C1 /* SearchTableViewController.swift */,
+				286E94B625F12CFF00873485 /* MyPageQTCell.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -517,13 +517,13 @@
 				21811A7825ECE693009AE05A /* SelectgameModel.swift in Sources */,
 				2165532025EF40B000F837E1 /* balancegameBtn1count.swift in Sources */,
 				21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */,
+				286E94B725F12CFF00873485 /* MyPageQTCell.swift in Sources */,
 				21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */,
 				28A88CB925E6A5DE0012DD1F /* ImageFileManager.swift in Sources */,
 				2855F4CE25E512BB003F3847 /* ContentDetailViewController.swift in Sources */,
 				3C1FEAF025E653B7008C646E /* DBModel.swift in Sources */,
 				21A5507325E65E9400E58698 /* balancegameModel.swift in Sources */,
 				286A652825EAA91D008F1F9D /* MyPageQTableViewController.swift in Sources */,
-				286A653025EAAF67008F1F9D /* MyQTableViewCell.swift in Sources */,
 				21811A7525ECE5CA009AE05A /* balanceInsertModel.swift in Sources */,
 				284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */,
 				3C1FEAE925E651ED008C646E /* QuestionModel.swift in Sources */,

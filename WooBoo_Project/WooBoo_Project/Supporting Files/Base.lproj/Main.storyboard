@@ -87,7 +87,7 @@
                                 <rect key="frame" x="132" y="282" width="154" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CXh-tZ-FaF"/>
@@ -359,7 +359,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xla-la-MKG">
-                                <rect key="frame" x="103" y="512" width="183" height="45"/>
+                                <rect key="frame" x="103" y="526" width="182" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="kakao_login_medium_narrow.png"/>
                                 <connections>
@@ -367,11 +367,42 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="byg-eC-w9Y">
-                                <rect key="frame" x="103" y="646" width="183" height="43"/>
+                                <rect key="frame" x="103" y="616" width="183" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_Happy.png" translatesAutoresizingMaskIntoConstraints="NO" id="1ek-cA-RQu">
+                                <rect key="frame" x="16" y="746" width="53" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_calmness.png" translatesAutoresizingMaskIntoConstraints="NO" id="j4I-pQ-MfP">
+                                <rect key="frame" x="77" y="746" width="53" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_Pleasure.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Uj-Qd-1eb">
+                                <rect key="frame" x="138" y="746" width="53" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_Depressed.png" translatesAutoresizingMaskIntoConstraints="NO" id="DVK-z2-MHd">
+                                <rect key="frame" x="199" y="746" width="53" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_Sad.png" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-ba-g55">
+                                <rect key="frame" x="260" y="746" width="53" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_Anger.png" translatesAutoresizingMaskIntoConstraints="NO" id="AcO-hx-989">
+                                <rect key="frame" x="321" y="746" width="53" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WooBoo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn3-6i-ogm">
+                                <rect key="frame" x="89" y="126" width="210" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.76078431369999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK5-NU-L5F">
-                                <rect key="frame" x="103" y="580" width="183" height="47"/>
+                                <rect key="frame" x="103" y="571" width="183" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="구글로그인" image="GoogleLogin.png"/>
                                 <connections>
@@ -1349,10 +1380,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyQTCell" id="xs7-tQ-0pG" customClass="MyQTableViewCell" customModule="WooBoo_Project" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyQTCell" id="xs7-tQ-0pG" customClass="MyPageQTCell" customModule="WooBoo_Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="390" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xs7-tQ-0pG" id="Vf6-rp-rR2" customClass="MyQTableViewCell" customModule="WooBoo_Project" customModuleProvider="target">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xs7-tQ-0pG" id="Vf6-rp-rR2">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -1383,8 +1414,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblInsertDate" destination="lIz-Dn-3dj" id="ACm-rn-XbX"/>
-                                    <outlet property="lblTitle" destination="WKj-qr-OaH" id="v02-ZT-e4q"/>
+                                    <outlet property="lblInsertDate" destination="lIz-Dn-3dj" id="ctd-GS-dcC"/>
+                                    <outlet property="lblTitle" destination="WKj-qr-OaH" id="yw6-iy-43d"/>
+                                    <outlet property="outlet_BtnDelete" destination="nOC-ON-YyB" id="IDm-Th-Kmc"/>
                                     <segue destination="lUU-zO-asB" kind="show" identifier="MyQuestions" id="F7S-Ed-KmD"/>
                                 </connections>
                             </tableViewCell>
@@ -1405,7 +1437,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MT2-Jh-dGg"/>
+        <segue reference="F7S-Ed-KmD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="GoogleLogin.png" width="240" height="47"/>

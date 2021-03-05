@@ -166,66 +166,66 @@ class UserUpdateController: UIViewController{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: pwd)
     }
-    
-    func CheckPw(){
-        let pw = lblPassword.text
-        let pwCheck = lblPasswordCheck.text
-        
-        
-        if !isValidPassword(pwd: pw!){
-            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호 형식을 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
-            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nilAlert.addAction(nilAction)
-            present(nilAlert, animated: true, completion: nil)
-            print("비밀번호 실패")
-           
-        }else{  // 정규식까지 완료
-            print("정규식까지 완료")
-            // 비밀번호와 비밀번호확인 필드 값 확인
-            if pw != pwCheck{   // 서로 다르며
-                print("비밀번호와 비밀번호체크 값이 다름")
-                let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
-                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                nilAlert.addAction(nilAction)
-                present(nilAlert, animated: true, completion: nil)
-            }else if pw == "" && pwCheck == ""{
-                let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                nilAlert.addAction(nilAction)
-                present(nilAlert, animated: true, completion: nil)
-                
-            }else{
-                print("비밀번호필드 일치")
-                
-        // 비밀번호와 비밀번호확인 필드 값 확인
-        if pw != pwCheck{   // 서로 다르며
-            print("비밀번호와 비밀번호체크 값이 다름")
-            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
-            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nilAlert.addAction(nilAction)
-            present(nilAlert, animated: true, completion: nil)
-          
-        }else if pw == "" && pwCheck == ""{
-            let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            nilAlert.addAction(nilAction)
-            present(nilAlert, animated: true, completion: nil)
-            
-            
-        }else{
-            print("비밀번호필드 일치")
-            
-                let nilAlert = UIAlertController(title: "완료", message: "변경이 완료되었습니다!", preferredStyle: UIAlertController.Style.alert)
-                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                    self.navigationController?.popViewController(animated: true)
-                })
-                nilAlert.addAction(nilAction)
-                present(nilAlert, animated: true, completion: nil)
-           
-            }
-        }
-       
-    }
+//
+//    func CheckPw(){
+//        let pw = lblPassword.text
+//        let pwCheck = lblPasswordCheck.text
+//
+//
+//        if !isValidPassword(pwd: pw!){
+//            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호 형식을 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
+//            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+//            nilAlert.addAction(nilAction)
+//            present(nilAlert, animated: true, completion: nil)
+//            print("비밀번호 실패")
+//
+//        }else{  // 정규식까지 완료
+//            print("정규식까지 완료")
+//            // 비밀번호와 비밀번호확인 필드 값 확인
+//            if pw != pwCheck{   // 서로 다르며
+//                print("비밀번호와 비밀번호체크 값이 다름")
+//                let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
+//                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+//                nilAlert.addAction(nilAction)
+//                present(nilAlert, animated: true, completion: nil)
+//            }else if pw == "" && pwCheck == ""{
+//                let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+//                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+//                nilAlert.addAction(nilAction)
+//                present(nilAlert, animated: true, completion: nil)
+//
+//            }else{
+//                print("비밀번호필드 일치")
+//
+//        // 비밀번호와 비밀번호확인 필드 값 확인
+//        if pw != pwCheck{   // 서로 다르며
+//            print("비밀번호와 비밀번호체크 값이 다름")
+//            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
+//            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+//            nilAlert.addAction(nilAction)
+//            present(nilAlert, animated: true, completion: nil)
+//
+//        }else if pw == "" && pwCheck == ""{
+//            let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+//            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+//            nilAlert.addAction(nilAction)
+//            present(nilAlert, animated: true, completion: nil)
+//
+//
+//        }else{
+//            print("비밀번호필드 일치")
+//
+//                let nilAlert = UIAlertController(title: "완료", message: "변경이 완료되었습니다!", preferredStyle: UIAlertController.Style.alert)
+//                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+//                    self.navigationController?.popViewController(animated: true)
+//                })
+//                nilAlert.addAction(nilAction)
+//                present(nilAlert, animated: true, completion: nil)
+//
+//            }
+//        }
+//
+//    }
     
     // nil check function
     func checkNil(str: String) -> Int{
@@ -273,8 +273,8 @@ class UserUpdateController: UIViewController{
         lblPasswordCheck.layer.addSublayer((border2))
         
         lblEmail.textAlignment = .center
-        lblPassword.textAlignment = .center
-        lblPasswordCheck.textAlignment = .center
+        lblPassword.textAlignment = .left
+        lblPasswordCheck.textAlignment = .left
         
         
         lblEmail.textColor = UIColor.black
@@ -299,5 +299,4 @@ class UserUpdateController: UIViewController{
      // Pass the selected object to the new view controller.
      }
      */
-    
-}
+    }

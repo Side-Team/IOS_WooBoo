@@ -89,6 +89,20 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     // 2021-03-05 민우
     override func viewDidDisappear(_ animated: Bool) {
         timer.invalidate()
+        
+        numNewTitle = 0
+        newPageControl.currentPage = 0
+        
+        numHotTitle = 0
+        hotPageControl.currentPage = 0
+        
+        if feedItem.count > 2 && hotItem.count > 2{
+            lblHot.setTitle(hotTitle[hotPageControl.currentPage], for: UIControl.State.normal)
+            lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+        }
+        
+        
+
     }
 
     // 2021-03-05 민우
@@ -189,31 +203,32 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     
     // Async Task 3초마다 글씨 변경
     @objc func updateTime(){
-      
+        
         if Int(interval) % 3 == 0 {
-
+            
             numNewTitle += 1
-           newPageControl.currentPage += 1
-
+            newPageControl.currentPage += 1
+            
             numHotTitle += 1
             hotPageControl.currentPage += 1
-
+            
             if numNewTitle >= titleName.count{
                 numNewTitle = 0
                 newPageControl.currentPage = 0
-
+                
                 numHotTitle = 0
                 hotPageControl.currentPage = 0
-
-        }
+                
+            }
+            
             if feedItem.count > 2{
                 NewTitle(number: numNewTitle)
             }
-  
+            
             if hotItem.count > 2{
                 titleHot(number: numHotTitle)
             }
-        
+            
 
         }
     }
@@ -230,7 +245,7 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     
     
             
-    @IBAction func hotChange(_ sender: Any) {
+    @IBAction func hotChange(_ sender: UIPageControl) {
         lblHot.setTitle(hotTitle[hotPageControl.currentPage], for: UIControl.State.normal)
         makeSingleTouch()
         
@@ -256,8 +271,8 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
         if let swipeGesture = gesture as? UISwipeGestureRecognizer{
 
-            lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
-            lblHot.setTitle(hotTitle[hotPageControl.currentPage], for: UIControl.State.normal)
+//            lblNew.setTitle(titleName[newPageControl.currentPage], for: UIControl.State.normal)
+//            lblHot.setTitle(hotTitle[hotPageControl.currentPage], for: UIControl.State.normal)
 
             // 어떤 제스쳐가 들어왔는지 판단
             switch swipeGesture.direction{
@@ -281,13 +296,43 @@ class ViewController: UIViewController, Get_MyQuestions, Get_NewQuestions {
     // 2021-03-05 민우
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare")
-        if segue.identifier == "MoveDetailFromHot" || segue.identifier == "MoveDetailFromNew"{
+        if segue.identifier == "MoveDetailFromHot"{
             let detailView = segue.destination as! ContentDetailViewController
             
             //let item: Students = studentsList[(indexPath! as NSIndexPath).row]
             let item: categoryDBModel = hotItem[hotPageControl.currentPage] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
             
-            print("item : \(item)")
+            print("hotPageControl.currentPage : \(hotPageControl.currentPage)")
+
+            let qSeqno = item.qSeqno!
+            let user_uSeqno = item.user_uSeqno!
+            let qTitle = item.qTitle!
+            let qSelection1 = item.qSelection1!
+            let qSelection2 = item.qSelection2!
+            let qSelection3 = item.qSelection3!
+            let qSelection4 = item.qSelection4!
+            let qSelection5 = item.qSelection5!
+            let qCategory = item.qCategory!
+            let qInsertDate = item.qInsertDate!
+            let qDeleteDate = item.qDeleteDate!
+            let qImageFileName1 = item.qImageFileName1!
+            let qImageFileName2 = item.qImageFileName2!
+            let qImageFileName3 = item.qImageFileName3!
+            let qImageFileName4 = item.qImageFileName4!
+            let qImageFileName5 = item.qImageFileName5!
+            print("ViewController qSeqno : \(qSeqno)")
+            
+            // detailView에서 받는걸 해줘야 사용 가능
+            detailView.receiveItems(qSeqno, user_uSeqno, qTitle, qSelection1, qSelection2, qSelection3, qSelection4, qSelection5, qCategory, qInsertDate, qDeleteDate, qImageFileName1, qImageFileName2, qImageFileName3, qImageFileName4, qImageFileName5)
+        }
+        
+        if segue.identifier == "MoveDetailFromNew"{
+            let detailView = segue.destination as! ContentDetailViewController
+            
+            //let item: Students = studentsList[(indexPath! as NSIndexPath).row]
+            let item: categoryDBModel = feedItem[newPageControl.currentPage] as! categoryDBModel // 스튜던트 리스트에서 값을 가져온다
+            
+            print("newPageControl.currentPage : \(newPageControl.currentPage)")
 
             let qSeqno = item.qSeqno!
             let user_uSeqno = item.user_uSeqno!

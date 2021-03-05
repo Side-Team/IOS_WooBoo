@@ -34,6 +34,7 @@
 		21D3C26D25E93963005262D9 /* icon_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D3C26C25E93963005262D9 /* icon_chat.png */; };
 		21D3C27125E93D5D005262D9 /* ChangeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3C27025E93D5D005262D9 /* ChangeImageController.swift */; };
 		21DCBD7725EB908100CA82F9 /* userUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */; };
+		282196F625F26F4A004206E4 /* ViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282196F525F26F4A004206E4 /* ViewPagerController.swift */; };
 		282EC0E225EBFE27003EAADC /* MyPageLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */; };
 		284B82BC25E5612200203A8B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B82BB25E5612200203A8B /* AddImageViewController.swift */; };
 		2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */; };
@@ -112,6 +113,7 @@
 		21D3C26C25E93963005262D9 /* icon_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_chat.png; sourceTree = "<group>"; };
 		21D3C27025E93D5D005262D9 /* ChangeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageController.swift; sourceTree = "<group>"; };
 		21DCBD7625EB908100CA82F9 /* userUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userUpdateModel.swift; sourceTree = "<group>"; };
+		282196F525F26F4A004206E4 /* ViewPagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPagerController.swift; sourceTree = "<group>"; };
 		282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageLTableViewController.swift; sourceTree = "<group>"; };
 		284B82BB25E5612200203A8B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		2855F4CA25E4FA5F003F3847 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				282EC0E125EBFE27003EAADC /* MyPageLTableViewController.swift */,
 				3C3E81C025ECCA030022D9C1 /* SearchTableViewController.swift */,
 				286E94B625F12CFF00873485 /* MyPageQTCell.swift */,
+				282196F525F26F4A004206E4 /* ViewPagerController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 			files = (
 				21D3C26225E91EEE005262D9 /* userDeleteModel.swift in Sources */,
 				2855F4CB25E4FA5F003F3847 /* AddContentViewController.swift in Sources */,
+				282196F625F26F4A004206E4 /* ViewPagerController.swift in Sources */,
 				2165532325EF40C200F837E1 /* balancegameBtn2count.swift in Sources */,
 				2165533525EFCBCC00F837E1 /* PanHotModel.swift in Sources */,
 				3C1FEB2025E8E790008C646E /* CategoryDBModel.swift in Sources */,

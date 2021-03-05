@@ -26,7 +26,7 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
     func return_questions_qSeqno(item: Int) {
         
         let inserQuestiontModel = LMW_InsertModel()
-        let result1 = inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
+        inserQuestiontModel.insertItems(qTitle: txtTitle.text!, qSelection1: txtContent1.text!, qSelection2: txtContent2.text!, qSelection3: checkTxtValue(txt: txtContent3.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection4: checkTxtValue(txt: txtContent4.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qSelection5: checkTxtValue(txt: txtContent5.text!.trimmingCharacters(in: .whitespacesAndNewlines)), qCategory: makeCategoryNumber(), qImageFileName1: imageFileNames[0], qImageFileName2: imageFileNames[1], qImageFileName3: imageFileNames[2], qImageFileName4: imageFileNames[3], qImageFileName5: imageFileNames[4])
         
         print("get_qSeqno : \(item + 1)")
         

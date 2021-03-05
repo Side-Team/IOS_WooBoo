@@ -33,11 +33,11 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     let timeSelector: Selector = #selector(ViewController.updateTime)
     
     //new
-    var titleName: [String] = [""]
+    var titleName = [""]
     var numNewTitle = 0
     
     // hot
-    var hotTitle: [String] = [""]
+    var hotTitle = [""]
     var numHotTitle = 0
     var hotSeqno: [String] = [""]
 
@@ -65,7 +65,7 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         
     
         NewTitle(number: numNewTitle)
-        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+
         
         newPageControl.numberOfPages = 3
         newPageControl.currentPage = 0
@@ -92,21 +92,21 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
     func loadDataNew(){
     
         titleName.remove(at: 0)
-        
+
         let item: DBModel = feedItem[0] as! DBModel
         titleName.insert(item.stitle!, at: 0)
-       
-        
+
+
         let item2: DBModel = feedItem[1] as! DBModel
         titleName.append(item2.stitle!)
-       
-        
+
+
         let item3: DBModel = feedItem[2] as! DBModel
         titleName.append(item3.stitle!)
-        
-        
+
+
         print(titleName)
-        
+
 
     }
     
@@ -116,8 +116,8 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         hotSeqno.remove(at: 0)
         
         let item: DBModel = hotItem[0] as! DBModel
-        hotTitle.insert(item.hotTitle!, at: 0)
-        hotSeqno.insert(item.qSeqno!, at: 0)
+        hotTitle.append(item.hotTitle!)
+        hotSeqno.append(item.qSeqno!)
         
         let item2: DBModel = hotItem[1] as! DBModel
         hotTitle.append(item2.hotTitle!)
@@ -149,28 +149,30 @@ class ViewController: UIViewController, QuestionProtocol, panHotProtocol {
         if Int(interval) % 3 == 0 {
 
             numNewTitle += 1
-            newPageControl.currentPage -= 1
+           newPageControl.currentPage += 1
 
             numHotTitle += 1
-            hotPageControl.currentPage -= 1
+            hotPageControl.currentPage += 1
 
             if numNewTitle >= titleName.count{
                 numNewTitle = 0
-                newPageControl.currentPage = 2
+                newPageControl.currentPage = 0
 
                 numHotTitle = 0
-                hotPageControl.currentPage = 2
+                hotPageControl.currentPage = 0
 
         }
 
             NewTitle(number: numNewTitle)
             titleHot(number: numHotTitle)
+            
+        
 
         }
     }
             
     @IBAction func hotChange(_ sender: Any) {
-        lblHot.text = hotTitle[newPageControl.currentPage]
+        lblHot.text = hotTitle[hotPageControl.currentPage]
         //makeSingleTouch()
     }
     

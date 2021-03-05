@@ -11,7 +11,7 @@
 	String url_mysql = "jdbc:mysql://aws-wooboo.ccsntmql93pq.ap-northeast-2.rds.amazonaws.com/wooboo?serverTimezone=UTC&characterEncoding=utf8&useSSL=FALSE";
  	String id_mysql = "wooboo";
  	String pw_mysql = "qwer1234";
-    String WhereDefault = "select * from questions where qDeleteDate is null and qCategory ='" + category + "'" ;
+    String WhereDefault = "select * from questions where qDeleteDate is null and qCategory ='" + category + "' order by qInsertDate desc" ;
     int count = 0;
     
     try {

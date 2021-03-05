@@ -231,6 +231,7 @@ class BalanceGameSelectController: UIViewController, balancegameSelectModelProto
         lblSelect1Count.text = ""
         lblSelect2percent.text = ""
         lblSelect2Count.text = ""
+        btnNext.setTitle("", for: UIControl.State.normal)
     }
     
     

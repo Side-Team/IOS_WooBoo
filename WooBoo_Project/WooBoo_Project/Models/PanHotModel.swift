@@ -53,8 +53,7 @@ class panHot: NSObject{
                let qSeqno = jsonElement["seqno"] as? String{
                 query.hotTitle = hotTitle
                 query.qSeqno = qSeqno
-                print("hot \(hotTitle)")
-                print("qseqno \(qSeqno)")
+                
                 
             }
             locations.add(query)

@@ -21,6 +21,7 @@ class ImageViewController: UIViewController {
         }else{
             //url에 정확한 이미지 url 주소를 넣는다.
             let url = URL(string: "http://localhost:8080/Images/\(imageFileName_ImageView)")
+            print("image url : \("http://localhost:8080/Images/\(imageFileName_ImageView)")")
             var image : UIImage?
             //DispatchQueue를 쓰는 이유 -> 이미지가 클 경우 이미지를 다운로드 받기 까지 잠깐의 멈춤이 생길수 있다. (이유 : 싱글 쓰레드로 작동되기때문에)
             //DispatchQueue를 쓰면 멀티 쓰레드로 이미지가 클경우에도 멈춤이 생기지 않는다.
@@ -30,10 +31,17 @@ class ImageViewController: UIViewController {
                     let icon = image
                     
                     // Resize
-                    let size = CGSize(width: CGFloat((icon!.size.width)), height: CGFloat(icon!.size.height))
+//                    let size = CGSize(width: CGFloat((icon!.size.width)), height: CGFloat(icon!.size.height))
                     //            let size = sizeOfImageAt(url: url!)
                     
-                    let rect = CGRect(x: 0, y: 0, width: size.width / 2 , height: size.height / 2 )
+                    if (icon?.size.width)! >= 200 || (icon?.size.height)! >= 200{
+                        
+                    }
+                    let size = CGSize(width: 200, height: 100)
+
+                    
+//                    let rect = CGRect(x: 0, y: 0, width: size.width / 2 , height: size.height / 2 )
+                    let rect = CGRect(x: 0, y: 0, width: size.width , height: size.height )
                     
                     UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
                     
@@ -49,7 +57,8 @@ class ImageViewController: UIViewController {
                     
                     
                     //2. 이미지 뷰의 영역과 위치를 지정
-                    iconV.frame = CGRect(x:10, y:0, width:(new_image.size.width ),height:(new_image.size.height))
+                    iconV.frame = CGRect(x:0, y:0, width:(new_image.size.width ),height:(new_image.size.height))
+//                    iconV.frame = CGRect(x:10, y:0, width:200,height:200)
                     
                     
                     //3. 루트뷰에 이미지 뷰를 추가
@@ -59,26 +68,12 @@ class ImageViewController: UIViewController {
                     
                     //4.  외부에서 참조할 뷰 컨트롤러 사이즈를 이미지 크기와 동일하게 설정 + 10은 알림창에 이미지가 표시될때 아래 여백 주기
                     self.preferredContentSize = CGSize(width:(new_image.size.width),height:(new_image.size.height) - 160)
+//                    self.preferredContentSize = CGSize(width:200,height:200)
                     
         }
 
-        
-                
-                
             }
         }
-//
-////
-//        let cgSize = sizeOfImageAt(url: url!)
-//
-//        print("cgsize : \(String(describing: cgSize))")
-//
-//        print("image type : \(type(of: String(describing: image)))")
-//        print("image size : \(String(describing: image?.size.width))")
-
-        
-        
-        
     }
     
         func sizeOfImageAt(url: URL) -> CGSize? {

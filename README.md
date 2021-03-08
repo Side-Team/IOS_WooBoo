@@ -3,7 +3,7 @@
 
 ---
 ## 맛보기
-<img width="203" alt="맛보기1" src="https://user-images.githubusercontent.com/74579455/110283877-24d44080-8024-11eb-8c82-21a629389722.png">
+<img width="203" alt="맛보기1" src="https://user-images.githubusercontent.com/74579455/110283877-24d44080-8024-11eb-8c82-21a629389722.png"/>
 
 <img width="203" alt="맛보기2" src="https://user-images.githubusercontent.com/74579455/110283883-27cf3100-8024-11eb-9db2-35e9b02418d0.png">
 

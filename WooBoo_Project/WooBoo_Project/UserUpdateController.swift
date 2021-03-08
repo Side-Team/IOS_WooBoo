@@ -49,25 +49,36 @@ class UserUpdateController: UIViewController{
     
     // 회원탈퇴 버튼
     @IBAction func UserDelete(_ sender: UIButton) {
-        let userdelete = userDeleteModel()
-        let result = userdelete.insertItems()
-        if result == true{
-            let resultAlert = UIAlertController(title: "완료", message: "회원탈퇴가 완료되었습니다", preferredStyle: UIAlertController.Style.alert)
-            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                let vcName = self.storyboard?.instantiateViewController(withIdentifier: "LoginView")
-                vcName?.modalPresentationStyle = .fullScreen
-                self.present(vcName!, animated: true, completion: nil)
-            })
-            resultAlert.addAction(onAction)
-            present(resultAlert, animated: true, completion: nil)
+        
+        let resultAlert = UIAlertController(title: "탈퇴", message: "탈퇴 하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.default, handler: nil)
+        let onAction = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: {ACTION in
             
-        }else{ // 에러일 경우
-            let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            resultAlert.addAction(onAction)
-            present(resultAlert, animated: true, completion: nil)
-            
-        }
+            let userdelete = userDeleteModel()
+            let result = userdelete.insertItems()
+            if result == true{
+                let resultAlert = UIAlertController(title: "완료", message: "회원탈퇴가 완료되었습니다", preferredStyle: UIAlertController.Style.alert)
+                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                    let vcName = self.storyboard?.instantiateViewController(withIdentifier: "LoginView")
+                    vcName?.modalPresentationStyle = .fullScreen
+                    self.present(vcName!, animated: true, completion: nil)
+                })
+                resultAlert.addAction(onAction)
+                self.present(resultAlert, animated: true, completion: nil)
+                
+            }else{ // 에러일 경우
+                let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                resultAlert.addAction(onAction)
+                self.present(resultAlert, animated: true, completion: nil)
+                
+            }
+        })
+        
+        resultAlert.addAction(onAction)
+        resultAlert.addAction(cancelAction)
+        present(resultAlert, animated: true, completion: nil)
+        
     }//===
     
     
@@ -139,10 +150,7 @@ class UserUpdateController: UIViewController{
     
     
     
-    // 확인 눌렀을떄
-    @IBAction func UserOK(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }//===
+
 
     
     
@@ -166,66 +174,6 @@ class UserUpdateController: UIViewController{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: pwd)
     }
-//
-//    func CheckPw(){
-//        let pw = lblPassword.text
-//        let pwCheck = lblPasswordCheck.text
-//
-//
-//        if !isValidPassword(pwd: pw!){
-//            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호 형식을 확인해주세요!", preferredStyle: UIAlertController.Style.alert)
-//            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-//            nilAlert.addAction(nilAction)
-//            present(nilAlert, animated: true, completion: nil)
-//            print("비밀번호 실패")
-//
-//        }else{  // 정규식까지 완료
-//            print("정규식까지 완료")
-//            // 비밀번호와 비밀번호확인 필드 값 확인
-//            if pw != pwCheck{   // 서로 다르며
-//                print("비밀번호와 비밀번호체크 값이 다름")
-//                let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
-//                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-//                nilAlert.addAction(nilAction)
-//                present(nilAlert, animated: true, completion: nil)
-//            }else if pw == "" && pwCheck == ""{
-//                let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-//                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-//                nilAlert.addAction(nilAction)
-//                present(nilAlert, animated: true, completion: nil)
-//
-//            }else{
-//                print("비밀번호필드 일치")
-//
-//        // 비밀번호와 비밀번호확인 필드 값 확인
-//        if pw != pwCheck{   // 서로 다르며
-//            print("비밀번호와 비밀번호체크 값이 다름")
-//            let nilAlert = UIAlertController(title: "경고!", message: "비밀번호가 일치하지 않습니다", preferredStyle: UIAlertController.Style.alert)
-//            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-//            nilAlert.addAction(nilAction)
-//            present(nilAlert, animated: true, completion: nil)
-//
-//        }else if pw == "" && pwCheck == ""{
-//            let nilAlert = UIAlertController(title: "경고!", message: "빈칸없이 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-//            let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-//            nilAlert.addAction(nilAction)
-//            present(nilAlert, animated: true, completion: nil)
-//
-//
-//        }else{
-//            print("비밀번호필드 일치")
-//
-//                let nilAlert = UIAlertController(title: "완료", message: "변경이 완료되었습니다!", preferredStyle: UIAlertController.Style.alert)
-//                let nilAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-//                    self.navigationController?.popViewController(animated: true)
-//                })
-//                nilAlert.addAction(nilAction)
-//                present(nilAlert, animated: true, completion: nil)
-//
-//            }
-//        }
-//
-//    }
     
     // nil check function
     func checkNil(str: String) -> Int{

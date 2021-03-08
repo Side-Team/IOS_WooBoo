@@ -139,10 +139,7 @@ class UserUpdateController: UIViewController{
     
     
     
-    // 확인 눌렀을떄
-    @IBAction func UserOK(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }//===
+
 
     
     

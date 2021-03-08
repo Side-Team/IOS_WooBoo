@@ -1,4 +1,4 @@
-## Copyright 2021. 이민우, 박세미, 유민규, 김보람 All rights reserved
+@Copyright 2021. 이민우, 박세미, 유민규, 김보람 All rights reserved
 
 # WooBoo?
 우유부단한 사람들을 위한 APP

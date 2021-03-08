@@ -346,7 +346,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     func showAlert(clickNum : Int){
-        let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
+        let alert =  UIAlertController(title: "사진 추가", message: "사진 추가할 방법을 선택해주세요.", preferredStyle: .actionSheet)
 
         let library =  UIAlertAction(title: "사진앨범", style: .default) { [self] (action) in
             self.openLibrary()

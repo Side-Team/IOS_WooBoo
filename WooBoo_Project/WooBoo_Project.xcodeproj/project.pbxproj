@@ -81,6 +81,9 @@
 		869C1CA625E3A29900554CEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869C1CA425E3A29900554CEC /* LaunchScreen.storyboard */; };
 		869C1CB025E3B19E00554CEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869C1CAF25E3B19E00554CEC /* LoginViewController.swift */; };
 		86AC528D25E40546008343D8 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC528C25E40546008343D8 /* JoinViewController.swift */; };
+		86BCD34925F5FCF600A58871 /* view2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BCD34625F5FCF600A58871 /* view2.png */; };
+		86BCD34A25F5FCF600A58871 /* view3.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BCD34725F5FCF600A58871 /* view3.png */; };
+		86BCD34D25F6032F00A58871 /* view1.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BCD34C25F6032F00A58871 /* view1.png */; };
 		86D7ECEC25E9E48F0006F737 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86D7ECEB25E9E48F0006F737 /* GoogleService-Info.plist */; };
 		DB02F92E6AEF2EAE1CC3B2B5 /* Pods_WooBoo_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */; };
 /* End PBXBuildFile section */
@@ -164,6 +167,9 @@
 		869C1CA725E3A29900554CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		869C1CAF25E3B19E00554CEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86AC528C25E40546008343D8 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		86BCD34625F5FCF600A58871 /* view2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view2.png; sourceTree = "<group>"; };
+		86BCD34725F5FCF600A58871 /* view3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view3.png; sourceTree = "<group>"; };
+		86BCD34C25F6032F00A58871 /* view1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view1.png; sourceTree = "<group>"; };
 		86D7ECEB25E9E48F0006F737 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E3627B4857A224AB66C2ECE /* Pods_WooBoo_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WooBoo_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D0003D47483131B848699D /* Pods-WooBoo_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooBoo_Project.release.xcconfig"; path = "Target Support Files/Pods-WooBoo_Project/Pods-WooBoo_Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +289,9 @@
 		3C1FEAF225E68183008C646E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				86BCD34C25F6032F00A58871 /* view1.png */,
+				86BCD34625F5FCF600A58871 /* view2.png */,
+				86BCD34725F5FCF600A58871 /* view3.png */,
 				8697CA5225EF5DAE003C0CF2 /* GoogleLogin.png */,
 				286A64FF25EA7EA1008F1F9D /* image1.jpeg */,
 				286A650025EA7EA1008F1F9D /* image2.jpeg */,
@@ -438,10 +447,13 @@
 				21D3C25825E91A5A005262D9 /* img_Anger.png in Resources */,
 				86D7ECEC25E9E48F0006F737 /* GoogleService-Info.plist in Resources */,
 				3C1FEB0325E68197008C646E /* img_logo.jpeg in Resources */,
+				86BCD34D25F6032F00A58871 /* view1.png in Resources */,
 				869C1CA125E3A29700554CEC /* Main.storyboard in Resources */,
 				3C1FEB0025E68197008C646E /* icon_love.png in Resources */,
 				21D3C25A25E91A5A005262D9 /* img_calmness.png in Resources */,
 				21D3C25B25E91A5A005262D9 /* img_Tired.png in Resources */,
+				86BCD34925F5FCF600A58871 /* view2.png in Resources */,
+				86BCD34A25F5FCF600A58871 /* view3.png in Resources */,
 				287840EE25E7FD970020F7AD /* kakao_login_medium_narrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,7 +13,7 @@ class ViewPagerController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     
     // 페이지
-    var images = ["image1.jpeg", "image2.jpeg", "img_calmness.png"]
+    var images = ["view1.png", "view2.png", "view3.png"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

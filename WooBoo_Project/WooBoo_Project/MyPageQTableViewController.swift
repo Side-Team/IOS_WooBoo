@@ -61,20 +61,31 @@ class MyPageQTableViewController: UITableViewController, Get_MyQuestions {
     }
     
     @IBAction func btnDelete(_ sender: UIButton) {
-        print("버튼 클릭")
-        let contentView = sender.superview
-        let cell = contentView?.superview as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)
-        let row = indexPath![1]
-        let item: categoryDBModel = myQuestions[row] as! categoryDBModel
-        let qSeqno = Int(item.qSeqno!)!
         
-        let updateModel = LMW_UpdateModel()
-        updateModel.update_MyQuestions(qSeqno: qSeqno)
+        let alert = UIAlertController(title: "삭제 확인", message: "정말로 삭제하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "삭제", style: UIAlertAction.Style.destructive, handler: { [self]ACTION in
+            let contentView = sender.superview
+            let cell = contentView?.superview as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let row = indexPath![1]
+            let item: categoryDBModel = myQuestions[row] as! categoryDBModel
+            let qSeqno = Int(item.qSeqno!)!
+            
+            let updateModel = LMW_UpdateModel()
+            updateModel.update_MyQuestions(qSeqno: qSeqno)
+            
+            myQuestions.removeObject(at: row)
+    //
+            self.tvMyQuestions.reloadData()
+        })
+        let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
         
-        myQuestions.removeObject(at: row)
-//
-        self.tvMyQuestions.reloadData()
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

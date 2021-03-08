@@ -273,7 +273,6 @@ class AddContentViewController: UIViewController, UITextFieldDelegate, AddImageD
         
 
         case 4:
-            txtContent3.text = txtContent4.text
             txtContent4.isHidden = true
             txtContent4.text = ""
             selectNum = 3

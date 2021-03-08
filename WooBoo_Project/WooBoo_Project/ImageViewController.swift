@@ -33,10 +33,7 @@ class ImageViewController: UIViewController {
                     // Resize
 //                    let size = CGSize(width: CGFloat((icon!.size.width)), height: CGFloat(icon!.size.height))
                     //            let size = sizeOfImageAt(url: url!)
-                    
-                    if (icon?.size.width)! >= 200 || (icon?.size.height)! >= 200{
-                        
-                    }
+
                     let size = CGSize(width: 200, height: 100)
 
                     

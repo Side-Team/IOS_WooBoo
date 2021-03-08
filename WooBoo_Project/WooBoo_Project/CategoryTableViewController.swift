@@ -58,6 +58,7 @@ class CategoryTableViewController: UITableViewController, CategoryModelProtocol,
         
         filteredData.removeAll()
         temp.removeAll()
+        searchBar.searchTextField.text = ""
     }
 
     func itemDownloaded(items: NSArray) {

@@ -324,6 +324,8 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
                 
 
                 present(addAlert, animated: true, completion: nil)
+                
+                report_SwitchNum = 1
             })
             
             let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default, handler: nil)
@@ -601,15 +603,15 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         var objectsToShare = [outlet_btn1.titleLabel?.text!, outlet_btn2.titleLabel?.text!, outlet_btn3.titleLabel?.text!, outlet_btn4.titleLabel?.text!, outlet_btn5.titleLabel?.text!]
         var text = objectsToShare[0]! + " VS " + objectsToShare[1]!
       
-        if objectsToShare[2] != "Button"{
+        if objectsToShare[2] != "X" || objectsToShare[2] != "Button"{
             text = text + " VS " + objectsToShare[2]!
         }
         
-        if objectsToShare[3] != "Button"{
+        if objectsToShare[3] != "X" || objectsToShare[3] != "Button"{
             text = text + " VS " + objectsToShare[3]!
         }
         
-        if objectsToShare[4] != "Button"{
+        if objectsToShare[4] != "X" || objectsToShare[4] != "Button"{
             text = text + " VS " + objectsToShare[4]!
         }
         
@@ -652,10 +654,6 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         
     }
     
-//    @objc func didTapShareButton(_ sender: UIButton){
-//        print("Tap")
-//    }
-
     func findMaxIndex(){
         
         var maxIndex = 0
@@ -674,29 +672,7 @@ class ContentDetailViewController: UIViewController, return_sqSelection,  Get_re
         }
         
         print("maxIndex : \(maxIndex)")
-        
-//        switch maxIndex{
-//        case 0:
-////            outlet_btn1.setTitleColor(.black, for: .normal)
-//            outlet_btn1.titleLabel?.font = UIFont(name: outlet_btn1.titleLabel!.font.fontName, size: 20)
-//        case 1:
-////            outlet_btn2.setTitleColor(.black, for: .normal)
-//            outlet_btn2.titleLabel?.font = UIFont(name: outlet_btn2.titleLabel!.font.fontName, size: 20)
-//        case 2:
-////            outlet_btn3.setTitleColor(.black, for: .normal)
-//            outlet_btn3.titleLabel?.font = UIFont(name: outlet_btn3.titleLabel!.font.fontName, size: 20)
-//        case 3:
-////            outlet_btn4.setTitleColor(.black, for: .normal)
-//            outlet_btn4.titleLabel?.font = UIFont(name: outlet_btn4.titleLabel!.font.fontName, size: 20)
-//        case 4:
-////            outlet_btn5.setTitleColor(.black, for: .normal)
-//            outlet_btn5.titleLabel?.font = UIFont(name: outlet_btn5.titleLabel!.font.fontName, size: 20)
-//
-//
-//
-//        default: break
-  
-//        }
+
     }
     
     func setFocus(){
